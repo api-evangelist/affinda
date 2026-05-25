@@ -1,0 +1,55 @@
+{
+  "operation": "POST /v3/resume_search",
+  "description": "Search indexed resumes against a job description. Returns ranked candidates with a score breakdown.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.affinda.com/v3/resume_search",
+    "headers": {
+      "Authorization": "Bearer <AFFINDA_API_KEY>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "indices": ["talent-pool-2026"],
+      "jobTitles": ["Senior Backend Engineer"],
+      "skills": [
+        { "name": "Python", "required": true },
+        { "name": "Kubernetes", "required": false }
+      ],
+      "totalYearsExperience": { "min": 5 },
+      "locations": [{ "name": "Remote, US" }]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "count": 2,
+      "next": null,
+      "results": [
+        {
+          "identifier": "candidate-001",
+          "score": 0.92,
+          "scoreBreakdown": {
+            "jobTitleScore": 0.95,
+            "skillsScore": 0.90,
+            "experienceScore": 0.95,
+            "locationScore": 1.0
+          },
+          "name": "Grace Hopper",
+          "currentTitle": "Staff Backend Engineer"
+        },
+        {
+          "identifier": "candidate-014",
+          "score": 0.81,
+          "scoreBreakdown": {
+            "jobTitleScore": 0.85,
+            "skillsScore": 0.80,
+            "experienceScore": 0.88,
+            "locationScore": 0.7
+          },
+          "name": "Margaret Hamilton",
+          "currentTitle": "Senior Backend Engineer"
+        }
+      ]
+    }
+  }
+}

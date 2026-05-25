@@ -1,0 +1,50 @@
+{
+  "operation": "GET /v3/documents/{identifier}",
+  "description": "Retrieve a parsed resume document. The `data` block is shaped by the resume extractor.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.affinda.com/v3/documents/9d3b1d0c-9c1d-4f3a-9aa5-a3a8b3f8d401",
+    "headers": {
+      "Authorization": "Bearer <AFFINDA_API_KEY>"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "meta": {
+        "identifier": "9d3b1d0c-9c1d-4f3a-9aa5-a3a8b3f8d401",
+        "fileName": "resume.pdf",
+        "ready": true,
+        "readyDt": "2026-05-25T17:42:14.881Z",
+        "failed": false,
+        "documentType": "resume_extractor_v3",
+        "ocrConfidence": 0.97
+      },
+      "data": {
+        "name": { "raw": "Ada Lovelace", "first": "Ada", "last": "Lovelace" },
+        "emails": ["ada@example.com"],
+        "phoneNumbers": ["+44 20 7946 0021"],
+        "location": { "rawInput": "London, UK", "city": "London", "country": "United Kingdom" },
+        "totalYearsExperience": 7.5,
+        "workExperience": [
+          {
+            "jobTitle": "Senior Mathematician",
+            "organization": "Analytical Engine Co.",
+            "dates": { "startDate": "2019-01", "endDate": null, "isCurrent": true },
+            "jobDescription": "Designed algorithms for general-purpose computation."
+          }
+        ],
+        "education": [
+          {
+            "organization": "University of London",
+            "accreditation": { "education": "BSc Mathematics", "educationLevel": "bachelors" }
+          }
+        ],
+        "skills": [
+          { "name": "Algorithm Design", "type": "hard_skill" },
+          { "name": "Numerical Analysis", "type": "hard_skill" }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Affinda Webhooks API — Resthook Subscriptions
+  description: Affinda Webhooks — manage resthook subscriptions for document parsing events with the
+    probe + activate handshake.
+  tags:
+  - Affinda
+  - Webhooks
+  - Events
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    AFFINDA_API_KEY: AFFINDA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: webhooks
+    baseUri: https://api.affinda.com
+    description: Affinda v3 Resthook Subscriptions.
+    resources:
+    - name: v3-resthook-subscriptions
+      path: /v3/resthook_subscriptions
+      operations:
+      - name: listsubscriptions
+        method: GET
+        description: List webhook subscriptions.
+        outputRawFormat: json
+        outputParameters: [{name: results, type: object, value: $.}]
+        inputParameters: []
+      - name: createsubscription
+        method: POST
+        description: Create a webhook subscription. Affinda sends a probe to the target URL.
+        outputRawFormat: json
+        outputParameters: [{name: subscription, type: object, value: $.}]
+        inputParameters:
+        - {name: body, in: body, type: object, required: true}
+    - name: v3-resthook-subscriptions-activate
+      path: /v3/resthook_subscriptions/activate
+      operations:
+      - name: activatesubscription
+        method: POST
+        description: Activate a subscription using the probe value received at the target URL.
+        outputRawFormat: json
+        outputParameters: [{name: subscription, type: object, value: $.}]
+        inputParameters:
+        - {name: body, in: body, type: object, required: true}
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.AFFINDA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: mcp
+    namespace: webhooks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Affinda Webhooks.
+    tools:
+    - name: affinda-list-webhooks
+      description: List Affinda webhook subscriptions.
+      hints: {readOnly: true, destructive: false, idempotent: true}
+      call: webhooks.listsubscriptions
+      outputParameters: [{type: object, mapping: $.}]
+    - name: affinda-create-webhook
+      description: Create an Affinda webhook subscription.
+      hints: {readOnly: false, destructive: false, idempotent: false}
+      call: webhooks.createsubscription
+      with: {body: tools.body}
+      outputParameters: [{type: object, mapping: $.}]
+    - name: affinda-activate-webhook
+      description: Activate an Affinda webhook subscription via probe value.
+      hints: {readOnly: false, destructive: false, idempotent: false}
+      call: webhooks.activatesubscription
+      with: {body: tools.body}
+      outputParameters: [{type: object, mapping: $.}]

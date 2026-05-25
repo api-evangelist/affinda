@@ -1,0 +1,28 @@
+{
+  "operation": "POST /v3/resthook_subscriptions",
+  "description": "Create a webhook subscription. Affinda probes the target URL and returns a probe value; activate by calling /v3/resthook_subscriptions/activate.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.affinda.com/v3/resthook_subscriptions",
+    "headers": {
+      "Authorization": "Bearer <AFFINDA_API_KEY>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "targetUrl": "https://example.com/hooks/affinda",
+      "event": "document.parse.succeeded",
+      "version": "v3"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "id": 4711,
+      "targetUrl": "https://example.com/hooks/affinda",
+      "event": "document.parse.succeeded",
+      "version": "v3",
+      "active": false,
+      "createdDt": "2026-05-25T17:55:32.000Z"
+    }
+  }
+}

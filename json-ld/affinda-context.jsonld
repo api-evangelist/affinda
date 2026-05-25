@@ -1,0 +1,124 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "affinda": "https://api.affinda.com/v3/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+
+    "Document": {
+      "@id": "affinda:Document",
+      "@context": {
+        "identifier": { "@id": "affinda:Document/identifier", "@type": "xsd:string" },
+        "customIdentifier": { "@id": "affinda:Document/customIdentifier", "@type": "xsd:string" },
+        "fileName": { "@id": "affinda:Document/fileName", "@type": "xsd:string" },
+        "ready": { "@id": "affinda:Document/ready", "@type": "xsd:boolean" },
+        "failed": { "@id": "affinda:Document/failed", "@type": "xsd:boolean" },
+        "documentType": { "@id": "affinda:Document/documentType", "@type": "xsd:string" },
+        "createdDt": { "@id": "affinda:Document/createdDt", "@type": "xsd:dateTime" },
+        "language": { "@id": "affinda:Document/language", "@type": "xsd:string" },
+        "ocrConfidence": { "@id": "affinda:Document/ocrConfidence", "@type": "xsd:decimal" },
+        "workspace": { "@id": "affinda:Document/workspace", "@type": "affinda:Workspace" },
+        "collection": { "@id": "affinda:Document/collection", "@type": "affinda:Collection" },
+        "pages": { "@id": "affinda:Document/pages", "@container": "@list" },
+        "data": { "@id": "affinda:Document/data" }
+      }
+    },
+
+    "Workspace": {
+      "@id": "affinda:Workspace",
+      "@context": {
+        "identifier": { "@id": "affinda:Workspace/identifier", "@type": "xsd:string" },
+        "name": { "@id": "affinda:Workspace/name", "@type": "xsd:string" },
+        "organization": { "@id": "affinda:Workspace/organization", "@type": "affinda:Organization" },
+        "visibility": { "@id": "affinda:Workspace/visibility", "@type": "xsd:string" }
+      }
+    },
+
+    "Organization": {
+      "@id": "affinda:Organization",
+      "@context": {
+        "identifier": { "@id": "affinda:Organization/identifier", "@type": "xsd:string" },
+        "name": { "@id": "affinda:Organization/name", "@type": "xsd:string" }
+      }
+    },
+
+    "Collection": {
+      "@id": "affinda:Collection",
+      "@context": {
+        "identifier": { "@id": "affinda:Collection/identifier", "@type": "xsd:string" },
+        "name": { "@id": "affinda:Collection/name", "@type": "xsd:string" },
+        "workspace": { "@id": "affinda:Collection/workspace", "@type": "affinda:Workspace" }
+      }
+    },
+
+    "DocumentType": {
+      "@id": "affinda:DocumentType",
+      "@context": {
+        "identifier": { "@id": "affinda:DocumentType/identifier", "@type": "xsd:string" },
+        "name": { "@id": "affinda:DocumentType/name", "@type": "xsd:string" },
+        "extractor": { "@id": "affinda:DocumentType/extractor", "@type": "affinda:Extractor" }
+      }
+    },
+
+    "Extractor": {
+      "@id": "affinda:Extractor",
+      "@context": {
+        "identifier": { "@id": "affinda:Extractor/identifier", "@type": "xsd:string" },
+        "name": { "@id": "affinda:Extractor/name", "@type": "xsd:string" },
+        "category": { "@id": "affinda:Extractor/category", "@type": "xsd:string" }
+      }
+    },
+
+    "Annotation": {
+      "@id": "affinda:Annotation",
+      "@context": {
+        "id": { "@id": "affinda:Annotation/id", "@type": "xsd:integer" },
+        "raw": { "@id": "affinda:Annotation/raw", "@type": "xsd:string" },
+        "parsed": { "@id": "affinda:Annotation/parsed" },
+        "confidence": { "@id": "affinda:Annotation/confidence", "@type": "xsd:decimal" },
+        "rectangle": { "@id": "affinda:Annotation/rectangle" },
+        "pageIndex": { "@id": "affinda:Annotation/pageIndex", "@type": "xsd:integer" },
+        "isVerified": { "@id": "affinda:Annotation/isVerified", "@type": "xsd:boolean" }
+      }
+    },
+
+    "Resume": {
+      "@id": "affinda:Resume",
+      "@context": {
+        "name": { "@id": "affinda:Resume/name" },
+        "emails": { "@id": "affinda:Resume/emails", "@container": "@list" },
+        "phoneNumbers": { "@id": "affinda:Resume/phoneNumbers", "@container": "@list" },
+        "totalYearsExperience": { "@id": "affinda:Resume/totalYearsExperience", "@type": "xsd:decimal" },
+        "workExperience": { "@id": "affinda:Resume/workExperience", "@container": "@list" },
+        "education": { "@id": "affinda:Resume/education", "@container": "@list" },
+        "skills": { "@id": "affinda:Resume/skills", "@container": "@list" }
+      }
+    },
+
+    "Invoice": {
+      "@id": "affinda:Invoice",
+      "@context": {
+        "invoiceNumber": { "@id": "affinda:Invoice/invoiceNumber", "@type": "xsd:string" },
+        "invoiceDate": { "@id": "affinda:Invoice/invoiceDate", "@type": "xsd:date" },
+        "paymentAmountTotal": { "@id": "affinda:Invoice/paymentAmountTotal", "@type": "xsd:decimal" },
+        "invoiceCurrency": { "@id": "affinda:Invoice/invoiceCurrency", "@type": "xsd:string" },
+        "supplierName": { "@id": "affinda:Invoice/supplierName", "@type": "xsd:string" },
+        "customerName": { "@id": "affinda:Invoice/customerName", "@type": "xsd:string" },
+        "tables": { "@id": "affinda:Invoice/tables", "@container": "@list" }
+      }
+    },
+
+    "WebhookSubscription": {
+      "@id": "affinda:WebhookSubscription",
+      "@context": {
+        "id": { "@id": "affinda:WebhookSubscription/id", "@type": "xsd:integer" },
+        "targetUrl": { "@id": "affinda:WebhookSubscription/targetUrl", "@type": "xsd:anyURI" },
+        "event": { "@id": "affinda:WebhookSubscription/event", "@type": "xsd:string" },
+        "active": { "@id": "affinda:WebhookSubscription/active", "@type": "xsd:boolean" }
+      }
+    }
+  }
+}

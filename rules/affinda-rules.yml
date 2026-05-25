@@ -1,0 +1,73 @@
+extends: [[spectral:oas, all]]
+documentationUrl: https://github.com/api-evangelist/affinda/blob/main/rules/affinda-rules.yml
+formats: [oas3]
+rules:
+  affinda-paths-must-be-v3-prefixed:
+    description: All Affinda API paths must be prefixed with /v3/.
+    message: '{{path}} must start with /v3/'
+    severity: error
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^/v3/'
+  affinda-paths-must-be-snake-case:
+    description: Affinda uses snake_case in path segments (e.g. /v3/document_types, /v3/resthook_subscriptions).
+    message: Path segment {{value}} should be snake_case.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^/(v3|[a-z0-9_]+)(/(\{[A-Za-z0-9_]+\}|[a-z0-9_]+))*$'
+  affinda-must-use-bearer-or-apikey:
+    description: Affinda accepts Bearer tokens via Authorization header.
+    severity: error
+    given: $.components.securitySchemes[*]
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            type:
+              enum: [http, apiKey]
+          required: [type]
+  affinda-operations-must-have-tags:
+    description: Every Affinda operation must declare at least one tag.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+  affinda-operations-should-have-operationId:
+    description: Operations should declare an operationId for SDK generation.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+  affinda-summaries-should-be-title-case:
+    description: Operation summaries should use Title Case.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z0-9 ()\-/&]+$'
+  affinda-no-deprecated-tag-in-public-spec:
+    description: Endpoints tagged "Deprecated End Points" should not be promoted to consumers.
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete].tags[*]
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: 'Deprecated End Points'
+  affinda-server-must-be-regional:
+    description: The server URL must use the Affinda regional pattern.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://(api|api\.us1|api\.eu1|\{region\})\.affinda\.com'

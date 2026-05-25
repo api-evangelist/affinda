@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/affinda/json-schema/affinda-document-schema.json",
+  "title": "Affinda Document",
+  "description": "A parsed document in the Affinda Documents API.",
+  "type": "object",
+  "required": ["meta", "data"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "description": "Metadata about the parsed document.",
+      "properties": {
+        "identifier": { "type": "string", "description": "Affinda document identifier." },
+        "customIdentifier": { "type": ["string", "null"] },
+        "fileName": { "type": "string" },
+        "ready": { "type": "boolean", "description": "Whether parsing is complete." },
+        "readyDt": { "type": ["string", "null"], "format": "date-time" },
+        "failed": { "type": "boolean" },
+        "expiryTime": { "type": ["string", "null"], "format": "date-time" },
+        "language": { "type": ["string", "null"] },
+        "ocrConfidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "createdDt": { "type": "string", "format": "date-time" },
+        "documentType": { "type": ["string", "null"] },
+        "isVerified": { "type": "boolean" },
+        "workspace": { "$ref": "#/$defs/WorkspaceRef" },
+        "collection": { "$ref": "#/$defs/CollectionRef" },
+        "parentDocument": { "type": ["object", "null"] },
+        "childDocuments": { "type": "array", "items": { "type": "object" } },
+        "pages": { "type": "array", "items": { "$ref": "#/$defs/Page" } },
+        "file": { "type": ["string", "null"], "format": "uri" }
+      }
+    },
+    "data": {
+      "type": "object",
+      "description": "Extracted fields. Shape varies by document type."
+    },
+    "error": {
+      "type": ["object", "null"],
+      "properties": {
+        "errorCode": { "type": "string" },
+        "errorDetail": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "WorkspaceRef": {
+      "type": "object",
+      "properties": {
+        "identifier": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "CollectionRef": {
+      "type": "object",
+      "properties": {
+        "identifier": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "Page": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer" },
+        "pageIndex": { "type": "integer" },
+        "image": { "type": "string", "format": "uri" },
+        "height": { "type": "number" },
+        "width": { "type": "number" },
+        "rotation": { "type": "number" }
+      }
+    }
+  }
+}

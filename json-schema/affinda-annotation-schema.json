@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/affinda/json-schema/affinda-annotation-schema.json",
+  "title": "Affinda Annotation",
+  "description": "A field-level annotation on a parsed Affinda document.",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id": { "type": "integer", "description": "Annotation identifier." },
+    "rectangle": { "$ref": "#/$defs/Rectangle" },
+    "rectangles": { "type": "array", "items": { "$ref": "#/$defs/Rectangle" } },
+    "pageIndex": { "type": ["integer", "null"] },
+    "raw": { "type": ["string", "null"], "description": "Raw OCR text for this annotation." },
+    "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "classificationConfidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "textExtractionConfidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "isVerified": { "type": "boolean" },
+    "isClientVerified": { "type": "boolean" },
+    "isAutoVerified": { "type": "boolean" },
+    "dataPoint": { "type": ["string", "null"], "description": "Data point identifier." },
+    "contentType": { "type": "string" },
+    "parsed": { "description": "Parsed normalized value (may be string, number, object, or array)." },
+    "parent": { "type": ["integer", "null"], "description": "Parent annotation id (for table cells)." }
+  },
+  "$defs": {
+    "Rectangle": {
+      "type": "object",
+      "properties": {
+        "x0": { "type": "number" },
+        "y0": { "type": "number" },
+        "x1": { "type": "number" },
+        "y1": { "type": "number" },
+        "pageIndex": { "type": "integer" }
+      }
+    }
+  }
+}

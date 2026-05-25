@@ -1,0 +1,99 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Affinda
+providerId: affinda
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - FinOps
+  - Cost Management
+  - FOCUS
+  - IDP
+  - Document Processing
+description: FOCUS-aligned FinOps definition for Affinda's Intelligent Document Processing platform.
+  Credit-based metering with per-document-type rates, prepaid (Pay as You Go) and post-paid (Business /
+  Enterprise) billing lanes, and multi-workspace allocation.
+sources:
+  - https://www.affinda.com/pricing
+  - https://docs.affinda.com/reference/getting-started
+  - https://docs.affinda.com/skill.md
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Affinda
+serviceCategory: AI and Machine Learning
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  primaryUnit: credit
+  secondaryUnits:
+    - document
+    - page
+focusColumns:
+  ServiceName: Affinda Document Processing
+  ServiceCategory: AI and Machine Learning
+  ProviderName: Affinda
+  PublisherName: Affinda
+  InvoiceIssuerName: Affinda
+  PricingCategory: Usage-Based
+  PricingUnit: credit
+  BillingCurrency: USD
+meters:
+  - name: credits_consumed
+    unit: credit
+    aggregation: sum
+    dimensions:
+      - workspace
+      - documentType
+      - region
+    description: Credits drawn per document parse. Credit cost varies by document type.
+  - name: documents_processed
+    unit: document
+    aggregation: count
+    dimensions:
+      - workspace
+      - documentType
+      - state
+  - name: pages_processed
+    unit: page
+    aggregation: sum
+    dimensions:
+      - workspace
+      - documentType
+allocation:
+  primaryDimension: workspace
+  secondaryDimensions:
+    - documentType
+    - collection
+    - tags
+  description: Cost allocation is naturally aligned with the workspace + collection hierarchy. Tags on
+    documents enable secondary chargeback dimensions for departments, business units, and projects.
+reportingEndpoints:
+  - name: organization-usage
+    path: /v3/usage
+    description: Daily credits consumption across the organization.
+  - name: workspace-usage
+    path: /v3/workspaces/{identifier}/usage
+    description: Per-workspace credit and document usage.
+  - name: collection-usage
+    path: /v3/collections/{identifier}/usage
+    description: Per-collection credit and document usage.
+dataRetention:
+  default: organization-controlled
+  enterpriseOverride: custom retention policy
+  regions:
+    - AUS / Global (api.affinda.com)
+    - US (api.us1.affinda.com)
+    - EU (api.eu1.affinda.com)

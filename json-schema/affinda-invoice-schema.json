@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/affinda/json-schema/affinda-invoice-schema.json",
+  "title": "Affinda Invoice",
+  "description": "Extracted-data shape returned by the Affinda invoice extractor.",
+  "type": "object",
+  "properties": {
+    "invoiceNumber": { "type": ["string", "null"] },
+    "invoiceDate": { "type": ["string", "null"], "format": "date" },
+    "invoiceOrderDate": { "type": ["string", "null"], "format": "date" },
+    "paymentDateDue": { "type": ["string", "null"], "format": "date" },
+    "paymentAmountBase": { "type": ["number", "null"] },
+    "paymentAmountTax": { "type": ["number", "null"] },
+    "paymentAmountTotal": { "type": ["number", "null"] },
+    "paymentAmountPaid": { "type": ["number", "null"] },
+    "paymentAmountDue": { "type": ["number", "null"] },
+    "invoiceCurrency": { "type": ["string", "null"] },
+    "supplierName": { "type": ["string", "null"] },
+    "supplierAddress": { "type": ["string", "null"] },
+    "supplierEmail": { "type": ["string", "null"], "format": "email" },
+    "supplierPhoneNumber": { "type": ["string", "null"] },
+    "supplierWebsite": { "type": ["string", "null"], "format": "uri" },
+    "supplierBusinessNumber": { "type": ["string", "null"] },
+    "supplierVat": { "type": ["string", "null"] },
+    "supplierBankAccount": { "type": ["string", "null"] },
+    "supplierBankBsb": { "type": ["string", "null"] },
+    "supplierBankSwift": { "type": ["string", "null"] },
+    "customerNumber": { "type": ["string", "null"] },
+    "customerName": { "type": ["string", "null"] },
+    "customerAddress": { "type": ["string", "null"] },
+    "customerEmail": { "type": ["string", "null"], "format": "email" },
+    "customerVat": { "type": ["string", "null"] },
+    "customerBusinessNumber": { "type": ["string", "null"] },
+    "tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/LineItem" }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "LineItem": {
+      "type": "object",
+      "properties": {
+        "code": { "type": ["string", "null"] },
+        "description": { "type": ["string", "null"] },
+        "quantity": { "type": ["number", "null"] },
+        "unit": { "type": ["string", "null"] },
+        "unitPrice": { "type": ["number", "null"] },
+        "discount": { "type": ["number", "null"] },
+        "taxRate": { "type": ["number", "null"] },
+        "taxTotal": { "type": ["number", "null"] },
+        "totalAmount": { "type": ["number", "null"] }
+      }
+    }
+  }
+}

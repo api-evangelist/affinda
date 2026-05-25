@@ -1,0 +1,101 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Affinda
+providerId: affinda
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - IDP
+  - Document Processing
+  - Credits
+description: Reconciled plans and credit-based pricing for Affinda's Intelligent Document Processing
+  platform. Source - affinda.com/pricing and docs.affinda.com. Specific per-document credit costs vary by
+  document type; the dashboard surfaces current rates and includes volume discounts on Business tier.
+sources:
+  - https://www.affinda.com/pricing
+  - https://docs.affinda.com/reference/getting-started
+  - https://docs.affinda.com/skill.md
+plans:
+  - id: affinda-pay-as-you-go
+    name: Pay as You Go
+    type: prepaid
+    description: Explore and experiment without commitments. Prepaid credits model with a 14-day free
+      trial. Best for low volume and pilot programs.
+    entries:
+      - label: Free Trial
+        name: trial
+        type: subscription
+        limit: 14
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+        description: 14 days free with included trial credits.
+      - label: Prepaid Credits
+        name: credits
+        type: metered
+        metric: credit
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: contact
+        userMultiplied: false
+        description: Document processing is billed in credits drawn from a prepaid balance. Credit cost
+          per document type is shown in the dashboard.
+    elements:
+      - name: Document processing, splitting, and classification
+      - name: Handwriting and OCR recognition
+      - name: Custom fields and data types
+      - name: Master data matching
+      - name: REST API and webhooks
+      - name: GDPR and ISO 27001 compliance
+      - name: Standard support
+  - id: affinda-business
+    name: Business
+    type: usage-based
+    description: Built to scale across high-volume document operations. Usage-based monthly billing with
+      volume discounts and priority support.
+    entries:
+      - label: Monthly Subscription
+        name: subscription
+        type: subscription
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: contact
+        userMultiplied: false
+        description: Usage-based monthly billing with negotiated volume discounts.
+    elements:
+      - name: Everything in Pay as You Go
+      - name: Volume discounts
+      - name: Priority support
+      - name: Embeddable validation UI
+      - name: Custom data retention policies
+      - name: Data residency controls (AUS, US, EU)
+  - id: affinda-enterprise
+    name: Enterprise
+    type: custom
+    description: Advanced controls for high-stakes operations. Custom pricing and contract terms,
+      dedicated CSM, tailored security options.
+    entries:
+      - label: Custom Contract
+        name: enterprise
+        type: subscription
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: contact
+        userMultiplied: false
+    elements:
+      - name: Everything in Business
+      - name: HIPAA support
+      - name: Single sign-on (SSO)
+      - name: On-premise deployment
+      - name: Dedicated environment / private cloud
+      - name: Model optimization support
+      - name: Tailored SLA guarantees
+      - name: Dedicated Customer Success Manager

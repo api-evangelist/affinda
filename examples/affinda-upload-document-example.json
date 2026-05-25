@@ -1,0 +1,38 @@
+{
+  "operation": "POST /v3/documents",
+  "description": "Upload a document for parsing. Multipart/form-data request with file and workspace; document_type is required when uploading to a workspace that does not auto-route.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.affinda.com/v3/documents",
+    "headers": {
+      "Authorization": "Bearer <AFFINDA_API_KEY>",
+      "Content-Type": "multipart/form-data"
+    },
+    "formData": {
+      "file": "<binary - resume.pdf>",
+      "workspace": "abc123-workspace-id",
+      "documentType": "resume_extractor_v3",
+      "wait": false,
+      "lowPriority": false,
+      "language": "en",
+      "customIdentifier": "candidate-2026-05-25-001"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "meta": {
+        "identifier": "9d3b1d0c-9c1d-4f3a-9aa5-a3a8b3f8d401",
+        "customIdentifier": "candidate-2026-05-25-001",
+        "fileName": "resume.pdf",
+        "ready": false,
+        "failed": false,
+        "language": "en",
+        "documentType": "resume_extractor_v3",
+        "createdDt": "2026-05-25T17:42:01.123Z",
+        "workspace": { "identifier": "abc123-workspace-id", "name": "Talent Acquisition" }
+      },
+      "data": null
+    }
+  }
+}

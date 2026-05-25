@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Affinda Data Sources API — Data Sources
+  description: Affinda Data Sources — manage custom master-data lists used to match raw extracted values
+    (vendors, SKUs, categories) to canonical entities during parsing.
+  tags:
+  - Affinda
+  - Data Sources
+  - Master Data
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    AFFINDA_API_KEY: AFFINDA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: data-sources
+    baseUri: https://api.affinda.com
+    description: Affinda v3 Mapping Data Sources.
+    resources:
+    - name: v3-mapping-data-sources
+      path: /v3/mapping_data_sources
+      operations:
+      - name: listdatasources
+        method: GET
+        description: List mapping data sources.
+        outputRawFormat: json
+        outputParameters: [{name: results, type: object, value: $.}]
+        inputParameters: []
+      - name: createdatasource
+        method: POST
+        description: Create a mapping data source.
+        outputRawFormat: json
+        outputParameters: [{name: dataSource, type: object, value: $.}]
+        inputParameters:
+        - {name: body, in: body, type: object, required: true}
+    - name: v3-mapping-data-sources-values
+      path: /v3/mapping_data_sources/{identifier}/values
+      operations:
+      - name: listdatasourcevalues
+        method: GET
+        description: List values inside a data source.
+        outputRawFormat: json
+        outputParameters: [{name: results, type: object, value: $.}]
+        inputParameters:
+        - {name: identifier, in: path, type: string, required: true}
+      - name: adddatasourcevalues
+        method: POST
+        description: Add values to a data source.
+        outputRawFormat: json
+        outputParameters: [{name: results, type: object, value: $.}]
+        inputParameters:
+        - {name: identifier, in: path, type: string, required: true}
+        - {name: body, in: body, type: object, required: true}
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.AFFINDA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: mcp
+    namespace: data-sources-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Affinda Data Sources.
+    tools:
+    - name: affinda-list-data-sources
+      description: List Affinda mapping data sources.
+      hints: {readOnly: true, destructive: false, idempotent: true}
+      call: data-sources.listdatasources
+      outputParameters: [{type: object, mapping: $.}]
+    - name: affinda-create-data-source
+      description: Create an Affinda mapping data source.
+      hints: {readOnly: false, destructive: false, idempotent: false}
+      call: data-sources.createdatasource
+      with: {body: tools.body}
+      outputParameters: [{type: object, mapping: $.}]
+    - name: affinda-add-data-source-values
+      description: Add values to an Affinda mapping data source.
+      hints: {readOnly: false, destructive: false, idempotent: false}
+      call: data-sources.adddatasourcevalues
+      with: {identifier: tools.identifier, body: tools.body}
+      outputParameters: [{type: object, mapping: $.}]

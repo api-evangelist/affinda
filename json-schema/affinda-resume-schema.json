@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/affinda/json-schema/affinda-resume-schema.json",
+  "title": "Affinda Resume",
+  "description": "Extracted-data shape returned by the Affinda resume extractor.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "object",
+      "properties": {
+        "raw": { "type": "string" },
+        "first": { "type": "string" },
+        "middle": { "type": ["string", "null"] },
+        "last": { "type": "string" },
+        "title": { "type": ["string", "null"] }
+      }
+    },
+    "emails": { "type": "array", "items": { "type": "string", "format": "email" } },
+    "phoneNumbers": { "type": "array", "items": { "type": "string" } },
+    "websites": { "type": "array", "items": { "type": "string", "format": "uri" } },
+    "location": {
+      "type": "object",
+      "properties": {
+        "rawInput": { "type": "string" },
+        "city": { "type": ["string", "null"] },
+        "state": { "type": ["string", "null"] },
+        "country": { "type": ["string", "null"] },
+        "postalCode": { "type": ["string", "null"] }
+      }
+    },
+    "objective": { "type": ["string", "null"] },
+    "summary": { "type": ["string", "null"] },
+    "totalYearsExperience": { "type": ["number", "null"] },
+    "workExperience": { "type": "array", "items": { "$ref": "#/$defs/WorkExperience" } },
+    "education": { "type": "array", "items": { "$ref": "#/$defs/Education" } },
+    "skills": { "type": "array", "items": { "$ref": "#/$defs/Skill" } },
+    "languages": { "type": "array", "items": { "type": "string" } },
+    "certifications": { "type": "array", "items": { "type": "string" } },
+    "publications": { "type": "array", "items": { "type": "string" } },
+    "referees": { "type": "array", "items": { "type": "object" } }
+  },
+  "$defs": {
+    "WorkExperience": {
+      "type": "object",
+      "properties": {
+        "jobTitle": { "type": ["string", "null"] },
+        "organization": { "type": ["string", "null"] },
+        "location": { "type": "object" },
+        "dates": {
+          "type": "object",
+          "properties": {
+            "startDate": { "type": ["string", "null"] },
+            "endDate": { "type": ["string", "null"] },
+            "monthsInPosition": { "type": ["integer", "null"] },
+            "isCurrent": { "type": ["boolean", "null"] }
+          }
+        },
+        "jobDescription": { "type": ["string", "null"] },
+        "occupation": { "type": "object" }
+      }
+    },
+    "Education": {
+      "type": "object",
+      "properties": {
+        "organization": { "type": ["string", "null"] },
+        "accreditation": {
+          "type": "object",
+          "properties": {
+            "education": { "type": ["string", "null"] },
+            "inputStr": { "type": ["string", "null"] },
+            "matchStr": { "type": ["string", "null"] },
+            "educationLevel": { "type": ["string", "null"] }
+          }
+        },
+        "grade": { "type": "object" },
+        "location": { "type": "object" },
+        "dates": { "type": "object" }
+      }
+    },
+    "Skill": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "lastUsed": { "type": ["string", "null"] },
+        "numberOfMonths": { "type": ["integer", "null"] },
+        "type": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

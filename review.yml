@@ -1,0 +1,47 @@
+provider: Affinda
+providerId: affinda
+reviewedBy: API Evangelist
+reviewer:
+  name: Kin Lane
+  email: info@apievangelist.com
+  url: https://apievangelist.com
+created: '2026-05-25'
+modified: '2026-05-25'
+sources:
+  - https://www.affinda.com
+  - https://docs.affinda.com
+  - https://docs.affinda.com/reference/getting-started
+  - https://docs.affinda.com/skill.md
+  - https://api.affinda.com/static/v3/api_spec.yaml
+  - https://www.affinda.com/pricing
+  - https://github.com/affinda
+classification:
+  tier: 1
+  rationale: |
+    Real, publicly hosted OpenAPI 3.0.3 spec at https://api.affinda.com/static/v3/api_spec.yaml.
+    Affinda also publishes a dedicated AI-agent skill file (skill.md) covering the full API surface,
+    documents per-region base URLs, ships official Python, TypeScript, .NET, and Java SDKs, exposes
+    documented webhooks with a probe + activation handshake, publishes a credit-based usage API for
+    FinOps reconciliation, and is certified to SOC 2 Type II and ISO 27001:2022.
+strengths:
+  - Public OpenAPI 3.0.3 spec covering 14 product surfaces (documents, document types, extractors,
+    splitters, workspaces, organizations, invitations, data sources, annotations, validation results,
+    tags, usage, webhooks, search and match).
+  - Multi-region deployment (AUS, US, EU) with explicit regional base URLs and data residency.
+  - Resthook-style webhooks with explicit probe + activate confirmation flow.
+  - Master-data matching via custom mapping data sources is a first-class API concept.
+  - Field-level annotations + validation results enable a fully API-driven human-in-the-loop loop.
+  - Dedicated AI-agent skill.md file at docs.affinda.com/skill.md.
+  - Official client libraries across Python, TypeScript, .NET, and Java.
+gaps:
+  - Per-document credit pricing is gated to dashboard / sales; not published as a public price list.
+  - Sample webhook payloads are not enumerated in the public spec (only the subscription surface).
+  - 31 endpoints are tagged "Deprecated End Points" inside the spec; surface boundary between v3 and
+    v2 legacy can be confusing for new consumers.
+  - Per-extractor JSON Schemas are dynamic (fetched per document type) rather than statically
+    published alongside the OpenAPI.
+notes: |
+  Affinda is a clean Tier-1 IDP profile. The provider has internalized AI-agent consumption as a
+  first-class channel — the skill.md surface essentially does the job of an MCP server description
+  while remaining an HTTP-fetchable file. Pricing is the main translucency gap; everything else
+  about the API contract is well documented.

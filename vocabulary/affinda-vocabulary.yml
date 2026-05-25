@@ -1,0 +1,115 @@
+specification: API Commons Vocabulary
+specificationVersion: '0.1'
+provider: Affinda
+providerId: affinda
+created: '2026-05-25'
+modified: '2026-05-25'
+description: Vocabulary and taxonomy mapping the Affinda Intelligent Document Processing platform's
+  operational and capability dimensions.
+sources:
+  - https://www.affinda.com
+  - https://docs.affinda.com
+  - https://docs.affinda.com/skill.md
+domains:
+  - name: Intelligent Document Processing
+    description: AI-driven extraction of structured data from documents.
+    terms:
+      - IDP
+      - Document Extraction
+      - Document Classification
+      - Document Splitting
+      - OCR
+      - Handwriting Recognition
+      - Table Extraction
+      - Master Data Matching
+      - Validation
+      - Straight Through Processing
+  - name: Document Types
+    description: Specific document categories with dedicated extractors.
+    terms:
+      - Resume
+      - Invoice
+      - Receipt
+      - Contract
+      - Passport
+      - Identity Document
+      - Bank Statement
+      - Custom Document Type
+  - name: Recruitment
+    description: Resume-parsing and matching surface.
+    terms:
+      - Resume Parsing
+      - Job Description Parsing
+      - Resume Search
+      - Job Description Search
+      - Resume to Job Matching
+      - Skill Suggestion
+      - Job Title Suggestion
+      - Occupation Group
+  - name: Workflow
+    description: Organizational containers and lifecycle.
+    terms:
+      - Organization
+      - Workspace
+      - Collection
+      - Document Type
+      - Extractor
+      - Data Point
+      - Annotation
+      - Validation Result
+      - Tag
+      - Webhook Subscription
+  - name: Regions and Residency
+    description: Multi-region deployment.
+    terms:
+      - AUS / Global (api.affinda.com)
+      - US (api.us1.affinda.com)
+      - EU (api.eu1.affinda.com)
+      - Data Residency
+  - name: Industries Served
+    terms:
+      - Banking and Finance
+      - Insurance
+      - Logistics
+      - Healthcare and Life Sciences
+      - Government and Public Sector
+      - Manufacturing
+      - Real Estate
+      - Recruitment Technology
+  - name: Use Cases
+    terms:
+      - Accounts Payable Automation
+      - Loan Processing
+      - Claims Handling
+      - Customer Onboarding
+      - KYC
+      - Compliance
+      - Customs Clearance
+      - Document Redaction
+      - Talent Acquisition
+  - name: Compliance
+    terms:
+      - SOC 2 Type II
+      - ISO 27001:2022
+      - GDPR
+      - HIPAA (Enterprise)
+  - name: Authentication
+    terms:
+      - Bearer Token
+      - API Key
+      - Dashboard Issued Key
+verbs:
+  - upload
+  - parse
+  - extract
+  - classify
+  - split
+  - validate
+  - annotate
+  - search
+  - match
+  - score
+  - redact
+  - tag
+  - subscribe
+  - activate

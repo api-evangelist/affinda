@@ -1,0 +1,67 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Affinda
+providerId: affinda
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - IDP
+  - Rate Limiting
+  - Queues
+description: Reconciled rate limits for the Affinda v3 Document Processing API. Affinda enforces a
+  high-priority submission queue capped at 20 documents per minute and an unlimited low-priority queue
+  selected via the `lowPriority` flag. File-size and page caps are also enforced per upload.
+sources:
+  - https://docs.affinda.com/reference/getting-started
+  - https://docs.affinda.com/skill.md
+headers:
+  retryAfter: retry-after
+responseCodes:
+  throttled: 429
+  payloadTooLarge: 413
+algorithm: fixed-window
+queues:
+  - name: high-priority
+    description: Default submission queue. Throttled to 20 documents per minute per organization.
+    limit: 20
+    timeFrame: minute
+  - name: low-priority
+    description: Submit with `lowPriority - true`. No submission rate cap. Documents are processed when
+      capacity is available and may queue longer.
+    limit: -1
+    timeFrame: minute
+limits:
+  - surface: Document upload (default queue)
+    documentsPerMinute: 20
+    throttledStatus: 429
+  - surface: Document upload (low priority)
+    documentsPerMinute: -1
+    throttledStatus: n/a
+constraints:
+  - name: maxFileSize
+    value: 20MB
+    description: Default file size limit for document uploads.
+  - name: maxFileSizeResume
+    value: 5MB
+    description: File size limit specifically for resume uploads.
+  - name: maxPages
+    value: 20
+    description: Default page cap per document.
+  - name: maxApiKeys
+    value: 3
+    description: Per-user limit on simultaneously active API keys.
+supportedFormats:
+  - PDF
+  - DOC
+  - DOCX
+  - XLSX
+  - ODT
+  - RTF
+  - TXT
+  - HTML
+  - PNG
+  - JPG
+  - JPEG
+  - TIFF
