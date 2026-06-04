@@ -1,0 +1,72 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Workspace Usage Report
+  summary: List an organization's workspaces, then pull a daily credit-consumption report scoped to the first workspace.
+  description: >-
+    Produces a billing-style usage report. The organization's workspaces are
+    listed, and then the unified usage endpoint is called scoped to both the
+    organization and the first workspace, returning daily credit consumption over a
+    date range. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: workspace-usage-report
+  summary: List workspaces then report usage for the first one.
+  description: >-
+    Lists the organization's workspaces and reports daily credit consumption
+    scoped to the organization and first workspace over a date range.
+  inputs:
+    type: object
+    required:
+    - organization
+    properties:
+      organization:
+        type: string
+        description: The organization identifier to report usage for.
+      start:
+        type: string
+        description: Inclusive start date of the report (YYYY-MM-DD).
+      end:
+        type: string
+        description: Inclusive end date of the report (YYYY-MM-DD).
+  steps:
+  - stepId: listWorkspaces
+    description: List the workspaces belonging to the organization.
+    operationId: getAllWorkspaces
+    parameters:
+    - name: organization
+      in: query
+      value: $inputs.organization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstWorkspaceIdentifier: $response.body#/0/identifier
+  - stepId: getUsage
+    description: >-
+      Pull daily credit consumption scoped to the organization and the first
+      workspace over the supplied date range.
+    operationId: getUsage
+    parameters:
+    - name: organization
+      in: query
+      value: $inputs.organization
+    - name: workspace
+      in: query
+      value: $steps.listWorkspaces.outputs.firstWorkspaceIdentifier
+    - name: start
+      in: query
+      value: $inputs.start
+    - name: end
+      in: query
+      value: $inputs.end
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      usage: $response.body
+  outputs:
+    firstWorkspaceIdentifier: $steps.listWorkspaces.outputs.firstWorkspaceIdentifier
+    usage: $steps.getUsage.outputs.usage

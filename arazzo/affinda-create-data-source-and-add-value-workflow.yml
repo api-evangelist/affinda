@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Create Mapping Data Source and Add a Value
+  summary: Create a mapping data source, add a value to it, then list its values.
+  description: >-
+    Builds a lookup table that maps raw extracted text to records in your own
+    database. A mapping data source is created with a key and display property, a
+    value is added to it, and the data source's values are listed to confirm the
+    addition. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-data-source-and-add-value
+  summary: Create a mapping data source, add a value, then list its values.
+  description: >-
+    Creates a mapping data source scoped to an organization, adds a single value
+    to it, and lists the values to confirm.
+  inputs:
+    type: object
+    required:
+    - identifier
+    - keyProperty
+    - displayProperty
+    - value
+    properties:
+      identifier:
+        type: string
+        description: The identifier to assign to the new mapping data source.
+      organization:
+        type: string
+        description: Optional organization identifier the data source belongs to.
+      keyProperty:
+        type: string
+        description: The schema attribute that uniquely identifies each value.
+      displayProperty:
+        type: string
+        description: The schema attribute used to display each value.
+      value:
+        type: object
+        description: The value object to add to the data source.
+  steps:
+  - stepId: createDataSource
+    description: Create a mapping data source with the supplied key and display properties.
+    operationId: createMappingDataSource
+    requestBody:
+      contentType: application/json
+      payload:
+        identifier: $inputs.identifier
+        organization: $inputs.organization
+        keyProperty: $inputs.keyProperty
+        displayProperty: $inputs.displayProperty
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      dataSourceIdentifier: $response.body#/identifier
+  - stepId: addValue
+    description: Add a single value to the new mapping data source.
+    operationId: addMappingDataSourceValue
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.createDataSource.outputs.dataSourceIdentifier
+    requestBody:
+      contentType: application/json
+      payload: $inputs.value
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      addedValue: $response.body
+  - stepId: listValues
+    description: List the data source's values to confirm the value was added.
+    operationId: listMappingDataSourceValues
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.createDataSource.outputs.dataSourceIdentifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      count: $response.body#/count
+  outputs:
+    dataSourceIdentifier: $steps.createDataSource.outputs.dataSourceIdentifier
+    count: $steps.listValues.outputs.count

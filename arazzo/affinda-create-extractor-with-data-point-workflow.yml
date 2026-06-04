@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Create Extractor with a Data Point
+  summary: Create a custom extractor in an organization and add a custom data point to it.
+  description: >-
+    Builds a custom extraction model. A new extractor is created within an
+    organization, then a custom data point is created and attached to that
+    extractor so the model knows about a new field to extract. Finally the
+    extractor is read back to confirm its configuration. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+    Note: the extractor and data point endpoints are marked deprecated in the v3
+    specification but remain the documented way to author custom extraction models.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-extractor-with-data-point
+  summary: Create a custom extractor and attach a custom data point to it.
+  description: >-
+    Creates an extractor in the organization, creates a data point bound to that
+    extractor, and reads the extractor back to confirm.
+  inputs:
+    type: object
+    required:
+    - organization
+    - extractorName
+    - dataPointName
+    - dataPointSlug
+    - annotationContentType
+    properties:
+      organization:
+        type: string
+        description: The organization identifier that will own the extractor and data point.
+      extractorName:
+        type: string
+        description: The display name for the new extractor.
+      dataPointName:
+        type: string
+        description: The display name for the new data point.
+      dataPointSlug:
+        type: string
+        description: A unique slug for the data point.
+      annotationContentType:
+        type: string
+        description: The content type of the data point (e.g. text, integer, float, date).
+  steps:
+  - stepId: createExtractor
+    description: Create a custom extractor within the organization.
+    operationId: createExtractor
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.extractorName
+        organization: $inputs.organization
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      extractorIdentifier: $response.body#/identifier
+  - stepId: createDataPoint
+    description: >-
+      Create a custom data point bound to the new extractor so it can extract an
+      additional field.
+    operationId: createDataPoint
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.dataPointName
+        slug: $inputs.dataPointSlug
+        annotationContentType: $inputs.annotationContentType
+        organization: $inputs.organization
+        extractor: $steps.createExtractor.outputs.extractorIdentifier
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      dataPointIdentifier: $response.body#/identifier
+  - stepId: confirmExtractor
+    description: Read the extractor back to confirm it was created with the data point.
+    operationId: getExtractor
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.createExtractor.outputs.extractorIdentifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      name: $response.body#/name
+  outputs:
+    extractorIdentifier: $steps.createExtractor.outputs.extractorIdentifier
+    dataPointIdentifier: $steps.createDataPoint.outputs.dataPointIdentifier

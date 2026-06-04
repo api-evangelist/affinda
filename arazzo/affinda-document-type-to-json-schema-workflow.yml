@@ -1,0 +1,89 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Create Document Type and Generate JSON Schema
+  summary: Create a document type in an organization, then generate a JSON schema and Pydantic models from it.
+  description: >-
+    Defines a new document type and immediately derives machine-readable artifacts
+    from it. A document type is created within an organization, a JSON schema is
+    generated from that type for downstream validation or code generation, and
+    Pydantic model code is generated for Python consumers. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: document-type-to-json-schema
+  summary: Create a document type and generate a JSON schema and Pydantic models from it.
+  description: >-
+    Creates a document type, then calls the schema and Pydantic generation
+    endpoints against the new type's identifier.
+  inputs:
+    type: object
+    required:
+    - organization
+    - name
+    properties:
+      organization:
+        type: string
+        description: The organization identifier that will own the document type.
+      name:
+        type: string
+        description: The name of the new document type.
+      description:
+        type: string
+        description: Optional description of the document type.
+      schemaTitle:
+        type: string
+        description: Optional title to use for the generated JSON schema.
+      modelName:
+        type: string
+        description: Optional name for the generated Pydantic model.
+  steps:
+  - stepId: createDocumentType
+    description: Create a new document type within the organization.
+    operationId: createDocumentType
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        description: $inputs.description
+        organization: $inputs.organization
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      identifier: $response.body#/identifier
+  - stepId: generateJsonSchema
+    description: Generate a JSON schema representation of the new document type.
+    operationId: jsonSchemaFromDocumentType
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.createDocumentType.outputs.identifier
+    - name: title
+      in: query
+      value: $inputs.schemaTitle
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jsonSchema: $response.body
+  - stepId: generatePydanticModels
+    description: Generate Pydantic model code from the new document type.
+    operationId: pydanticModelsFromDocumentType
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.createDocumentType.outputs.identifier
+    - name: model_name
+      in: query
+      value: $inputs.modelName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      code: $response.body#/code
+  outputs:
+    documentTypeIdentifier: $steps.createDocumentType.outputs.identifier
+    jsonSchema: $steps.generateJsonSchema.outputs.jsonSchema
+    pydanticCode: $steps.generatePydanticModels.outputs.code

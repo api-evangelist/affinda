@@ -1,0 +1,114 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Provision Collection and Ingest a Document
+  summary: Create a workspace, create a collection bound to an extractor, then upload a document into it and parse it.
+  description: >-
+    An end-to-end onboarding flow that builds the container hierarchy and then
+    proves it works by ingesting a document. A workspace is created, a collection
+    bound to an extractor is created inside it, a file is uploaded into that
+    collection for asynchronous parsing, and the document is polled until parsing
+    completes. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+    Note: the collections endpoints are marked deprecated in the v3 specification
+    but remain the documented way to bind an extractor to a document container.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-and-ingest-document
+  summary: Build a workspace and collection, then upload and parse a document into it.
+  description: >-
+    Creates a workspace, creates an extractor-bound collection inside it, uploads a
+    file into that collection with wait=false, and polls until the document is
+    ready.
+  inputs:
+    type: object
+    required:
+    - organization
+    - workspaceName
+    - collectionName
+    - extractor
+    - file
+    properties:
+      organization:
+        type: string
+        description: The organization identifier to create the workspace under.
+      workspaceName:
+        type: string
+        description: The display name for the new workspace.
+      collectionName:
+        type: string
+        description: The display name for the new collection.
+      extractor:
+        type: string
+        description: The extractor identifier the collection should use.
+      file:
+        type: string
+        description: The document file contents (binary) to upload.
+      fileName:
+        type: string
+        description: Optional file name to store the document under.
+  steps:
+  - stepId: createWorkspace
+    description: Create the workspace that will hold the collection and documents.
+    operationId: createWorkspace
+    requestBody:
+      contentType: application/json
+      payload:
+        organization: $inputs.organization
+        name: $inputs.workspaceName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      workspaceIdentifier: $response.body#/identifier
+  - stepId: createCollection
+    description: Create an extractor-bound collection inside the new workspace.
+    operationId: createCollection
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.collectionName
+        workspace: $steps.createWorkspace.outputs.workspaceIdentifier
+        extractor: $inputs.extractor
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      collectionIdentifier: $response.body#/identifier
+  - stepId: uploadDocument
+    description: >-
+      Upload the file into the new collection with wait=false so an identifier is
+      returned for polling.
+    operationId: createDocument
+    requestBody:
+      contentType: multipart/form-data
+      payload:
+        file: $inputs.file
+        workspace: $steps.createWorkspace.outputs.workspaceIdentifier
+        collection: $steps.createCollection.outputs.collectionIdentifier
+        fileName: $inputs.fileName
+        wait: false
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      identifier: $response.body#/meta/identifier
+  - stepId: pollUntilReady
+    description: Poll the document until meta.ready becomes true.
+    operationId: getDocument
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.uploadDocument.outputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.meta.ready == true
+      type: jsonpath
+    outputs:
+      data: $response.body#/data
+  outputs:
+    workspaceIdentifier: $steps.createWorkspace.outputs.workspaceIdentifier
+    collectionIdentifier: $steps.createCollection.outputs.collectionIdentifier
+    documentIdentifier: $steps.uploadDocument.outputs.identifier
+    data: $steps.pollUntilReady.outputs.data

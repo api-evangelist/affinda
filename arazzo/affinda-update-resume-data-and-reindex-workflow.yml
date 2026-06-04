@@ -1,0 +1,68 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Update Resume Data and Re-index
+  summary: Update the parsed data of a resume document and refresh it in a search index.
+  description: >-
+    Keeps a search index in sync after a correction. The structured data of a
+    resume or job description document is updated in place, and then the document
+    is re-indexed so the search index reflects the new values. Every step spells
+    out its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: update-resume-data-and-reindex
+  summary: Update a resume's data then re-index it.
+  description: >-
+    Posts updated data to a resume document and then triggers a re-index so the
+    search index picks up the changes.
+  inputs:
+    type: object
+    required:
+    - identifier
+    - indexName
+    - data
+    properties:
+      identifier:
+        type: string
+        description: The resume or job description document identifier to update.
+      indexName:
+        type: string
+        description: The index name the document is indexed in.
+      data:
+        type: object
+        description: The updated resume or job description data.
+  steps:
+  - stepId: updateData
+    description: Update the structured data of the resume document.
+    operationId: updateDocumentData
+    parameters:
+    - name: identifier
+      in: path
+      value: $inputs.identifier
+    requestBody:
+      contentType: application/json
+      payload: $inputs.data
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      identifier: $response.body#/meta/identifier
+  - stepId: reIndex
+    description: Re-index the document so the search index reflects the updated data.
+    operationId: reIndexDocument
+    parameters:
+    - name: name
+      in: path
+      value: $inputs.indexName
+    - name: identifier
+      in: path
+      value: $inputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      identifier: $inputs.identifier
+  outputs:
+    documentIdentifier: $inputs.identifier

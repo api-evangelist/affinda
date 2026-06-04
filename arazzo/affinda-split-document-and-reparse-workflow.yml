@@ -1,0 +1,90 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Split a Document and Re-parse
+  summary: Upload a multi-page document, wait for parsing, then split it into separate documents that re-parse.
+  description: >-
+    Handles documents that bundle several logical documents together. A file is
+    uploaded and polled until ready, then the split endpoint is called to break it
+    into multiple child documents along page boundaries, which triggers re-parsing
+    of each resulting document. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+    Note: the page-splitting endpoint is marked deprecated in the v3 specification
+    but remains the documented way to split, merge, or rotate document pages.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: split-document-and-reparse
+  summary: Upload a document, wait for parsing, then split its pages into new documents.
+  description: >-
+    Uploads a file, polls until ready, and submits a split request that carves the
+    document into the supplied page groups, each of which is re-parsed.
+  inputs:
+    type: object
+    required:
+    - workspace
+    - file
+    - splits
+    properties:
+      workspace:
+        type: string
+        description: The workspace identifier to upload the document into.
+      file:
+        type: string
+        description: The multi-page document file contents (binary) to upload.
+      splits:
+        type: array
+        description: The split definitions describing how pages should be grouped into documents.
+        items:
+          type: object
+  steps:
+  - stepId: uploadDocument
+    description: Upload the file with wait=false so an identifier is returned for polling.
+    operationId: createDocument
+    requestBody:
+      contentType: multipart/form-data
+      payload:
+        file: $inputs.file
+        workspace: $inputs.workspace
+        wait: false
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      identifier: $response.body#/meta/identifier
+  - stepId: pollUntilReady
+    description: Poll the document until meta.ready becomes true.
+    operationId: getDocument
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.uploadDocument.outputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.meta.ready == true
+      type: jsonpath
+    outputs:
+      identifier: $response.body#/meta/identifier
+  - stepId: splitPages
+    description: >-
+      Split the document into the supplied page groups, which triggers re-parsing
+      of each resulting child document.
+    operationId: editDocumentPages
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.uploadDocument.outputs.identifier
+    requestBody:
+      contentType: application/json
+      payload:
+        splits: $inputs.splits
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      childDocuments: $response.body
+  outputs:
+    parentIdentifier: $steps.uploadDocument.outputs.identifier
+    childDocuments: $steps.splitPages.outputs.childDocuments

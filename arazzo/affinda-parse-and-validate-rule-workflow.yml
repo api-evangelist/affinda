@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Parse and Record a Validation Result
+  summary: Upload a document, wait for parsing, read its annotations, and record a validation result against it.
+  description: >-
+    Combines parsing with rule-based validation. A document is uploaded and polled
+    until ready, its annotations are listed so a specific field can be referenced,
+    and a validation result is recorded against the document to capture whether a
+    business rule passed or failed. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: parse-and-validate
+  summary: Parse a document then attach a validation result to it.
+  description: >-
+    Uploads a file, waits for parsing, lists the document's annotations, and
+    creates a validation result tied to the document and an annotation.
+  inputs:
+    type: object
+    required:
+    - workspace
+    - file
+    - ruleSlug
+    - message
+    properties:
+      workspace:
+        type: string
+        description: The workspace identifier to upload the document into.
+      file:
+        type: string
+        description: The document file contents (binary) to upload.
+      ruleSlug:
+        type: string
+        description: The slug of the validation rule being recorded.
+      message:
+        type: string
+        description: A human-readable message describing the validation outcome.
+      passed:
+        type: boolean
+        description: Whether the validation rule passed.
+  steps:
+  - stepId: uploadDocument
+    description: Upload the file with wait=false so an identifier is returned for polling.
+    operationId: createDocument
+    requestBody:
+      contentType: multipart/form-data
+      payload:
+        file: $inputs.file
+        workspace: $inputs.workspace
+        wait: false
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      identifier: $response.body#/meta/identifier
+  - stepId: pollUntilReady
+    description: Poll the document until meta.ready becomes true.
+    operationId: getDocument
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.uploadDocument.outputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.meta.ready == true
+      type: jsonpath
+    outputs:
+      identifier: $response.body#/meta/identifier
+  - stepId: listAnnotations
+    description: >-
+      List the document's annotations so a specific parsed field can be referenced
+      by the validation result.
+    operationId: getAllAnnotations
+    parameters:
+    - name: document
+      in: query
+      value: $steps.uploadDocument.outputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      results: $response.body#/results
+  - stepId: createValidationResult
+    description: >-
+      Record a validation result against the document capturing the rule slug,
+      message, and pass/fail outcome.
+    operationId: createValidationResult
+    requestBody:
+      contentType: application/json
+      payload:
+        document: $steps.uploadDocument.outputs.identifier
+        annotations: $steps.listAnnotations.outputs.results
+        ruleSlug: $inputs.ruleSlug
+        message: $inputs.message
+        passed: $inputs.passed
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      validationResultId: $response.body#/id
+  outputs:
+    documentIdentifier: $steps.uploadDocument.outputs.identifier
+    validationResultId: $steps.createValidationResult.outputs.validationResultId

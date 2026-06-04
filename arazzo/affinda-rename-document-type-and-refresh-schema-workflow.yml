@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Rename Document Type and Refresh Its Schema
+  summary: Look up a document type, rename it, then regenerate its JSON schema.
+  description: >-
+    Keeps generated artifacts in sync after a rename. A document type is fetched,
+    its name and description are updated, and the JSON schema is regenerated from
+    the updated type so downstream consumers pick up the change. Every step spells
+    out its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: rename-document-type-and-refresh-schema
+  summary: Fetch a document type, rename it, then regenerate its JSON schema.
+  description: >-
+    Reads a document type, patches its name and description, and regenerates the
+    JSON schema for the updated type.
+  inputs:
+    type: object
+    required:
+    - identifier
+    - name
+    properties:
+      identifier:
+        type: string
+        description: The document type identifier to update.
+      name:
+        type: string
+        description: The new name for the document type.
+      description:
+        type: string
+        description: The new description for the document type.
+      schemaTitle:
+        type: string
+        description: Optional title to use for the regenerated JSON schema.
+  steps:
+  - stepId: getDocumentType
+    description: Read the document type so its current state is known before updating.
+    operationId: getDocumentType
+    parameters:
+    - name: identifier
+      in: path
+      value: $inputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      identifier: $response.body#/identifier
+  - stepId: renameDocumentType
+    description: Update the document type's name and description.
+    operationId: updateDocumentType
+    parameters:
+    - name: identifier
+      in: path
+      value: $inputs.identifier
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        description: $inputs.description
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      name: $response.body#/name
+  - stepId: refreshSchema
+    description: Regenerate the JSON schema from the updated document type.
+    operationId: jsonSchemaFromDocumentType
+    parameters:
+    - name: identifier
+      in: path
+      value: $inputs.identifier
+    - name: title
+      in: query
+      value: $inputs.schemaTitle
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jsonSchema: $response.body
+  outputs:
+    documentTypeIdentifier: $inputs.identifier
+    name: $steps.renameDocumentType.outputs.name
+    jsonSchema: $steps.refreshSchema.outputs.jsonSchema

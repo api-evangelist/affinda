@@ -1,0 +1,81 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Resume Search and Detail
+  summary: Run a resume search against an index and fetch the detailed match breakdown for the top result.
+  description: >-
+    Drives the Search & Match product. A resume search is created against one or
+    more indices using a job description, returning ranked candidate results. The
+    workflow then requests the detailed match breakdown for the top-ranked resume
+    so the per-criteria scoring is available. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: resume-search-and-detail
+  summary: Search resumes by job description and get the detail for the top match.
+  description: >-
+    Creates a resume search scoped to the supplied indices and job description,
+    then fetches the detailed score breakdown for the highest-ranked resume.
+  inputs:
+    type: object
+    required:
+    - indices
+    - jobDescription
+    properties:
+      indices:
+        type: array
+        description: The index names to search within.
+        items:
+          type: string
+      jobDescription:
+        type: string
+        description: The identifier of the parsed job description to match candidates against.
+      limit:
+        type: integer
+        description: Maximum number of results to return.
+  steps:
+  - stepId: createResumeSearch
+    description: >-
+      Create a resume search matching candidates to the supplied job description
+      within the chosen indices.
+    operationId: createResumeSearch
+    parameters:
+    - name: limit
+      in: query
+      value: $inputs.limit
+    requestBody:
+      contentType: application/json
+      payload:
+        indices: $inputs.indices
+        jobDescription: $inputs.jobDescription
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      count: $response.body#/count
+      topResultIdentifier: $response.body#/results/0/identifier
+  - stepId: getTopMatchDetail
+    description: >-
+      Fetch the detailed match breakdown for the top-ranked resume, including
+      per-criteria scores against the same job description.
+    operationId: getResumeSearchDetail
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.createResumeSearch.outputs.topResultIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        indices: $inputs.indices
+        jobDescription: $inputs.jobDescription
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      detail: $response.body
+  outputs:
+    count: $steps.createResumeSearch.outputs.count
+    topResultIdentifier: $steps.createResumeSearch.outputs.topResultIdentifier
+    detail: $steps.getTopMatchDetail.outputs.detail

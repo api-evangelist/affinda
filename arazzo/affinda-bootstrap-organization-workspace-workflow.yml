@@ -1,0 +1,71 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Bootstrap Organization and Workspace
+  summary: Create an organization, create a workspace inside it, then read the organization detail back.
+  description: >-
+    Stands up a brand-new tenant. An organization is created, a first workspace is
+    created within it, and the organization detail is read back to confirm the
+    setup. This is the very first step before any document parsing can occur. Every
+    step spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: bootstrap-organization-and-workspace
+  summary: Create an organization and a first workspace within it.
+  description: >-
+    Creates an organization, creates a workspace under it, and reads the
+    organization back to confirm.
+  inputs:
+    type: object
+    required:
+    - organizationName
+    - workspaceName
+    properties:
+      organizationName:
+        type: string
+        description: The name for the new organization.
+      workspaceName:
+        type: string
+        description: The name for the first workspace in the organization.
+  steps:
+  - stepId: createOrganization
+    description: Create a new organization to act as the top-level tenant.
+    operationId: createOrganization
+    requestBody:
+      contentType: multipart/form-data
+      payload:
+        name: $inputs.organizationName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      organizationIdentifier: $response.body#/identifier
+  - stepId: createWorkspace
+    description: Create the first workspace within the new organization.
+    operationId: createWorkspace
+    requestBody:
+      contentType: application/json
+      payload:
+        organization: $steps.createOrganization.outputs.organizationIdentifier
+        name: $inputs.workspaceName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      workspaceIdentifier: $response.body#/identifier
+  - stepId: confirmOrganization
+    description: Read the organization detail back to confirm the tenant is set up.
+    operationId: getOrganization
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.createOrganization.outputs.organizationIdentifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      name: $response.body#/name
+  outputs:
+    organizationIdentifier: $steps.createOrganization.outputs.organizationIdentifier
+    workspaceIdentifier: $steps.createWorkspace.outputs.workspaceIdentifier

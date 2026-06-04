@@ -1,0 +1,84 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Create Document from Data and Index It
+  summary: Create a resume document directly from structured data, wait for it, then add it to a search index.
+  description: >-
+    Creates a Search & Match document without a file upload. Structured resume or
+    job description data is posted to the create-from-data endpoint, the resulting
+    document is polled until ready, and it is then added to a search index so it
+    becomes discoverable. Every step spells out its request inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-document-from-data-and-index
+  summary: Create a document from structured data, wait for it, then index it.
+  description: >-
+    Posts structured data to create a document, polls until meta.ready is true,
+    and indexes the resulting document into a named index.
+  inputs:
+    type: object
+    required:
+    - data
+    - indexName
+    properties:
+      data:
+        type: object
+        description: The structured resume or job description data to create the document from.
+      workspace:
+        type: string
+        description: Optional workspace identifier to create the document in.
+      indexName:
+        type: string
+        description: The index name to add the created document to.
+  steps:
+  - stepId: createFromData
+    description: >-
+      Create a document directly from structured data with wait=false so an
+      identifier is returned for polling.
+    operationId: createDocumentFromData
+    requestBody:
+      contentType: application/json
+      payload:
+        data: $inputs.data
+        workspace: $inputs.workspace
+        wait: false
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      identifier: $response.body#/meta/identifier
+  - stepId: pollUntilReady
+    description: Poll the document until meta.ready becomes true.
+    operationId: getDocument
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.createFromData.outputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.meta.ready == true
+      type: jsonpath
+    outputs:
+      identifier: $response.body#/meta/identifier
+  - stepId: indexDocument
+    description: Add the created document to the search index so it becomes discoverable.
+    operationId: createIndexDocument
+    parameters:
+    - name: name
+      in: path
+      value: $inputs.indexName
+    requestBody:
+      contentType: application/json
+      payload:
+        document: $steps.createFromData.outputs.identifier
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      document: $response.body#/document
+  outputs:
+    documentIdentifier: $steps.createFromData.outputs.identifier
+    indexedDocument: $steps.indexDocument.outputs.document

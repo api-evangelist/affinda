@@ -1,0 +1,91 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Parse and Correct Annotations
+  summary: Upload a document, wait for parsing, list its annotations, then batch-correct them.
+  description: >-
+    A human-in-the-loop correction flow. A document is uploaded and polled until
+    ready, its annotations are listed so the parsed fields can be reviewed, and a
+    batch of corrected annotation values is submitted to fix any extraction
+    mistakes. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: parse-and-correct-annotations
+  summary: Parse a document, review its annotations, then batch-correct them.
+  description: >-
+    Uploads a file, waits for parsing, lists the document's annotations, and
+    submits a batch update with corrected annotation values.
+  inputs:
+    type: object
+    required:
+    - workspace
+    - file
+    - annotations
+    properties:
+      workspace:
+        type: string
+        description: The workspace identifier to upload the document into.
+      file:
+        type: string
+        description: The document file contents (binary) to upload.
+      annotations:
+        type: array
+        description: The array of annotation updates to apply.
+        items:
+          type: object
+  steps:
+  - stepId: uploadDocument
+    description: Upload the file with wait=false so an identifier is returned for polling.
+    operationId: createDocument
+    requestBody:
+      contentType: multipart/form-data
+      payload:
+        file: $inputs.file
+        workspace: $inputs.workspace
+        wait: false
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      identifier: $response.body#/meta/identifier
+  - stepId: pollUntilReady
+    description: Poll the document until meta.ready becomes true.
+    operationId: getDocument
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.uploadDocument.outputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.meta.ready == true
+      type: jsonpath
+    outputs:
+      identifier: $response.body#/meta/identifier
+  - stepId: listAnnotations
+    description: List the document's annotations so the parsed fields can be reviewed.
+    operationId: getAllAnnotations
+    parameters:
+    - name: document
+      in: query
+      value: $steps.uploadDocument.outputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      results: $response.body#/results
+  - stepId: correctAnnotations
+    description: Submit a batch of corrected annotation values to fix extraction mistakes.
+    operationId: batchUpdateAnnotations
+    requestBody:
+      contentType: application/json
+      payload: $inputs.annotations
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updated: $response.body
+  outputs:
+    documentIdentifier: $steps.uploadDocument.outputs.identifier
+    updated: $steps.correctAnnotations.outputs.updated

@@ -1,0 +1,74 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Job Description Search and Detail
+  summary: Run a job description search using a resume and fetch the detail for the top matching role.
+  description: >-
+    The reverse Search & Match pattern: matching a candidate to open roles. A job
+    description search is created from a parsed resume across one or more indices,
+    returning ranked job descriptions, and the detailed match breakdown for the
+    top-ranked role is then retrieved. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: job-description-search-and-detail
+  summary: Search job descriptions by resume and get the detail for the top match.
+  description: >-
+    Creates a job description search scoped to the supplied indices and resume,
+    then fetches the detailed breakdown for the highest-ranked job description.
+  inputs:
+    type: object
+    required:
+    - indices
+    - resume
+    properties:
+      indices:
+        type: array
+        description: The index names to search within.
+        items:
+          type: string
+      resume:
+        type: string
+        description: The identifier of the parsed resume to match roles against.
+  steps:
+  - stepId: createJobDescriptionSearch
+    description: >-
+      Create a job description search matching roles to the supplied resume within
+      the chosen indices.
+    operationId: createJobDescriptionSearch
+    requestBody:
+      contentType: application/json
+      payload:
+        indices: $inputs.indices
+        resume: $inputs.resume
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      count: $response.body#/count
+      topResultIdentifier: $response.body#/results/0/identifier
+  - stepId: getTopMatchDetail
+    description: >-
+      Fetch the detailed match breakdown for the top-ranked job description against
+      the same resume.
+    operationId: getJobDescriptionSearchDetail
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.createJobDescriptionSearch.outputs.topResultIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        indices: $inputs.indices
+        resume: $inputs.resume
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      detail: $response.body
+  outputs:
+    count: $steps.createJobDescriptionSearch.outputs.count
+    topResultIdentifier: $steps.createJobDescriptionSearch.outputs.topResultIdentifier
+    detail: $steps.getTopMatchDetail.outputs.detail

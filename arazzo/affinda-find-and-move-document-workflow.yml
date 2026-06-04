@@ -1,0 +1,67 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Find a Document and Move It to Another Collection
+  summary: Locate a document by its custom identifier, then move it into a different collection.
+  description: >-
+    Re-routes a previously uploaded document. The documents list is filtered by a
+    custom identifier to locate the target document, and that document is then
+    patched to move it into a different collection, which re-classifies how it is
+    treated. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: find-and-move-document
+  summary: Find a document by custom identifier then move it to another collection.
+  description: >-
+    Searches the documents list by custom identifier and patches the first matching
+    document to set a new collection.
+  inputs:
+    type: object
+    required:
+    - customIdentifier
+    - collection
+    properties:
+      customIdentifier:
+        type: string
+        description: The custom identifier used to locate the target document.
+      collection:
+        type: string
+        description: The collection identifier to move the document into.
+  steps:
+  - stepId: findDocument
+    description: >-
+      Filter the documents list by custom identifier to locate the target
+      document.
+    operationId: getAllDocuments
+    parameters:
+    - name: custom_identifier
+      in: query
+      value: $inputs.customIdentifier
+    - name: limit
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      identifier: $response.body#/results/0/meta/identifier
+  - stepId: moveDocument
+    description: Patch the matched document to move it into the target collection.
+    operationId: updateDocument
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.findDocument.outputs.identifier
+    requestBody:
+      contentType: application/json
+      payload:
+        collection: $inputs.collection
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      identifier: $response.body#/meta/identifier
+  outputs:
+    documentIdentifier: $steps.moveDocument.outputs.identifier

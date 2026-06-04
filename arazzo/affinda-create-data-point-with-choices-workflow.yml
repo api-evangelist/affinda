@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Create Enum Data Point and Populate Choices
+  summary: Create an enum-style data point on an extractor and replace its full set of choices.
+  description: >-
+    Builds a dropdown-style field. A custom data point is created on an extractor,
+    and its full list of selectable choices is replaced in one call so the field
+    behaves like a controlled vocabulary. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+    Note: the data point and choice endpoints are marked deprecated in the v3
+    specification but remain the documented way to author enum data points.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-data-point-with-choices
+  summary: Create a data point and replace its choices in bulk.
+  description: >-
+    Creates a data point on the supplied extractor and then replaces all of its
+    choices with the supplied list.
+  inputs:
+    type: object
+    required:
+    - organization
+    - extractor
+    - name
+    - slug
+    - annotationContentType
+    - choices
+    properties:
+      organization:
+        type: string
+        description: The organization identifier that owns the data point.
+      extractor:
+        type: string
+        description: The extractor identifier the data point belongs to.
+      name:
+        type: string
+        description: The name of the data point.
+      slug:
+        type: string
+        description: A unique slug for the data point.
+      annotationContentType:
+        type: string
+        description: The content type of the data point (typically enum for choices).
+      choices:
+        type: array
+        description: The full set of choices to apply to the data point.
+        items:
+          type: object
+  steps:
+  - stepId: createDataPoint
+    description: Create the data point on the extractor.
+    operationId: createDataPoint
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        slug: $inputs.slug
+        annotationContentType: $inputs.annotationContentType
+        organization: $inputs.organization
+        extractor: $inputs.extractor
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      dataPointIdentifier: $response.body#/identifier
+  - stepId: replaceChoices
+    description: >-
+      Replace the data point's full set of choices so it behaves as a controlled
+      vocabulary.
+    operationId: replaceDataPointChoices
+    requestBody:
+      contentType: application/json
+      payload:
+        dataPoint: $steps.createDataPoint.outputs.dataPointIdentifier
+        organization: $inputs.organization
+        choices: $inputs.choices
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      result: $response.body
+  outputs:
+    dataPointIdentifier: $steps.createDataPoint.outputs.dataPointIdentifier
+    result: $steps.replaceChoices.outputs.result

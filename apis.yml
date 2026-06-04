@@ -261,6 +261,90 @@ kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/affinda-add-collection-data-field-workflow.yml
+    name: Affinda Add a Data Field to a Collection
+    summary: Create a workspace and collection, then add a custom data field plus data point to the collection.
+  - url: arazzo/affinda-add-workspace-member-workflow.yml
+    name: Affinda Add a Member to a Workspace
+    summary: Create a workspace in an organization and add a user to it as a member.
+  - url: arazzo/affinda-bootstrap-organization-workspace-workflow.yml
+    name: Affinda Bootstrap Organization and Workspace
+    summary: Create an organization, create a workspace inside it, then read the organization detail back.
+  - url: arazzo/affinda-configure-resume-search-embed-workflow.yml
+    name: Affinda Configure and Embed Resume Search
+    summary: Read the resume search config, update its weights, then mint a signed embeddable search URL.
+  - url: arazzo/affinda-create-data-point-with-choices-workflow.yml
+    name: Affinda Create Enum Data Point and Populate Choices
+    summary: Create an enum-style data point on an extractor and replace its full set of choices.
+  - url: arazzo/affinda-create-data-source-and-add-value-workflow.yml
+    name: Affinda Create Mapping Data Source and Add a Value
+    summary: Create a mapping data source, add a value to it, then list its values.
+  - url: arazzo/affinda-create-document-from-data-and-index-workflow.yml
+    name: Affinda Create Document from Data and Index It
+    summary: Create a resume document directly from structured data, wait for it, then add it to a search index.
+  - url: arazzo/affinda-create-extractor-with-data-point-workflow.yml
+    name: Affinda Create Extractor with a Data Point
+    summary: Create a custom extractor in an organization and add a custom data point to it.
+  - url: arazzo/affinda-create-index-and-add-document-workflow.yml
+    name: Affinda Create Search Index and Add a Document
+    summary: Create a Search & Match index, add a document to it, then list the index's documents.
+  - url: arazzo/affinda-create-tag-and-tag-documents-workflow.yml
+    name: Affinda Create a Tag and Apply It to Documents
+    summary: Create a tag in a workspace and batch-apply it to a set of documents.
+  - url: arazzo/affinda-document-type-to-json-schema-workflow.yml
+    name: Affinda Create Document Type and Generate JSON Schema
+    summary: Create a document type in an organization, then generate a JSON schema and Pydantic models from it.
+  - url: arazzo/affinda-find-and-move-document-workflow.yml
+    name: Affinda Find a Document and Move It to Another Collection
+    summary: Locate a document by its custom identifier, then move it into a different collection.
+  - url: arazzo/affinda-invite-member-and-respond-workflow.yml
+    name: Affinda Invite Organization Member and Respond
+    summary: Create an organization invitation, look it up by token, and accept it on the invitee's behalf.
+  - url: arazzo/affinda-job-description-search-and-detail-workflow.yml
+    name: Affinda Job Description Search and Detail
+    summary: Run a job description search using a resume and fetch the detail for the top matching role.
+  - url: arazzo/affinda-parse-and-correct-annotations-workflow.yml
+    name: Affinda Parse and Correct Annotations
+    summary: Upload a document, wait for parsing, list its annotations, then batch-correct them.
+  - url: arazzo/affinda-parse-and-reject-document-workflow.yml
+    name: Affinda Parse and Reject a Document
+    summary: Upload a document, wait for parsing, inspect the result, then branch to reject or confirm it.
+  - url: arazzo/affinda-parse-and-validate-rule-workflow.yml
+    name: Affinda Parse and Record a Validation Result
+    summary: Upload a document, wait for parsing, read its annotations, and record a validation result against it.
+  - url: arazzo/affinda-provision-and-ingest-document-workflow.yml
+    name: Affinda Provision Collection and Ingest a Document
+    summary: Create a workspace, create a collection bound to an extractor, then upload a document into it and parse it.
+  - url: arazzo/affinda-provision-workspace-collection-workflow.yml
+    name: Affinda Provision Workspace and Collection
+    summary: Create a workspace inside an organization and a collection bound to an extractor within it.
+  - url: arazzo/affinda-rename-document-type-and-refresh-schema-workflow.yml
+    name: Affinda Rename Document Type and Refresh Its Schema
+    summary: Look up a document type, rename it, then regenerate its JSON schema.
+  - url: arazzo/affinda-resume-search-and-detail-workflow.yml
+    name: Affinda Resume Search and Detail
+    summary: Run a resume search against an index and fetch the detailed match breakdown for the top result.
+  - url: arazzo/affinda-split-document-and-reparse-workflow.yml
+    name: Affinda Split a Document and Re-parse
+    summary: Upload a multi-page document, wait for parsing, then split it into separate documents that re-parse.
+  - url: arazzo/affinda-update-resume-data-and-reindex-workflow.yml
+    name: Affinda Update Resume Data and Re-index
+    summary: Update the parsed data of a resume document and refresh it in a search index.
+  - url: arazzo/affinda-upload-and-parse-document-workflow.yml
+    name: Affinda Upload and Parse a Document
+    summary: Upload a document for parsing, poll until processing completes, then retrieve the parsed data.
+  - url: arazzo/affinda-upload-from-url-and-validate-workflow.yml
+    name: Affinda Upload from URL, Parse, and Confirm
+    summary: Upload a document by URL, wait for parsing, then confirm it in the validation tool.
+  - url: arazzo/affinda-webhook-subscribe-and-activate-workflow.yml
+    name: Affinda Subscribe and Activate a Webhook
+    summary: Create a resthook subscription for an event and activate it with the received secret.
+  - url: arazzo/affinda-workspace-usage-report-workflow.yml
+    name: Affinda Workspace Usage Report
+    summary: List an organization's workspaces, then pull a daily credit-consumption report scoped to the first workspace.
 - type: Portal
   url: https://www.affinda.com
 - type: Documentation

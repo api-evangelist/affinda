@@ -1,0 +1,66 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Create a Tag and Apply It to Documents
+  summary: Create a tag in a workspace and batch-apply it to a set of documents.
+  description: >-
+    Organizes documents with tags. A tag is created in a workspace and then
+    applied in bulk to a list of documents via the batch tagging endpoint, which
+    makes the documents filterable by that tag. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-tag-and-tag-documents
+  summary: Create a tag and batch-apply it to documents.
+  description: >-
+    Creates a tag in the supplied workspace and then adds it to the supplied list
+    of document identifiers in a single batch call.
+  inputs:
+    type: object
+    required:
+    - workspace
+    - tagName
+    - documentIdentifiers
+    properties:
+      workspace:
+        type: string
+        description: The workspace identifier the tag belongs to.
+      tagName:
+        type: string
+        description: The name of the tag to create.
+      documentIdentifiers:
+        type: array
+        description: The document identifiers to apply the tag to.
+        items:
+          type: string
+  steps:
+  - stepId: createTag
+    description: Create a tag in the workspace.
+    operationId: createTag
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.tagName
+        workspace: $inputs.workspace
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      tagId: $response.body#/id
+  - stepId: applyTag
+    description: Batch-apply the new tag to the supplied documents.
+    operationId: batchAddTag
+    requestBody:
+      contentType: application/json
+      payload:
+        tag: $steps.createTag.outputs.tagId
+        identifiers: $inputs.documentIdentifiers
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      tagId: $steps.createTag.outputs.tagId
+  outputs:
+    tagId: $steps.createTag.outputs.tagId

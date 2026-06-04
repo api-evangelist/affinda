@@ -1,0 +1,113 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Add a Data Field to a Collection
+  summary: Create a workspace and collection, then add a custom data field plus data point to the collection.
+  description: >-
+    Extends a collection's schema with a custom field. A workspace and an
+    extractor-bound collection are created, and then a data field is added to the
+    collection along with a new data point in a single call, teaching the
+    collection to capture an additional value. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+    Note: the collection endpoints are marked deprecated in the v3 specification but
+    remain the documented way to manage collection data fields.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: add-collection-data-field
+  summary: Create a collection then add a custom data field and data point to it.
+  description: >-
+    Creates a workspace and an extractor-bound collection, then creates a data
+    field plus data point on the collection.
+  inputs:
+    type: object
+    required:
+    - organization
+    - workspaceName
+    - collectionName
+    - extractor
+    - fieldLabel
+    - fieldType
+    - dataPointName
+    - dataPointSlug
+    properties:
+      organization:
+        type: string
+        description: The organization identifier to create the workspace under.
+      workspaceName:
+        type: string
+        description: The display name for the new workspace.
+      collectionName:
+        type: string
+        description: The display name for the new collection.
+      extractor:
+        type: string
+        description: The extractor identifier the collection should use.
+      fieldLabel:
+        type: string
+        description: The label shown for the new data field.
+      fieldType:
+        type: string
+        description: The content type of the field (e.g. text, integer, float, date).
+      dataPointName:
+        type: string
+        description: The name of the data point backing the field.
+      dataPointSlug:
+        type: string
+        description: A unique slug for the data point.
+  steps:
+  - stepId: createWorkspace
+    description: Create the workspace that will hold the collection.
+    operationId: createWorkspace
+    requestBody:
+      contentType: application/json
+      payload:
+        organization: $inputs.organization
+        name: $inputs.workspaceName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      workspaceIdentifier: $response.body#/identifier
+  - stepId: createCollection
+    description: Create an extractor-bound collection inside the workspace.
+    operationId: createCollection
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.collectionName
+        workspace: $steps.createWorkspace.outputs.workspaceIdentifier
+        extractor: $inputs.extractor
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      collectionIdentifier: $response.body#/identifier
+  - stepId: addDataField
+    description: >-
+      Add a data field to the collection along with a new data point so the
+      collection captures an additional value.
+    operationId: createDataFieldForCollection
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.createCollection.outputs.collectionIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        field:
+          label: $inputs.fieldLabel
+          fieldType: $inputs.fieldType
+        dataPoint:
+          name: $inputs.dataPointName
+          slug: $inputs.dataPointSlug
+          type: $inputs.fieldType
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      dataField: $response.body
+  outputs:
+    workspaceIdentifier: $steps.createWorkspace.outputs.workspaceIdentifier
+    collectionIdentifier: $steps.createCollection.outputs.collectionIdentifier
+    dataField: $steps.addDataField.outputs.dataField

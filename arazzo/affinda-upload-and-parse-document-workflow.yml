@@ -1,0 +1,95 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Upload and Parse a Document
+  summary: Upload a document for parsing, poll until processing completes, then retrieve the parsed data.
+  description: >-
+    The core Affinda document AI pattern. A file is uploaded for asynchronous
+    parsing with wait set to false, which returns an identifier immediately. The
+    workflow then polls the document endpoint until the meta.ready flag flips to
+    true, and finally fetches the full parsed document so the structured data is
+    available to the caller. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: upload-and-parse-document
+  summary: Upload a file, wait for parsing to finish, and return the parsed data.
+  description: >-
+    Uploads a document via multipart/form-data into a workspace, creating it with
+    wait=false so the API returns an identifier right away, then repeatedly checks
+    the document until it is ready and reads back the parsed result.
+  inputs:
+    type: object
+    required:
+    - workspace
+    - file
+    properties:
+      workspace:
+        type: string
+        description: The workspace identifier to upload the document into.
+      file:
+        type: string
+        description: The document file contents (binary) to upload for parsing.
+      fileName:
+        type: string
+        description: Optional file name to store the document under.
+      documentType:
+        type: string
+        description: Optional document type identifier if already known.
+  steps:
+  - stepId: uploadDocument
+    description: >-
+      Upload the file for asynchronous parsing. Setting wait to false returns an
+      identifier immediately so the document can be polled for completion.
+    operationId: createDocument
+    requestBody:
+      contentType: multipart/form-data
+      payload:
+        file: $inputs.file
+        workspace: $inputs.workspace
+        fileName: $inputs.fileName
+        documentType: $inputs.documentType
+        wait: false
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      identifier: $response.body#/meta/identifier
+      ready: $response.body#/meta/ready
+  - stepId: pollUntilReady
+    description: >-
+      Poll the document until its meta.ready flag becomes true, indicating that
+      parsing has finished and the parsed data is available.
+    operationId: getDocument
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.uploadDocument.outputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.meta.ready == true
+      type: jsonpath
+    outputs:
+      ready: $response.body#/meta/ready
+      failed: $response.body#/meta/failed
+  - stepId: getParsedDocument
+    description: >-
+      Fetch the completed document to return the full set of parsed data and
+      metadata to the caller.
+    operationId: getDocument
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.uploadDocument.outputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      data: $response.body#/data
+      meta: $response.body#/meta
+  outputs:
+    identifier: $steps.uploadDocument.outputs.identifier
+    data: $steps.getParsedDocument.outputs.data
+    meta: $steps.getParsedDocument.outputs.meta

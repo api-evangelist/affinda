@@ -1,0 +1,91 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Upload from URL, Parse, and Confirm
+  summary: Upload a document by URL, wait for parsing, then confirm it in the validation tool.
+  description: >-
+    Uploads a document from a publicly reachable URL, polls until parsing
+    completes, and then marks the document as confirmed so it transitions out of
+    review. This mirrors a hands-off ingestion pipeline where documents arrive by
+    link and are auto-accepted once the AI has finished extracting the data. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: upload-from-url-and-confirm
+  summary: Ingest a document by URL, wait for parsing, then confirm it.
+  description: >-
+    Creates a document from a URL, polls the document until meta.ready is true,
+    and patches the document to set isConfirmed so it leaves the review state.
+  inputs:
+    type: object
+    required:
+    - workspace
+    - url
+    properties:
+      workspace:
+        type: string
+        description: The workspace identifier to upload the document into.
+      url:
+        type: string
+        description: A reachable URL pointing at the document to download and parse.
+      fileName:
+        type: string
+        description: Optional file name to store the document under.
+  steps:
+  - stepId: uploadByUrl
+    description: >-
+      Create the document from a URL with wait=false so an identifier is returned
+      immediately for polling.
+    operationId: createDocument
+    requestBody:
+      contentType: multipart/form-data
+      payload:
+        url: $inputs.url
+        workspace: $inputs.workspace
+        fileName: $inputs.fileName
+        wait: false
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      identifier: $response.body#/meta/identifier
+  - stepId: pollUntilReady
+    description: >-
+      Poll the document until parsing finishes, signalled by meta.ready becoming
+      true.
+    operationId: getDocument
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.uploadByUrl.outputs.identifier
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.meta.ready == true
+      type: jsonpath
+    outputs:
+      ready: $response.body#/meta/ready
+  - stepId: confirmDocument
+    description: >-
+      Mark the parsed document as confirmed so it transitions out of the review
+      state and is treated as validated.
+    operationId: updateDocument
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.uploadByUrl.outputs.identifier
+    requestBody:
+      contentType: application/json
+      payload:
+        isConfirmed: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      identifier: $response.body#/meta/identifier
+      isConfirmed: $response.body#/meta/isConfirmed
+  outputs:
+    identifier: $steps.uploadByUrl.outputs.identifier
+    isConfirmed: $steps.confirmDocument.outputs.isConfirmed

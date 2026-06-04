@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Subscribe and Activate a Webhook
+  summary: Create a resthook subscription for an event and activate it with the received secret.
+  description: >-
+    Sets up event-driven notifications. A resthook subscription is created for a
+    target URL and event, after which Affinda sends an X-Hook-Secret to the target.
+    The workflow then activates the subscription by replaying that secret, and
+    reads the subscription back to confirm its active state. Because the secret is
+    delivered out of band to the target URL, it is supplied as a workflow input.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: webhook-subscribe-and-activate
+  summary: Create a resthook subscription then activate it with its secret.
+  description: >-
+    Creates a resthook subscription for an event and target URL, activates it
+    using the X-Hook-Secret delivered to the target, and reads it back to confirm.
+  inputs:
+    type: object
+    required:
+    - targetUrl
+    - event
+    - hookSecret
+    properties:
+      targetUrl:
+        type: string
+        description: The URL Affinda should POST event payloads to.
+      event:
+        type: string
+        description: The event to subscribe to.
+      organization:
+        type: string
+        description: Optional organization identifier to scope the subscription to.
+      hookSecret:
+        type: string
+        description: The X-Hook-Secret value delivered to the target URL when the subscription is created.
+  steps:
+  - stepId: createSubscription
+    description: >-
+      Create the resthook subscription for the target URL and event. Affinda will
+      POST an X-Hook-Secret to the target which is then used to activate.
+    operationId: createResthookSubscription
+    requestBody:
+      contentType: application/json
+      payload:
+        targetUrl: $inputs.targetUrl
+        event: $inputs.event
+        organization: $inputs.organization
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      subscriptionId: $response.body#/id
+  - stepId: activateSubscription
+    description: >-
+      Activate the subscription by replaying the X-Hook-Secret that was delivered
+      to the target URL.
+    operationId: activateResthookSubscription
+    parameters:
+    - name: X-Hook-Secret
+      in: header
+      value: $inputs.hookSecret
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subscriptionId: $response.body#/id
+  - stepId: confirmSubscription
+    description: Read the subscription back to confirm it exists and is active.
+    operationId: getResthookSubscription
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createSubscription.outputs.subscriptionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      active: $response.body#/active
+  outputs:
+    subscriptionId: $steps.createSubscription.outputs.subscriptionId
+    active: $steps.confirmSubscription.outputs.active

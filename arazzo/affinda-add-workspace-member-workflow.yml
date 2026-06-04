@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Add a Member to a Workspace
+  summary: Create a workspace in an organization and add a user to it as a member.
+  description: >-
+    Grants a user access to a workspace. A workspace is created under an
+    organization, a user is added to it as a member, and the membership is read
+    back to confirm. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: add-workspace-member
+  summary: Create a workspace then add a user as a member of it.
+  description: >-
+    Creates a workspace, adds the supplied user to it as a member, and reads the
+    membership back to confirm.
+  inputs:
+    type: object
+    required:
+    - organization
+    - workspaceName
+    - user
+    properties:
+      organization:
+        type: string
+        description: The organization identifier to create the workspace under.
+      workspaceName:
+        type: string
+        description: The display name for the new workspace.
+      user:
+        type: integer
+        description: The user id to add to the workspace.
+  steps:
+  - stepId: createWorkspace
+    description: Create the workspace that the user will be added to.
+    operationId: createWorkspace
+    requestBody:
+      contentType: application/json
+      payload:
+        organization: $inputs.organization
+        name: $inputs.workspaceName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      workspaceIdentifier: $response.body#/identifier
+  - stepId: addMembership
+    description: Add the user to the new workspace as a member.
+    operationId: createWorkspaceMembership
+    requestBody:
+      contentType: application/json
+      payload:
+        workspace: $steps.createWorkspace.outputs.workspaceIdentifier
+        user: $inputs.user
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      membershipIdentifier: $response.body#/identifier
+  - stepId: confirmMembership
+    description: Read the membership back to confirm the user was added.
+    operationId: getWorkspaceMembership
+    parameters:
+    - name: identifier
+      in: path
+      value: $steps.addMembership.outputs.membershipIdentifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      membershipIdentifier: $response.body#/identifier
+  outputs:
+    workspaceIdentifier: $steps.createWorkspace.outputs.workspaceIdentifier
+    membershipIdentifier: $steps.addMembership.outputs.membershipIdentifier

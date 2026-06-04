@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Affinda Invite Organization Member and Respond
+  summary: Create an organization invitation, look it up by token, and accept it on the invitee's behalf.
+  description: >-
+    Drives the full member-invitation handshake. An invitation is created for an
+    email and role within an organization, the invitation is retrieved by its
+    secret token (the path an unauthenticated invitee would use), and a response is
+    submitted to accept it. The token is delivered out of band to the invitee, so
+    it is supplied as a workflow input. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: affindaV3Api
+  url: ../openapi/affinda-v3-openapi.yml
+  type: openapi
+workflows:
+- workflowId: invite-member-and-respond
+  summary: Invite a member, look up the invitation by token, and accept it.
+  description: >-
+    Creates an invitation, fetches it by token, and submits an accept response.
+  inputs:
+    type: object
+    required:
+    - organization
+    - email
+    - role
+    - token
+    properties:
+      organization:
+        type: string
+        description: The organization identifier to invite the member into.
+      email:
+        type: string
+        description: The email address of the person to invite.
+      role:
+        type: string
+        description: The organization role to grant the invitee.
+      token:
+        type: string
+        description: The secret invitation token delivered to the invitee.
+  steps:
+  - stepId: createInvitation
+    description: Create an invitation for the email and role within the organization.
+    operationId: createInvitation
+    requestBody:
+      contentType: application/json
+      payload:
+        organization: $inputs.organization
+        email: $inputs.email
+        role: $inputs.role
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      invitationIdentifier: $response.body#/identifier
+  - stepId: getByToken
+    description: >-
+      Retrieve the invitation by its secret token, the path an unauthenticated
+      invitee would use to view it.
+    operationId: getInvitationByToken
+    parameters:
+    - name: token
+      in: path
+      value: $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+  - stepId: acceptInvitation
+    description: Submit an accept response to the invitation on the invitee's behalf.
+    operationId: respondToInvitation
+    parameters:
+    - name: token
+      in: path
+      value: $inputs.token
+    requestBody:
+      contentType: application/json
+      payload:
+        status: accepted
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+  outputs:
+    invitationIdentifier: $steps.createInvitation.outputs.invitationIdentifier
+    status: $steps.acceptInvitation.outputs.status
