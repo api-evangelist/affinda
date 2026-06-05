@@ -1,491 +1,490 @@
 aid: affinda
 url: https://raw.githubusercontent.com/api-evangelist/affinda/refs/heads/main/apis.yml
 apis:
-- aid: affinda:affinda-documents-api
-  name: Affinda Documents API
-  tags:
-  - Document Processing
-  - Document Extraction
-  - AI
-  - OCR
-  humanURL: https://docs.affinda.com/reference/getting-started
-  properties:
-  - url: https://docs.affinda.com/reference/getting-started
-    type: Documentation
-  - url: openapi/affinda-documents-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/affinda-document-schema.json
-    type: JSONSchema
-  - url: json-ld/affinda-context.jsonld
-    type: JSONLD
-  - type: NaftikoCapability
-    url: capabilities/documents-documents.yaml
-  description: Upload documents (PDF, images, DOCX, XLSX, TXT, HTML) and Affinda returns structured JSON
-    extraction with confidence scores, bounding boxes, and OCR text. Supports invoices, resumes, receipts,
-    contracts, passports, and custom document types. 20 MB file size limit (5 MB for resumes), 20 pages default.
-    Returns parsing status, raw text, parsed fields, and original file references.
-- aid: affinda:affinda-document-types-api
-  name: Affinda Document Types API
-  tags:
-  - Document Processing
-  - Document Types
-  - Models
-  - Configuration
-  humanURL: https://docs.affinda.com/reference/document-types
-  properties:
-  - url: https://docs.affinda.com/reference/document-types
-    type: Documentation
-  - url: openapi/affinda-document-types-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/document-types-document-types.yaml
-  description: Manage document type definitions — the model configuration governing how a specific document
-    category (invoice, resume, custom contract) is parsed. Each document type exposes a JSON Schema and
-    optional Pydantic model representation. Document types are configured in the dashboard or natural-language
-    workflow builder and reused across workspaces and collections.
-- aid: affinda:affinda-extractors-api
-  name: Affinda Extractors API
-  tags:
-  - Document Processing
-  - Extractors
-  - Models
-  humanURL: https://docs.affinda.com/reference
-  properties:
-  - url: https://docs.affinda.com/reference
-    type: Documentation
-  - url: openapi/affinda-extractors-api-openapi.yml
-    type: OpenAPI
-  description: List and inspect the underlying extractor models that power document parsing. Extractors are
-    Affinda's named ML pipelines (resume extractor, invoice extractor, receipt extractor, passport extractor,
-    etc.) and are referenced from document type configurations.
-- aid: affinda:affinda-document-splitters-api
-  name: Affinda Document Splitters API
-  tags:
-  - Document Processing
-  - Splitting
-  - Classification
-  humanURL: https://docs.affinda.com/reference
-  properties:
-  - url: https://docs.affinda.com/reference
-    type: Documentation
-  - url: openapi/affinda-document-splitters-api-openapi.yml
-    type: OpenAPI
-  description: Configure and run document splitting and classification across multi-document PDFs. Splitters
-    identify document boundaries inside a single uploaded file, classify each segment by document type, and
-    route each segment to the correct extractor.
-- aid: affinda:affinda-workspaces-api
-  name: Affinda Workspaces API
-  tags:
-  - Workspaces
-  - Organization
-  - Permissions
-  humanURL: https://docs.affinda.com/reference/workspaces
-  properties:
-  - url: https://docs.affinda.com/reference/workspaces
-    type: Documentation
-  - url: openapi/affinda-workspaces-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/workspaces-workspaces.yaml
-  description: Workspaces group together related collections, documents, members, and webhook subscriptions.
-    Workspace identifiers scope every document upload, listing, and webhook delivery. Includes per-workspace
-    usage reporting for credits and pages processed.
-- aid: affinda:affinda-organizations-api
-  name: Affinda Organizations API
-  tags:
-  - Organization
-  - Administration
-  - Account
-  humanURL: https://docs.affinda.com/reference
-  properties:
-  - url: https://docs.affinda.com/reference
-    type: Documentation
-  - url: openapi/affinda-organizations-api-openapi.yml
-    type: OpenAPI
-  description: Manage the top-level organization account — read and update organization details. Organizations
-    contain users, billing, document types, and workspaces. Per-user limit of 3 API keys.
-- aid: affinda:affinda-invitations-api
-  name: Affinda Invitations API
-  tags:
-  - Organization
-  - Members
-  - Invitations
-  humanURL: https://docs.affinda.com/reference
-  properties:
-  - url: https://docs.affinda.com/reference
-    type: Documentation
-  - url: openapi/affinda-invitations-api-openapi.yml
-    type: OpenAPI
-  description: Create, list, and respond to invitations adding users to the organization. Supports invitation
-    token lookup for join flows and revocation of pending invitations.
-- aid: affinda:affinda-data-sources-api
-  name: Affinda Data Sources API
-  tags:
-  - Data Sources
-  - Master Data
-  - Matching
-  humanURL: https://docs.affinda.com/reference
-  properties:
-  - url: https://docs.affinda.com/reference
-    type: Documentation
-  - url: openapi/affinda-data-sources-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/data-sources-data-sources.yaml
-  description: Manage custom mapping data sources — master-data lists used to match raw extracted values
-    (vendor names, SKUs, categories) to known canonical entities. Upload values via the API and reference the
-    data source from a document type field to enable automatic data matching during parsing.
-- aid: affinda:affinda-annotations-api
-  name: Affinda Annotations API
-  tags:
-  - Annotations
-  - Validation
-  - Human in the Loop
-  humanURL: https://docs.affinda.com/reference/annotations
-  properties:
-  - url: https://docs.affinda.com/reference/annotations
-    type: Documentation
-  - url: openapi/affinda-annotations-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/annotations-annotations.yaml
-  description: Manually create, update, and delete annotations on uploaded documents. Annotations are the
-    field-level extraction objects (value, confidence, bounding box, parent field) and provide the surface
-    for human-in-the-loop validation and review. Supports batch create, update, and delete for high-throughput
-    review workflows.
-- aid: affinda:affinda-validation-results-api
-  name: Affinda Validation Results API
-  tags:
-  - Validation
-  - Quality
-  - Human in the Loop
-  humanURL: https://docs.affinda.com/reference
-  properties:
-  - url: https://docs.affinda.com/reference
-    type: Documentation
-  - url: openapi/affinda-validation-results-api-openapi.yml
-    type: OpenAPI
-  description: Track the status and findings of validation rules attached to parsed documents. Validation
-    results record passes, failures, and remediation context for field-level rules and inform the embeddable
-    validation UI. Supports batch create and delete.
-- aid: affinda:affinda-tags-api
-  name: Affinda Tags API
-  tags:
-  - Tags
-  - Metadata
-  - Organization
-  humanURL: https://docs.affinda.com/reference
-  properties:
-  - url: https://docs.affinda.com/reference
-    type: Documentation
-  - url: openapi/affinda-tags-api-openapi.yml
-    type: OpenAPI
-  description: Tag management for parsed documents. Tags can be arbitrarily attached to documents to support
-    routing, segmentation, search filters, and downstream workflow triggers. Supports batch-add and
-    batch-remove on document collections.
-- aid: affinda:affinda-usage-api
-  name: Affinda Usage API
-  tags:
-  - Usage
-  - Credits
-  - Reporting
-  - FinOps
-  humanURL: https://docs.affinda.com/reference
-  properties:
-  - url: https://docs.affinda.com/reference
-    type: Documentation
-  - url: openapi/affinda-usage-api-openapi.yml
-    type: OpenAPI
-  description: Retrieve daily credits consumption for the organization across all workspaces and document
-    types. Used for billing reconciliation, budget tracking, and FinOps reporting.
-- aid: affinda:affinda-webhooks-api
-  name: Affinda Webhooks API
-  tags:
-  - Webhooks
-  - Events
-  - Integration
-  humanURL: https://docs.affinda.com/reference/webhooks
-  properties:
-  - url: https://docs.affinda.com/reference/webhooks
-    type: Documentation
-  - url: openapi/affinda-webhooks-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/webhooks-webhooks.yaml
-  description: Resthook-style webhook subscriptions for document parsing events. Create a subscription,
-    receive a probe payload, and call the activation endpoint to confirm the receiver. Affinda delivers events
-    such as document parsed, document failed, and validation completed to the registered URL.
-- aid: affinda:affinda-search-match-api
-  name: Affinda Search and Match API
-  tags:
-  - Search
-  - Matching
-  - Resume Search
-  - Job Description Search
-  - Recruitment
-  humanURL: https://docs.affinda.com/reference
-  properties:
-  - url: https://docs.affinda.com/reference
-    type: Documentation
-  - url: openapi/affinda-search-match-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/search-match-resume-search.yaml
-  - type: NaftikoCapability
-    url: capabilities/search-match-job-description-search.yaml
-  description: Resume search, job description search, and matching across parsed-document indexes. Score
-    candidates against a job description (or vice versa), retrieve match details, configure search and embed
-    parameters, and request job-title and skill suggestions. Includes index management for organizing parsed
-    documents and embeddable UI configuration for resume and JD search components.
+  - aid: affinda:affinda-documents-api
+    name: Affinda Documents API
+    tags:
+      - Document Processing
+      - Document Extraction
+      - AI
+      - OCR
+    humanURL: https://docs.affinda.com/reference/getting-started
+    properties:
+      - url: https://docs.affinda.com/reference/getting-started
+        type: Documentation
+      - url: openapi/affinda-documents-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/affinda-document-schema.json
+        type: JSONSchema
+      - url: json-ld/affinda-context.jsonld
+        type: JSONLD
+    description: >-
+      Upload documents (PDF, images, DOCX, XLSX, TXT, HTML) and Affinda returns structured JSON extraction with
+      confidence scores, bounding boxes, and OCR text. Supports invoices, resumes, receipts, contracts, passports, and
+      custom document types. 20 MB file size limit (5 MB for resumes), 20 pages default. Returns parsing status, raw
+      text, parsed fields, and original file references.
+  - aid: affinda:affinda-document-types-api
+    name: Affinda Document Types API
+    tags:
+      - Document Processing
+      - Document Types
+      - Models
+      - Configuration
+    humanURL: https://docs.affinda.com/reference/document-types
+    properties:
+      - url: https://docs.affinda.com/reference/document-types
+        type: Documentation
+      - url: openapi/affinda-document-types-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Manage document type definitions — the model configuration governing how a specific document category (invoice,
+      resume, custom contract) is parsed. Each document type exposes a JSON Schema and optional Pydantic model
+      representation. Document types are configured in the dashboard or natural-language workflow builder and reused
+      across workspaces and collections.
+  - aid: affinda:affinda-extractors-api
+    name: Affinda Extractors API
+    tags:
+      - Document Processing
+      - Extractors
+      - Models
+    humanURL: https://docs.affinda.com/reference
+    properties:
+      - url: https://docs.affinda.com/reference
+        type: Documentation
+      - url: openapi/affinda-extractors-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      List and inspect the underlying extractor models that power document parsing. Extractors are Affinda's named ML
+      pipelines (resume extractor, invoice extractor, receipt extractor, passport extractor, etc.) and are referenced
+      from document type configurations.
+  - aid: affinda:affinda-document-splitters-api
+    name: Affinda Document Splitters API
+    tags:
+      - Document Processing
+      - Splitting
+      - Classification
+    humanURL: https://docs.affinda.com/reference
+    properties:
+      - url: https://docs.affinda.com/reference
+        type: Documentation
+      - url: openapi/affinda-document-splitters-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Configure and run document splitting and classification across multi-document PDFs. Splitters identify document
+      boundaries inside a single uploaded file, classify each segment by document type, and route each segment to the
+      correct extractor.
+  - aid: affinda:affinda-workspaces-api
+    name: Affinda Workspaces API
+    tags:
+      - Workspaces
+      - Organization
+      - Permissions
+    humanURL: https://docs.affinda.com/reference/workspaces
+    properties:
+      - url: https://docs.affinda.com/reference/workspaces
+        type: Documentation
+      - url: openapi/affinda-workspaces-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Workspaces group together related collections, documents, members, and webhook subscriptions. Workspace
+      identifiers scope every document upload, listing, and webhook delivery. Includes per-workspace usage reporting for
+      credits and pages processed.
+  - aid: affinda:affinda-organizations-api
+    name: Affinda Organizations API
+    tags:
+      - Organization
+      - Administration
+      - Account
+    humanURL: https://docs.affinda.com/reference
+    properties:
+      - url: https://docs.affinda.com/reference
+        type: Documentation
+      - url: openapi/affinda-organizations-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Manage the top-level organization account — read and update organization details. Organizations contain users,
+      billing, document types, and workspaces. Per-user limit of 3 API keys.
+  - aid: affinda:affinda-invitations-api
+    name: Affinda Invitations API
+    tags:
+      - Organization
+      - Members
+      - Invitations
+    humanURL: https://docs.affinda.com/reference
+    properties:
+      - url: https://docs.affinda.com/reference
+        type: Documentation
+      - url: openapi/affinda-invitations-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Create, list, and respond to invitations adding users to the organization. Supports invitation token lookup for
+      join flows and revocation of pending invitations.
+  - aid: affinda:affinda-data-sources-api
+    name: Affinda Data Sources API
+    tags:
+      - Data Sources
+      - Master Data
+      - Matching
+    humanURL: https://docs.affinda.com/reference
+    properties:
+      - url: https://docs.affinda.com/reference
+        type: Documentation
+      - url: openapi/affinda-data-sources-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Manage custom mapping data sources — master-data lists used to match raw extracted values (vendor names, SKUs,
+      categories) to known canonical entities. Upload values via the API and reference the data source from a document
+      type field to enable automatic data matching during parsing.
+  - aid: affinda:affinda-annotations-api
+    name: Affinda Annotations API
+    tags:
+      - Annotations
+      - Validation
+      - Human in the Loop
+    humanURL: https://docs.affinda.com/reference/annotations
+    properties:
+      - url: https://docs.affinda.com/reference/annotations
+        type: Documentation
+      - url: openapi/affinda-annotations-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Manually create, update, and delete annotations on uploaded documents. Annotations are the field-level extraction
+      objects (value, confidence, bounding box, parent field) and provide the surface for human-in-the-loop validation
+      and review. Supports batch create, update, and delete for high-throughput review workflows.
+  - aid: affinda:affinda-validation-results-api
+    name: Affinda Validation Results API
+    tags:
+      - Validation
+      - Quality
+      - Human in the Loop
+    humanURL: https://docs.affinda.com/reference
+    properties:
+      - url: https://docs.affinda.com/reference
+        type: Documentation
+      - url: openapi/affinda-validation-results-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Track the status and findings of validation rules attached to parsed documents. Validation results record passes,
+      failures, and remediation context for field-level rules and inform the embeddable validation UI. Supports batch
+      create and delete.
+  - aid: affinda:affinda-tags-api
+    name: Affinda Tags API
+    tags:
+      - Tags
+      - Metadata
+      - Organization
+    humanURL: https://docs.affinda.com/reference
+    properties:
+      - url: https://docs.affinda.com/reference
+        type: Documentation
+      - url: openapi/affinda-tags-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Tag management for parsed documents. Tags can be arbitrarily attached to documents to support routing,
+      segmentation, search filters, and downstream workflow triggers. Supports batch-add and batch-remove on document
+      collections.
+  - aid: affinda:affinda-usage-api
+    name: Affinda Usage API
+    tags:
+      - Usage
+      - Credits
+      - Reporting
+      - FinOps
+    humanURL: https://docs.affinda.com/reference
+    properties:
+      - url: https://docs.affinda.com/reference
+        type: Documentation
+      - url: openapi/affinda-usage-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Retrieve daily credits consumption for the organization across all workspaces and document types. Used for billing
+      reconciliation, budget tracking, and FinOps reporting.
+  - aid: affinda:affinda-webhooks-api
+    name: Affinda Webhooks API
+    tags:
+      - Webhooks
+      - Events
+      - Integration
+    humanURL: https://docs.affinda.com/reference/webhooks
+    properties:
+      - url: https://docs.affinda.com/reference/webhooks
+        type: Documentation
+      - url: openapi/affinda-webhooks-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Resthook-style webhook subscriptions for document parsing events. Create a subscription, receive a probe payload,
+      and call the activation endpoint to confirm the receiver. Affinda delivers events such as document parsed,
+      document failed, and validation completed to the registered URL.
+  - aid: affinda:affinda-search-match-api
+    name: Affinda Search and Match API
+    tags:
+      - Search
+      - Matching
+      - Resume Search
+      - Job Description Search
+      - Recruitment
+    humanURL: https://docs.affinda.com/reference
+    properties:
+      - url: https://docs.affinda.com/reference
+        type: Documentation
+      - url: openapi/affinda-search-match-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Resume search, job description search, and matching across parsed-document indexes. Score candidates against a job
+      description (or vice versa), retrieve match details, configure search and embed parameters, and request job-title
+      and skill suggestions. Includes index management for organizing parsed documents and embeddable UI configuration
+      for resume and JD search components.
 name: Affinda
 tags:
-- AI
-- Artificial Intelligence
-- Document Processing
-- Intelligent Document Processing
-- IDP
-- OCR
-- Resume Parsing
-- Invoice Parsing
-- Receipt Parsing
-- Document Extraction
-- Document Classification
-- Document Splitting
-- Recruitment
-- Banking
-- Insurance
-- Logistics
-- Healthcare
-- Government
+  - AI
+  - Artificial Intelligence
+  - Document Processing
+  - Intelligent Document Processing
+  - IDP
+  - OCR
+  - Resume Parsing
+  - Invoice Parsing
+  - Receipt Parsing
+  - Document Extraction
+  - Document Classification
+  - Document Splitting
+  - Recruitment
+  - Banking
+  - Insurance
+  - Logistics
+  - Healthcare
+  - Government
 kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/affinda-add-collection-data-field-workflow.yml
-    name: Affinda Add a Data Field to a Collection
-    summary: Create a workspace and collection, then add a custom data field plus data point to the collection.
-  - url: arazzo/affinda-add-workspace-member-workflow.yml
-    name: Affinda Add a Member to a Workspace
-    summary: Create a workspace in an organization and add a user to it as a member.
-  - url: arazzo/affinda-bootstrap-organization-workspace-workflow.yml
-    name: Affinda Bootstrap Organization and Workspace
-    summary: Create an organization, create a workspace inside it, then read the organization detail back.
-  - url: arazzo/affinda-configure-resume-search-embed-workflow.yml
-    name: Affinda Configure and Embed Resume Search
-    summary: Read the resume search config, update its weights, then mint a signed embeddable search URL.
-  - url: arazzo/affinda-create-data-point-with-choices-workflow.yml
-    name: Affinda Create Enum Data Point and Populate Choices
-    summary: Create an enum-style data point on an extractor and replace its full set of choices.
-  - url: arazzo/affinda-create-data-source-and-add-value-workflow.yml
-    name: Affinda Create Mapping Data Source and Add a Value
-    summary: Create a mapping data source, add a value to it, then list its values.
-  - url: arazzo/affinda-create-document-from-data-and-index-workflow.yml
-    name: Affinda Create Document from Data and Index It
-    summary: Create a resume document directly from structured data, wait for it, then add it to a search index.
-  - url: arazzo/affinda-create-extractor-with-data-point-workflow.yml
-    name: Affinda Create Extractor with a Data Point
-    summary: Create a custom extractor in an organization and add a custom data point to it.
-  - url: arazzo/affinda-create-index-and-add-document-workflow.yml
-    name: Affinda Create Search Index and Add a Document
-    summary: Create a Search & Match index, add a document to it, then list the index's documents.
-  - url: arazzo/affinda-create-tag-and-tag-documents-workflow.yml
-    name: Affinda Create a Tag and Apply It to Documents
-    summary: Create a tag in a workspace and batch-apply it to a set of documents.
-  - url: arazzo/affinda-document-type-to-json-schema-workflow.yml
-    name: Affinda Create Document Type and Generate JSON Schema
-    summary: Create a document type in an organization, then generate a JSON schema and Pydantic models from it.
-  - url: arazzo/affinda-find-and-move-document-workflow.yml
-    name: Affinda Find a Document and Move It to Another Collection
-    summary: Locate a document by its custom identifier, then move it into a different collection.
-  - url: arazzo/affinda-invite-member-and-respond-workflow.yml
-    name: Affinda Invite Organization Member and Respond
-    summary: Create an organization invitation, look it up by token, and accept it on the invitee's behalf.
-  - url: arazzo/affinda-job-description-search-and-detail-workflow.yml
-    name: Affinda Job Description Search and Detail
-    summary: Run a job description search using a resume and fetch the detail for the top matching role.
-  - url: arazzo/affinda-parse-and-correct-annotations-workflow.yml
-    name: Affinda Parse and Correct Annotations
-    summary: Upload a document, wait for parsing, list its annotations, then batch-correct them.
-  - url: arazzo/affinda-parse-and-reject-document-workflow.yml
-    name: Affinda Parse and Reject a Document
-    summary: Upload a document, wait for parsing, inspect the result, then branch to reject or confirm it.
-  - url: arazzo/affinda-parse-and-validate-rule-workflow.yml
-    name: Affinda Parse and Record a Validation Result
-    summary: Upload a document, wait for parsing, read its annotations, and record a validation result against it.
-  - url: arazzo/affinda-provision-and-ingest-document-workflow.yml
-    name: Affinda Provision Collection and Ingest a Document
-    summary: Create a workspace, create a collection bound to an extractor, then upload a document into it and parse it.
-  - url: arazzo/affinda-provision-workspace-collection-workflow.yml
-    name: Affinda Provision Workspace and Collection
-    summary: Create a workspace inside an organization and a collection bound to an extractor within it.
-  - url: arazzo/affinda-rename-document-type-and-refresh-schema-workflow.yml
-    name: Affinda Rename Document Type and Refresh Its Schema
-    summary: Look up a document type, rename it, then regenerate its JSON schema.
-  - url: arazzo/affinda-resume-search-and-detail-workflow.yml
-    name: Affinda Resume Search and Detail
-    summary: Run a resume search against an index and fetch the detailed match breakdown for the top result.
-  - url: arazzo/affinda-split-document-and-reparse-workflow.yml
-    name: Affinda Split a Document and Re-parse
-    summary: Upload a multi-page document, wait for parsing, then split it into separate documents that re-parse.
-  - url: arazzo/affinda-update-resume-data-and-reindex-workflow.yml
-    name: Affinda Update Resume Data and Re-index
-    summary: Update the parsed data of a resume document and refresh it in a search index.
-  - url: arazzo/affinda-upload-and-parse-document-workflow.yml
-    name: Affinda Upload and Parse a Document
-    summary: Upload a document for parsing, poll until processing completes, then retrieve the parsed data.
-  - url: arazzo/affinda-upload-from-url-and-validate-workflow.yml
-    name: Affinda Upload from URL, Parse, and Confirm
-    summary: Upload a document by URL, wait for parsing, then confirm it in the validation tool.
-  - url: arazzo/affinda-webhook-subscribe-and-activate-workflow.yml
-    name: Affinda Subscribe and Activate a Webhook
-    summary: Create a resthook subscription for an event and activate it with the received secret.
-  - url: arazzo/affinda-workspace-usage-report-workflow.yml
-    name: Affinda Workspace Usage Report
-    summary: List an organization's workspaces, then pull a daily credit-consumption report scoped to the first workspace.
-- type: Portal
-  url: https://www.affinda.com
-- type: Documentation
-  url: https://docs.affinda.com
-- type: GettingStarted
-  url: https://docs.affinda.com/reference/getting-started
-- type: OpenAPI
-  url: https://api.affinda.com/static/v3/api_spec.yaml
-- type: AgentSkill
-  url: https://docs.affinda.com/skill.md
-  name: Affinda Skill File for AI Agents
-- type: APIReference
-  url: https://docs.affinda.com/reference
-- type: Pricing
-  url: https://www.affinda.com/pricing
-- type: SignUp
-  url: https://app.affinda.com/auth/register
-- type: Login
-  url: https://app.affinda.com/auth/login
-- type: Login
-  url: https://app.us1.affinda.com/auth/login
-  name: US Region Login
-- type: Login
-  url: https://app.eu1.affinda.com/auth/login
-  name: EU Region Login
-- type: Authentication
-  url: https://docs.affinda.com/reference/authentication
-- type: Webhooks
-  url: https://docs.affinda.com/reference/webhooks
-- type: ChangeLog
-  url: https://docs.affinda.com/changelog
-- type: Blog
-  url: https://www.affinda.com/blog
-- type: Academy
-  url: https://www.affinda.com/affinda-academy
-- type: Support
-  url: https://support.affinda.com
-- type: ContactUs
-  url: https://www.affinda.com/contact
-- type: Security
-  url: https://www.affinda.com/security
-- type: TermsOfService
-  url: https://www.affinda.com/legal/terms-of-use
-- type: PrivacyPolicy
-  url: https://www.affinda.com/legal/privacy-policy
-- type: GitHubOrganization
-  url: https://github.com/affinda
-- type: LinkedIn
-  url: https://www.linkedin.com/company/affinda
-- type: Twitter
-  url: https://twitter.com/affinda_ai
-- type: SDK
-  url: https://github.com/affinda/affinda-python
-  name: Python SDK (affinda-python)
-- type: SDK
-  url: https://github.com/affinda/affinda-typescript
-  name: TypeScript / JavaScript SDK (affinda-typescript)
-- type: SDK
-  url: https://www.npmjs.com/package/@affinda/affinda
-  name: NPM Package @affinda/affinda
-- type: SDK
-  url: https://pypi.org/project/affinda/
-  name: PyPI Package affinda
-- type: SDK
-  url: https://www.nuget.org/packages/Affinda.API
-  name: .NET NuGet Package Affinda.API
-- type: SDK
-  url: https://central.sonatype.com/artifact/com.affinda.api/affinda-api-client
-  name: Java Maven Artifact com.affinda.api:affinda-api-client
-- type: Regions
-  data:
-  - region: AUS/Global
-    baseURL: https://api.affinda.com
-    app: https://app.affinda.com
-  - region: US
-    baseURL: https://api.us1.affinda.com
-    app: https://app.us1.affinda.com
-  - region: EU
-    baseURL: https://api.eu1.affinda.com
-    app: https://app.eu1.affinda.com
-- type: Compliance
-  data:
-  - SOC 2 Type II
-  - ISO 27001:2022
-  - GDPR
-  - HIPAA (Enterprise tier)
-- url: plans/affinda-plans-pricing.yml
-  type: Plans
-- url: rate-limits/affinda-rate-limits.yml
-  type: RateLimits
-- url: finops/affinda-finops.yml
-  type: FinOps
-- type: Features
-  data:
-  - Intelligent Document Processing platform with natural-language workflow configuration
-  - Resume parsing with skills, work experience, education, and language extraction
-  - Invoice parsing with line items, tax breakdown, supplier matching, and currency normalization
-  - Receipt parsing for expense automation
-  - Passport and ID document extraction
-  - Contract data extraction and clause identification
-  - Custom document types configured via dashboard or natural language
-  - Document splitting and classification across multi-document PDFs
-  - Handwriting / OCR recognition
-  - Table extraction across complex multi-page tables
-  - Confidence scoring with bounding box coordinates on every field
-  - Master-data matching against custom mapping data sources
-  - Validation rules and embeddable validation UI (Business and Enterprise tiers)
-  - Resume search and matching against job descriptions with score breakdown
-  - Job description search against indexed resumes
-  - Workspace + collection scoping for multi-tenant document orgs
-  - Resthook-style webhook subscriptions with activation handshake
-  - Webhook events for document parsed, failed, and validated states
-  - Daily credits usage reporting at organization and workspace level
-  - High-priority queue (20 documents/minute) and unlimited low-priority queue
-  - Multi-region deployment (AUS/Global, US, EU) with data residency
-  - SOC 2 Type II, ISO 27001:2022, GDPR, and HIPAA (Enterprise) compliance
-  - On-premise / private-cloud deployment available on Enterprise
-  - SSO and dedicated environment options on Enterprise
-  - Free 14-day pay-as-you-go trial with prepaid credits
-  - Official Python, TypeScript, .NET, and Java client libraries
-  - skill.md file for AI agents (Claude Code, Cursor) describing the full API surface
-  sources:
-  - https://www.affinda.com
-  - https://www.affinda.com/pricing
-  - https://docs.affinda.com/reference/getting-started
-  - https://docs.affinda.com/skill.md
-  updated: '2026-05-25'
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/affinda/overview
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+      - url: arazzo/affinda-add-collection-data-field-workflow.yml
+        name: Affinda Add a Data Field to a Collection
+        summary: Create a workspace and collection, then add a custom data field plus data point to the collection.
+      - url: arazzo/affinda-add-workspace-member-workflow.yml
+        name: Affinda Add a Member to a Workspace
+        summary: Create a workspace in an organization and add a user to it as a member.
+      - url: arazzo/affinda-bootstrap-organization-workspace-workflow.yml
+        name: Affinda Bootstrap Organization and Workspace
+        summary: Create an organization, create a workspace inside it, then read the organization detail back.
+      - url: arazzo/affinda-configure-resume-search-embed-workflow.yml
+        name: Affinda Configure and Embed Resume Search
+        summary: Read the resume search config, update its weights, then mint a signed embeddable search URL.
+      - url: arazzo/affinda-create-data-point-with-choices-workflow.yml
+        name: Affinda Create Enum Data Point and Populate Choices
+        summary: Create an enum-style data point on an extractor and replace its full set of choices.
+      - url: arazzo/affinda-create-data-source-and-add-value-workflow.yml
+        name: Affinda Create Mapping Data Source and Add a Value
+        summary: Create a mapping data source, add a value to it, then list its values.
+      - url: arazzo/affinda-create-document-from-data-and-index-workflow.yml
+        name: Affinda Create Document from Data and Index It
+        summary: Create a resume document directly from structured data, wait for it, then add it to a search index.
+      - url: arazzo/affinda-create-extractor-with-data-point-workflow.yml
+        name: Affinda Create Extractor with a Data Point
+        summary: Create a custom extractor in an organization and add a custom data point to it.
+      - url: arazzo/affinda-create-index-and-add-document-workflow.yml
+        name: Affinda Create Search Index and Add a Document
+        summary: Create a Search & Match index, add a document to it, then list the index's documents.
+      - url: arazzo/affinda-create-tag-and-tag-documents-workflow.yml
+        name: Affinda Create a Tag and Apply It to Documents
+        summary: Create a tag in a workspace and batch-apply it to a set of documents.
+      - url: arazzo/affinda-document-type-to-json-schema-workflow.yml
+        name: Affinda Create Document Type and Generate JSON Schema
+        summary: Create a document type in an organization, then generate a JSON schema and Pydantic models from it.
+      - url: arazzo/affinda-find-and-move-document-workflow.yml
+        name: Affinda Find a Document and Move It to Another Collection
+        summary: Locate a document by its custom identifier, then move it into a different collection.
+      - url: arazzo/affinda-invite-member-and-respond-workflow.yml
+        name: Affinda Invite Organization Member and Respond
+        summary: Create an organization invitation, look it up by token, and accept it on the invitee's behalf.
+      - url: arazzo/affinda-job-description-search-and-detail-workflow.yml
+        name: Affinda Job Description Search and Detail
+        summary: Run a job description search using a resume and fetch the detail for the top matching role.
+      - url: arazzo/affinda-parse-and-correct-annotations-workflow.yml
+        name: Affinda Parse and Correct Annotations
+        summary: Upload a document, wait for parsing, list its annotations, then batch-correct them.
+      - url: arazzo/affinda-parse-and-reject-document-workflow.yml
+        name: Affinda Parse and Reject a Document
+        summary: Upload a document, wait for parsing, inspect the result, then branch to reject or confirm it.
+      - url: arazzo/affinda-parse-and-validate-rule-workflow.yml
+        name: Affinda Parse and Record a Validation Result
+        summary: Upload a document, wait for parsing, read its annotations, and record a validation result against it.
+      - url: arazzo/affinda-provision-and-ingest-document-workflow.yml
+        name: Affinda Provision Collection and Ingest a Document
+        summary: Create a workspace, create a collection bound to an extractor, then upload a document into it and parse it.
+      - url: arazzo/affinda-provision-workspace-collection-workflow.yml
+        name: Affinda Provision Workspace and Collection
+        summary: Create a workspace inside an organization and a collection bound to an extractor within it.
+      - url: arazzo/affinda-rename-document-type-and-refresh-schema-workflow.yml
+        name: Affinda Rename Document Type and Refresh Its Schema
+        summary: Look up a document type, rename it, then regenerate its JSON schema.
+      - url: arazzo/affinda-resume-search-and-detail-workflow.yml
+        name: Affinda Resume Search and Detail
+        summary: Run a resume search against an index and fetch the detailed match breakdown for the top result.
+      - url: arazzo/affinda-split-document-and-reparse-workflow.yml
+        name: Affinda Split a Document and Re-parse
+        summary: Upload a multi-page document, wait for parsing, then split it into separate documents that re-parse.
+      - url: arazzo/affinda-update-resume-data-and-reindex-workflow.yml
+        name: Affinda Update Resume Data and Re-index
+        summary: Update the parsed data of a resume document and refresh it in a search index.
+      - url: arazzo/affinda-upload-and-parse-document-workflow.yml
+        name: Affinda Upload and Parse a Document
+        summary: Upload a document for parsing, poll until processing completes, then retrieve the parsed data.
+      - url: arazzo/affinda-upload-from-url-and-validate-workflow.yml
+        name: Affinda Upload from URL, Parse, and Confirm
+        summary: Upload a document by URL, wait for parsing, then confirm it in the validation tool.
+      - url: arazzo/affinda-webhook-subscribe-and-activate-workflow.yml
+        name: Affinda Subscribe and Activate a Webhook
+        summary: Create a resthook subscription for an event and activate it with the received secret.
+      - url: arazzo/affinda-workspace-usage-report-workflow.yml
+        name: Affinda Workspace Usage Report
+        summary: List an organization's workspaces, then pull a daily credit-consumption report scoped to the first workspace.
+  - type: Portal
+    url: https://www.affinda.com
+  - type: Documentation
+    url: https://docs.affinda.com
+  - type: GettingStarted
+    url: https://docs.affinda.com/reference/getting-started
+  - type: OpenAPI
+    url: https://api.affinda.com/static/v3/api_spec.yaml
+  - type: AgentSkill
+    url: https://docs.affinda.com/skill.md
+    name: Affinda Skill File for AI Agents
+  - type: APIReference
+    url: https://docs.affinda.com/reference
+  - type: Pricing
+    url: https://www.affinda.com/pricing
+  - type: SignUp
+    url: https://app.affinda.com/auth/register
+  - type: Login
+    url: https://app.affinda.com/auth/login
+  - type: Login
+    url: https://app.us1.affinda.com/auth/login
+    name: US Region Login
+  - type: Login
+    url: https://app.eu1.affinda.com/auth/login
+    name: EU Region Login
+  - type: Authentication
+    url: https://docs.affinda.com/reference/authentication
+  - type: Webhooks
+    url: https://docs.affinda.com/reference/webhooks
+  - type: ChangeLog
+    url: https://docs.affinda.com/changelog
+  - type: Blog
+    url: https://www.affinda.com/blog
+  - type: Academy
+    url: https://www.affinda.com/affinda-academy
+  - type: Support
+    url: https://support.affinda.com
+  - type: ContactUs
+    url: https://www.affinda.com/contact
+  - type: Security
+    url: https://www.affinda.com/security
+  - type: TermsOfService
+    url: https://www.affinda.com/legal/terms-of-use
+  - type: PrivacyPolicy
+    url: https://www.affinda.com/legal/privacy-policy
+  - type: GitHubOrganization
+    url: https://github.com/affinda
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/affinda
+  - type: Twitter
+    url: https://twitter.com/affinda_ai
+  - type: SDK
+    url: https://github.com/affinda/affinda-python
+    name: Python SDK (affinda-python)
+  - type: SDK
+    url: https://github.com/affinda/affinda-typescript
+    name: TypeScript / JavaScript SDK (affinda-typescript)
+  - type: SDK
+    url: https://www.npmjs.com/package/@affinda/affinda
+    name: NPM Package @affinda/affinda
+  - type: SDK
+    url: https://pypi.org/project/affinda/
+    name: PyPI Package affinda
+  - type: SDK
+    url: https://www.nuget.org/packages/Affinda.API
+    name: .NET NuGet Package Affinda.API
+  - type: SDK
+    url: https://central.sonatype.com/artifact/com.affinda.api/affinda-api-client
+    name: Java Maven Artifact com.affinda.api:affinda-api-client
+  - type: Regions
+    data:
+      - region: AUS/Global
+        baseURL: https://api.affinda.com
+        app: https://app.affinda.com
+      - region: US
+        baseURL: https://api.us1.affinda.com
+        app: https://app.us1.affinda.com
+      - region: EU
+        baseURL: https://api.eu1.affinda.com
+        app: https://app.eu1.affinda.com
+  - type: Compliance
+    data:
+      - SOC 2 Type II
+      - ISO 27001:2022
+      - GDPR
+      - HIPAA (Enterprise tier)
+  - url: plans/affinda-plans-pricing.yml
+    type: Plans
+  - url: rate-limits/affinda-rate-limits.yml
+    type: RateLimits
+  - url: finops/affinda-finops.yml
+    type: FinOps
+  - type: Features
+    data:
+      - Intelligent Document Processing platform with natural-language workflow configuration
+      - Resume parsing with skills, work experience, education, and language extraction
+      - Invoice parsing with line items, tax breakdown, supplier matching, and currency normalization
+      - Receipt parsing for expense automation
+      - Passport and ID document extraction
+      - Contract data extraction and clause identification
+      - Custom document types configured via dashboard or natural language
+      - Document splitting and classification across multi-document PDFs
+      - Handwriting / OCR recognition
+      - Table extraction across complex multi-page tables
+      - Confidence scoring with bounding box coordinates on every field
+      - Master-data matching against custom mapping data sources
+      - Validation rules and embeddable validation UI (Business and Enterprise tiers)
+      - Resume search and matching against job descriptions with score breakdown
+      - Job description search against indexed resumes
+      - Workspace + collection scoping for multi-tenant document orgs
+      - Resthook-style webhook subscriptions with activation handshake
+      - Webhook events for document parsed, failed, and validated states
+      - Daily credits usage reporting at organization and workspace level
+      - High-priority queue (20 documents/minute) and unlimited low-priority queue
+      - Multi-region deployment (AUS/Global, US, EU) with data residency
+      - SOC 2 Type II, ISO 27001:2022, GDPR, and HIPAA (Enterprise) compliance
+      - On-premise / private-cloud deployment available on Enterprise
+      - SSO and dedicated environment options on Enterprise
+      - Free 14-day pay-as-you-go trial with prepaid credits
+      - Official Python, TypeScript, .NET, and Java client libraries
+      - skill.md file for AI agents (Claude Code, Cursor) describing the full API surface
+    sources:
+      - https://www.affinda.com
+      - https://www.affinda.com/pricing
+      - https://docs.affinda.com/reference/getting-started
+      - https://docs.affinda.com/skill.md
+    updated: '2026-05-25'
 created: '2026-05-25T00:00:00.000Z'
 modified: '2026-05-25'
 position: Consuming
-description: Affinda is an Intelligent Document Processing (IDP) platform that uses AI to extract structured
-  data from documents — resumes, invoices, receipts, contracts, passports, IDs, and custom document types.
-  The v3 REST API exposes document upload and parsing, document type configuration, workspaces, collections,
-  data sources for master-data matching, validation results, annotations for human-in-the-loop review,
-  webhooks via resthook subscriptions, daily usage reporting, and resume / job-description search and match
-  for recruitment workflows. The platform is deployed across AUS/Global, US, and EU regions for data
-  residency, holds SOC 2 Type II and ISO 27001:2022 certification, and ships official Python, TypeScript,
-  .NET, and Java SDKs alongside a skill.md file for AI coding agents.
+description: >-
+  Affinda is an Intelligent Document Processing (IDP) platform that uses AI to extract structured data from documents —
+  resumes, invoices, receipts, contracts, passports, IDs, and custom document types. The v3 REST API exposes document
+  upload and parsing, document type configuration, workspaces, collections, data sources for master-data matching,
+  validation results, annotations for human-in-the-loop review, webhooks via resthook subscriptions, daily usage
+  reporting, and resume / job-description search and match for recruitment workflows. The platform is deployed across
+  AUS/Global, US, and EU regions for data residency, holds SOC 2 Type II and ISO 27001:2022 certification, and ships
+  official Python, TypeScript, .NET, and Java SDKs alongside a skill.md file for AI coding agents.
 maintainers:
-- FN: Kin Lane
-  email: info@apievangelist.com
-  X: apievangelist
-  url: https://apievangelist.com
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X: apievangelist
+    url: https://apievangelist.com
 specificationVersion: '0.16'
