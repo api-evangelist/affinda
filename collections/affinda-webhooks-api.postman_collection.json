@@ -1,0 +1,1822 @@
+{
+  "item": [
+    {
+      "id": "b669c65b-2dfb-4616-b6ca-7c1c039998e5",
+      "name": "Webhooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "74ca6c17-5f8f-455c-ae21-267fb677e77d",
+          "name": "Get list of all resthook subscriptions",
+          "request": {
+            "name": "Get list of all resthook subscriptions",
+            "description": {
+              "content": "Returns your resthook subscriptions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "resthook_subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The number of documents to skip before starting to collect the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The numbers of results to return."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d07c6c51-3a81-4ae2-a896-be7b74fc1b82",
+              "name": "All matching resthook subscriptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 10,\n  \"results\": [\n    {\n      \"id\": 1094,\n      \"event\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"organization\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"workspace\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"targetUrl\": \"https://my-site.com/receive\",\n      \"active\": true,\n      \"autoDeactivated\": true,\n      \"autoDeactivateReason\": \"Resthook fails after 10 retries. The last error received was: 500 - Internal server error.\",\n      \"version\": \"v3\"\n    },\n    {\n      \"id\": 2943,\n      \"event\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"organization\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"workspace\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"targetUrl\": \"https://my-site.com/receive\",\n      \"active\": true,\n      \"autoDeactivated\": true,\n      \"autoDeactivateReason\": \"Resthook fails after 10 retries. The last error received was: 500 - Internal server error.\",\n      \"version\": \"v3\"\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df662517-9d47-4f9b-92db-c6bc20ef4818",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5d44b01-8b1a-490f-8973-21ec3b80969a",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c119abdd-adfd-48be-ba93-159de1e9a3e0",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb8488bf-f18a-44ca-b134-6bc43960c699",
+          "name": "Create a resthook subscription",
+          "request": {
+            "name": "Create a resthook subscription",
+            "description": {
+              "content": "After a subscription is successfully created, we'll send a POST request to your target URL with a `X-Hook-Secret` header. <br />\nYou need to response to this request with a 200 status code to confirm your subscribe intention. <br />\nThen, you need to use the `X-Hook-Secret` to activate the subscription using the [/resthook_subscriptions/activate](#post-/v3/resthook_subscriptions/activate) endpoint. <br />\nFor more information and detailed instructions, [see our webhooks documentation here.](https://docs.affinda.com/docs/webhooks)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "resthook_subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"targetUrl\": \"<string>\",\n  \"event\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "acff0d51-89aa-4787-9692-25b7d0ee4880",
+              "name": "Successfully created a resthook subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetUrl\": \"https://my-site.com/receive\",\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"version\": \"v3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3193,\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": true,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"typography\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"borderRadius\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fontUrl\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"hideActions\": false,\n      \"hideCollection\": false,\n      \"hideEditPages\": false,\n      \"hideExport\": false,\n      \"hideFilename\": false,\n      \"hideShowRawValues\": true,\n      \"hideReject\": false,\n      \"hideReparse\": true,\n      \"hideRunOcr\": true,\n      \"hideTags\": true,\n      \"hideWarnings\": true,\n      \"restrictDocumentSplitting\": false,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": true,\n      \"hideDocumentStatus\": true\n    },\n    \"showCustomFieldCreation\": true\n  },\n  \"workspace\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"string\",\n    \"organization\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"Grove Street King\",\n      \"userRole\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n      \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n      \"isTrial\": false,\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideActions\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideCollection\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideEditPages\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideExport\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideFilename\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideShowRawValues\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideReject\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideReparse\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideRunOcr\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideTags\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideWarnings\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"restrictDocumentSplitting\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableCurrencyFormatting\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableEditDocumentMetadata\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableManualAnnotationEditing\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideDocumentStatus\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"showCustomFieldCreation\": true\n    }\n  },\n  \"targetUrl\": \"https://my-site.com/receive\",\n  \"active\": true,\n  \"autoDeactivated\": true,\n  \"autoDeactivateReason\": \"Resthook fails after 10 retries. The last error received was: 500 - Internal server error.\",\n  \"version\": \"v3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "188aa090-9906-40cd-b967-0bf5bdd90825",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetUrl\": \"https://my-site.com/receive\",\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"version\": \"v3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61073595-ef91-4eb0-86ef-ed7d8380b675",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetUrl\": \"https://my-site.com/receive\",\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"version\": \"v3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62411dc2-e12c-4852-8a4d-0677314b0f30",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetUrl\": \"https://my-site.com/receive\",\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"version\": \"v3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37366f3a-c533-45b4-adb9-9e5bc1a8edf1",
+          "name": "Get specific resthook subscription",
+          "request": {
+            "name": "Get specific resthook subscription",
+            "description": {
+              "content": "Return a specific resthook subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "resthook_subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Resthook subscription's ID"
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2cdc0d12-cfd0-4f85-b2e8-78120711abbd",
+              "name": "Successfully retrieved resthook subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Resthook subscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3193,\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": true,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"typography\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"borderRadius\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fontUrl\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"hideActions\": false,\n      \"hideCollection\": false,\n      \"hideEditPages\": false,\n      \"hideExport\": false,\n      \"hideFilename\": false,\n      \"hideShowRawValues\": true,\n      \"hideReject\": false,\n      \"hideReparse\": true,\n      \"hideRunOcr\": true,\n      \"hideTags\": true,\n      \"hideWarnings\": true,\n      \"restrictDocumentSplitting\": false,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": true,\n      \"hideDocumentStatus\": true\n    },\n    \"showCustomFieldCreation\": true\n  },\n  \"workspace\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"string\",\n    \"organization\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"Grove Street King\",\n      \"userRole\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n      \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n      \"isTrial\": false,\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideActions\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideCollection\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideEditPages\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideExport\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideFilename\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideShowRawValues\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideReject\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideReparse\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideRunOcr\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideTags\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideWarnings\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"restrictDocumentSplitting\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableCurrencyFormatting\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableEditDocumentMetadata\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableManualAnnotationEditing\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideDocumentStatus\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"showCustomFieldCreation\": true\n    }\n  },\n  \"targetUrl\": \"https://my-site.com/receive\",\n  \"active\": true,\n  \"autoDeactivated\": true,\n  \"autoDeactivateReason\": \"Resthook fails after 10 retries. The last error received was: 500 - Internal server error.\",\n  \"version\": \"v3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2193d569-6b53-436b-b61b-bc59ee3a1ef2",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Resthook subscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "081d03e1-db97-4b4e-96f6-f7a2fd1c09a2",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Resthook subscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86e77fb5-7a30-460b-b640-d6c43ef738f4",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Resthook subscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c786ce0-72f5-41c2-bb4f-8b8fdaa483b2",
+          "name": "Update a resthook subscription",
+          "request": {
+            "name": "Update a resthook subscription",
+            "description": {
+              "content": "Update data of a resthook subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "resthook_subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) ResthookSubscription's ID"
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc850346-e3ed-4884-813e-74b77b7c16a8",
+              "name": "Successfully updated resthook subscription data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ResthookSubscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"version\": \"v3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3193,\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": true,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"typography\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"borderRadius\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fontUrl\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"hideActions\": false,\n      \"hideCollection\": false,\n      \"hideEditPages\": false,\n      \"hideExport\": false,\n      \"hideFilename\": false,\n      \"hideShowRawValues\": true,\n      \"hideReject\": false,\n      \"hideReparse\": true,\n      \"hideRunOcr\": true,\n      \"hideTags\": true,\n      \"hideWarnings\": true,\n      \"restrictDocumentSplitting\": false,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": true,\n      \"hideDocumentStatus\": true\n    },\n    \"showCustomFieldCreation\": true\n  },\n  \"workspace\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"string\",\n    \"organization\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"Grove Street King\",\n      \"userRole\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n      \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n      \"isTrial\": false,\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideActions\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideCollection\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideEditPages\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideExport\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideFilename\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideShowRawValues\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideReject\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideReparse\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideRunOcr\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideTags\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideWarnings\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"restrictDocumentSplitting\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableCurrencyFormatting\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableEditDocumentMetadata\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableManualAnnotationEditing\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideDocumentStatus\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"showCustomFieldCreation\": true\n    }\n  },\n  \"targetUrl\": \"https://my-site.com/receive\",\n  \"active\": true,\n  \"autoDeactivated\": true,\n  \"autoDeactivateReason\": \"Resthook fails after 10 retries. The last error received was: 500 - Internal server error.\",\n  \"version\": \"v3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25dd9bec-4619-4448-a341-721024888f09",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ResthookSubscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"version\": \"v3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d76ae48-7c76-44b0-b9d7-79bf0b66fb79",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ResthookSubscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"version\": \"v3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f25ff478-e91c-4521-ade3-afde4556521b",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ResthookSubscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"version\": \"v3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8226f0be-cd94-4590-9760-1c337ff26446",
+          "name": "Delete a resthook subscription",
+          "request": {
+            "name": "Delete a resthook subscription",
+            "description": {
+              "content": "Deletes the specified resthook subscription from the database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "resthook_subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) ResthookSubscription's ID"
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b048a6d2-b968-4381-b2ef-0c7751337f9f",
+              "name": "Delete successful, no content returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ResthookSubscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aa70c089-23f2-40e8-a8de-689eb2b654d3",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ResthookSubscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8297eb0-29a0-4b32-9f54-b3c7bcfea334",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ResthookSubscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75029437-62cd-4947-a757-c17d08420722",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ResthookSubscription's ID"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94e18f03-fc04-4bbf-bb8c-ce2e4aaeb24b",
+          "name": "Activate a resthook subscription",
+          "request": {
+            "name": "Activate a resthook subscription",
+            "description": {
+              "content": "After creating a subscription, we'll send a POST request to your target URL with a `X-Hook-Secret` header. <br />\nYou should response to this with a 200 status code, and use the value of the `X-Hook-Secret` header that you received to activate the subscription using this endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "resthook_subscriptions",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The secret received when creating a subscription.",
+                "key": "X-Hook-Secret",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ecde8c5-c656-453d-8f62-84dcb001d2a1",
+              "name": "Successfully activated a resthook subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The secret received when creating a subscription.",
+                    "key": "X-Hook-Secret",
+                    "value": "36bacde97882f563992b00a89163eb9058d956fdc2f914870b8903ec93cdf372"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3193,\n  \"event\": \"document.parse.succeeded\",\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": true,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"typography\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"borderRadius\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fontUrl\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"hideActions\": false,\n      \"hideCollection\": false,\n      \"hideEditPages\": false,\n      \"hideExport\": false,\n      \"hideFilename\": false,\n      \"hideShowRawValues\": true,\n      \"hideReject\": false,\n      \"hideReparse\": true,\n      \"hideRunOcr\": true,\n      \"hideTags\": true,\n      \"hideWarnings\": true,\n      \"restrictDocumentSplitting\": false,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": true,\n      \"hideDocumentStatus\": true\n    },\n    \"showCustomFieldCreation\": true\n  },\n  \"workspace\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"string\",\n    \"organization\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"Grove Street King\",\n      \"userRole\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n      \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n      \"isTrial\": false,\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideActions\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideCollection\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideEditPages\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideExport\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideFilename\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideShowRawValues\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideReject\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideReparse\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideRunOcr\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideTags\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideWarnings\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"restrictDocumentSplitting\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableCurrencyFormatting\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableEditDocumentMetadata\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"disableManualAnnotationEditing\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hideDocumentStatus\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"showCustomFieldCreation\": true\n    }\n  },\n  \"targetUrl\": \"https://my-site.com/receive\",\n  \"active\": true,\n  \"autoDeactivated\": true,\n  \"autoDeactivateReason\": \"Resthook fails after 10 retries. The last error received was: 500 - Internal server error.\",\n  \"version\": \"v3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e93e9cd-64f0-4482-a8d9-fd2a80f59d6c",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The secret received when creating a subscription.",
+                    "key": "X-Hook-Secret",
+                    "value": "36bacde97882f563992b00a89163eb9058d956fdc2f914870b8903ec93cdf372"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a272dab0-ce7c-4c2e-9394-27fc7afc3b94",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The secret received when creating a subscription.",
+                    "key": "X-Hook-Secret",
+                    "value": "36bacde97882f563992b00a89163eb9058d956fdc2f914870b8903ec93cdf372"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42574fd3-d1be-4bde-bd68-e3e86b2e750e",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The secret received when creating a subscription.",
+                    "key": "X-Hook-Secret",
+                    "value": "36bacde97882f563992b00a89163eb9058d956fdc2f914870b8903ec93cdf372"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{region}}.affinda.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c10ccb5d-9c7c-444b-8e7c-b2fe3f540157",
+    "name": "Affinda Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Affinda Webhooks API — subset of the Affinda v3 Document Processing API.",
+      "type": "text/plain"
+    }
+  }
+}

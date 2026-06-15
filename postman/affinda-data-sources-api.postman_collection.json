@@ -1,0 +1,3039 @@
+{
+  "info": {
+    "_postman_id": "05c0c8dc-5453-40e7-b910-ea06b3a43c15",
+    "name": "Affinda Data Sources API",
+    "description": "Affinda Data Sources API \u2014 subset of the Affinda v3 Document Processing API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:00:46.000Z",
+    "updatedAt": "2026-06-05T15:00:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-05c0c8dc-5453-40e7-b910-ea06b3a43c15"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "mapping_data_sources",
+          "item": [
+            {
+              "name": "{identifier}",
+              "item": [
+                {
+                  "name": "values",
+                  "item": [
+                    {
+                      "name": "{value}",
+                      "item": [
+                        {
+                          "name": "Get specific data source value",
+                          "id": "81e8f7a3-f890-4041-8890-222d14fd1548",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values",
+                                ":value"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f836958d-7ac6-483b-a59a-5606a36e4673",
+                                  "key": "identifier",
+                                  "value": "<string>",
+                                  "description": "(Required) Data source's identifier"
+                                },
+                                {
+                                  "id": "d93f3f1a-075a-418f-ad7c-aec87a4a01cf",
+                                  "key": "value",
+                                  "value": "<string>",
+                                  "description": "(Required) Data Source Value's value"
+                                }
+                              ]
+                            },
+                            "description": "Return a specific mapping dta source value."
+                          },
+                          "response": [
+                            {
+                              "id": "88b2991f-07f8-4889-9468-eb5b674c37e5",
+                              "name": "Successfully retrieved mapping data source value.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-88b2991f-07f8-4889-9468-eb5b674c37e5"
+                            },
+                            {
+                              "id": "af2472d3-568b-428a-98ee-5d2f23986e81",
+                              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-af2472d3-568b-428a-98ee-5d2f23986e81"
+                            },
+                            {
+                              "id": "f040587f-e761-4e2a-b1d2-0a99a0801def",
+                              "name": "Authorisation error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-f040587f-e761-4e2a-b1d2-0a99a0801def"
+                            },
+                            {
+                              "id": "0d27f9ae-5b2b-4e70-9a7e-ff57c5e4522b",
+                              "name": "UnexpectedError",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-0d27f9ae-5b2b-4e70-9a7e-ff57c5e4522b"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-81e8f7a3-f890-4041-8890-222d14fd1548"
+                        },
+                        {
+                          "name": "Update specific data source value",
+                          "id": "f549ceb7-4bab-4b40-a64f-44a2c48e2acc",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values",
+                                ":value"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a859e797-9836-44cd-bc4a-7ea47184235e",
+                                  "key": "identifier",
+                                  "value": "<string>",
+                                  "description": "(Required) Data source's identifier"
+                                },
+                                {
+                                  "id": "195b5bc5-5db3-48de-bbfa-bd7b8f743216",
+                                  "key": "value",
+                                  "value": "<string>",
+                                  "description": "(Required) Data Source's value"
+                                }
+                              ]
+                            },
+                            "description": "Update the specified mapping data source value."
+                          },
+                          "response": [
+                            {
+                              "id": "22f0db11-f785-4525-983c-41afd96d1895",
+                              "name": "Successfully updated mapping data source value.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-22f0db11-f785-4525-983c-41afd96d1895"
+                            },
+                            {
+                              "id": "d3ba6cc3-9ac1-485a-93bf-00a3aeaf9373",
+                              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-d3ba6cc3-9ac1-485a-93bf-00a3aeaf9373"
+                            },
+                            {
+                              "id": "a241993e-a686-468f-867a-c4c686fbb629",
+                              "name": "Authorisation error",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-a241993e-a686-468f-867a-c4c686fbb629"
+                            },
+                            {
+                              "id": "5343485f-f55e-4bb3-b149-7a8ef7aaf0a1",
+                              "name": "UnexpectedError",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-5343485f-f55e-4bb3-b149-7a8ef7aaf0a1"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-f549ceb7-4bab-4b40-a64f-44a2c48e2acc"
+                        },
+                        {
+                          "name": "Delete specific data source value",
+                          "id": "7a7f254b-2faf-45d0-91a5-3c2bb1a91412",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values",
+                                ":value"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "850dee87-47c6-4c9c-93fc-965c00425c27",
+                                  "key": "identifier",
+                                  "value": "<string>",
+                                  "description": "(Required) Data source's identifier"
+                                },
+                                {
+                                  "id": "23e21767-1a6c-4bf2-bb19-4ddab98acd99",
+                                  "key": "value",
+                                  "value": "<string>",
+                                  "description": "(Required) Data Source Value's value"
+                                }
+                              ]
+                            },
+                            "description": "Delete the specified mapping data source value from the database."
+                          },
+                          "response": [
+                            {
+                              "id": "8a4ca72d-6bac-4e20-aedb-2a2965e01f3b",
+                              "name": "Delete successful, no content returned",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-8a4ca72d-6bac-4e20-aedb-2a2965e01f3b"
+                            },
+                            {
+                              "id": "140a1c05-1aea-456e-a270-d4136bbe5553",
+                              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-140a1c05-1aea-456e-a270-d4136bbe5553"
+                            },
+                            {
+                              "id": "b429396e-8e1b-4e00-aa98-02ee0d269a9a",
+                              "name": "Authorisation error",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-b429396e-8e1b-4e00-aa98-02ee0d269a9a"
+                            },
+                            {
+                              "id": "d61c2a95-86eb-426a-bb0d-fcd9c4694053",
+                              "name": "UnexpectedError",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values/:value",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v3",
+                                    "mapping_data_sources",
+                                    ":identifier",
+                                    "values",
+                                    ":value"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "identifier"
+                                    },
+                                    {
+                                      "key": "value"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:00:46.000Z",
+                              "updatedAt": "2026-06-05T15:00:46.000Z",
+                              "uid": "35240-d61c2a95-86eb-426a-bb0d-fcd9c4694053"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-7a7f254b-2faf-45d0-91a5-3c2bb1a91412"
+                        }
+                      ],
+                      "id": "53d6ff8f-5a5a-4f0e-9c58-51d937f44f9b",
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-53d6ff8f-5a5a-4f0e-9c58-51d937f44f9b"
+                    },
+                    {
+                      "name": "List values for a data source",
+                      "id": "5e52523a-e7ff-46e0-8595-fbedc3eaea60",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values?limit=<integer>&offset=<integer>&search=<string>&annotation=<integer>&document=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "mapping_data_sources",
+                            ":identifier",
+                            "values"
+                          ],
+                          "query": [
+                            {
+                              "description": "The numbers of results to return.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The number of documents to skip before starting to collect the result set.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Search for specific values",
+                              "key": "search",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter based on annotation ID",
+                              "key": "annotation",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of the document to apply filter lookups on if available",
+                              "key": "document",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "63ae8953-f08a-4a7c-aa85-baadcf216993",
+                              "key": "identifier",
+                              "value": "<string>",
+                              "description": "(Required) Data source's identifier"
+                            }
+                          ]
+                        },
+                        "description": "Returns the list of all values in a mapping data source"
+                      },
+                      "response": [
+                        {
+                          "id": "a33b9302-ad0f-4f81-9c9d-b9fdaa97a1d7",
+                          "name": "Will return matching data source values",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values?limit=<integer>&offset=<integer>&search=<string>&annotation=<integer>&document=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The numbers of results to return.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The number of documents to skip before starting to collect the result set.",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Search for specific values",
+                                  "key": "search",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter based on annotation ID",
+                                  "key": "annotation",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Identifier of the document to apply filter lookups on if available",
+                                  "key": "document",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"results\": [],\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-a33b9302-ad0f-4f81-9c9d-b9fdaa97a1d7"
+                        },
+                        {
+                          "id": "57b50f01-27d3-42ed-9361-376611a01a14",
+                          "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values?limit=<integer>&offset=<integer>&search=<string>&annotation=<integer>&document=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The numbers of results to return.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The number of documents to skip before starting to collect the result set.",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Search for specific values",
+                                  "key": "search",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter based on annotation ID",
+                                  "key": "annotation",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Identifier of the document to apply filter lookups on if available",
+                                  "key": "document",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-57b50f01-27d3-42ed-9361-376611a01a14"
+                        },
+                        {
+                          "id": "bb8ccd80-2de1-4ef8-a435-79587b24f81d",
+                          "name": "Authorisation error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values?limit=<integer>&offset=<integer>&search=<string>&annotation=<integer>&document=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The numbers of results to return.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The number of documents to skip before starting to collect the result set.",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Search for specific values",
+                                  "key": "search",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter based on annotation ID",
+                                  "key": "annotation",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Identifier of the document to apply filter lookups on if available",
+                                  "key": "document",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-bb8ccd80-2de1-4ef8-a435-79587b24f81d"
+                        },
+                        {
+                          "id": "fc20a551-7a9a-470c-96f2-c939b7a25dad",
+                          "name": "UnexpectedError",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values?limit=<integer>&offset=<integer>&search=<string>&annotation=<integer>&document=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The numbers of results to return.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The number of documents to skip before starting to collect the result set.",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Search for specific values",
+                                  "key": "search",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter based on annotation ID",
+                                  "key": "annotation",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Identifier of the document to apply filter lookups on if available",
+                                  "key": "document",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-fc20a551-7a9a-470c-96f2-c939b7a25dad"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-5e52523a-e7ff-46e0-8595-fbedc3eaea60"
+                    },
+                    {
+                      "name": "Replace values for a data source",
+                      "id": "169da32e-8660-444b-95b9-1794638fd388",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "mapping_data_sources",
+                            ":identifier",
+                            "values"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b91b01ad-2c94-46d6-8e89-e1aba8c2eba2",
+                              "key": "identifier",
+                              "value": "<string>",
+                              "description": "(Required) Data source's identifier"
+                            }
+                          ]
+                        },
+                        "description": "Replaces the list of all values in a mapping data source\nNote: For large data sources (e.g. > 1000 values), it can take a few minutes after the request completes for the new values to be searchable."
+                      },
+                      "response": [
+                        {
+                          "id": "623561d7-5555-4208-bf80-3b7fdc826a44",
+                          "name": "Will return matching data source values",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[]",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-623561d7-5555-4208-bf80-3b7fdc826a44"
+                        },
+                        {
+                          "id": "dfad375d-ae54-4594-88e6-91e45c154ce4",
+                          "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-dfad375d-ae54-4594-88e6-91e45c154ce4"
+                        },
+                        {
+                          "id": "1cd3ebae-e145-46da-b070-d9a60d1905fd",
+                          "name": "Authorisation error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-1cd3ebae-e145-46da-b070-d9a60d1905fd"
+                        },
+                        {
+                          "id": "f5976308-3994-4448-a85a-bf3d6322bd0c",
+                          "name": "UnexpectedError",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-f5976308-3994-4448-a85a-bf3d6322bd0c"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-169da32e-8660-444b-95b9-1794638fd388"
+                    },
+                    {
+                      "name": "Add value for a data source",
+                      "id": "5dedf637-07a2-4f51-b6b7-a9cc8928b8cf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "mapping_data_sources",
+                            ":identifier",
+                            "values"
+                          ],
+                          "variable": [
+                            {
+                              "id": "757c7fa8-df44-4195-b184-599d1f852a3b",
+                              "key": "identifier",
+                              "value": "<string>",
+                              "description": "(Required) Data source's identifier"
+                            }
+                          ]
+                        },
+                        "description": "Adds a value to a mapping data source"
+                      },
+                      "response": [
+                        {
+                          "id": "963d8430-445c-4a79-ad3d-01892e3b6797",
+                          "name": "Will return the created mapping data source value",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-963d8430-445c-4a79-ad3d-01892e3b6797"
+                        },
+                        {
+                          "id": "9518f9a5-0085-455f-9f0f-8817335cd0d5",
+                          "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-9518f9a5-0085-455f-9f0f-8817335cd0d5"
+                        },
+                        {
+                          "id": "d209132d-cc86-46c0-84fb-1c08b479d4c9",
+                          "name": "Authorisation error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-d209132d-cc86-46c0-84fb-1c08b479d4c9"
+                        },
+                        {
+                          "id": "e35010d6-964f-4d16-8e43-7733f55fb2d0",
+                          "name": "UnexpectedError",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier/values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "mapping_data_sources",
+                                ":identifier",
+                                "values"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:46.000Z",
+                          "updatedAt": "2026-06-05T15:00:46.000Z",
+                          "uid": "35240-e35010d6-964f-4d16-8e43-7733f55fb2d0"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-5dedf637-07a2-4f51-b6b7-a9cc8928b8cf"
+                    }
+                  ],
+                  "id": "2353d928-6267-4371-af18-58ed69fa7c17",
+                  "createdAt": "2026-06-05T15:00:46.000Z",
+                  "updatedAt": "2026-06-05T15:00:46.000Z",
+                  "uid": "35240-2353d928-6267-4371-af18-58ed69fa7c17"
+                },
+                {
+                  "name": "Get specific data source",
+                  "id": "7175b2b9-9b71-4da8-a388-9c9267bc8e09",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "mapping_data_sources",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5c52dbc3-71c3-4f31-920c-82269d8010e6",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Data source's identifier"
+                        }
+                      ]
+                    },
+                    "description": "Return a specific mapping data source."
+                  },
+                  "response": [
+                    {
+                      "id": "13162a5b-4d0b-4cbb-801f-49adce1f38e6",
+                      "name": "Successfully retrieved mapping data source value.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "mapping_data_sources",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identifier\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"keyProperty\": \"<string>\",\n  \"displayProperty\": \"<string>\",\n  \"name\": \"<string>\",\n  \"schema\": {}\n}",
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-13162a5b-4d0b-4cbb-801f-49adce1f38e6"
+                    },
+                    {
+                      "id": "aec1f2bb-291b-4c8f-bce1-c9a864b18249",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "mapping_data_sources",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-aec1f2bb-291b-4c8f-bce1-c9a864b18249"
+                    },
+                    {
+                      "id": "b9f160f9-9910-408a-a5aa-5ddfd55346d2",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "mapping_data_sources",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-b9f160f9-9910-408a-a5aa-5ddfd55346d2"
+                    },
+                    {
+                      "id": "abe33ca3-c7ad-4c0a-975d-8c5e4459b7aa",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "mapping_data_sources",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-abe33ca3-c7ad-4c0a-975d-8c5e4459b7aa"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:46.000Z",
+                  "updatedAt": "2026-06-05T15:00:46.000Z",
+                  "uid": "35240-7175b2b9-9b71-4da8-a388-9c9267bc8e09"
+                },
+                {
+                  "name": "Delete specific data source",
+                  "id": "4501b122-a339-4cf8-b7e6-4debe6e874d8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "mapping_data_sources",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "39295d90-37ea-4727-9bb0-b9bba21ecf2c",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Data source's identifier"
+                        }
+                      ]
+                    },
+                    "description": "Delete the specified mapping data source from the database."
+                  },
+                  "response": [
+                    {
+                      "id": "d22e65b9-9cb9-42d9-9826-e1f1420ab16e",
+                      "name": "Delete successful, no content returned",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "mapping_data_sources",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-d22e65b9-9cb9-42d9-9826-e1f1420ab16e"
+                    },
+                    {
+                      "id": "ae4651de-821a-4222-8410-e0e9b78bcc50",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "mapping_data_sources",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-ae4651de-821a-4222-8410-e0e9b78bcc50"
+                    },
+                    {
+                      "id": "c257a366-ca23-4b84-958e-e762df3b0b8b",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "mapping_data_sources",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-c257a366-ca23-4b84-958e-e762df3b0b8b"
+                    },
+                    {
+                      "id": "fe4d9399-ba2c-4d30-8893-a25621e2f562",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/mapping_data_sources/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "mapping_data_sources",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:46.000Z",
+                      "updatedAt": "2026-06-05T15:00:46.000Z",
+                      "uid": "35240-fe4d9399-ba2c-4d30-8893-a25621e2f562"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:46.000Z",
+                  "updatedAt": "2026-06-05T15:00:46.000Z",
+                  "uid": "35240-4501b122-a339-4cf8-b7e6-4debe6e874d8"
+                }
+              ],
+              "id": "eda23b6e-9598-41ea-b93d-4fed278c6336",
+              "createdAt": "2026-06-05T15:00:46.000Z",
+              "updatedAt": "2026-06-05T15:00:46.000Z",
+              "uid": "35240-eda23b6e-9598-41ea-b93d-4fed278c6336"
+            },
+            {
+              "name": "Create a data source",
+              "id": "98db8f8b-16fa-42fd-a07e-2668d2486981",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"keyProperty\": \"<string>\",\n  \"displayProperty\": \"<string>\",\n  \"schema\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v3/mapping_data_sources",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "mapping_data_sources"
+                  ]
+                },
+                "description": "Create a custom mapping data source."
+              },
+              "response": [
+                {
+                  "id": "82e91480-53ab-4e1d-aa31-568542729faa",
+                  "name": "Successfully created a mapping data source.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"keyProperty\": \"<string>\",\n  \"displayProperty\": \"<string>\",\n  \"schema\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/mapping_data_sources",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "mapping_data_sources"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"identifier\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"keyProperty\": \"<string>\",\n  \"displayProperty\": \"<string>\",\n  \"name\": \"<string>\",\n  \"schema\": {}\n}",
+                  "createdAt": "2026-06-05T15:00:46.000Z",
+                  "updatedAt": "2026-06-05T15:00:46.000Z",
+                  "uid": "35240-82e91480-53ab-4e1d-aa31-568542729faa"
+                },
+                {
+                  "id": "64689069-ef0c-4697-a165-7a1caf38f1be",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"keyProperty\": \"<string>\",\n  \"displayProperty\": \"<string>\",\n  \"schema\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/mapping_data_sources",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "mapping_data_sources"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:46.000Z",
+                  "updatedAt": "2026-06-05T15:00:46.000Z",
+                  "uid": "35240-64689069-ef0c-4697-a165-7a1caf38f1be"
+                },
+                {
+                  "id": "783421f7-2d4d-48d8-8405-a5cc734b48f9",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"keyProperty\": \"<string>\",\n  \"displayProperty\": \"<string>\",\n  \"schema\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/mapping_data_sources",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "mapping_data_sources"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:46.000Z",
+                  "updatedAt": "2026-06-05T15:00:46.000Z",
+                  "uid": "35240-783421f7-2d4d-48d8-8405-a5cc734b48f9"
+                },
+                {
+                  "id": "3f2c3485-81d4-4d7f-b2ab-70357b11fe77",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"keyProperty\": \"<string>\",\n  \"displayProperty\": \"<string>\",\n  \"schema\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/mapping_data_sources",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "mapping_data_sources"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:46.000Z",
+                  "updatedAt": "2026-06-05T15:00:46.000Z",
+                  "uid": "35240-3f2c3485-81d4-4d7f-b2ab-70357b11fe77"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:46.000Z",
+              "updatedAt": "2026-06-05T15:00:46.000Z",
+              "uid": "35240-98db8f8b-16fa-42fd-a07e-2668d2486981"
+            },
+            {
+              "name": "List data sources",
+              "id": "2dd096f7-0d4b-41c3-903d-4531b63bfe1f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v3/mapping_data_sources?offset=<integer>&limit=<integer>&name=<string>&organization=<string>&workspace=<string>&identifier=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "mapping_data_sources"
+                  ],
+                  "query": [
+                    {
+                      "description": "The number of documents to skip before starting to collect the result set.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The numbers of results to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by organization.",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by workspace.",
+                      "key": "workspace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by identifier.",
+                      "key": "identifier",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns the list of all custom mapping data sources."
+              },
+              "response": [
+                {
+                  "id": "1c00fbaf-93e9-44fa-b6ee-2d2761388629",
+                  "name": "Will return matching data sources",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/mapping_data_sources?offset=<integer>&limit=<integer>&name=<string>&organization=<string>&workspace=<string>&identifier=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "mapping_data_sources"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by identifier.",
+                          "key": "identifier",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"results\": [\n    {\n      \"identifier\": \"<string>\",\n      \"organization\": \"<string>\",\n      \"workspace\": \"<string>\",\n      \"keyProperty\": \"<string>\",\n      \"displayProperty\": \"<string>\",\n      \"name\": \"<string>\",\n      \"schema\": {}\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"organization\": \"<string>\",\n      \"workspace\": \"<string>\",\n      \"keyProperty\": \"<string>\",\n      \"displayProperty\": \"<string>\",\n      \"name\": \"<string>\",\n      \"schema\": {}\n    }\n  ],\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:00:46.000Z",
+                  "updatedAt": "2026-06-05T15:00:46.000Z",
+                  "uid": "35240-1c00fbaf-93e9-44fa-b6ee-2d2761388629"
+                },
+                {
+                  "id": "9add7d07-44c8-4526-8619-75ec48004cc4",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/mapping_data_sources?offset=<integer>&limit=<integer>&name=<string>&organization=<string>&workspace=<string>&identifier=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "mapping_data_sources"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by identifier.",
+                          "key": "identifier",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:46.000Z",
+                  "updatedAt": "2026-06-05T15:00:46.000Z",
+                  "uid": "35240-9add7d07-44c8-4526-8619-75ec48004cc4"
+                },
+                {
+                  "id": "c731808c-ffd2-48a6-bbac-11d7ecf2436f",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/mapping_data_sources?offset=<integer>&limit=<integer>&name=<string>&organization=<string>&workspace=<string>&identifier=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "mapping_data_sources"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by identifier.",
+                          "key": "identifier",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:46.000Z",
+                  "updatedAt": "2026-06-05T15:00:46.000Z",
+                  "uid": "35240-c731808c-ffd2-48a6-bbac-11d7ecf2436f"
+                },
+                {
+                  "id": "d1e6c5e5-bedd-41fa-b78f-465d8a0aaf34",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/mapping_data_sources?offset=<integer>&limit=<integer>&name=<string>&organization=<string>&workspace=<string>&identifier=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "mapping_data_sources"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by identifier.",
+                          "key": "identifier",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:46.000Z",
+                  "updatedAt": "2026-06-05T15:00:46.000Z",
+                  "uid": "35240-d1e6c5e5-bedd-41fa-b78f-465d8a0aaf34"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:46.000Z",
+              "updatedAt": "2026-06-05T15:00:46.000Z",
+              "uid": "35240-2dd096f7-0d4b-41c3-903d-4531b63bfe1f"
+            }
+          ],
+          "id": "0a02d7b7-2aea-416f-b9c0-4bd44438135a",
+          "createdAt": "2026-06-05T15:00:46.000Z",
+          "updatedAt": "2026-06-05T15:00:46.000Z",
+          "uid": "35240-0a02d7b7-2aea-416f-b9c0-4bd44438135a"
+        }
+      ],
+      "id": "7e3314ef-1d41-4a1d-b9fc-56ab48df744e",
+      "createdAt": "2026-06-05T15:00:46.000Z",
+      "updatedAt": "2026-06-05T15:00:46.000Z",
+      "uid": "35240-7e3314ef-1d41-4a1d-b9fc-56ab48df744e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "api"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{region}}.affinda.com"
+    }
+  ]
+}

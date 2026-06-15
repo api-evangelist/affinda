@@ -1,0 +1,1421 @@
+{
+  "info": {
+    "_postman_id": "dbd4f98d-acf8-42c4-9210-963018bafbad",
+    "name": "Affinda Extractors API",
+    "description": "Affinda Extractors API \u2014 subset of the Affinda v3 Document Processing API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:00:35.000Z",
+    "updatedAt": "2026-06-05T15:00:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dbd4f98d-acf8-42c4-9210-963018bafbad"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "extractors",
+          "item": [
+            {
+              "name": "{identifier}",
+              "item": [
+                {
+                  "name": "Get specific extractor",
+                  "id": "6ab3ff75-361b-4763-8e5f-16e096b26e27",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "extractors",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "60bf9f36-0b64-45a4-ab6b-b5da102d2f94",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Extractor's identifier"
+                        }
+                      ]
+                    },
+                    "description": "Return a specific extractor."
+                  },
+                  "response": [
+                    {
+                      "id": "e0462477-2a10-470d-aaca-eef15a983b4d",
+                      "name": "Successfully retrieved extractor.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identifier\": \"<string>\",\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"baseExtractor\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"namePlural\": \"<string>\",\n    \"validatable\": \"<boolean>\",\n    \"isCustom\": \"<boolean>\",\n    \"createdDt\": \"<dateTime>\"\n  },\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"category\": \"<string>\",\n  \"isCustom\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"integer\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"table\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"daterange\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"expectedremuneration\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"createdDt\": \"<dateTime>\",\n  \"lastTrainedDt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-e0462477-2a10-470d-aaca-eef15a983b4d"
+                    },
+                    {
+                      "id": "131d1040-b0e0-4ba5-8498-c099b248e177",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-131d1040-b0e0-4ba5-8498-c099b248e177"
+                    },
+                    {
+                      "id": "7c73b34e-2ff0-4aae-aedc-7b27449cb5c5",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-7c73b34e-2ff0-4aae-aedc-7b27449cb5c5"
+                    },
+                    {
+                      "id": "694c7eaf-dad7-4e18-8934-aa05d1c1bed4",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-694c7eaf-dad7-4e18-8934-aa05d1c1bed4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:36.000Z",
+                  "updatedAt": "2026-06-05T15:00:36.000Z",
+                  "uid": "35240-6ab3ff75-361b-4763-8e5f-16e096b26e27"
+                },
+                {
+                  "name": "Update an extractor",
+                  "id": "4216c614-fc8e-447e-a994-7c5936c81d52",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"decimal\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"url\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"boolean\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"date\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "extractors",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "1a7033b2-4c7b-4f74-ab78-3fecf73072ef",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Extractor's identifier"
+                        }
+                      ]
+                    },
+                    "description": "Update data of an extractor."
+                  },
+                  "response": [
+                    {
+                      "id": "672eb5ac-3174-4639-9dc2-425ead9cc4a7",
+                      "name": "Successfully updated extractor data.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"decimal\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"url\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"boolean\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"date\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identifier\": \"<string>\",\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"baseExtractor\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"namePlural\": \"<string>\",\n    \"validatable\": \"<boolean>\",\n    \"isCustom\": \"<boolean>\",\n    \"createdDt\": \"<dateTime>\"\n  },\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"category\": \"<string>\",\n  \"isCustom\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"integer\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"table\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"daterange\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"expectedremuneration\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"createdDt\": \"<dateTime>\",\n  \"lastTrainedDt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-672eb5ac-3174-4639-9dc2-425ead9cc4a7"
+                    },
+                    {
+                      "id": "3e914ed5-9e83-489c-9b68-4f5328488046",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"decimal\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"url\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"boolean\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"date\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-3e914ed5-9e83-489c-9b68-4f5328488046"
+                    },
+                    {
+                      "id": "58fcb429-2ef2-48ea-8624-a682c549d132",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"decimal\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"url\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"boolean\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"date\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-58fcb429-2ef2-48ea-8624-a682c549d132"
+                    },
+                    {
+                      "id": "edd671f4-cbd5-442d-8687-bc8db50923da",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"decimal\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"url\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"boolean\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"date\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-edd671f4-cbd5-442d-8687-bc8db50923da"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:36.000Z",
+                  "updatedAt": "2026-06-05T15:00:36.000Z",
+                  "uid": "35240-4216c614-fc8e-447e-a994-7c5936c81d52"
+                },
+                {
+                  "name": "Delete an extractor",
+                  "id": "cfe820d7-fe7f-4f11-a097-ea3be440be9b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "extractors",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a1224d09-ef48-4c43-89aa-6702d9d6192b",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Extractor's identifier"
+                        }
+                      ]
+                    },
+                    "description": "Deletes the specified extractor from the database."
+                  },
+                  "response": [
+                    {
+                      "id": "fe1fb000-6006-442e-a318-6ecf768f6a7d",
+                      "name": "Delete successful, no content returned",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-fe1fb000-6006-442e-a318-6ecf768f6a7d"
+                    },
+                    {
+                      "id": "ba0190b6-b2ce-4ebc-8b7c-83f930b65bb0",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-ba0190b6-b2ce-4ebc-8b7c-83f930b65bb0"
+                    },
+                    {
+                      "id": "c89e3dff-208e-4720-835a-ce8c21dd5e6e",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-c89e3dff-208e-4720-835a-ce8c21dd5e6e"
+                    },
+                    {
+                      "id": "1d50e780-0d70-457c-86f3-b4945277da37",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/extractors/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "extractors",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:36.000Z",
+                      "updatedAt": "2026-06-05T15:00:36.000Z",
+                      "uid": "35240-1d50e780-0d70-457c-86f3-b4945277da37"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:36.000Z",
+                  "updatedAt": "2026-06-05T15:00:36.000Z",
+                  "uid": "35240-cfe820d7-fe7f-4f11-a097-ea3be440be9b"
+                }
+              ],
+              "id": "2573d190-08e9-4005-ab72-a69bc96e9a4f",
+              "createdAt": "2026-06-05T15:00:36.000Z",
+              "updatedAt": "2026-06-05T15:00:36.000Z",
+              "uid": "35240-2573d190-08e9-4005-ab72-a69bc96e9a4f"
+            },
+            {
+              "name": "Get list of all extractors",
+              "id": "95e3a959-4a21-4451-aed7-fbe973fd6d51",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v3/extractors?organization=<string>&include_public_extractors=<boolean>&name=<string>&validatable=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "extractors"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Filter by organization.",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to include Affinda's off-the-shelf extractors.",
+                      "key": "include_public_extractors",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by validatable.",
+                      "key": "validatable",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "description": "Returns your custom extractors as well as Affinda's off-the-shelf extractors."
+              },
+              "response": [
+                {
+                  "id": "ea565d86-557b-486d-9339-6e6b4bbbfa09",
+                  "name": "All matching extractors.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/extractors?organization=<string>&include_public_extractors=<boolean>&name=<string>&validatable=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "extractors"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to include Affinda's off-the-shelf extractors.",
+                          "key": "include_public_extractors",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by validatable.",
+                          "key": "validatable",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"namePlural\": \"<string>\",\n    \"validatable\": \"<boolean>\",\n    \"baseExtractor\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namePlural\": \"<string>\",\n      \"validatable\": \"<boolean>\",\n      \"isCustom\": \"<boolean>\",\n      \"createdDt\": \"<dateTime>\"\n    },\n    \"organization\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"userRole\": \"member\",\n      \"avatar\": \"<string>\",\n      \"resthookSignatureKey\": \"<string>\",\n      \"isTrial\": \"<boolean>\",\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"palette\": {\n            \"mode\": \"dark\",\n            \"background\": \"<string>\",\n            \"text\": {\n              \"primary\": \"<string>\",\n              \"secondary\": \"<string>\",\n              \"disabled\": \"<string>\"\n            },\n            \"divider\": \"<string>\",\n            \"primary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"secondary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"success\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"annotation\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"error\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"info\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"warning\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            }\n          },\n          \"typography\": {\n            \"fontFamily\": \"<string>\",\n            \"fontSize\": \"<string>\",\n            \"fontWeightRegular\": \"<string>\",\n            \"fontWeightMedium\": \"<string>\",\n            \"fontWeightBold\": \"<string>\"\n          },\n          \"borderRadius\": \"<number>\",\n          \"fontUrl\": \"<string>\"\n        },\n        \"hideActions\": \"<boolean>\",\n        \"hideCollection\": \"<boolean>\",\n        \"hideEditPages\": \"<boolean>\",\n        \"hideExport\": \"<boolean>\",\n        \"hideFilename\": \"<boolean>\",\n        \"hideShowRawValues\": \"<boolean>\",\n        \"hideReject\": \"<boolean>\",\n        \"hideReparse\": \"<boolean>\",\n        \"hideRunOcr\": \"<boolean>\",\n        \"hideTags\": \"<boolean>\",\n        \"hideWarnings\": \"<boolean>\",\n        \"restrictDocumentSplitting\": \"<boolean>\",\n        \"disableCurrencyFormatting\": \"<boolean>\",\n        \"disableEditDocumentMetadata\": \"<boolean>\",\n        \"disableManualAnnotationEditing\": \"<boolean>\",\n        \"hideDocumentStatus\": \"<boolean>\"\n      },\n      \"showCustomFieldCreation\": \"<boolean>\"\n    },\n    \"category\": \"<string>\",\n    \"isCustom\": \"<boolean>\",\n    \"fieldGroups\": [\n      {\n        \"label\": \"<string>\",\n        \"fields\": [\n          {\n            \"label\": \"<string>\",\n            \"dataPoint\": \"<string>\",\n            \"fieldType\": \"yearsexperience\",\n            \"slug\": \"<string>\",\n            \"dataSource\": \"<string>\",\n            \"mapping\": \"<string>\",\n            \"mandatory\": \"<boolean>\",\n            \"disabled\": \"<boolean>\",\n            \"autoValidationThreshold\": \"<number>\",\n            \"showDropdown\": \"<boolean>\",\n            \"displayRawText\": \"<boolean>\",\n            \"dropNull\": \"<boolean>\",\n            \"displayEnumValue\": \"<boolean>\",\n            \"fields\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              }\n            ]\n          },\n          {\n            \"label\": \"<string>\",\n            \"dataPoint\": \"<string>\",\n            \"fieldType\": \"daterange\",\n            \"slug\": \"<string>\",\n            \"dataSource\": \"<string>\",\n            \"mapping\": \"<string>\",\n            \"mandatory\": \"<boolean>\",\n            \"disabled\": \"<boolean>\",\n            \"autoValidationThreshold\": \"<number>\",\n            \"showDropdown\": \"<boolean>\",\n            \"displayRawText\": \"<boolean>\",\n            \"dropNull\": \"<boolean>\",\n            \"displayEnumValue\": \"<boolean>\",\n            \"fields\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"label\": \"<string>\",\n        \"fields\": [\n          {\n            \"label\": \"<string>\",\n            \"dataPoint\": \"<string>\",\n            \"fieldType\": \"language\",\n            \"slug\": \"<string>\",\n            \"dataSource\": \"<string>\",\n            \"mapping\": \"<string>\",\n            \"mandatory\": \"<boolean>\",\n            \"disabled\": \"<boolean>\",\n            \"autoValidationThreshold\": \"<number>\",\n            \"showDropdown\": \"<boolean>\",\n            \"displayRawText\": \"<boolean>\",\n            \"dropNull\": \"<boolean>\",\n            \"displayEnumValue\": \"<boolean>\",\n            \"fields\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              }\n            ]\n          },\n          {\n            \"label\": \"<string>\",\n            \"dataPoint\": \"<string>\",\n            \"fieldType\": \"table\",\n            \"slug\": \"<string>\",\n            \"dataSource\": \"<string>\",\n            \"mapping\": \"<string>\",\n            \"mandatory\": \"<boolean>\",\n            \"disabled\": \"<boolean>\",\n            \"autoValidationThreshold\": \"<number>\",\n            \"showDropdown\": \"<boolean>\",\n            \"displayRawText\": \"<boolean>\",\n            \"dropNull\": \"<boolean>\",\n            \"displayEnumValue\": \"<boolean>\",\n            \"fields\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"createdDt\": \"<dateTime>\",\n    \"lastTrainedDt\": \"<dateTime>\"\n  },\n  {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"namePlural\": \"<string>\",\n    \"validatable\": \"<boolean>\",\n    \"baseExtractor\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namePlural\": \"<string>\",\n      \"validatable\": \"<boolean>\",\n      \"isCustom\": \"<boolean>\",\n      \"createdDt\": \"<dateTime>\"\n    },\n    \"organization\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"userRole\": \"member\",\n      \"avatar\": \"<string>\",\n      \"resthookSignatureKey\": \"<string>\",\n      \"isTrial\": \"<boolean>\",\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"palette\": {\n            \"mode\": \"dark\",\n            \"background\": \"<string>\",\n            \"text\": {\n              \"primary\": \"<string>\",\n              \"secondary\": \"<string>\",\n              \"disabled\": \"<string>\"\n            },\n            \"divider\": \"<string>\",\n            \"primary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"secondary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"success\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"annotation\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"error\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"info\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"warning\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            }\n          },\n          \"typography\": {\n            \"fontFamily\": \"<string>\",\n            \"fontSize\": \"<string>\",\n            \"fontWeightRegular\": \"<string>\",\n            \"fontWeightMedium\": \"<string>\",\n            \"fontWeightBold\": \"<string>\"\n          },\n          \"borderRadius\": \"<number>\",\n          \"fontUrl\": \"<string>\"\n        },\n        \"hideActions\": \"<boolean>\",\n        \"hideCollection\": \"<boolean>\",\n        \"hideEditPages\": \"<boolean>\",\n        \"hideExport\": \"<boolean>\",\n        \"hideFilename\": \"<boolean>\",\n        \"hideShowRawValues\": \"<boolean>\",\n        \"hideReject\": \"<boolean>\",\n        \"hideReparse\": \"<boolean>\",\n        \"hideRunOcr\": \"<boolean>\",\n        \"hideTags\": \"<boolean>\",\n        \"hideWarnings\": \"<boolean>\",\n        \"restrictDocumentSplitting\": \"<boolean>\",\n        \"disableCurrencyFormatting\": \"<boolean>\",\n        \"disableEditDocumentMetadata\": \"<boolean>\",\n        \"disableManualAnnotationEditing\": \"<boolean>\",\n        \"hideDocumentStatus\": \"<boolean>\"\n      },\n      \"showCustomFieldCreation\": \"<boolean>\"\n    },\n    \"category\": \"<string>\",\n    \"isCustom\": \"<boolean>\",\n    \"fieldGroups\": [\n      {\n        \"label\": \"<string>\",\n        \"fields\": [\n          {\n            \"label\": \"<string>\",\n            \"dataPoint\": \"<string>\",\n            \"fieldType\": \"docclf\",\n            \"slug\": \"<string>\",\n            \"dataSource\": \"<string>\",\n            \"mapping\": \"<string>\",\n            \"mandatory\": \"<boolean>\",\n            \"disabled\": \"<boolean>\",\n            \"autoValidationThreshold\": \"<number>\",\n            \"showDropdown\": \"<boolean>\",\n            \"displayRawText\": \"<boolean>\",\n            \"dropNull\": \"<boolean>\",\n            \"displayEnumValue\": \"<boolean>\",\n            \"fields\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              }\n            ]\n          },\n          {\n            \"label\": \"<string>\",\n            \"dataPoint\": \"<string>\",\n            \"fieldType\": \"image\",\n            \"slug\": \"<string>\",\n            \"dataSource\": \"<string>\",\n            \"mapping\": \"<string>\",\n            \"mandatory\": \"<boolean>\",\n            \"disabled\": \"<boolean>\",\n            \"autoValidationThreshold\": \"<number>\",\n            \"showDropdown\": \"<boolean>\",\n            \"displayRawText\": \"<boolean>\",\n            \"dropNull\": \"<boolean>\",\n            \"displayEnumValue\": \"<boolean>\",\n            \"fields\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"label\": \"<string>\",\n        \"fields\": [\n          {\n            \"label\": \"<string>\",\n            \"dataPoint\": \"<string>\",\n            \"fieldType\": \"docclf\",\n            \"slug\": \"<string>\",\n            \"dataSource\": \"<string>\",\n            \"mapping\": \"<string>\",\n            \"mandatory\": \"<boolean>\",\n            \"disabled\": \"<boolean>\",\n            \"autoValidationThreshold\": \"<number>\",\n            \"showDropdown\": \"<boolean>\",\n            \"displayRawText\": \"<boolean>\",\n            \"dropNull\": \"<boolean>\",\n            \"displayEnumValue\": \"<boolean>\",\n            \"fields\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              }\n            ]\n          },\n          {\n            \"label\": \"<string>\",\n            \"dataPoint\": \"<string>\",\n            \"fieldType\": \"expectedremuneration\",\n            \"slug\": \"<string>\",\n            \"dataSource\": \"<string>\",\n            \"mapping\": \"<string>\",\n            \"mandatory\": \"<boolean>\",\n            \"disabled\": \"<boolean>\",\n            \"autoValidationThreshold\": \"<number>\",\n            \"showDropdown\": \"<boolean>\",\n            \"displayRawText\": \"<boolean>\",\n            \"dropNull\": \"<boolean>\",\n            \"displayEnumValue\": \"<boolean>\",\n            \"fields\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"createdDt\": \"<dateTime>\",\n    \"lastTrainedDt\": \"<dateTime>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:00:36.000Z",
+                  "updatedAt": "2026-06-05T15:00:36.000Z",
+                  "uid": "35240-ea565d86-557b-486d-9339-6e6b4bbbfa09"
+                },
+                {
+                  "id": "7ca0b3c4-c68f-4f21-8720-ff266389b488",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/extractors?organization=<string>&include_public_extractors=<boolean>&name=<string>&validatable=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "extractors"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to include Affinda's off-the-shelf extractors.",
+                          "key": "include_public_extractors",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by validatable.",
+                          "key": "validatable",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:36.000Z",
+                  "updatedAt": "2026-06-05T15:00:36.000Z",
+                  "uid": "35240-7ca0b3c4-c68f-4f21-8720-ff266389b488"
+                },
+                {
+                  "id": "8964b892-ed31-4db3-bb5b-deb4ce076b93",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/extractors?organization=<string>&include_public_extractors=<boolean>&name=<string>&validatable=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "extractors"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to include Affinda's off-the-shelf extractors.",
+                          "key": "include_public_extractors",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by validatable.",
+                          "key": "validatable",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:36.000Z",
+                  "updatedAt": "2026-06-05T15:00:36.000Z",
+                  "uid": "35240-8964b892-ed31-4db3-bb5b-deb4ce076b93"
+                },
+                {
+                  "id": "08ad4b43-eedc-4bd8-9ffd-5a07135556af",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/extractors?organization=<string>&include_public_extractors=<boolean>&name=<string>&validatable=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "extractors"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to include Affinda's off-the-shelf extractors.",
+                          "key": "include_public_extractors",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by validatable.",
+                          "key": "validatable",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:36.000Z",
+                  "updatedAt": "2026-06-05T15:00:36.000Z",
+                  "uid": "35240-08ad4b43-eedc-4bd8-9ffd-5a07135556af"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:36.000Z",
+              "updatedAt": "2026-06-05T15:00:36.000Z",
+              "uid": "35240-95e3a959-4a21-4451-aed7-fbe973fd6d51"
+            },
+            {
+              "name": "Create an extractor",
+              "id": "0c8235d9-c32e-48c9-84ce-4a8f47b67726",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"table\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"float\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"phonenumber\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"date\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v3/extractors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "extractors"
+                  ]
+                },
+                "description": "Create a custom extractor."
+              },
+              "response": [
+                {
+                  "id": "5f7394ef-3f20-4668-9494-b8862cf615b0",
+                  "name": "Successfully created an extractor.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"table\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"float\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"phonenumber\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"date\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/extractors",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "extractors"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"identifier\": \"<string>\",\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"baseExtractor\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"namePlural\": \"<string>\",\n    \"validatable\": \"<boolean>\",\n    \"isCustom\": \"<boolean>\",\n    \"createdDt\": \"<dateTime>\"\n  },\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"category\": \"<string>\",\n  \"isCustom\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"integer\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"table\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"daterange\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"expectedremuneration\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"createdDt\": \"<dateTime>\",\n  \"lastTrainedDt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:00:36.000Z",
+                  "updatedAt": "2026-06-05T15:00:36.000Z",
+                  "uid": "35240-5f7394ef-3f20-4668-9494-b8862cf615b0"
+                },
+                {
+                  "id": "2694b2ee-b7fd-411a-9080-fccadc473b8a",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"table\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"float\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"phonenumber\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"date\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/extractors",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "extractors"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:36.000Z",
+                  "updatedAt": "2026-06-05T15:00:36.000Z",
+                  "uid": "35240-2694b2ee-b7fd-411a-9080-fccadc473b8a"
+                },
+                {
+                  "id": "4f40f7d5-b249-489e-ad0c-bc3fdcb46d6a",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"table\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"float\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"phonenumber\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"date\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/extractors",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "extractors"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:36.000Z",
+                  "updatedAt": "2026-06-05T15:00:36.000Z",
+                  "uid": "35240-4f40f7d5-b249-489e-ad0c-bc3fdcb46d6a"
+                },
+                {
+                  "id": "a13fe9fd-0772-4a0b-b992-19eebd1b91a7",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"table\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"float\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"phonenumber\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"date\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/extractors",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "extractors"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:36.000Z",
+                  "updatedAt": "2026-06-05T15:00:36.000Z",
+                  "uid": "35240-a13fe9fd-0772-4a0b-b992-19eebd1b91a7"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:36.000Z",
+              "updatedAt": "2026-06-05T15:00:36.000Z",
+              "uid": "35240-0c8235d9-c32e-48c9-84ce-4a8f47b67726"
+            }
+          ],
+          "id": "142b8da1-c775-496e-9beb-c38904cb7935",
+          "createdAt": "2026-06-05T15:00:36.000Z",
+          "updatedAt": "2026-06-05T15:00:36.000Z",
+          "uid": "35240-142b8da1-c775-496e-9beb-c38904cb7935"
+        }
+      ],
+      "id": "a327d665-67d5-428f-bb79-ea13a4332c3e",
+      "createdAt": "2026-06-05T15:00:36.000Z",
+      "updatedAt": "2026-06-05T15:00:36.000Z",
+      "uid": "35240-a327d665-67d5-428f-bb79-ea13a4332c3e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "api"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{region}}.affinda.com"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Document Types API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Document Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List document types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/document_types",
+            "params": [
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "Filter by organization identifier"
+              },
+              {
+                "name": "workspace",
+                "value": "",
+                "type": "query",
+                "description": "Filter by workspace identifier"
+              }
+            ]
+          },
+          "docs": "Returns a list of document types that the user has access to."
+        },
+        {
+          "info": {
+            "name": "Create a document type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/document_types",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new document type in the specified organization."
+        },
+        {
+          "info": {
+            "name": "Get a document type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/document_types/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document type identifier"
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific document type."
+        },
+        {
+          "info": {
+            "name": "Update a document type",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/document_types/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document type identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing document type."
+        },
+        {
+          "info": {
+            "name": "Delete a document type",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/document_types/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document type identifier"
+              }
+            ]
+          },
+          "docs": "Delete a document type."
+        },
+        {
+          "info": {
+            "name": "Generate JSON schema from a document type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/document_types/:identifier/json_schema",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document type's identifier"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query",
+                "description": "Title for the JSON schema"
+              }
+            ]
+          },
+          "docs": "Generate JSON schema from a document type."
+        },
+        {
+          "info": {
+            "name": "Generate Pydantic models from a document type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/document_types/:identifier/pydantic_models",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document type's identifier"
+              },
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "query",
+                "description": "Name for the Pydantic model"
+              }
+            ]
+          },
+          "docs": "Generate Pydantic models from a document type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

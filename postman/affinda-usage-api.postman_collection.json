@@ -1,0 +1,391 @@
+{
+  "info": {
+    "_postman_id": "cc1b331e-9554-4283-9481-22ed9fcce493",
+    "name": "Affinda Usage API",
+    "description": "Affinda Usage API \u2014 subset of the Affinda v3 Document Processing API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:01:04.000Z",
+    "updatedAt": "2026-06-05T15:01:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cc1b331e-9554-4283-9481-22ed9fcce493"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "usage",
+          "item": [
+            {
+              "name": "Get usage",
+              "id": "fa811aa2-0b11-44d1-b6f2-080a55226eff",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v3/usage?organization=<string>&workspace=<string>&document_type=<string>&start=<date>&end=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "usage"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Organization to report usage for. The caller must be an admin or owner.",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optionally scope the report to a single workspace within the organization.",
+                      "key": "workspace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optionally scope the report to a single document type within the organization.",
+                      "key": "document_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Inclusive start date of the report (YYYY-MM-DD). Defaults to 365 days before `end`.",
+                      "key": "start",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Inclusive end date of the report (YYYY-MM-DD). Defaults to today.",
+                      "key": "end",
+                      "value": "<date>"
+                    }
+                  ]
+                },
+                "description": "Returns daily credits consumption for an organization over a date range. Optionally scope the report to a single workspace or document type.\n`workspace` and `document_type` cannot be combined: usage data is aggregated independently along each axis, so a per-(workspace \u00d7 document type) slice is not available."
+              },
+              "response": [
+                {
+                  "id": "077a4028-1223-4742-abee-d70f6defedcf",
+                  "name": "Daily credits consumption for the requested scope.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/usage?organization=<string>&workspace=<string>&document_type=<string>&start=<date>&end=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "usage"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Organization to report usage for. The caller must be an admin or owner.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optionally scope the report to a single workspace within the organization.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optionally scope the report to a single document type within the organization.",
+                          "key": "document_type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Inclusive start date of the report (YYYY-MM-DD). Defaults to 365 days before `end`.",
+                          "key": "start",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Inclusive end date of the report (YYYY-MM-DD). Defaults to today.",
+                          "key": "end",
+                          "value": "<date>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"scope\": \"workspace\",\n  \"scopeIdentifier\": \"<string>\",\n  \"start\": \"<date>\",\n  \"end\": \"<date>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"date\": \"<date>\",\n      \"count\": \"<integer>\"\n    },\n    {\n      \"date\": \"<date>\",\n      \"count\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:01:04.000Z",
+                  "updatedAt": "2026-06-05T15:01:04.000Z",
+                  "uid": "35240-077a4028-1223-4742-abee-d70f6defedcf"
+                },
+                {
+                  "id": "bc831d0a-416c-41c1-b809-5b548ceba49b",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/usage?organization=<string>&workspace=<string>&document_type=<string>&start=<date>&end=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "usage"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Organization to report usage for. The caller must be an admin or owner.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optionally scope the report to a single workspace within the organization.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optionally scope the report to a single document type within the organization.",
+                          "key": "document_type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Inclusive start date of the report (YYYY-MM-DD). Defaults to 365 days before `end`.",
+                          "key": "start",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Inclusive end date of the report (YYYY-MM-DD). Defaults to today.",
+                          "key": "end",
+                          "value": "<date>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:01:04.000Z",
+                  "updatedAt": "2026-06-05T15:01:04.000Z",
+                  "uid": "35240-bc831d0a-416c-41c1-b809-5b548ceba49b"
+                },
+                {
+                  "id": "50ace954-aa1f-408b-a3c1-0db5a2d99216",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/usage?organization=<string>&workspace=<string>&document_type=<string>&start=<date>&end=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "usage"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Organization to report usage for. The caller must be an admin or owner.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optionally scope the report to a single workspace within the organization.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optionally scope the report to a single document type within the organization.",
+                          "key": "document_type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Inclusive start date of the report (YYYY-MM-DD). Defaults to 365 days before `end`.",
+                          "key": "start",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Inclusive end date of the report (YYYY-MM-DD). Defaults to today.",
+                          "key": "end",
+                          "value": "<date>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:01:04.000Z",
+                  "updatedAt": "2026-06-05T15:01:04.000Z",
+                  "uid": "35240-50ace954-aa1f-408b-a3c1-0db5a2d99216"
+                },
+                {
+                  "id": "31c72d75-1b24-46f9-bd40-046cea78a3d8",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/usage?organization=<string>&workspace=<string>&document_type=<string>&start=<date>&end=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "usage"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Organization to report usage for. The caller must be an admin or owner.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optionally scope the report to a single workspace within the organization.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optionally scope the report to a single document type within the organization.",
+                          "key": "document_type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Inclusive start date of the report (YYYY-MM-DD). Defaults to 365 days before `end`.",
+                          "key": "start",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Inclusive end date of the report (YYYY-MM-DD). Defaults to today.",
+                          "key": "end",
+                          "value": "<date>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:01:04.000Z",
+                  "updatedAt": "2026-06-05T15:01:04.000Z",
+                  "uid": "35240-31c72d75-1b24-46f9-bd40-046cea78a3d8"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:04.000Z",
+              "updatedAt": "2026-06-05T15:01:04.000Z",
+              "uid": "35240-fa811aa2-0b11-44d1-b6f2-080a55226eff"
+            }
+          ],
+          "id": "71272632-5266-4fb7-a8ed-141cc0d8a350",
+          "createdAt": "2026-06-05T15:01:04.000Z",
+          "updatedAt": "2026-06-05T15:01:04.000Z",
+          "uid": "35240-71272632-5266-4fb7-a8ed-141cc0d8a350"
+        }
+      ],
+      "id": "202dc3ce-6dba-46c3-ab5b-33e9258a6cc2",
+      "createdAt": "2026-06-05T15:01:04.000Z",
+      "updatedAt": "2026-06-05T15:01:04.000Z",
+      "uid": "35240-202dc3ce-6dba-46c3-ab5b-33e9258a6cc2"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "api"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{region}}.affinda.com"
+    }
+  ]
+}

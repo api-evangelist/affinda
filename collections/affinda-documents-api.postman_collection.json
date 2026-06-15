@@ -1,0 +1,3945 @@
+{
+  "item": [
+    {
+      "id": "53db8b18-ff4f-4945-bc08-8447b8487e02",
+      "name": "Documents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f69641f0-7c38-47f0-8ca2-5050275dcb29",
+          "name": "Get list of all documents",
+          "request": {
+            "name": "Get list of all documents",
+            "description": {
+              "content": "Returns all the document summaries for that user, limited to 300 per page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The number of documents to skip before starting to collect the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The numbers of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "workspace",
+                  "value": "<string>",
+                  "description": "Filter by workspace."
+                },
+                {
+                  "disabled": false,
+                  "key": "collection",
+                  "value": "<string>",
+                  "description": "Filter by collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Filter by the document's state."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<integer>",
+                  "description": "Filter by tag's IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<integer>",
+                  "description": "Filter by tag's IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_dt",
+                  "value": "<string>",
+                  "description": "Filter by created datetime."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Partial, case-insensitive match with file name or tag name."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Sort the result set. A \"-\" at the beginning denotes DESC sort, e.g. -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name', 'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__<dataPointSlug>'."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Sort the result set. A \"-\" at the beginning denotes DESC sort, e.g. -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name', 'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__<dataPointSlug>'."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_data",
+                  "value": "<boolean>",
+                  "description": "By default, this endpoint returns only the meta data of the documents. Set this to `true` will return a summary of the data that was parsed. If you want to retrieve the full set of data for a document, use the `GET /documents/{identifier}` endpoint."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude",
+                  "value": "<string>",
+                  "description": "Exclude some documents from the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude",
+                  "value": "<string>",
+                  "description": "Exclude some documents from the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "in_review",
+                  "value": "<boolean>",
+                  "description": "Exclude documents that are currently being reviewed."
+                },
+                {
+                  "disabled": false,
+                  "key": "failed",
+                  "value": "<boolean>",
+                  "description": "Filter by failed status."
+                },
+                {
+                  "disabled": false,
+                  "key": "ready",
+                  "value": "<boolean>",
+                  "description": "Filter by ready status."
+                },
+                {
+                  "disabled": false,
+                  "key": "validatable",
+                  "value": "<boolean>",
+                  "description": "Filter for validatable documents."
+                },
+                {
+                  "disabled": false,
+                  "key": "has_challenges",
+                  "value": "<boolean>",
+                  "description": "Filter for documents with challenges."
+                },
+                {
+                  "disabled": false,
+                  "key": "custom_identifier",
+                  "value": "<string>",
+                  "description": "Filter for documents with this custom identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "compact",
+                  "value": "<boolean>",
+                  "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<boolean>",
+                  "description": "If \"false\", the documents count is not computed, thus saving time for large collections. Default is \"true\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "snake_case",
+                  "value": "<boolean>",
+                  "description": "Whether to return the response in snake_case instead of camelCase. Default is false."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3010c251-810e-4b70-ae54-d7a51f066940",
+              "name": "All documents for user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "workspace",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "collection",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "1"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "1"
+                    },
+                    {
+                      "key": "created_dt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_data",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "in_review",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "failed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ready",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "validatable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "has_challenges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "custom_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 10,\n  \"results\": [\n    {\n      \"meta\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"extractor\": \"string\",\n      \"data\": {},\n      \"error\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"warnings\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"meta\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"extractor\": \"string\",\n      \"data\": {},\n      \"error\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"warnings\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad27faf2-11a8-40d6-9724-ec77c209d982",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "workspace",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "collection",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "1"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "1"
+                    },
+                    {
+                      "key": "created_dt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_data",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "in_review",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "failed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ready",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "validatable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "has_challenges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "custom_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cda9d59-2e36-47c9-a298-bfdcb81a613f",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "workspace",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "collection",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "1"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "1"
+                    },
+                    {
+                      "key": "created_dt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_data",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "in_review",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "failed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ready",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "validatable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "has_challenges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "custom_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f846031a-cbdb-4988-8d20-4a30f78d3194",
+              "name": "Forbidden error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "workspace",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "collection",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "1"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "1"
+                    },
+                    {
+                      "key": "created_dt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_data",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "in_review",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "failed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ready",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "validatable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "has_challenges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "custom_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c11b1f1-c4b2-4205-b4b8-5d7760694665",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "workspace",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "collection",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "1"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "1"
+                    },
+                    {
+                      "key": "created_dt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_data",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "in_review",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "failed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ready",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "validatable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "has_challenges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "custom_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3be1fd1-43cc-46bc-a552-7a18809083bf",
+          "name": "Upload a document for parsing",
+          "request": {
+            "name": "Upload a document for parsing",
+            "description": {
+              "content": "\nUploads a document for parsing via file upload or URL.\nWhen successful, returns an `identifier` in the response for subsequent use with the [/documents/{identifier}](#get-/v3/documents/-identifier-) endpoint to check processing status and retrieve results.<br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "snake_case",
+                  "value": "<boolean>",
+                  "description": "Whether to return the response in snake_case instead of camelCase. Default is false."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "value": "<binary>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL to download the document."
+                },
+                {
+                  "key": "collection",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "documentType",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The document type's identifier.  Provide if you already know the document type."
+                },
+                {
+                  "key": "workspace",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "wait",
+                  "value": "true",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "identifier",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Deprecated in favor of `customIdentifier`."
+                },
+                {
+                  "key": "customIdentifier",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Specify a custom identifier for the document if you need one, not required to be unique."
+                },
+                {
+                  "key": "fileName",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "expiryTime",
+                  "value": "<dateTime>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "language",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "rejectDuplicates",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "regionBias",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "A JSON representation of the RegionBias object."
+                },
+                {
+                  "key": "lowPriority",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Explicitly mark this document as low priority."
+                },
+                {
+                  "key": "compact",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result."
+                },
+                {
+                  "key": "deleteAfterParse",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "If true, no data will be stored after parsing. Only compatible with requests where wait: True."
+                },
+                {
+                  "key": "enableValidationTool",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed."
+                },
+                {
+                  "key": "useOcr",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document."
+                },
+                {
+                  "key": "llmHint",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional hint inserted into the LLM prompt when processing this document."
+                },
+                {
+                  "key": "limitToExamples",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Restrict LLM example selection to the specified document identifiers."
+                },
+                {
+                  "key": "warningMessages",
+                  "value": "[{\"warningCode\":\"<string>\",\"warningDetail\":\"<string>\"},{\"warningCode\":\"<string>\",\"warningDetail\":\"<string>\"}]",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d51497e3-e1ae-4193-a49f-ad7915225cef",
+              "name": "Only returned when wait=True, will return the created document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to download the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "https://api.affinda.com/static/sample_resumes/example.docx",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "collection",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The document type's identifier.  Provide if you already know the document type.",
+                        "type": "text/plain"
+                      },
+                      "key": "documentType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "workspace",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "wait",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Deprecated in favor of `customIdentifier`.",
+                        "type": "text/plain"
+                      },
+                      "key": "identifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                        "type": "text/plain"
+                      },
+                      "key": "customIdentifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "Document.pdf",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "expiryTime",
+                      "value": "<dateTime>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "rejectDuplicates",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A JSON representation of the RegionBias object.",
+                        "type": "text/plain"
+                      },
+                      "key": "regionBias",
+                      "value": "{\"country\": \"vn\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Explicitly mark this document as low priority.",
+                        "type": "text/plain"
+                      },
+                      "key": "lowPriority",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                        "type": "text/plain"
+                      },
+                      "key": "compact",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                        "type": "text/plain"
+                      },
+                      "key": "deleteAfterParse",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                        "type": "text/plain"
+                      },
+                      "key": "enableValidationTool",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "useOcr",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional hint inserted into the LLM prompt when processing this document.",
+                        "type": "text/plain"
+                      },
+                      "key": "llmHint",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Restrict LLM example selection to the specified document identifiers.",
+                        "type": "text/plain"
+                      },
+                      "key": "limitToExamples",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "warningMessages",
+                      "value": "[{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"},{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"}]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"identifier\": \"string\",\n    \"pages\": [\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pageIndex\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"image\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"rotation\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"imageTranslated\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pageIndex\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"image\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"rotation\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"imageTranslated\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"workspace\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"string\"\n    },\n    \"customIdentifier\": \"46ab8b02-0e5b-420c-877c-8b678d46a834\",\n    \"fileName\": \"Document.pdf\",\n    \"ready\": true,\n    \"readyDt\": \"2020-12-10T01:43:32.276724Z\",\n    \"failed\": false,\n    \"expiryTime\": \"<dateTime>\",\n    \"language\": \"en\",\n    \"pdf\": \"https://affinda-api.s3.amazonaws.com/media/documents/Document.pdf?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062\",\n    \"parentDocument\": {\n      \"identifier\": \"<string>\",\n      \"customIdentifier\": \"46ab8b02-0e5b-420c-877c-8b678d46a834\"\n    },\n    \"childDocuments\": [\n      {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"customIdentifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"customIdentifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"isOcrd\": false,\n    \"ocrConfidence\": 6742.346605319761,\n    \"reviewUrl\": \"string\",\n    \"documentType\": \"string\",\n    \"collection\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"string\",\n      \"extractor\": {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"baseExtractor\": \"string\",\n        \"validatable\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"validationRules\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"autoRefreshValidationResults\": true\n    },\n    \"archivedDt\": \"1974-08-17T00:44:18.283Z\",\n    \"isArchived\": true,\n    \"skipParse\": true,\n    \"confirmedDt\": \"1993-03-20T17:29:21.391Z\",\n    \"confirmedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"isConfirmed\": true,\n    \"rejectedDt\": \"1983-04-27T22:10:48.406Z\",\n    \"rejectedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"archivedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"isRejected\": true,\n    \"createdDt\": \"1999-12-11T13:29:22.746Z\",\n    \"errorCode\": \"document_conversion_failed\",\n    \"errorDetail\": \"Unable to convert word document\",\n    \"file\": \"string\",\n    \"html\": \"string\",\n    \"llmHint\": \"string\",\n    \"tags\": [\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"workspace\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"documentCount\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"workspace\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"documentCount\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"createdBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"sourceEmail\": \"string\",\n    \"sourceEmailAddress\": \"string\",\n    \"regionBias\": {\n      \"country\": \"string\",\n      \"countries\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"squareCoordinates\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"strict\": true\n    }\n  },\n  \"extractor\": \"string\",\n  \"data\": {},\n  \"error\": {\n    \"errorCode\": \"document_conversion_failed\",\n    \"errorDetail\": \"Unable to convert word document\"\n  },\n  \"warnings\": [\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    },\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ae0a1bd-61e5-44d9-ad67-9011b5abee00",
+              "name": "Only returned when wait=False, will return document uploaded and identifier created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to download the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "https://api.affinda.com/static/sample_resumes/example.docx",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "collection",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The document type's identifier.  Provide if you already know the document type.",
+                        "type": "text/plain"
+                      },
+                      "key": "documentType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "workspace",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "wait",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Deprecated in favor of `customIdentifier`.",
+                        "type": "text/plain"
+                      },
+                      "key": "identifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                        "type": "text/plain"
+                      },
+                      "key": "customIdentifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "Document.pdf",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "expiryTime",
+                      "value": "<dateTime>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "rejectDuplicates",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A JSON representation of the RegionBias object.",
+                        "type": "text/plain"
+                      },
+                      "key": "regionBias",
+                      "value": "{\"country\": \"vn\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Explicitly mark this document as low priority.",
+                        "type": "text/plain"
+                      },
+                      "key": "lowPriority",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                        "type": "text/plain"
+                      },
+                      "key": "compact",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                        "type": "text/plain"
+                      },
+                      "key": "deleteAfterParse",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                        "type": "text/plain"
+                      },
+                      "key": "enableValidationTool",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "useOcr",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional hint inserted into the LLM prompt when processing this document.",
+                        "type": "text/plain"
+                      },
+                      "key": "llmHint",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Restrict LLM example selection to the specified document identifiers.",
+                        "type": "text/plain"
+                      },
+                      "key": "limitToExamples",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "warningMessages",
+                      "value": "[{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"},{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"}]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"identifier\": \"string\",\n    \"pages\": [\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pageIndex\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"image\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"rotation\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"imageTranslated\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pageIndex\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"image\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"rotation\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"imageTranslated\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"workspace\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"string\"\n    },\n    \"customIdentifier\": \"46ab8b02-0e5b-420c-877c-8b678d46a834\",\n    \"fileName\": \"Document.pdf\",\n    \"ready\": true,\n    \"readyDt\": \"2020-12-10T01:43:32.276724Z\",\n    \"failed\": false,\n    \"expiryTime\": \"<dateTime>\",\n    \"language\": \"en\",\n    \"pdf\": \"https://affinda-api.s3.amazonaws.com/media/documents/Document.pdf?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062\",\n    \"parentDocument\": {\n      \"identifier\": \"<string>\",\n      \"customIdentifier\": \"46ab8b02-0e5b-420c-877c-8b678d46a834\"\n    },\n    \"childDocuments\": [\n      {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"customIdentifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"customIdentifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"isOcrd\": true,\n    \"ocrConfidence\": 2816.4124260964727,\n    \"reviewUrl\": \"string\",\n    \"documentType\": \"string\",\n    \"collection\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"string\",\n      \"extractor\": {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"baseExtractor\": \"string\",\n        \"validatable\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"validationRules\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"autoRefreshValidationResults\": false\n    },\n    \"archivedDt\": \"2001-08-06T07:27:37.354Z\",\n    \"isArchived\": true,\n    \"skipParse\": false,\n    \"confirmedDt\": \"2007-06-22T18:12:27.791Z\",\n    \"confirmedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"isConfirmed\": true,\n    \"rejectedDt\": \"1961-07-09T14:22:41.582Z\",\n    \"rejectedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"archivedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"isRejected\": true,\n    \"createdDt\": \"2006-04-26T21:19:58.593Z\",\n    \"errorCode\": \"document_conversion_failed\",\n    \"errorDetail\": \"Unable to convert word document\",\n    \"file\": \"string\",\n    \"html\": \"string\",\n    \"llmHint\": \"string\",\n    \"tags\": [\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"workspace\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"documentCount\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"workspace\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"documentCount\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"createdBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"sourceEmail\": \"string\",\n    \"sourceEmailAddress\": \"string\",\n    \"regionBias\": {\n      \"country\": \"string\",\n      \"countries\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"squareCoordinates\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"strict\": true\n    }\n  },\n  \"extractor\": \"string\",\n  \"data\": {},\n  \"error\": {\n    \"errorCode\": \"document_conversion_failed\",\n    \"errorDetail\": \"Unable to convert word document\"\n  },\n  \"warnings\": [\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    },\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18c10cf9-d8b9-440b-8b52-5ed79b0f335e",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to download the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "https://api.affinda.com/static/sample_resumes/example.docx",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "collection",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The document type's identifier.  Provide if you already know the document type.",
+                        "type": "text/plain"
+                      },
+                      "key": "documentType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "workspace",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "wait",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Deprecated in favor of `customIdentifier`.",
+                        "type": "text/plain"
+                      },
+                      "key": "identifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                        "type": "text/plain"
+                      },
+                      "key": "customIdentifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "Document.pdf",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "expiryTime",
+                      "value": "<dateTime>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "rejectDuplicates",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A JSON representation of the RegionBias object.",
+                        "type": "text/plain"
+                      },
+                      "key": "regionBias",
+                      "value": "{\"country\": \"vn\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Explicitly mark this document as low priority.",
+                        "type": "text/plain"
+                      },
+                      "key": "lowPriority",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                        "type": "text/plain"
+                      },
+                      "key": "compact",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                        "type": "text/plain"
+                      },
+                      "key": "deleteAfterParse",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                        "type": "text/plain"
+                      },
+                      "key": "enableValidationTool",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "useOcr",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional hint inserted into the LLM prompt when processing this document.",
+                        "type": "text/plain"
+                      },
+                      "key": "llmHint",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Restrict LLM example selection to the specified document identifiers.",
+                        "type": "text/plain"
+                      },
+                      "key": "limitToExamples",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "warningMessages",
+                      "value": "[{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"},{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"}]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39ae4636-fcea-4573-ba07-731a8015f40e",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to download the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "https://api.affinda.com/static/sample_resumes/example.docx",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "collection",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The document type's identifier.  Provide if you already know the document type.",
+                        "type": "text/plain"
+                      },
+                      "key": "documentType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "workspace",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "wait",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Deprecated in favor of `customIdentifier`.",
+                        "type": "text/plain"
+                      },
+                      "key": "identifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                        "type": "text/plain"
+                      },
+                      "key": "customIdentifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "Document.pdf",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "expiryTime",
+                      "value": "<dateTime>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "rejectDuplicates",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A JSON representation of the RegionBias object.",
+                        "type": "text/plain"
+                      },
+                      "key": "regionBias",
+                      "value": "{\"country\": \"vn\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Explicitly mark this document as low priority.",
+                        "type": "text/plain"
+                      },
+                      "key": "lowPriority",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                        "type": "text/plain"
+                      },
+                      "key": "compact",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                        "type": "text/plain"
+                      },
+                      "key": "deleteAfterParse",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                        "type": "text/plain"
+                      },
+                      "key": "enableValidationTool",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "useOcr",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional hint inserted into the LLM prompt when processing this document.",
+                        "type": "text/plain"
+                      },
+                      "key": "llmHint",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Restrict LLM example selection to the specified document identifiers.",
+                        "type": "text/plain"
+                      },
+                      "key": "limitToExamples",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "warningMessages",
+                      "value": "[{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"},{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"}]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89e9d243-99df-40cd-95a6-131f3a768ab9",
+              "name": "Forbidden error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to download the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "https://api.affinda.com/static/sample_resumes/example.docx",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "collection",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The document type's identifier.  Provide if you already know the document type.",
+                        "type": "text/plain"
+                      },
+                      "key": "documentType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "workspace",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "wait",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Deprecated in favor of `customIdentifier`.",
+                        "type": "text/plain"
+                      },
+                      "key": "identifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                        "type": "text/plain"
+                      },
+                      "key": "customIdentifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "Document.pdf",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "expiryTime",
+                      "value": "<dateTime>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "rejectDuplicates",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A JSON representation of the RegionBias object.",
+                        "type": "text/plain"
+                      },
+                      "key": "regionBias",
+                      "value": "{\"country\": \"vn\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Explicitly mark this document as low priority.",
+                        "type": "text/plain"
+                      },
+                      "key": "lowPriority",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                        "type": "text/plain"
+                      },
+                      "key": "compact",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                        "type": "text/plain"
+                      },
+                      "key": "deleteAfterParse",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                        "type": "text/plain"
+                      },
+                      "key": "enableValidationTool",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "useOcr",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional hint inserted into the LLM prompt when processing this document.",
+                        "type": "text/plain"
+                      },
+                      "key": "llmHint",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Restrict LLM example selection to the specified document identifiers.",
+                        "type": "text/plain"
+                      },
+                      "key": "limitToExamples",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "warningMessages",
+                      "value": "[{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"},{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"}]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d5c5193-4453-4b38-8f80-0544681d1904",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to download the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "https://api.affinda.com/static/sample_resumes/example.docx",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "collection",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The document type's identifier.  Provide if you already know the document type.",
+                        "type": "text/plain"
+                      },
+                      "key": "documentType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "workspace",
+                      "value": "mEFayXdO",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "wait",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Deprecated in favor of `customIdentifier`.",
+                        "type": "text/plain"
+                      },
+                      "key": "identifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                        "type": "text/plain"
+                      },
+                      "key": "customIdentifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "Document.pdf",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "expiryTime",
+                      "value": "<dateTime>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "rejectDuplicates",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A JSON representation of the RegionBias object.",
+                        "type": "text/plain"
+                      },
+                      "key": "regionBias",
+                      "value": "{\"country\": \"vn\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Explicitly mark this document as low priority.",
+                        "type": "text/plain"
+                      },
+                      "key": "lowPriority",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                        "type": "text/plain"
+                      },
+                      "key": "compact",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                        "type": "text/plain"
+                      },
+                      "key": "deleteAfterParse",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                        "type": "text/plain"
+                      },
+                      "key": "enableValidationTool",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                        "type": "text/plain"
+                      },
+                      "key": "useOcr",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional hint inserted into the LLM prompt when processing this document.",
+                        "type": "text/plain"
+                      },
+                      "key": "llmHint",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Restrict LLM example selection to the specified document identifiers.",
+                        "type": "text/plain"
+                      },
+                      "key": "limitToExamples",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "warningMessages",
+                      "value": "[{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"},{\"warningCode\":\"too_many_pages\",\"warningDetail\":\"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"}]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcdc4dff-f0bb-40f6-9e35-186f534faa70",
+          "name": "Get specific document",
+          "request": {
+            "name": "Get specific document",
+            "description": {
+              "content": "Return a specific document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "documents",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Specify which format you want the response to be. Default is \"json\""
+                },
+                {
+                  "disabled": false,
+                  "key": "compact",
+                  "value": "<boolean>",
+                  "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "snake_case",
+                  "value": "<boolean>",
+                  "description": "Whether to return the response in snake_case instead of camelCase. Default is false."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Document's identifier"
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "892caa11-b7cb-4343-aae1-a8a4f9266944",
+              "name": "Successfully retrieved document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"identifier\": \"string\",\n    \"pages\": [\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pageIndex\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"image\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"rotation\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"imageTranslated\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pageIndex\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"image\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"rotation\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"imageTranslated\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"workspace\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"string\"\n    },\n    \"customIdentifier\": \"46ab8b02-0e5b-420c-877c-8b678d46a834\",\n    \"fileName\": \"Document.pdf\",\n    \"ready\": true,\n    \"readyDt\": \"2020-12-10T01:43:32.276724Z\",\n    \"failed\": false,\n    \"expiryTime\": \"<dateTime>\",\n    \"language\": \"en\",\n    \"pdf\": \"https://affinda-api.s3.amazonaws.com/media/documents/Document.pdf?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062\",\n    \"parentDocument\": {\n      \"identifier\": \"<string>\",\n      \"customIdentifier\": \"46ab8b02-0e5b-420c-877c-8b678d46a834\"\n    },\n    \"childDocuments\": [\n      {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"customIdentifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"customIdentifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"isOcrd\": true,\n    \"ocrConfidence\": 2816.4124260964727,\n    \"reviewUrl\": \"string\",\n    \"documentType\": \"string\",\n    \"collection\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"string\",\n      \"extractor\": {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"baseExtractor\": \"string\",\n        \"validatable\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"validationRules\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"autoRefreshValidationResults\": false\n    },\n    \"archivedDt\": \"2001-08-06T07:27:37.354Z\",\n    \"isArchived\": true,\n    \"skipParse\": false,\n    \"confirmedDt\": \"2007-06-22T18:12:27.791Z\",\n    \"confirmedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"isConfirmed\": true,\n    \"rejectedDt\": \"1961-07-09T14:22:41.582Z\",\n    \"rejectedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"archivedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"isRejected\": true,\n    \"createdDt\": \"2006-04-26T21:19:58.593Z\",\n    \"errorCode\": \"document_conversion_failed\",\n    \"errorDetail\": \"Unable to convert word document\",\n    \"file\": \"string\",\n    \"html\": \"string\",\n    \"llmHint\": \"string\",\n    \"tags\": [\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"workspace\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"documentCount\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"workspace\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"documentCount\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"createdBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"sourceEmail\": \"string\",\n    \"sourceEmailAddress\": \"string\",\n    \"regionBias\": {\n      \"country\": \"string\",\n      \"countries\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"squareCoordinates\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"strict\": true\n    }\n  },\n  \"extractor\": \"string\",\n  \"data\": {},\n  \"error\": {\n    \"errorCode\": \"document_conversion_failed\",\n    \"errorDetail\": \"Unable to convert word document\"\n  },\n  \"warnings\": [\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    },\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "934723bc-e71c-4a7e-a686-20114777e891",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1dcd5e8a-90cb-4611-967e-6dbd8b3cb5d0",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "723d808b-bc6c-49c2-8fd8-6e7af5cb23ef",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3332ab74-90cf-4f67-96c6-a569e66ffbb4",
+          "name": "Update a document",
+          "request": {
+            "name": "Update a document",
+            "description": {
+              "content": "Update file name, expiry time, or move to another collection, etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "documents",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "compact",
+                  "value": "<boolean>",
+                  "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "snake_case",
+                  "value": "<boolean>",
+                  "description": "Whether to return the response in snake_case instead of camelCase. Default is false."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Document's identifier"
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collection\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"documentType\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"expiryTime\": \"<dateTime>\",\n  \"isConfirmed\": \"<boolean>\",\n  \"isRejected\": \"<boolean>\",\n  \"isArchived\": \"<boolean>\",\n  \"skipParse\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"customIdentifier\": \"<string>\",\n  \"llmHint\": \"<string>\",\n  \"warningMessages\": [\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    },\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2df68806-31db-41b0-a191-907a1d54e659",
+              "name": "Successfully updated document data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collection\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"documentType\": \"<string>\",\n  \"fileName\": \"Document.pdf\",\n  \"expiryTime\": \"<dateTime>\",\n  \"isConfirmed\": \"<boolean>\",\n  \"isRejected\": \"<boolean>\",\n  \"isArchived\": \"<boolean>\",\n  \"skipParse\": \"<boolean>\",\n  \"language\": \"en\",\n  \"identifier\": \"<string>\",\n  \"customIdentifier\": \"<string>\",\n  \"llmHint\": \"<string>\",\n  \"warningMessages\": [\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    },\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"identifier\": \"string\",\n    \"pages\": [\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pageIndex\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"image\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"rotation\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"imageTranslated\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pageIndex\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"image\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"rotation\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"imageTranslated\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"workspace\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"string\"\n    },\n    \"customIdentifier\": \"46ab8b02-0e5b-420c-877c-8b678d46a834\",\n    \"fileName\": \"Document.pdf\",\n    \"ready\": true,\n    \"readyDt\": \"2020-12-10T01:43:32.276724Z\",\n    \"failed\": false,\n    \"expiryTime\": \"<dateTime>\",\n    \"language\": \"en\",\n    \"pdf\": \"https://affinda-api.s3.amazonaws.com/media/documents/Document.pdf?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062\",\n    \"parentDocument\": {\n      \"identifier\": \"<string>\",\n      \"customIdentifier\": \"46ab8b02-0e5b-420c-877c-8b678d46a834\"\n    },\n    \"childDocuments\": [\n      {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"customIdentifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"customIdentifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"isOcrd\": true,\n    \"ocrConfidence\": 2816.4124260964727,\n    \"reviewUrl\": \"string\",\n    \"documentType\": \"string\",\n    \"collection\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"string\",\n      \"extractor\": {\n        \"identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"baseExtractor\": \"string\",\n        \"validatable\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"validationRules\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"autoRefreshValidationResults\": false\n    },\n    \"archivedDt\": \"2001-08-06T07:27:37.354Z\",\n    \"isArchived\": true,\n    \"skipParse\": false,\n    \"confirmedDt\": \"2007-06-22T18:12:27.791Z\",\n    \"confirmedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"isConfirmed\": true,\n    \"rejectedDt\": \"1961-07-09T14:22:41.582Z\",\n    \"rejectedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"archivedBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"isRejected\": true,\n    \"createdDt\": \"2006-04-26T21:19:58.593Z\",\n    \"errorCode\": \"document_conversion_failed\",\n    \"errorDetail\": \"Unable to convert word document\",\n    \"file\": \"string\",\n    \"html\": \"string\",\n    \"llmHint\": \"string\",\n    \"tags\": [\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"workspace\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"documentCount\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"workspace\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"documentCount\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"createdBy\": {\n      \"id\": 1,\n      \"name\": \"Carl Johnson\",\n      \"username\": \"carljohnson\",\n      \"email\": \"carljohnson@grove.street\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n    },\n    \"sourceEmail\": \"string\",\n    \"sourceEmailAddress\": \"string\",\n    \"regionBias\": {\n      \"country\": \"string\",\n      \"countries\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"squareCoordinates\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"strict\": true\n    }\n  },\n  \"extractor\": \"string\",\n  \"data\": {},\n  \"error\": {\n    \"errorCode\": \"document_conversion_failed\",\n    \"errorDetail\": \"Unable to convert word document\"\n  },\n  \"warnings\": [\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    },\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0568448a-8979-43c6-b663-12085d9f8909",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collection\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"documentType\": \"<string>\",\n  \"fileName\": \"Document.pdf\",\n  \"expiryTime\": \"<dateTime>\",\n  \"isConfirmed\": \"<boolean>\",\n  \"isRejected\": \"<boolean>\",\n  \"isArchived\": \"<boolean>\",\n  \"skipParse\": \"<boolean>\",\n  \"language\": \"en\",\n  \"identifier\": \"<string>\",\n  \"customIdentifier\": \"<string>\",\n  \"llmHint\": \"<string>\",\n  \"warningMessages\": [\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    },\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88b6e32c-08f9-44ca-bbf0-d51434356785",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collection\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"documentType\": \"<string>\",\n  \"fileName\": \"Document.pdf\",\n  \"expiryTime\": \"<dateTime>\",\n  \"isConfirmed\": \"<boolean>\",\n  \"isRejected\": \"<boolean>\",\n  \"isArchived\": \"<boolean>\",\n  \"skipParse\": \"<boolean>\",\n  \"language\": \"en\",\n  \"identifier\": \"<string>\",\n  \"customIdentifier\": \"<string>\",\n  \"llmHint\": \"<string>\",\n  \"warningMessages\": [\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    },\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7569947b-16a1-46fe-a8d0-4b217ee15ae0",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collection\": \"mEFayXdO\",\n  \"workspace\": \"mEFayXdO\",\n  \"documentType\": \"<string>\",\n  \"fileName\": \"Document.pdf\",\n  \"expiryTime\": \"<dateTime>\",\n  \"isConfirmed\": \"<boolean>\",\n  \"isRejected\": \"<boolean>\",\n  \"isArchived\": \"<boolean>\",\n  \"skipParse\": \"<boolean>\",\n  \"language\": \"en\",\n  \"identifier\": \"<string>\",\n  \"customIdentifier\": \"<string>\",\n  \"llmHint\": \"<string>\",\n  \"warningMessages\": [\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    },\n    {\n      \"warningCode\": \"too_many_pages\",\n      \"warningDetail\": \"File exceeds maximum number of pages allowed, parsing the first 10 pages only.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a96f322-22ef-4c75-825c-93a4049c9135",
+          "name": "Delete a document",
+          "request": {
+            "name": "Delete a document",
+            "description": {
+              "content": "Deletes the specified document from the database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "documents",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Document's identifier"
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d97b18aa-ef6f-486d-b2f4-cce756d0acac",
+              "name": "Delete successful, no content returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7aa80f1d-453b-4244-9f02-7e301958eacb",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34178b1c-abef-4d2f-8a9d-4e83b70c13d6",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "392f287b-71f9-4abc-974e-2728a44f229d",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85b1d6d9-e2b4-4f89-b59b-13298496e173",
+          "name": "Get redacted document",
+          "request": {
+            "name": "Get redacted document",
+            "description": {
+              "content": "Get the redacted version of a document. The original document is not modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "documents",
+                ":identifier",
+                "redacted"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Document identifier"
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1700e4e-af65-40c6-a5f0-05cf87123a07",
+              "name": "Successfully retrieved redacted document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier",
+                    "redacted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48d6f234-a496-485c-9594-33b9cfcd7075",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier",
+                    "redacted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea5ae32b-eeed-4f90-92bc-128b1e341c95",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier",
+                    "redacted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e50797d-3a0b-46c2-baf0-365a13fa3180",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "documents",
+                    ":identifier",
+                    "redacted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Document identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{region}}.affinda.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8767f4e3-c075-482e-88c3-1f10cb8018e8",
+    "name": "Affinda Documents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Affinda Documents API — subset of the Affinda v3 Document Processing API.",
+      "type": "text/plain"
+    }
+  }
+}

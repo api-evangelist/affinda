@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Validation Results API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Validation Results",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of all validation results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/validation_results",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "document",
+                "value": "",
+                "type": "query",
+                "description": "Filter by document."
+              }
+            ]
+          },
+          "docs": "Returns the validation results of a document."
+        },
+        {
+          "info": {
+            "name": "Create a validation result",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/validation_results",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a validation result."
+        },
+        {
+          "info": {
+            "name": "Get specific validation result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/validation_results/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Validation result's ID."
+              }
+            ]
+          },
+          "docs": "Return a specific validation result."
+        },
+        {
+          "info": {
+            "name": "Update a validation result",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/validation_results/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Validation result's ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a validation result."
+        },
+        {
+          "info": {
+            "name": "Delete a validation result",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/validation_results/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Validation result's ID."
+              }
+            ]
+          },
+          "docs": "Remove validation result."
+        },
+        {
+          "info": {
+            "name": "Batch create validation results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/validation_results/batch_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch create validation results."
+        },
+        {
+          "info": {
+            "name": "Batch delete validation results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/validation_results/batch_delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch delete validation results"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

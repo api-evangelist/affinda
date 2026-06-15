@@ -1,0 +1,2152 @@
+{
+  "item": [
+    {
+      "id": "1c404257-8e91-4297-9fe9-7fbe79f19132",
+      "name": "Validation Results",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1331ac59-9102-40bd-8971-139067ead043",
+          "name": "Get list of all validation results",
+          "request": {
+            "name": "Get list of all validation results",
+            "description": {
+              "content": "Returns the validation results of a document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "validation_results"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The number of documents to skip before starting to collect the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The numbers of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "document",
+                  "value": "<string>",
+                  "description": "(Required) Filter by document."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbc800f5-92b3-4f8e-b3b7-0b6e2d275e0f",
+              "name": "All matching workspace memberships.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "document",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1,\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"passed\": true,\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\"\n  },\n  {\n    \"id\": 1,\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"passed\": true,\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdb6d7dd-ef06-45ba-8b48-4ef9c2c6ddf3",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "document",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a48d201-9f9c-43b0-b9ef-1e4ee90fa801",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "document",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4ab5527-cfe8-46f6-965c-a821f97d7109",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "document",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39063263-3cad-48e2-a5ef-1a2f7707bc65",
+          "name": "Create a validation result",
+          "request": {
+            "name": "Create a validation result",
+            "description": {
+              "content": "Create a validation result.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "validation_results"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ruleSlug\": \"<string>\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\",\n  \"passed\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e96847d7-f398-4b03-9c0c-bed03ba215a8",
+              "name": "Successfully created a validation result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"annotations\": [\n    1,\n    2,\n    3\n  ],\n  \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n  \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n  \"document\": \"<string>\",\n  \"passed\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"annotations\": [\n    1,\n    2,\n    3\n  ],\n  \"passed\": true,\n  \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n  \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n  \"document\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37a98d57-8815-4ada-831f-3921c09b2301",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"annotations\": [\n    1,\n    2,\n    3\n  ],\n  \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n  \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n  \"document\": \"<string>\",\n  \"passed\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "085cd6f9-0b66-4d62-a4f6-b4795339c444",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"annotations\": [\n    1,\n    2,\n    3\n  ],\n  \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n  \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n  \"document\": \"<string>\",\n  \"passed\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da3e9819-fdee-4c75-a2d3-5a915f9c6685",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"annotations\": [\n    1,\n    2,\n    3\n  ],\n  \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n  \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n  \"document\": \"<string>\",\n  \"passed\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23972a18-bc5a-4123-b0b3-6856ab00481b",
+          "name": "Get specific validation result",
+          "request": {
+            "name": "Get specific validation result",
+            "description": {
+              "content": "Return a specific validation result.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "validation_results",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Validation result's ID."
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6d61731-cb0a-481a-93b5-a669062fa522",
+              "name": "Successfully retrieved validation result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"annotations\": [\n    1,\n    2,\n    3\n  ],\n  \"passed\": true,\n  \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n  \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n  \"document\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c815bbd9-882f-4843-8bfe-744ef107e00b",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49a91922-5957-4399-8fa8-b107b81def8d",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d1d50ed-d30f-4956-9983-ea93d110f625",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "179d3438-922e-4669-a0da-8a99391656a9",
+          "name": "Update a validation result",
+          "request": {
+            "name": "Update a validation result",
+            "description": {
+              "content": "Update a validation result.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "validation_results",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Validation result's ID."
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"passed\": \"<boolean>\",\n  \"ruleSlug\": \"<string>\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "860bafd1-7924-4004-ac11-e636e09e510d",
+              "name": "Successfully updated validation result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"annotations\": [\n    1,\n    2,\n    3\n  ],\n  \"passed\": true,\n  \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n  \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n  \"document\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"annotations\": [\n    1,\n    2,\n    3\n  ],\n  \"passed\": true,\n  \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n  \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n  \"document\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa6dfc5c-fb29-4135-93c1-38a0a48b7f3c",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"annotations\": [\n    1,\n    2,\n    3\n  ],\n  \"passed\": true,\n  \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n  \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n  \"document\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ed26523-044b-46dc-8f7f-f5cd4c226895",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"annotations\": [\n    1,\n    2,\n    3\n  ],\n  \"passed\": true,\n  \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n  \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n  \"document\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "298485ab-2e76-4599-8de3-c6e07d2e33b7",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"annotations\": [\n    1,\n    2,\n    3\n  ],\n  \"passed\": true,\n  \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n  \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n  \"document\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e9ac74d-853d-461f-868a-f9a9c45f59d9",
+          "name": "Delete a validation result",
+          "request": {
+            "name": "Delete a validation result",
+            "description": {
+              "content": "Remove validation result.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "validation_results",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Validation result's ID."
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29610eaa-2198-4bc8-b84e-8da0a013a0d7",
+              "name": "Delete successful, no content returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e921640d-a5be-4b01-b08f-74857d3c88e9",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f38fc247-7733-4eb9-83e2-438f5bfa2d81",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b49622e-bae8-4b42-bb0d-816c4e63cbf9",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Validation result's ID."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1056e91-4cf2-4bac-9975-745da5d1fb57",
+          "name": "Batch create validation results",
+          "request": {
+            "name": "Batch create validation results",
+            "description": {
+              "content": "Batch create validation results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "validation_results",
+                "batch_create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"<string>\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  },\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"<string>\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "374ffbe2-2e79-4c45-886b-de0b0e07bc8f",
+              "name": "Successfully created validation results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    "batch_create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\",\n    \"passed\": true\n  },\n  {\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\",\n    \"passed\": true\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1,\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"passed\": true,\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\"\n  },\n  {\n    \"id\": 1,\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"passed\": true,\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "881002be-77c9-490e-ac6f-e2383eda704b",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    "batch_create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\",\n    \"passed\": true\n  },\n  {\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\",\n    \"passed\": true\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fc2f7df-7081-4f58-a37b-7df7fa715597",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    "batch_create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\",\n    \"passed\": true\n  },\n  {\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\",\n    \"passed\": true\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf78cbfc-5398-4567-b2c1-c941b6c117fa",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    "batch_create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\",\n    \"passed\": true\n  },\n  {\n    \"annotations\": [\n      1,\n      2,\n      3\n    ],\n    \"ruleSlug\": \"supplier-name-is-alphanumeric\",\n    \"message\": \"Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*\",\n    \"document\": \"<string>\",\n    \"passed\": true\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5115d654-4a31-4fa5-9135-41e7592066b9",
+          "name": "Batch delete validation results",
+          "request": {
+            "name": "Batch delete validation results",
+            "description": {
+              "content": "Batch delete validation results",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "validation_results",
+                "batch_delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "93689ad5-6a52-4f25-8ca8-e7558fd3019e",
+              "name": "Delete successful, no content returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    "batch_delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    123,\n    124,\n    125\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a87e67b3-a317-4a11-ba2a-436b7ac93ef0",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    "batch_delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    123,\n    124,\n    125\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9009abab-a75b-4113-ae04-b8d23525436f",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    "batch_delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    123,\n    124,\n    125\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f441e7e0-d2a0-4494-9baf-2c6f624cedfc",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "validation_results",
+                    "batch_delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    123,\n    124,\n    125\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{region}}.affinda.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "90cac025-61e1-4784-ad25-ea493b320ca8",
+    "name": "Affinda Validation Results API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Affinda Validation Results API — subset of the Affinda v3 Document Processing API.",
+      "type": "text/plain"
+    }
+  }
+}

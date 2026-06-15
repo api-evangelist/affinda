@@ -1,0 +1,502 @@
+{
+  "info": {
+    "_postman_id": "4d511267-706c-4c18-8fa4-3fce20886a10",
+    "name": "Affinda Organizations API",
+    "description": "Affinda Organizations API \u2014 subset of the Affinda v3 Document Processing API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:00:42.000Z",
+    "updatedAt": "2026-06-05T15:00:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4d511267-706c-4c18-8fa4-3fce20886a10"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{identifier}",
+              "item": [
+                {
+                  "name": "Get detail of an organization",
+                  "id": "06b2974d-109c-4b83-9218-402d99c4f130",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/organizations/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "organizations",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "edcfdf4c-3463-47cf-ad0d-4775373cbf42",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Organization identifier."
+                        }
+                      ]
+                    },
+                    "description": "Get detail of an organization."
+                  },
+                  "response": [
+                    {
+                      "id": "862da040-42a4-4b68-87a7-dbb2355f9d31",
+                      "name": "Successfully retrieved organization.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/organizations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "organizations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identifier\": \"<string>\",\n  \"name\": \"<string>\",\n  \"userRole\": \"member\",\n  \"avatar\": \"<string>\",\n  \"resthookSignatureKey\": \"<string>\",\n  \"isTrial\": \"<boolean>\",\n  \"validationToolConfig\": {\n    \"theme\": {\n      \"palette\": {\n        \"mode\": \"light\",\n        \"background\": \"<string>\",\n        \"text\": {\n          \"primary\": \"<string>\",\n          \"secondary\": \"<string>\",\n          \"disabled\": \"<string>\"\n        },\n        \"divider\": \"<string>\",\n        \"primary\": {\n          \"main\": \"<string>\",\n          \"light\": \"<string>\",\n          \"dark\": \"<string>\",\n          \"contrastText\": \"<string>\"\n        },\n        \"secondary\": {\n          \"main\": \"<string>\",\n          \"light\": \"<string>\",\n          \"dark\": \"<string>\",\n          \"contrastText\": \"<string>\"\n        },\n        \"success\": {\n          \"main\": \"<string>\",\n          \"light\": \"<string>\",\n          \"dark\": \"<string>\",\n          \"contrastText\": \"<string>\"\n        },\n        \"annotation\": {\n          \"main\": \"<string>\",\n          \"light\": \"<string>\",\n          \"dark\": \"<string>\",\n          \"contrastText\": \"<string>\"\n        },\n        \"error\": {\n          \"main\": \"<string>\",\n          \"light\": \"<string>\",\n          \"dark\": \"<string>\",\n          \"contrastText\": \"<string>\"\n        },\n        \"info\": {\n          \"main\": \"<string>\",\n          \"light\": \"<string>\",\n          \"dark\": \"<string>\",\n          \"contrastText\": \"<string>\"\n        },\n        \"warning\": {\n          \"main\": \"<string>\",\n          \"light\": \"<string>\",\n          \"dark\": \"<string>\",\n          \"contrastText\": \"<string>\"\n        }\n      },\n      \"typography\": {\n        \"fontFamily\": \"<string>\",\n        \"fontSize\": \"<string>\",\n        \"fontWeightRegular\": \"<string>\",\n        \"fontWeightMedium\": \"<string>\",\n        \"fontWeightBold\": \"<string>\"\n      },\n      \"borderRadius\": \"<number>\",\n      \"fontUrl\": \"<string>\"\n    },\n    \"hideActions\": \"<boolean>\",\n    \"hideCollection\": \"<boolean>\",\n    \"hideEditPages\": \"<boolean>\",\n    \"hideExport\": \"<boolean>\",\n    \"hideFilename\": \"<boolean>\",\n    \"hideShowRawValues\": \"<boolean>\",\n    \"hideReject\": \"<boolean>\",\n    \"hideReparse\": \"<boolean>\",\n    \"hideRunOcr\": \"<boolean>\",\n    \"hideTags\": \"<boolean>\",\n    \"hideWarnings\": \"<boolean>\",\n    \"restrictDocumentSplitting\": \"<boolean>\",\n    \"disableCurrencyFormatting\": \"<boolean>\",\n    \"disableEditDocumentMetadata\": \"<boolean>\",\n    \"disableManualAnnotationEditing\": \"<boolean>\",\n    \"hideDocumentStatus\": \"<boolean>\"\n  },\n  \"showCustomFieldCreation\": \"<boolean>\"\n}",
+                      "createdAt": "2026-06-05T15:00:43.000Z",
+                      "updatedAt": "2026-06-05T15:00:43.000Z",
+                      "uid": "35240-862da040-42a4-4b68-87a7-dbb2355f9d31"
+                    },
+                    {
+                      "id": "75e7363c-4071-476f-908f-3809a9eee169",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/organizations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "organizations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:43.000Z",
+                      "updatedAt": "2026-06-05T15:00:43.000Z",
+                      "uid": "35240-75e7363c-4071-476f-908f-3809a9eee169"
+                    },
+                    {
+                      "id": "8f9538c1-b446-44bc-8181-b87024e61e4c",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/organizations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "organizations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:43.000Z",
+                      "updatedAt": "2026-06-05T15:00:43.000Z",
+                      "uid": "35240-8f9538c1-b446-44bc-8181-b87024e61e4c"
+                    },
+                    {
+                      "id": "90394536-e146-42fc-b183-80f9b7fbd79f",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/organizations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "organizations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:43.000Z",
+                      "updatedAt": "2026-06-05T15:00:43.000Z",
+                      "uid": "35240-90394536-e146-42fc-b183-80f9b7fbd79f"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:43.000Z",
+                  "updatedAt": "2026-06-05T15:00:43.000Z",
+                  "uid": "35240-06b2974d-109c-4b83-9218-402d99c4f130"
+                }
+              ],
+              "id": "2c169ea7-72eb-4411-a7d1-d70b7b2b034e",
+              "createdAt": "2026-06-05T15:00:43.000Z",
+              "updatedAt": "2026-06-05T15:00:43.000Z",
+              "uid": "35240-2c169ea7-72eb-4411-a7d1-d70b7b2b034e"
+            },
+            {
+              "name": "Get list of all organizations",
+              "id": "c0ddb105-698a-4334-a2a4-59f843852e87",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v3/organizations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "organizations"
+                  ]
+                },
+                "description": "Returns all the organizations"
+              },
+              "response": [
+                {
+                  "id": "4f749cc1-47f1-4f4c-866f-99371cdbe0af",
+                  "name": "All organizations you created or joined.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/organizations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "organizations"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:00:43.000Z",
+                  "updatedAt": "2026-06-05T15:00:43.000Z",
+                  "uid": "35240-4f749cc1-47f1-4f4c-866f-99371cdbe0af"
+                },
+                {
+                  "id": "ecd342a7-0216-4f02-a02b-980d79469f79",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/organizations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "organizations"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:43.000Z",
+                  "updatedAt": "2026-06-05T15:00:43.000Z",
+                  "uid": "35240-ecd342a7-0216-4f02-a02b-980d79469f79"
+                },
+                {
+                  "id": "7dacbb8a-a18c-4a72-a3ef-18cf97f12338",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/organizations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "organizations"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:43.000Z",
+                  "updatedAt": "2026-06-05T15:00:43.000Z",
+                  "uid": "35240-7dacbb8a-a18c-4a72-a3ef-18cf97f12338"
+                },
+                {
+                  "id": "1b4aab81-c74b-42b9-8ddd-3f72d5c21c8b",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/organizations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "organizations"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:43.000Z",
+                  "updatedAt": "2026-06-05T15:00:43.000Z",
+                  "uid": "35240-1b4aab81-c74b-42b9-8ddd-3f72d5c21c8b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:43.000Z",
+              "updatedAt": "2026-06-05T15:00:43.000Z",
+              "uid": "35240-c0ddb105-698a-4334-a2a4-59f843852e87"
+            }
+          ],
+          "id": "45510fb7-6bbf-4e08-b2d2-0af81fa31f05",
+          "createdAt": "2026-06-05T15:00:43.000Z",
+          "updatedAt": "2026-06-05T15:00:43.000Z",
+          "uid": "35240-45510fb7-6bbf-4e08-b2d2-0af81fa31f05"
+        }
+      ],
+      "id": "e0430a73-a17b-4d8d-ae74-3fece6ffa414",
+      "createdAt": "2026-06-05T15:00:43.000Z",
+      "updatedAt": "2026-06-05T15:00:43.000Z",
+      "uid": "35240-e0430a73-a17b-4d8d-ae74-3fece6ffa414"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "api"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{region}}.affinda.com"
+    }
+  ]
+}

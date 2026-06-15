@@ -1,0 +1,290 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Documents API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of all documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/documents",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "workspace",
+                "value": "",
+                "type": "query",
+                "description": "Filter by workspace."
+              },
+              {
+                "name": "collection",
+                "value": "",
+                "type": "query",
+                "description": "Filter by collection."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the document's state."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag's IDs."
+              },
+              {
+                "name": "created_dt",
+                "value": "",
+                "type": "query",
+                "description": "Filter by created datetime."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Partial, case-insensitive match with file name or tag name."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Sort the result set. A \"-\" at the beginning denotes DESC sort, e.g. -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name', 'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__<dataPointSlug>'."
+              },
+              {
+                "name": "include_data",
+                "value": "",
+                "type": "query",
+                "description": "By default, this endpoint returns only the meta data of the documents. Set this to `true` will return a summary of the data that was parsed. If you want to retrieve the full set of data for a document, use the `GET /documents/{identifier}` endpoint."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "Exclude some documents from the result."
+              },
+              {
+                "name": "in_review",
+                "value": "",
+                "type": "query",
+                "description": "Exclude documents that are currently being reviewed."
+              },
+              {
+                "name": "failed",
+                "value": "",
+                "type": "query",
+                "description": "Filter by failed status."
+              },
+              {
+                "name": "ready",
+                "value": "",
+                "type": "query",
+                "description": "Filter by ready status."
+              },
+              {
+                "name": "validatable",
+                "value": "",
+                "type": "query",
+                "description": "Filter for validatable documents."
+              },
+              {
+                "name": "has_challenges",
+                "value": "",
+                "type": "query",
+                "description": "Filter for documents with challenges."
+              },
+              {
+                "name": "custom_identifier",
+                "value": "",
+                "type": "query",
+                "description": "Filter for documents with this custom identifier."
+              },
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query",
+                "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\"."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "If \"false\", the documents count is not computed, thus saving time for large collections. Default is \"true\"."
+              },
+              {
+                "name": "snake_case",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return the response in snake_case instead of camelCase. Default is false."
+              }
+            ]
+          },
+          "docs": "Returns all the document summaries for that user, limited to 300 per page."
+        },
+        {
+          "info": {
+            "name": "Upload a document for parsing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/documents",
+            "params": [
+              {
+                "name": "snake_case",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return the response in snake_case instead of camelCase. Default is false."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "\nUploads a document for parsing via file upload or URL.\nWhen successful, returns an `identifier` in the response for subsequent use with the [/documents/{identifier}](#get-/v3/documents/-identifier-) endpoint to check processing status and retrieve results.<br/>"
+        },
+        {
+          "info": {
+            "name": "Get specific document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/documents/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document's identifier"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Specify which format you want the response to be. Default is \"json\""
+              },
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query",
+                "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\"."
+              },
+              {
+                "name": "snake_case",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return the response in snake_case instead of camelCase. Default is false."
+              }
+            ]
+          },
+          "docs": "Return a specific document."
+        },
+        {
+          "info": {
+            "name": "Update a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/documents/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document's identifier"
+              },
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query",
+                "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\"."
+              },
+              {
+                "name": "snake_case",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return the response in snake_case instead of camelCase. Default is false."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update file name, expiry time, or move to another collection, etc."
+        },
+        {
+          "info": {
+            "name": "Delete a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/documents/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document's identifier"
+              }
+            ]
+          },
+          "docs": "Deletes the specified document from the database."
+        },
+        {
+          "info": {
+            "name": "Get redacted document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/documents/:identifier/redacted",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document identifier"
+              }
+            ]
+          },
+          "docs": "Get the redacted version of a document. The original document is not modified."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

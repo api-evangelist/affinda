@@ -1,0 +1,1968 @@
+{
+  "info": {
+    "_postman_id": "c74da366-03d4-48a9-85d1-523d95a9776b",
+    "name": "Affinda Invitations API",
+    "description": "Affinda Invitations API \u2014 subset of the Affinda v3 Document Processing API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:00:44.000Z",
+    "updatedAt": "2026-06-05T15:00:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c74da366-03d4-48a9-85d1-523d95a9776b"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "invitations",
+          "item": [
+            {
+              "name": "{identifier}",
+              "item": [
+                {
+                  "name": "Get detail of an invitation",
+                  "id": "12cc285f-929a-4edc-bcd8-d358a967b6f2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "invitations",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4ef3c6fc-e6d2-419c-8297-8936c9cd3006",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Invitation identifier."
+                        }
+                      ]
+                    },
+                    "description": "Get detail of an invitation."
+                  },
+                  "response": [
+                    {
+                      "id": "27fe8125-c5ed-4f80-ad30-617677247bce",
+                      "name": "Successfully retrieved invitation.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identifier\": \"<string>\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"email\": \"<string>\",\n  \"role\": \"member\",\n  \"status\": \"pending\",\n  \"expiryDate\": \"<date>\",\n  \"invitedBy\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  },\n  \"respondedBy\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  },\n  \"createdDt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-27fe8125-c5ed-4f80-ad30-617677247bce"
+                    },
+                    {
+                      "id": "a2f516cb-c4a7-4ec7-8432-b1df473ace8e",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-a2f516cb-c4a7-4ec7-8432-b1df473ace8e"
+                    },
+                    {
+                      "id": "91befcfc-5dd3-4606-a369-5c7349913351",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-91befcfc-5dd3-4606-a369-5c7349913351"
+                    },
+                    {
+                      "id": "27ba409b-af0e-4da3-87f2-41dd20d9b2bd",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-27ba409b-af0e-4da3-87f2-41dd20d9b2bd"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-12cc285f-929a-4edc-bcd8-d358a967b6f2"
+                },
+                {
+                  "name": "Update an invitation",
+                  "id": "40635894-3293-4ebf-8e94-4164a61b2e06",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"role\": \"member\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "invitations",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a6d48cd8-d073-45f8-bc8d-74de60a503f8",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Invitation identifier."
+                        }
+                      ]
+                    },
+                    "description": "Update the detail of an invitation."
+                  },
+                  "response": [
+                    {
+                      "id": "9cdf1709-38af-46ef-ab28-16e0eca7b2f7",
+                      "name": "Successfully updated invitation.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"member\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identifier\": \"<string>\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"email\": \"<string>\",\n  \"role\": \"member\",\n  \"status\": \"pending\",\n  \"expiryDate\": \"<date>\",\n  \"invitedBy\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  },\n  \"respondedBy\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  },\n  \"createdDt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-9cdf1709-38af-46ef-ab28-16e0eca7b2f7"
+                    },
+                    {
+                      "id": "ab755930-cb0e-4a16-808e-83c8de795836",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"member\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-ab755930-cb0e-4a16-808e-83c8de795836"
+                    },
+                    {
+                      "id": "966ca478-674c-4446-b6e6-acd0d94a7054",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"member\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-966ca478-674c-4446-b6e6-acd0d94a7054"
+                    },
+                    {
+                      "id": "736c8fbe-6dac-44b6-a947-4eb301bccced",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"member\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-736c8fbe-6dac-44b6-a947-4eb301bccced"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-40635894-3293-4ebf-8e94-4164a61b2e06"
+                },
+                {
+                  "name": "Delete an invitation",
+                  "id": "9fe62d84-a62e-49fe-8f2b-c8d6fc29b00f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "invitations",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2f4ae1df-6b65-41d0-b53a-97492f7a42d2",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Invitation identifier."
+                        }
+                      ]
+                    },
+                    "description": "Delete the specified invitation from the database."
+                  },
+                  "response": [
+                    {
+                      "id": "1511396b-19e1-40d4-b241-3841ec8b716f",
+                      "name": "Delete successful, no content returned",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-1511396b-19e1-40d4-b241-3841ec8b716f"
+                    },
+                    {
+                      "id": "3d849c62-84d2-4cd3-92d0-3b3ecffbb0a9",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-3d849c62-84d2-4cd3-92d0-3b3ecffbb0a9"
+                    },
+                    {
+                      "id": "b7f738d8-0c60-4899-80ee-ba22dd4e10b2",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-b7f738d8-0c60-4899-80ee-ba22dd4e10b2"
+                    },
+                    {
+                      "id": "2bb3fec3-5d02-496a-8982-ead9c9ea566f",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-2bb3fec3-5d02-496a-8982-ead9c9ea566f"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-9fe62d84-a62e-49fe-8f2b-c8d6fc29b00f"
+                }
+              ],
+              "id": "65ca5cdc-1d02-4533-98d9-63043fa080e8",
+              "createdAt": "2026-06-05T15:00:44.000Z",
+              "updatedAt": "2026-06-05T15:00:44.000Z",
+              "uid": "35240-65ca5cdc-1d02-4533-98d9-63043fa080e8"
+            },
+            {
+              "name": "token",
+              "item": [
+                {
+                  "name": "{token}",
+                  "item": [
+                    {
+                      "name": "Get detail of an invitation by token",
+                      "id": "7638f99b-fee2-4815-b5e7-542a8e15670d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/token/:token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            "token",
+                            ":token"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ce5be85b-1278-4d96-8d92-1ba48b0d698f",
+                              "key": "token",
+                              "value": "<string>",
+                              "description": "(Required) Invitation token."
+                            }
+                          ]
+                        },
+                        "description": "Get detail of an invitation using a secret token. This allows users who have not registered/logged in to view the invitation."
+                      },
+                      "response": [
+                        {
+                          "id": "ebedb320-e891-48ab-81b0-181cebd70815",
+                          "name": "Successfully retrieved invitation.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/invitations/token/:token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "invitations",
+                                "token",
+                                ":token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "token"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"identifier\": \"<string>\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"email\": \"<string>\",\n  \"role\": \"member\",\n  \"status\": \"pending\",\n  \"expiryDate\": \"<date>\",\n  \"invitedBy\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  },\n  \"respondedBy\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  },\n  \"createdDt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-06-05T15:00:44.000Z",
+                          "updatedAt": "2026-06-05T15:00:44.000Z",
+                          "uid": "35240-ebedb320-e891-48ab-81b0-181cebd70815"
+                        },
+                        {
+                          "id": "c3bc7c4f-1088-4154-abd2-a666775b7eaa",
+                          "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/invitations/token/:token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "invitations",
+                                "token",
+                                ":token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "token"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:44.000Z",
+                          "updatedAt": "2026-06-05T15:00:44.000Z",
+                          "uid": "35240-c3bc7c4f-1088-4154-abd2-a666775b7eaa"
+                        },
+                        {
+                          "id": "e60994d7-a525-4126-a891-18c5ee21e346",
+                          "name": "UnexpectedError",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/invitations/token/:token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "invitations",
+                                "token",
+                                ":token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "token"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:44.000Z",
+                          "updatedAt": "2026-06-05T15:00:44.000Z",
+                          "uid": "35240-e60994d7-a525-4126-a891-18c5ee21e346"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-7638f99b-fee2-4815-b5e7-542a8e15670d"
+                    },
+                    {
+                      "name": "Respond to an invitation",
+                      "id": "7edef086-d8af-4183-a585-1fc14a200cda",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"accepted\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/invitations/token/:token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "invitations",
+                            "token",
+                            ":token"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b58004ee-0886-43ad-9655-6f431fb52126",
+                              "key": "token",
+                              "value": "<string>",
+                              "description": "(Required) Invitation token."
+                            }
+                          ]
+                        },
+                        "description": "Choose to accept or decline an invitation."
+                      },
+                      "response": [
+                        {
+                          "id": "77a3982e-faff-4715-9ef0-86e74c8f1770",
+                          "name": "Successfully responded to the invitation.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"accepted\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/invitations/token/:token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "invitations",
+                                "token",
+                                ":token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "token"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"identifier\": \"<string>\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"email\": \"<string>\",\n  \"role\": \"member\",\n  \"status\": \"pending\",\n  \"expiryDate\": \"<date>\",\n  \"invitedBy\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  },\n  \"respondedBy\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  },\n  \"createdDt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-06-05T15:00:44.000Z",
+                          "updatedAt": "2026-06-05T15:00:44.000Z",
+                          "uid": "35240-77a3982e-faff-4715-9ef0-86e74c8f1770"
+                        },
+                        {
+                          "id": "a683f23b-fe29-4c7c-b449-c934507b46fb",
+                          "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"accepted\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/invitations/token/:token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "invitations",
+                                "token",
+                                ":token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "token"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:44.000Z",
+                          "updatedAt": "2026-06-05T15:00:44.000Z",
+                          "uid": "35240-a683f23b-fe29-4c7c-b449-c934507b46fb"
+                        },
+                        {
+                          "id": "323ca3e1-4cf8-4b2e-a03a-78d061d9f8a9",
+                          "name": "Authorisation error",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"accepted\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/invitations/token/:token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "invitations",
+                                "token",
+                                ":token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "token"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:44.000Z",
+                          "updatedAt": "2026-06-05T15:00:44.000Z",
+                          "uid": "35240-323ca3e1-4cf8-4b2e-a03a-78d061d9f8a9"
+                        },
+                        {
+                          "id": "c109ca81-63de-4f97-bb58-dc54d257e3f5",
+                          "name": "UnexpectedError",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"accepted\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/invitations/token/:token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "invitations",
+                                "token",
+                                ":token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "token"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:44.000Z",
+                          "updatedAt": "2026-06-05T15:00:44.000Z",
+                          "uid": "35240-c109ca81-63de-4f97-bb58-dc54d257e3f5"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:00:44.000Z",
+                      "updatedAt": "2026-06-05T15:00:44.000Z",
+                      "uid": "35240-7edef086-d8af-4183-a585-1fc14a200cda"
+                    }
+                  ],
+                  "id": "fda48c67-f1dc-41c3-ab51-20f297cb86d8",
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-fda48c67-f1dc-41c3-ab51-20f297cb86d8"
+                }
+              ],
+              "id": "087d9844-97da-4630-9a5d-fb2ccbfb7dfa",
+              "createdAt": "2026-06-05T15:00:44.000Z",
+              "updatedAt": "2026-06-05T15:00:44.000Z",
+              "uid": "35240-087d9844-97da-4630-9a5d-fb2ccbfb7dfa"
+            },
+            {
+              "name": "Get list of all invitations",
+              "id": "3166a794-7e86-450d-8982-92f7a8f899c8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v3/invitations?offset=<integer>&limit=<integer>&organization=<string>&status=accepted&role=member",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "invitations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The number of documents to skip before starting to collect the result set.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The numbers of results to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by organization.",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by status.",
+                      "key": "status",
+                      "value": "accepted"
+                    },
+                    {
+                      "description": "Filter by role.",
+                      "key": "role",
+                      "value": "member"
+                    }
+                  ]
+                },
+                "description": "Get list of all invitations you created or sent to you."
+              },
+              "response": [
+                {
+                  "id": "0a06b174-3853-43eb-9e36-278e0bb81528",
+                  "name": "All invitations you created or sent to you.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/invitations?offset=<integer>&limit=<integer>&organization=<string>&status=accepted&role=member",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "invitations"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by status.",
+                          "key": "status",
+                          "value": "accepted"
+                        },
+                        {
+                          "description": "Filter by role.",
+                          "key": "role",
+                          "value": "member"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"results\": [\n    {\n      \"identifier\": \"<string>\",\n      \"organization\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"userRole\": \"admin\",\n        \"avatar\": \"<string>\",\n        \"resthookSignatureKey\": \"<string>\",\n        \"isTrial\": \"<boolean>\",\n        \"validationToolConfig\": {\n          \"theme\": {\n            \"palette\": {\n              \"mode\": \"dark\",\n              \"background\": \"<string>\",\n              \"text\": {\n                \"primary\": \"<string>\",\n                \"secondary\": \"<string>\",\n                \"disabled\": \"<string>\"\n              },\n              \"divider\": \"<string>\",\n              \"primary\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"secondary\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"success\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"annotation\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"error\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"info\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"warning\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              }\n            },\n            \"typography\": {\n              \"fontFamily\": \"<string>\",\n              \"fontSize\": \"<string>\",\n              \"fontWeightRegular\": \"<string>\",\n              \"fontWeightMedium\": \"<string>\",\n              \"fontWeightBold\": \"<string>\"\n            },\n            \"borderRadius\": \"<number>\",\n            \"fontUrl\": \"<string>\"\n          },\n          \"hideActions\": \"<boolean>\",\n          \"hideCollection\": \"<boolean>\",\n          \"hideEditPages\": \"<boolean>\",\n          \"hideExport\": \"<boolean>\",\n          \"hideFilename\": \"<boolean>\",\n          \"hideShowRawValues\": \"<boolean>\",\n          \"hideReject\": \"<boolean>\",\n          \"hideReparse\": \"<boolean>\",\n          \"hideRunOcr\": \"<boolean>\",\n          \"hideTags\": \"<boolean>\",\n          \"hideWarnings\": \"<boolean>\",\n          \"restrictDocumentSplitting\": \"<boolean>\",\n          \"disableCurrencyFormatting\": \"<boolean>\",\n          \"disableEditDocumentMetadata\": \"<boolean>\",\n          \"disableManualAnnotationEditing\": \"<boolean>\",\n          \"hideDocumentStatus\": \"<boolean>\"\n        },\n        \"showCustomFieldCreation\": \"<boolean>\"\n      },\n      \"email\": \"<string>\",\n      \"role\": \"member\",\n      \"status\": \"declined\",\n      \"expiryDate\": \"<date>\",\n      \"invitedBy\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"avatar\": \"<string>\"\n      },\n      \"respondedBy\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"avatar\": \"<string>\"\n      },\n      \"createdDt\": \"<dateTime>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"organization\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"userRole\": \"admin\",\n        \"avatar\": \"<string>\",\n        \"resthookSignatureKey\": \"<string>\",\n        \"isTrial\": \"<boolean>\",\n        \"validationToolConfig\": {\n          \"theme\": {\n            \"palette\": {\n              \"mode\": \"dark\",\n              \"background\": \"<string>\",\n              \"text\": {\n                \"primary\": \"<string>\",\n                \"secondary\": \"<string>\",\n                \"disabled\": \"<string>\"\n              },\n              \"divider\": \"<string>\",\n              \"primary\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"secondary\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"success\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"annotation\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"error\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"info\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"warning\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              }\n            },\n            \"typography\": {\n              \"fontFamily\": \"<string>\",\n              \"fontSize\": \"<string>\",\n              \"fontWeightRegular\": \"<string>\",\n              \"fontWeightMedium\": \"<string>\",\n              \"fontWeightBold\": \"<string>\"\n            },\n            \"borderRadius\": \"<number>\",\n            \"fontUrl\": \"<string>\"\n          },\n          \"hideActions\": \"<boolean>\",\n          \"hideCollection\": \"<boolean>\",\n          \"hideEditPages\": \"<boolean>\",\n          \"hideExport\": \"<boolean>\",\n          \"hideFilename\": \"<boolean>\",\n          \"hideShowRawValues\": \"<boolean>\",\n          \"hideReject\": \"<boolean>\",\n          \"hideReparse\": \"<boolean>\",\n          \"hideRunOcr\": \"<boolean>\",\n          \"hideTags\": \"<boolean>\",\n          \"hideWarnings\": \"<boolean>\",\n          \"restrictDocumentSplitting\": \"<boolean>\",\n          \"disableCurrencyFormatting\": \"<boolean>\",\n          \"disableEditDocumentMetadata\": \"<boolean>\",\n          \"disableManualAnnotationEditing\": \"<boolean>\",\n          \"hideDocumentStatus\": \"<boolean>\"\n        },\n        \"showCustomFieldCreation\": \"<boolean>\"\n      },\n      \"email\": \"<string>\",\n      \"role\": \"admin\",\n      \"status\": \"declined\",\n      \"expiryDate\": \"<date>\",\n      \"invitedBy\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"avatar\": \"<string>\"\n      },\n      \"respondedBy\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"avatar\": \"<string>\"\n      },\n      \"createdDt\": \"<dateTime>\"\n    }\n  ],\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-0a06b174-3853-43eb-9e36-278e0bb81528"
+                },
+                {
+                  "id": "deff3ace-62a3-455b-aedf-663270a51984",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/invitations?offset=<integer>&limit=<integer>&organization=<string>&status=accepted&role=member",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "invitations"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by status.",
+                          "key": "status",
+                          "value": "accepted"
+                        },
+                        {
+                          "description": "Filter by role.",
+                          "key": "role",
+                          "value": "member"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-deff3ace-62a3-455b-aedf-663270a51984"
+                },
+                {
+                  "id": "56ead7a0-8877-4aab-91a1-29b99217aa60",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/invitations?offset=<integer>&limit=<integer>&organization=<string>&status=accepted&role=member",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "invitations"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by status.",
+                          "key": "status",
+                          "value": "accepted"
+                        },
+                        {
+                          "description": "Filter by role.",
+                          "key": "role",
+                          "value": "member"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-56ead7a0-8877-4aab-91a1-29b99217aa60"
+                },
+                {
+                  "id": "e959dae6-d439-4d67-a89b-bcf786ce5e8d",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/invitations?offset=<integer>&limit=<integer>&organization=<string>&status=accepted&role=member",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "invitations"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by status.",
+                          "key": "status",
+                          "value": "accepted"
+                        },
+                        {
+                          "description": "Filter by role.",
+                          "key": "role",
+                          "value": "member"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-e959dae6-d439-4d67-a89b-bcf786ce5e8d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:44.000Z",
+              "updatedAt": "2026-06-05T15:00:44.000Z",
+              "uid": "35240-3166a794-7e86-450d-8982-92f7a8f899c8"
+            },
+            {
+              "name": "Create a new invitation",
+              "id": "24e88302-8698-4efc-aac3-a19375002ceb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organization\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"member\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v3/invitations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "invitations"
+                  ]
+                },
+                "description": "Create a new invitation."
+              },
+              "response": [
+                {
+                  "id": "777d7b27-edfb-4221-8838-f553fdcd9bd2",
+                  "name": "Returns the created invitation",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"organization\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"member\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/invitations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "invitations"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"identifier\": \"<string>\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"email\": \"<string>\",\n  \"role\": \"member\",\n  \"status\": \"pending\",\n  \"expiryDate\": \"<date>\",\n  \"invitedBy\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  },\n  \"respondedBy\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  },\n  \"createdDt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-777d7b27-edfb-4221-8838-f553fdcd9bd2"
+                },
+                {
+                  "id": "5fc99b68-b640-4248-b66a-5e8c0db3514a",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"organization\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"member\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/invitations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "invitations"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-5fc99b68-b640-4248-b66a-5e8c0db3514a"
+                },
+                {
+                  "id": "cef6b0b0-e2c2-4c54-9153-c4519f87e0cb",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"organization\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"member\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/invitations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "invitations"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-cef6b0b0-e2c2-4c54-9153-c4519f87e0cb"
+                },
+                {
+                  "id": "8bfd4dfc-43cf-4048-a5e4-b07b8f5a9624",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"organization\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"member\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/invitations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "invitations"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:44.000Z",
+                  "updatedAt": "2026-06-05T15:00:44.000Z",
+                  "uid": "35240-8bfd4dfc-43cf-4048-a5e4-b07b8f5a9624"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:44.000Z",
+              "updatedAt": "2026-06-05T15:00:44.000Z",
+              "uid": "35240-24e88302-8698-4efc-aac3-a19375002ceb"
+            }
+          ],
+          "id": "86ce77f8-ded7-4ee0-b1d9-9c1080d751ce",
+          "createdAt": "2026-06-05T15:00:44.000Z",
+          "updatedAt": "2026-06-05T15:00:44.000Z",
+          "uid": "35240-86ce77f8-ded7-4ee0-b1d9-9c1080d751ce"
+        }
+      ],
+      "id": "4ddbfc89-36b4-4103-8ff7-c38984c123a1",
+      "createdAt": "2026-06-05T15:00:44.000Z",
+      "updatedAt": "2026-06-05T15:00:44.000Z",
+      "uid": "35240-4ddbfc89-36b4-4103-8ff7-c38984c123a1"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "api"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{region}}.affinda.com"
+    }
+  ]
+}

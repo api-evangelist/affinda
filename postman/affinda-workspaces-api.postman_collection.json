@@ -1,0 +1,2753 @@
+{
+  "info": {
+    "_postman_id": "3cb57cdb-9a41-4ce8-8b0f-45008d0f185b",
+    "name": "Affinda Workspaces API",
+    "description": "Affinda Workspaces API \u2014 subset of the Affinda v3 Document Processing API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:00:40.000Z",
+    "updatedAt": "2026-06-05T15:00:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3cb57cdb-9a41-4ce8-8b0f-45008d0f185b"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "workspaces",
+          "item": [
+            {
+              "name": "{identifier}",
+              "item": [
+                {
+                  "name": "usage",
+                  "item": [
+                    {
+                      "name": "Get usage by workspace",
+                      "id": "1193ccf9-3946-4d00-84cf-b6899043b79f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier/usage?start=<string>&end=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier",
+                            "usage"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start date of the period to retrieve. Format: YYYY-MM",
+                              "key": "start",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "End date of the period to retrieve. Format: YYYY-MM",
+                              "key": "end",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "d2ba2489-c61f-4421-933f-ddf7e9fa8e97",
+                              "key": "identifier",
+                              "value": "<string>",
+                              "description": "(Required) Workspace's identifier"
+                            }
+                          ]
+                        },
+                        "description": "Return monthly credits consumption of a workspace.\nDeprecated: use `GET /v3/usage?organization={id}&workspace={id}` instead. The new endpoint returns a unified daily series and supports the same workspace scoping along with organization- and document-type-level reporting."
+                      },
+                      "response": [
+                        {
+                          "id": "ed04725e-ef16-4e6f-98b1-9676ad3dcf7a",
+                          "name": "Monthly credits consumption of a workspace.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/workspaces/:identifier/usage?start=<string>&end=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "workspaces",
+                                ":identifier",
+                                "usage"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Start date of the period to retrieve. Format: YYYY-MM",
+                                  "key": "start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "End date of the period to retrieve. Format: YYYY-MM",
+                                  "key": "end",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"month\": \"<string>\",\n    \"count\": \"<integer>\"\n  },\n  {\n    \"month\": \"<string>\",\n    \"count\": \"<integer>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:00:40.000Z",
+                          "updatedAt": "2026-06-05T15:00:40.000Z",
+                          "uid": "35240-ed04725e-ef16-4e6f-98b1-9676ad3dcf7a"
+                        },
+                        {
+                          "id": "47d29045-1fa3-4ddc-b8ee-ab7b3ee8fd3b",
+                          "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/workspaces/:identifier/usage?start=<string>&end=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "workspaces",
+                                ":identifier",
+                                "usage"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Start date of the period to retrieve. Format: YYYY-MM",
+                                  "key": "start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "End date of the period to retrieve. Format: YYYY-MM",
+                                  "key": "end",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:40.000Z",
+                          "updatedAt": "2026-06-05T15:00:40.000Z",
+                          "uid": "35240-47d29045-1fa3-4ddc-b8ee-ab7b3ee8fd3b"
+                        },
+                        {
+                          "id": "25ac19cd-74af-44f7-8d4d-8f5bbe8fbcde",
+                          "name": "Authorisation error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/workspaces/:identifier/usage?start=<string>&end=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "workspaces",
+                                ":identifier",
+                                "usage"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Start date of the period to retrieve. Format: YYYY-MM",
+                                  "key": "start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "End date of the period to retrieve. Format: YYYY-MM",
+                                  "key": "end",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:40.000Z",
+                          "updatedAt": "2026-06-05T15:00:40.000Z",
+                          "uid": "35240-25ac19cd-74af-44f7-8d4d-8f5bbe8fbcde"
+                        },
+                        {
+                          "id": "bfa86589-7ec7-44d5-a74c-fe026e53dd77",
+                          "name": "UnexpectedError",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/workspaces/:identifier/usage?start=<string>&end=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "workspaces",
+                                ":identifier",
+                                "usage"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Start date of the period to retrieve. Format: YYYY-MM",
+                                  "key": "start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "End date of the period to retrieve. Format: YYYY-MM",
+                                  "key": "end",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:40.000Z",
+                          "updatedAt": "2026-06-05T15:00:40.000Z",
+                          "uid": "35240-bfa86589-7ec7-44d5-a74c-fe026e53dd77"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-1193ccf9-3946-4d00-84cf-b6899043b79f"
+                    }
+                  ],
+                  "id": "b9e1e92c-1729-4a93-a407-f8e0ff53bdd4",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-b9e1e92c-1729-4a93-a407-f8e0ff53bdd4"
+                },
+                {
+                  "name": "Get specific workspace",
+                  "id": "13bf7e66-f30a-492d-8aa1-3177b11e4f05",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspaces",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3417c82c-9538-4213-a96a-dac546cd50ea",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Workspace's identifier"
+                        }
+                      ]
+                    },
+                    "description": "Return a specific workspace."
+                  },
+                  "response": [
+                    {
+                      "id": "11d49d84-1392-41b1-b396-7af936649b73",
+                      "name": "Successfully retrieved workspace.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identifier\": \"<string>\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"name\": \"<string>\",\n  \"visibility\": \"private\",\n  \"collections\": [\n    {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"extractor\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namePlural\": \"<string>\",\n        \"validatable\": \"<boolean>\",\n        \"baseExtractor\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"namePlural\": \"<string>\",\n          \"validatable\": \"<boolean>\",\n          \"isCustom\": \"<boolean>\",\n          \"createdDt\": \"<dateTime>\"\n        },\n        \"category\": \"<string>\",\n        \"createdDt\": \"<dateTime>\"\n      },\n      \"unvalidatedDocsCount\": \"<integer>\",\n      \"confirmedDocsCount\": \"<integer>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"extractor\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namePlural\": \"<string>\",\n        \"validatable\": \"<boolean>\",\n        \"baseExtractor\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"namePlural\": \"<string>\",\n          \"validatable\": \"<boolean>\",\n          \"isCustom\": \"<boolean>\",\n          \"createdDt\": \"<dateTime>\"\n        },\n        \"category\": \"<string>\",\n        \"createdDt\": \"<dateTime>\"\n      },\n      \"unvalidatedDocsCount\": \"<integer>\",\n      \"confirmedDocsCount\": \"<integer>\"\n    }\n  ],\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"members\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    }\n  ],\n  \"unvalidatedDocsCount\": \"<integer>\",\n  \"confirmedDocsCount\": \"<integer>\",\n  \"ingestEmail\": \"<string>\",\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-11d49d84-1392-41b1-b396-7af936649b73"
+                    },
+                    {
+                      "id": "c3876074-506e-4e0b-8202-2b3c6cc59821",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-c3876074-506e-4e0b-8202-2b3c6cc59821"
+                    },
+                    {
+                      "id": "d6c05b32-e312-4f09-b416-67ad46b6b44a",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-d6c05b32-e312-4f09-b416-67ad46b6b44a"
+                    },
+                    {
+                      "id": "e1cb2ff5-1334-495d-8640-ad72b03336ac",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-e1cb2ff5-1334-495d-8640-ad72b03336ac"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-13bf7e66-f30a-492d-8aa1-3177b11e4f05"
+                },
+                {
+                  "name": "Update a workspace",
+                  "id": "19b58ef6-ef90-4094-91e2-d5d332d0966e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"organization\",\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspaces",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f7b0a4a9-3749-4d93-8e6e-10e0167f0885",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Workspace's identifier"
+                        }
+                      ]
+                    },
+                    "description": "Update a workspace."
+                  },
+                  "response": [
+                    {
+                      "id": "77280e0e-d6db-4876-bff8-a686c6f4b097",
+                      "name": "Successfully updated workspace.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"organization\",\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identifier\": \"<string>\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"name\": \"<string>\",\n  \"visibility\": \"private\",\n  \"collections\": [\n    {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"extractor\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namePlural\": \"<string>\",\n        \"validatable\": \"<boolean>\",\n        \"baseExtractor\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"namePlural\": \"<string>\",\n          \"validatable\": \"<boolean>\",\n          \"isCustom\": \"<boolean>\",\n          \"createdDt\": \"<dateTime>\"\n        },\n        \"category\": \"<string>\",\n        \"createdDt\": \"<dateTime>\"\n      },\n      \"unvalidatedDocsCount\": \"<integer>\",\n      \"confirmedDocsCount\": \"<integer>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"extractor\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namePlural\": \"<string>\",\n        \"validatable\": \"<boolean>\",\n        \"baseExtractor\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"namePlural\": \"<string>\",\n          \"validatable\": \"<boolean>\",\n          \"isCustom\": \"<boolean>\",\n          \"createdDt\": \"<dateTime>\"\n        },\n        \"category\": \"<string>\",\n        \"createdDt\": \"<dateTime>\"\n      },\n      \"unvalidatedDocsCount\": \"<integer>\",\n      \"confirmedDocsCount\": \"<integer>\"\n    }\n  ],\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"members\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    }\n  ],\n  \"unvalidatedDocsCount\": \"<integer>\",\n  \"confirmedDocsCount\": \"<integer>\",\n  \"ingestEmail\": \"<string>\",\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-77280e0e-d6db-4876-bff8-a686c6f4b097"
+                    },
+                    {
+                      "id": "6508896d-4eda-4a73-81c6-d5cc6a8f0fc0",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"organization\",\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-6508896d-4eda-4a73-81c6-d5cc6a8f0fc0"
+                    },
+                    {
+                      "id": "0180055a-4c7b-4d49-b9e5-338c10577b7d",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"organization\",\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-0180055a-4c7b-4d49-b9e5-338c10577b7d"
+                    },
+                    {
+                      "id": "0c64c806-962d-4d3c-aa4a-fcddfe22950c",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"organization\",\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-0c64c806-962d-4d3c-aa4a-fcddfe22950c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-19b58ef6-ef90-4094-91e2-d5d332d0966e"
+                },
+                {
+                  "name": "Delete a workspace",
+                  "id": "ad94e944-5655-42d8-bc02-6ef1b8ecb035",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspaces",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "111c5660-481d-48cb-8c8d-a9190c2ef231",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Workspace's identifier"
+                        }
+                      ]
+                    },
+                    "description": "Deletes the specified workspace from the database."
+                  },
+                  "response": [
+                    {
+                      "id": "89a9e793-a38c-4403-9076-bec33447ba64",
+                      "name": "Delete successful, no content returned",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-89a9e793-a38c-4403-9076-bec33447ba64"
+                    },
+                    {
+                      "id": "b24aa2ce-a85d-40e2-948e-a85525be6a5b",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-b24aa2ce-a85d-40e2-948e-a85525be6a5b"
+                    },
+                    {
+                      "id": "8d638456-92e1-406e-a669-85a217a7fd78",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-8d638456-92e1-406e-a669-85a217a7fd78"
+                    },
+                    {
+                      "id": "eda5dbde-27ea-42d7-8c01-7f1bd3069a87",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspaces/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspaces",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-eda5dbde-27ea-42d7-8c01-7f1bd3069a87"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-ad94e944-5655-42d8-bc02-6ef1b8ecb035"
+                }
+              ],
+              "id": "7a3b294d-10b7-431c-8981-dedef5125a3c",
+              "createdAt": "2026-06-05T15:00:40.000Z",
+              "updatedAt": "2026-06-05T15:00:40.000Z",
+              "uid": "35240-7a3b294d-10b7-431c-8981-dedef5125a3c"
+            },
+            {
+              "name": "Get list of all workspaces",
+              "id": "1a2a56c7-d08a-4930-9bbe-bfae34e12142",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v3/workspaces?organization=<string>&name=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "workspaces"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Filter by organization.",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by name.",
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns your workspaces."
+              },
+              "response": [
+                {
+                  "id": "d93243d0-4ea9-44c9-b425-4ebd50bb4a58",
+                  "name": "All matching workspaces.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspaces?organization=<string>&name=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspaces"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"identifier\": \"<string>\",\n    \"organization\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"userRole\": \"member\",\n      \"avatar\": \"<string>\",\n      \"resthookSignatureKey\": \"<string>\",\n      \"isTrial\": \"<boolean>\",\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"palette\": {\n            \"mode\": \"light\",\n            \"background\": \"<string>\",\n            \"text\": {\n              \"primary\": \"<string>\",\n              \"secondary\": \"<string>\",\n              \"disabled\": \"<string>\"\n            },\n            \"divider\": \"<string>\",\n            \"primary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"secondary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"success\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"annotation\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"error\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"info\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"warning\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            }\n          },\n          \"typography\": {\n            \"fontFamily\": \"<string>\",\n            \"fontSize\": \"<string>\",\n            \"fontWeightRegular\": \"<string>\",\n            \"fontWeightMedium\": \"<string>\",\n            \"fontWeightBold\": \"<string>\"\n          },\n          \"borderRadius\": \"<number>\",\n          \"fontUrl\": \"<string>\"\n        },\n        \"hideActions\": \"<boolean>\",\n        \"hideCollection\": \"<boolean>\",\n        \"hideEditPages\": \"<boolean>\",\n        \"hideExport\": \"<boolean>\",\n        \"hideFilename\": \"<boolean>\",\n        \"hideShowRawValues\": \"<boolean>\",\n        \"hideReject\": \"<boolean>\",\n        \"hideReparse\": \"<boolean>\",\n        \"hideRunOcr\": \"<boolean>\",\n        \"hideTags\": \"<boolean>\",\n        \"hideWarnings\": \"<boolean>\",\n        \"restrictDocumentSplitting\": \"<boolean>\",\n        \"disableCurrencyFormatting\": \"<boolean>\",\n        \"disableEditDocumentMetadata\": \"<boolean>\",\n        \"disableManualAnnotationEditing\": \"<boolean>\",\n        \"hideDocumentStatus\": \"<boolean>\"\n      },\n      \"showCustomFieldCreation\": \"<boolean>\"\n    },\n    \"name\": \"<string>\",\n    \"visibility\": \"organization\",\n    \"collections\": [\n      {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"extractor\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"namePlural\": \"<string>\",\n          \"validatable\": \"<boolean>\",\n          \"baseExtractor\": {\n            \"identifier\": \"<string>\",\n            \"name\": \"<string>\",\n            \"namePlural\": \"<string>\",\n            \"validatable\": \"<boolean>\",\n            \"isCustom\": \"<boolean>\",\n            \"createdDt\": \"<dateTime>\"\n          },\n          \"category\": \"<string>\",\n          \"createdDt\": \"<dateTime>\"\n        },\n        \"unvalidatedDocsCount\": \"<integer>\",\n        \"confirmedDocsCount\": \"<integer>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"extractor\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"namePlural\": \"<string>\",\n          \"validatable\": \"<boolean>\",\n          \"baseExtractor\": {\n            \"identifier\": \"<string>\",\n            \"name\": \"<string>\",\n            \"namePlural\": \"<string>\",\n            \"validatable\": \"<boolean>\",\n            \"isCustom\": \"<boolean>\",\n            \"createdDt\": \"<dateTime>\"\n          },\n          \"category\": \"<string>\",\n          \"createdDt\": \"<dateTime>\"\n        },\n        \"unvalidatedDocsCount\": \"<integer>\",\n        \"confirmedDocsCount\": \"<integer>\"\n      }\n    ],\n    \"documentTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"rejectInvalidDocuments\": \"<boolean>\",\n    \"rejectDuplicates\": \"<boolean>\",\n    \"members\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"avatar\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"avatar\": \"<string>\"\n      }\n    ],\n    \"unvalidatedDocsCount\": \"<integer>\",\n    \"confirmedDocsCount\": \"<integer>\",\n    \"ingestEmail\": \"<string>\",\n    \"whitelistIngestAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"documentSplitter\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  {\n    \"identifier\": \"<string>\",\n    \"organization\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"userRole\": \"admin\",\n      \"avatar\": \"<string>\",\n      \"resthookSignatureKey\": \"<string>\",\n      \"isTrial\": \"<boolean>\",\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"palette\": {\n            \"mode\": \"light\",\n            \"background\": \"<string>\",\n            \"text\": {\n              \"primary\": \"<string>\",\n              \"secondary\": \"<string>\",\n              \"disabled\": \"<string>\"\n            },\n            \"divider\": \"<string>\",\n            \"primary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"secondary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"success\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"annotation\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"error\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"info\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"warning\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            }\n          },\n          \"typography\": {\n            \"fontFamily\": \"<string>\",\n            \"fontSize\": \"<string>\",\n            \"fontWeightRegular\": \"<string>\",\n            \"fontWeightMedium\": \"<string>\",\n            \"fontWeightBold\": \"<string>\"\n          },\n          \"borderRadius\": \"<number>\",\n          \"fontUrl\": \"<string>\"\n        },\n        \"hideActions\": \"<boolean>\",\n        \"hideCollection\": \"<boolean>\",\n        \"hideEditPages\": \"<boolean>\",\n        \"hideExport\": \"<boolean>\",\n        \"hideFilename\": \"<boolean>\",\n        \"hideShowRawValues\": \"<boolean>\",\n        \"hideReject\": \"<boolean>\",\n        \"hideReparse\": \"<boolean>\",\n        \"hideRunOcr\": \"<boolean>\",\n        \"hideTags\": \"<boolean>\",\n        \"hideWarnings\": \"<boolean>\",\n        \"restrictDocumentSplitting\": \"<boolean>\",\n        \"disableCurrencyFormatting\": \"<boolean>\",\n        \"disableEditDocumentMetadata\": \"<boolean>\",\n        \"disableManualAnnotationEditing\": \"<boolean>\",\n        \"hideDocumentStatus\": \"<boolean>\"\n      },\n      \"showCustomFieldCreation\": \"<boolean>\"\n    },\n    \"name\": \"<string>\",\n    \"visibility\": \"organization\",\n    \"collections\": [\n      {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"extractor\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"namePlural\": \"<string>\",\n          \"validatable\": \"<boolean>\",\n          \"baseExtractor\": {\n            \"identifier\": \"<string>\",\n            \"name\": \"<string>\",\n            \"namePlural\": \"<string>\",\n            \"validatable\": \"<boolean>\",\n            \"isCustom\": \"<boolean>\",\n            \"createdDt\": \"<dateTime>\"\n          },\n          \"category\": \"<string>\",\n          \"createdDt\": \"<dateTime>\"\n        },\n        \"unvalidatedDocsCount\": \"<integer>\",\n        \"confirmedDocsCount\": \"<integer>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"extractor\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"namePlural\": \"<string>\",\n          \"validatable\": \"<boolean>\",\n          \"baseExtractor\": {\n            \"identifier\": \"<string>\",\n            \"name\": \"<string>\",\n            \"namePlural\": \"<string>\",\n            \"validatable\": \"<boolean>\",\n            \"isCustom\": \"<boolean>\",\n            \"createdDt\": \"<dateTime>\"\n          },\n          \"category\": \"<string>\",\n          \"createdDt\": \"<dateTime>\"\n        },\n        \"unvalidatedDocsCount\": \"<integer>\",\n        \"confirmedDocsCount\": \"<integer>\"\n      }\n    ],\n    \"documentTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"rejectInvalidDocuments\": \"<boolean>\",\n    \"rejectDuplicates\": \"<boolean>\",\n    \"members\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"avatar\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"avatar\": \"<string>\"\n      }\n    ],\n    \"unvalidatedDocsCount\": \"<integer>\",\n    \"confirmedDocsCount\": \"<integer>\",\n    \"ingestEmail\": \"<string>\",\n    \"whitelistIngestAddresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"documentSplitter\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  }\n]",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-d93243d0-4ea9-44c9-b425-4ebd50bb4a58"
+                },
+                {
+                  "id": "3d86e341-167a-4d38-994d-1199e07ab744",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspaces?organization=<string>&name=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspaces"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-3d86e341-167a-4d38-994d-1199e07ab744"
+                },
+                {
+                  "id": "a9413df5-3950-4142-a756-377dd27384a0",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspaces?organization=<string>&name=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspaces"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-a9413df5-3950-4142-a756-377dd27384a0"
+                },
+                {
+                  "id": "625f7ab0-2a8e-47c9-9264-c7df6ed52b82",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspaces?organization=<string>&name=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspaces"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Filter by organization.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-625f7ab0-2a8e-47c9-9264-c7df6ed52b82"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:40.000Z",
+              "updatedAt": "2026-06-05T15:00:40.000Z",
+              "uid": "35240-1a2a56c7-d08a-4930-9bbe-bfae34e12142"
+            },
+            {
+              "name": "Create a workspace",
+              "id": "f5ae2977-517a-4eed-a701-93883272da69",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organization\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visibility\": \"organization\",\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v3/workspaces",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "workspaces"
+                  ]
+                },
+                "description": "Create a workspace"
+              },
+              "response": [
+                {
+                  "id": "d5cc6528-ec7a-4bdd-909e-32a1e508aa28",
+                  "name": "Successfully created a workspace.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"organization\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visibility\": \"organization\",\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspaces"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"identifier\": \"<string>\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"name\": \"<string>\",\n  \"visibility\": \"private\",\n  \"collections\": [\n    {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"extractor\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namePlural\": \"<string>\",\n        \"validatable\": \"<boolean>\",\n        \"baseExtractor\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"namePlural\": \"<string>\",\n          \"validatable\": \"<boolean>\",\n          \"isCustom\": \"<boolean>\",\n          \"createdDt\": \"<dateTime>\"\n        },\n        \"category\": \"<string>\",\n        \"createdDt\": \"<dateTime>\"\n      },\n      \"unvalidatedDocsCount\": \"<integer>\",\n      \"confirmedDocsCount\": \"<integer>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"extractor\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namePlural\": \"<string>\",\n        \"validatable\": \"<boolean>\",\n        \"baseExtractor\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"namePlural\": \"<string>\",\n          \"validatable\": \"<boolean>\",\n          \"isCustom\": \"<boolean>\",\n          \"createdDt\": \"<dateTime>\"\n        },\n        \"category\": \"<string>\",\n        \"createdDt\": \"<dateTime>\"\n      },\n      \"unvalidatedDocsCount\": \"<integer>\",\n      \"confirmedDocsCount\": \"<integer>\"\n    }\n  ],\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"members\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    }\n  ],\n  \"unvalidatedDocsCount\": \"<integer>\",\n  \"confirmedDocsCount\": \"<integer>\",\n  \"ingestEmail\": \"<string>\",\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-d5cc6528-ec7a-4bdd-909e-32a1e508aa28"
+                },
+                {
+                  "id": "018df51d-e046-4fbe-bbd0-513c8c2c569d",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"organization\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visibility\": \"organization\",\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspaces"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-018df51d-e046-4fbe-bbd0-513c8c2c569d"
+                },
+                {
+                  "id": "da8b2efd-b0f4-4029-a074-a0aa118eb3d2",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"organization\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visibility\": \"organization\",\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspaces"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-da8b2efd-b0f4-4029-a074-a0aa118eb3d2"
+                },
+                {
+                  "id": "4d6611de-9de5-42d8-908b-af680396e494",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"organization\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visibility\": \"organization\",\n  \"rejectInvalidDocuments\": \"<boolean>\",\n  \"rejectDuplicates\": \"<boolean>\",\n  \"documentTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"whitelistIngestAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documentSplitter\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspaces"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-4d6611de-9de5-42d8-908b-af680396e494"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:40.000Z",
+              "updatedAt": "2026-06-05T15:00:40.000Z",
+              "uid": "35240-f5ae2977-517a-4eed-a701-93883272da69"
+            }
+          ],
+          "id": "92def860-8cb7-452b-b5f8-9b7079c057da",
+          "createdAt": "2026-06-05T15:00:40.000Z",
+          "updatedAt": "2026-06-05T15:00:40.000Z",
+          "uid": "35240-92def860-8cb7-452b-b5f8-9b7079c057da"
+        },
+        {
+          "name": "workspace_memberships",
+          "item": [
+            {
+              "name": "{identifier}",
+              "item": [
+                {
+                  "name": "Get specific workspace membership",
+                  "id": "05788bab-73d1-4dc6-aa26-92825e290adb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspace_memberships/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspace_memberships",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d1563534-4be1-44b5-854a-fab290693f8c",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Workspace membership's identifier."
+                        }
+                      ]
+                    },
+                    "description": "Return a specific workspace membership."
+                  },
+                  "response": [
+                    {
+                      "id": "d1404ee4-d02a-4360-8bc2-463c61acf232",
+                      "name": "Successfully retrieved workspace membership.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspace_memberships/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspace_memberships",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identifier\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"user\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-d1404ee4-d02a-4360-8bc2-463c61acf232"
+                    },
+                    {
+                      "id": "fffa9b37-a7f5-42cf-b400-6583ff48bb16",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspace_memberships/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspace_memberships",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-fffa9b37-a7f5-42cf-b400-6583ff48bb16"
+                    },
+                    {
+                      "id": "b34a90df-2fa3-4b4f-b28d-2366586c24f1",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspace_memberships/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspace_memberships",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-b34a90df-2fa3-4b4f-b28d-2366586c24f1"
+                    },
+                    {
+                      "id": "c6fb84a6-8232-4a5a-a4dc-abfee60aefe4",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspace_memberships/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspace_memberships",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-c6fb84a6-8232-4a5a-a4dc-abfee60aefe4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-05788bab-73d1-4dc6-aa26-92825e290adb"
+                },
+                {
+                  "name": "Delete a workspace membership",
+                  "id": "9fef1923-d881-4c46-98c1-8048dfd8d132",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspace_memberships/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspace_memberships",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "430b109d-b9d5-4396-af67-3e3f4b980483",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Workspace membership's identifier."
+                        }
+                      ]
+                    },
+                    "description": "Remove an user from a workspace."
+                  },
+                  "response": [
+                    {
+                      "id": "f92c73f5-ea5d-448f-8763-bfc3c7e668b0",
+                      "name": "Delete successful, no content returned",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspace_memberships/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspace_memberships",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-f92c73f5-ea5d-448f-8763-bfc3c7e668b0"
+                    },
+                    {
+                      "id": "4c4665c6-aca8-4658-9517-3e86bd3c1d59",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspace_memberships/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspace_memberships",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-4c4665c6-aca8-4658-9517-3e86bd3c1d59"
+                    },
+                    {
+                      "id": "4dcdf215-6513-4740-8f74-5d48aeafc409",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspace_memberships/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspace_memberships",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-4dcdf215-6513-4740-8f74-5d48aeafc409"
+                    },
+                    {
+                      "id": "1cc47407-6422-41ac-a6de-42c2b7ce3971",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/workspace_memberships/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "workspace_memberships",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:40.000Z",
+                      "updatedAt": "2026-06-05T15:00:40.000Z",
+                      "uid": "35240-1cc47407-6422-41ac-a6de-42c2b7ce3971"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-9fef1923-d881-4c46-98c1-8048dfd8d132"
+                }
+              ],
+              "id": "08ebdee2-40ac-416a-8d2f-6e5dc7c32f82",
+              "createdAt": "2026-06-05T15:00:40.000Z",
+              "updatedAt": "2026-06-05T15:00:40.000Z",
+              "uid": "35240-08ebdee2-40ac-416a-8d2f-6e5dc7c32f82"
+            },
+            {
+              "name": "Get list of all workspace memberships",
+              "id": "c6f52663-5172-4f24-97dc-2878debe3aba",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v3/workspace_memberships?offset=<integer>&limit=<integer>&workspace=<string>&user=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "workspace_memberships"
+                  ],
+                  "query": [
+                    {
+                      "description": "The number of documents to skip before starting to collect the result set.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The numbers of results to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by workspace.",
+                      "key": "workspace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Partial text match on user's email, case-insensitive.",
+                      "key": "user",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns the memberships of your workspaces."
+              },
+              "response": [
+                {
+                  "id": "894242d7-0fe3-49cf-94f6-99090b8a562e",
+                  "name": "All matching workspace memberships.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspace_memberships?offset=<integer>&limit=<integer>&workspace=<string>&user=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspace_memberships"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Partial text match on user's email, case-insensitive.",
+                          "key": "user",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"results\": [\n    {\n      \"identifier\": \"<string>\",\n      \"workspace\": \"<string>\",\n      \"user\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"avatar\": \"<string>\"\n      }\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"workspace\": \"<string>\",\n      \"user\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"avatar\": \"<string>\"\n      }\n    }\n  ],\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-894242d7-0fe3-49cf-94f6-99090b8a562e"
+                },
+                {
+                  "id": "248eb3aa-464d-4d81-aecb-70e49c75f5f7",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspace_memberships?offset=<integer>&limit=<integer>&workspace=<string>&user=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspace_memberships"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Partial text match on user's email, case-insensitive.",
+                          "key": "user",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-248eb3aa-464d-4d81-aecb-70e49c75f5f7"
+                },
+                {
+                  "id": "4bfa2538-e803-4abb-8672-1d7ebb707f12",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspace_memberships?offset=<integer>&limit=<integer>&workspace=<string>&user=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspace_memberships"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Partial text match on user's email, case-insensitive.",
+                          "key": "user",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-4bfa2538-e803-4abb-8672-1d7ebb707f12"
+                },
+                {
+                  "id": "2860675b-2ef1-4848-86b7-4b0e40104147",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspace_memberships?offset=<integer>&limit=<integer>&workspace=<string>&user=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspace_memberships"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Partial text match on user's email, case-insensitive.",
+                          "key": "user",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-2860675b-2ef1-4848-86b7-4b0e40104147"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:40.000Z",
+              "updatedAt": "2026-06-05T15:00:40.000Z",
+              "uid": "35240-c6f52663-5172-4f24-97dc-2878debe3aba"
+            },
+            {
+              "name": "Create a workspace membership",
+              "id": "c0f4187d-0d9d-4373-8d7d-8eb0e77ed84d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspace\": \"<string>\",\n  \"user\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v3/workspace_memberships",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "workspace_memberships"
+                  ]
+                },
+                "description": "Create a workspace membership."
+              },
+              "response": [
+                {
+                  "id": "be3ca8d6-333c-41bb-8c83-2e5c68990b4f",
+                  "name": "Successfully created a workspace membership.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"workspace\": \"<string>\",\n  \"user\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspace_memberships",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspace_memberships"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"identifier\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"user\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"avatar\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-be3ca8d6-333c-41bb-8c83-2e5c68990b4f"
+                },
+                {
+                  "id": "21ea5eb2-44e7-4e2c-bc1f-ca1adcb1d06e",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"workspace\": \"<string>\",\n  \"user\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspace_memberships",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspace_memberships"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-21ea5eb2-44e7-4e2c-bc1f-ca1adcb1d06e"
+                },
+                {
+                  "id": "1100556d-79cc-4e62-812d-23f8a6aab509",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"workspace\": \"<string>\",\n  \"user\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspace_memberships",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspace_memberships"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-1100556d-79cc-4e62-812d-23f8a6aab509"
+                },
+                {
+                  "id": "b5f3367b-2d20-41f9-b522-d53c8e2280e6",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"workspace\": \"<string>\",\n  \"user\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/workspace_memberships",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "workspace_memberships"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:40.000Z",
+                  "updatedAt": "2026-06-05T15:00:40.000Z",
+                  "uid": "35240-b5f3367b-2d20-41f9-b522-d53c8e2280e6"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:40.000Z",
+              "updatedAt": "2026-06-05T15:00:40.000Z",
+              "uid": "35240-c0f4187d-0d9d-4373-8d7d-8eb0e77ed84d"
+            }
+          ],
+          "id": "7b1d6409-b434-4ce9-b621-271baba2a826",
+          "createdAt": "2026-06-05T15:00:40.000Z",
+          "updatedAt": "2026-06-05T15:00:40.000Z",
+          "uid": "35240-7b1d6409-b434-4ce9-b621-271baba2a826"
+        }
+      ],
+      "id": "5070fa60-2691-44d3-a6aa-5439c9e8b2df",
+      "createdAt": "2026-06-05T15:00:40.000Z",
+      "updatedAt": "2026-06-05T15:00:40.000Z",
+      "uid": "35240-5070fa60-2691-44d3-a6aa-5439c9e8b2df"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "api"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{region}}.affinda.com"
+    }
+  ]
+}

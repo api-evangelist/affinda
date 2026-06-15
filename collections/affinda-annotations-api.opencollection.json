@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Annotations API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Annotations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of all annotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/annotations",
+            "params": [
+              {
+                "name": "document",
+                "value": "",
+                "type": "query",
+                "description": "Filter by document."
+              }
+            ]
+          },
+          "docs": "Returns your annotations."
+        },
+        {
+          "info": {
+            "name": "Create a annotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/annotations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a annotation"
+        },
+        {
+          "info": {
+            "name": "Get specific annotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/annotations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Annotation's ID"
+              }
+            ]
+          },
+          "docs": "Return a specific annotation."
+        },
+        {
+          "info": {
+            "name": "Update an annotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/annotations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Annotation's ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update data of an annotation."
+        },
+        {
+          "info": {
+            "name": "Delete an annotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/annotations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Annotation's ID"
+              }
+            ]
+          },
+          "docs": "Deletes the specified annotation from the database."
+        },
+        {
+          "info": {
+            "name": "Batch create annotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/annotations/batch_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch create annotations"
+        },
+        {
+          "info": {
+            "name": "Batch update annotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/annotations/batch_update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch update annotations"
+        },
+        {
+          "info": {
+            "name": "Batch delete annotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/annotations/batch_delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch delete annotations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

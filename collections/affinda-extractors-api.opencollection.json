@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Extractors API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Document API - Extractor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of all extractors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/extractors",
+            "params": [
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "Filter by organization."
+              },
+              {
+                "name": "include_public_extractors",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include Affinda's off-the-shelf extractors."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by name."
+              },
+              {
+                "name": "validatable",
+                "value": "",
+                "type": "query",
+                "description": "Filter by validatable."
+              }
+            ]
+          },
+          "docs": "Returns your custom extractors as well as Affinda's off-the-shelf extractors."
+        },
+        {
+          "info": {
+            "name": "Create an extractor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/extractors",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom extractor."
+        },
+        {
+          "info": {
+            "name": "Get specific extractor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/extractors/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Extractor's identifier"
+              }
+            ]
+          },
+          "docs": "Return a specific extractor."
+        },
+        {
+          "info": {
+            "name": "Update an extractor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/extractors/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Extractor's identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update data of an extractor."
+        },
+        {
+          "info": {
+            "name": "Delete an extractor",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/extractors/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Extractor's identifier"
+              }
+            ]
+          },
+          "docs": "Deletes the specified extractor from the database."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

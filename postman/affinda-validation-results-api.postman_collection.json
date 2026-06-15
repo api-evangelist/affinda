@@ -1,0 +1,1963 @@
+{
+  "info": {
+    "_postman_id": "867a9c2b-d283-4335-b21f-a117f523c522",
+    "name": "Affinda Validation Results API",
+    "description": "Affinda Validation Results API \u2014 subset of the Affinda v3 Document Processing API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:00:50.000Z",
+    "updatedAt": "2026-06-05T15:00:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-867a9c2b-d283-4335-b21f-a117f523c522"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "validation_results",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Get specific validation result",
+                  "id": "48fd0687-1181-449f-a0ff-0e75fcbe09f2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "204a6d10-be89-4c65-a3cb-b598b300a0ed",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Validation result's ID."
+                        }
+                      ]
+                    },
+                    "description": "Return a specific validation result."
+                  },
+                  "response": [
+                    {
+                      "id": "a939b4a1-0456-43e8-839d-f0e1010da372",
+                      "name": "Successfully retrieved validation result.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"passed\": \"<boolean>\",\n  \"ruleSlug\": \"5q\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-a939b4a1-0456-43e8-839d-f0e1010da372"
+                    },
+                    {
+                      "id": "af0ead45-bb6f-4d57-8b04-4ca419b1025b",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-af0ead45-bb6f-4d57-8b04-4ca419b1025b"
+                    },
+                    {
+                      "id": "3efb9e5b-18c3-43c9-b256-b50c3151d0f5",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-3efb9e5b-18c3-43c9-b256-b50c3151d0f5"
+                    },
+                    {
+                      "id": "115a24c2-915c-459d-8a84-870584bea350",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-115a24c2-915c-459d-8a84-870584bea350"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:50.000Z",
+                  "updatedAt": "2026-06-05T15:00:50.000Z",
+                  "uid": "35240-48fd0687-1181-449f-a0ff-0e75fcbe09f2"
+                },
+                {
+                  "name": "Update a validation result",
+                  "id": "7c3febe7-1d96-420f-a838-a2fef347e6ff",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"passed\": \"<boolean>\",\n  \"ruleSlug\": \"oz8\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "81fc8efc-b5b8-4669-becc-cc6e08591626",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Validation result's ID."
+                        }
+                      ]
+                    },
+                    "description": "Update a validation result."
+                  },
+                  "response": [
+                    {
+                      "id": "f3d6fff5-44a2-4497-8025-2dd393e9aba6",
+                      "name": "Successfully updated validation result.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"passed\": \"<boolean>\",\n  \"ruleSlug\": \"oz8\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"passed\": \"<boolean>\",\n  \"ruleSlug\": \"5q\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-f3d6fff5-44a2-4497-8025-2dd393e9aba6"
+                    },
+                    {
+                      "id": "6cca60af-681e-4fda-9f37-46960783ea26",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"passed\": \"<boolean>\",\n  \"ruleSlug\": \"oz8\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-6cca60af-681e-4fda-9f37-46960783ea26"
+                    },
+                    {
+                      "id": "eadc7c9e-a143-472f-888e-19d7103d623b",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"passed\": \"<boolean>\",\n  \"ruleSlug\": \"oz8\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-eadc7c9e-a143-472f-888e-19d7103d623b"
+                    },
+                    {
+                      "id": "f082ec3b-73bb-4112-880b-b5363d048036",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"passed\": \"<boolean>\",\n  \"ruleSlug\": \"oz8\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-f082ec3b-73bb-4112-880b-b5363d048036"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:50.000Z",
+                  "updatedAt": "2026-06-05T15:00:50.000Z",
+                  "uid": "35240-7c3febe7-1d96-420f-a838-a2fef347e6ff"
+                },
+                {
+                  "name": "Delete a validation result",
+                  "id": "587e3ca4-d9e6-4d34-9fe6-a6d95a5d238f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "975aabdf-9c51-4ee2-88c4-d51cc0b9aa60",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Validation result's ID."
+                        }
+                      ]
+                    },
+                    "description": "Remove validation result."
+                  },
+                  "response": [
+                    {
+                      "id": "6a6e62be-c914-4e18-a380-47a8b9bb6c8d",
+                      "name": "Delete successful, no content returned",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-6a6e62be-c914-4e18-a380-47a8b9bb6c8d"
+                    },
+                    {
+                      "id": "dc91169b-0076-46a7-94a8-29aadf5938e9",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-dc91169b-0076-46a7-94a8-29aadf5938e9"
+                    },
+                    {
+                      "id": "002e04bf-cf30-4a4f-8ac4-cb77bb66149b",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-002e04bf-cf30-4a4f-8ac4-cb77bb66149b"
+                    },
+                    {
+                      "id": "bfe1a714-8f84-4e8a-8c6a-fbbecdfa31e4",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-bfe1a714-8f84-4e8a-8c6a-fbbecdfa31e4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:50.000Z",
+                  "updatedAt": "2026-06-05T15:00:50.000Z",
+                  "uid": "35240-587e3ca4-d9e6-4d34-9fe6-a6d95a5d238f"
+                }
+              ],
+              "id": "9cc3e1c3-7c10-4628-b956-0e61b3eee911",
+              "createdAt": "2026-06-05T15:00:50.000Z",
+              "updatedAt": "2026-06-05T15:00:50.000Z",
+              "uid": "35240-9cc3e1c3-7c10-4628-b956-0e61b3eee911"
+            },
+            {
+              "name": "batch_create",
+              "item": [
+                {
+                  "name": "Batch create validation results",
+                  "id": "f7bb7f8f-2324-4b49-8c61-61ead93562e3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"6h6\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  },\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"str56tdz40\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results/batch_create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results",
+                        "batch_create"
+                      ]
+                    },
+                    "description": "Batch create validation results."
+                  },
+                  "response": [
+                    {
+                      "id": "5491300f-3a6e-4ad1-8736-46ce42cbd155",
+                      "name": "Successfully created validation results.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"6h6\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  },\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"str56tdz40\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/batch_create",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            "batch_create"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"passed\": \"<boolean>\",\n    \"ruleSlug\": \"w0i0cif0ez\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"passed\": \"<boolean>\",\n    \"ruleSlug\": \"so215\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-5491300f-3a6e-4ad1-8736-46ce42cbd155"
+                    },
+                    {
+                      "id": "347edfc3-9319-4e85-bb14-e4aa205e6ad6",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"6h6\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  },\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"str56tdz40\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/batch_create",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            "batch_create"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-347edfc3-9319-4e85-bb14-e4aa205e6ad6"
+                    },
+                    {
+                      "id": "c4f25304-f5b5-4b99-8af4-f66e70bfd151",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"6h6\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  },\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"str56tdz40\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/batch_create",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            "batch_create"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-c4f25304-f5b5-4b99-8af4-f66e70bfd151"
+                    },
+                    {
+                      "id": "20fc5753-04b1-4932-8ae1-bcc3ff6e6f5d",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"6h6\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  },\n  {\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"ruleSlug\": \"str56tdz40\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\",\n    \"passed\": \"<boolean>\"\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/batch_create",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            "batch_create"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-20fc5753-04b1-4932-8ae1-bcc3ff6e6f5d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:50.000Z",
+                  "updatedAt": "2026-06-05T15:00:50.000Z",
+                  "uid": "35240-f7bb7f8f-2324-4b49-8c61-61ead93562e3"
+                }
+              ],
+              "id": "ba184237-0b3f-4a49-a5df-f8f7b77ef144",
+              "createdAt": "2026-06-05T15:00:50.000Z",
+              "updatedAt": "2026-06-05T15:00:50.000Z",
+              "uid": "35240-ba184237-0b3f-4a49-a5df-f8f7b77ef144"
+            },
+            {
+              "name": "batch_delete",
+              "item": [
+                {
+                  "name": "Batch delete validation results",
+                  "id": "6397eb77-c4dd-4e22-a3d6-ca6c79015bf1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results/batch_delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results",
+                        "batch_delete"
+                      ]
+                    },
+                    "description": "Batch delete validation results"
+                  },
+                  "response": [
+                    {
+                      "id": "8dba9221-e62c-4eba-a517-eefa5835b7f5",
+                      "name": "Delete successful, no content returned",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/batch_delete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            "batch_delete"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-8dba9221-e62c-4eba-a517-eefa5835b7f5"
+                    },
+                    {
+                      "id": "e0e1e1e2-0ceb-43c2-8309-c453bba9c1fc",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/batch_delete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            "batch_delete"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-e0e1e1e2-0ceb-43c2-8309-c453bba9c1fc"
+                    },
+                    {
+                      "id": "2434d9ef-7c90-4c7d-9f76-57377d9a086e",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/batch_delete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            "batch_delete"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-2434d9ef-7c90-4c7d-9f76-57377d9a086e"
+                    },
+                    {
+                      "id": "ddda7fb0-245b-46b2-86a5-8839458585c3",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/validation_results/batch_delete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "validation_results",
+                            "batch_delete"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:51.000Z",
+                      "updatedAt": "2026-06-05T15:00:51.000Z",
+                      "uid": "35240-ddda7fb0-245b-46b2-86a5-8839458585c3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:50.000Z",
+                  "updatedAt": "2026-06-05T15:00:50.000Z",
+                  "uid": "35240-6397eb77-c4dd-4e22-a3d6-ca6c79015bf1"
+                }
+              ],
+              "id": "5f354c33-f047-4116-a5ba-5335fa7603e7",
+              "createdAt": "2026-06-05T15:00:50.000Z",
+              "updatedAt": "2026-06-05T15:00:50.000Z",
+              "uid": "35240-5f354c33-f047-4116-a5ba-5335fa7603e7"
+            },
+            {
+              "name": "Get list of all validation results",
+              "id": "45eb40ca-0812-4aaa-83e5-afd5001728e0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v3/validation_results?offset=<integer>&limit=<integer>&document=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "validation_results"
+                  ],
+                  "query": [
+                    {
+                      "description": "The number of documents to skip before starting to collect the result set.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The numbers of results to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Filter by document.",
+                      "key": "document",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns the validation results of a document."
+              },
+              "response": [
+                {
+                  "id": "02e644e2-9b60-4303-8adc-e73c8b29db0a",
+                  "name": "All matching workspace memberships.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results?offset=<integer>&limit=<integer>&document=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Filter by document.",
+                          "key": "document",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"passed\": \"<boolean>\",\n    \"ruleSlug\": \"w0i0cif0ez\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"annotations\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"passed\": \"<boolean>\",\n    \"ruleSlug\": \"so215\",\n    \"message\": \"<string>\",\n    \"document\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:00:51.000Z",
+                  "updatedAt": "2026-06-05T15:00:51.000Z",
+                  "uid": "35240-02e644e2-9b60-4303-8adc-e73c8b29db0a"
+                },
+                {
+                  "id": "ba0fbdf1-4217-4751-9ceb-71e4c7709235",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results?offset=<integer>&limit=<integer>&document=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Filter by document.",
+                          "key": "document",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:51.000Z",
+                  "updatedAt": "2026-06-05T15:00:51.000Z",
+                  "uid": "35240-ba0fbdf1-4217-4751-9ceb-71e4c7709235"
+                },
+                {
+                  "id": "b7b62bd1-95e6-42b3-929e-416b6859e745",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results?offset=<integer>&limit=<integer>&document=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Filter by document.",
+                          "key": "document",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:51.000Z",
+                  "updatedAt": "2026-06-05T15:00:51.000Z",
+                  "uid": "35240-b7b62bd1-95e6-42b3-929e-416b6859e745"
+                },
+                {
+                  "id": "61dd2872-654a-4c95-96bf-bf35b4fd8026",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results?offset=<integer>&limit=<integer>&document=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Filter by document.",
+                          "key": "document",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:51.000Z",
+                  "updatedAt": "2026-06-05T15:00:51.000Z",
+                  "uid": "35240-61dd2872-654a-4c95-96bf-bf35b4fd8026"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:50.000Z",
+              "updatedAt": "2026-06-05T15:00:50.000Z",
+              "uid": "35240-45eb40ca-0812-4aaa-83e5-afd5001728e0"
+            },
+            {
+              "name": "Create a validation result",
+              "id": "a3996f01-691f-48ac-b62b-7bf82e319c1a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ruleSlug\": \"kn8bgrazzrri\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\",\n  \"passed\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v3/validation_results",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "validation_results"
+                  ]
+                },
+                "description": "Create a validation result."
+              },
+              "response": [
+                {
+                  "id": "bd9f304c-2f23-4549-9ca5-05fb6202d34d",
+                  "name": "Successfully created a validation result.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ruleSlug\": \"kn8bgrazzrri\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\",\n  \"passed\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"passed\": \"<boolean>\",\n  \"ruleSlug\": \"5q\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:00:51.000Z",
+                  "updatedAt": "2026-06-05T15:00:51.000Z",
+                  "uid": "35240-bd9f304c-2f23-4549-9ca5-05fb6202d34d"
+                },
+                {
+                  "id": "43f422c1-f9b3-4ab6-81ba-de73cc927b6e",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ruleSlug\": \"kn8bgrazzrri\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\",\n  \"passed\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:51.000Z",
+                  "updatedAt": "2026-06-05T15:00:51.000Z",
+                  "uid": "35240-43f422c1-f9b3-4ab6-81ba-de73cc927b6e"
+                },
+                {
+                  "id": "9fc9a14c-47fc-4df4-a815-ee4ab5dde399",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ruleSlug\": \"kn8bgrazzrri\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\",\n  \"passed\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:51.000Z",
+                  "updatedAt": "2026-06-05T15:00:51.000Z",
+                  "uid": "35240-9fc9a14c-47fc-4df4-a815-ee4ab5dde399"
+                },
+                {
+                  "id": "3c64b306-eeca-4a3e-b2f4-85d8097d4c45",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"annotations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ruleSlug\": \"kn8bgrazzrri\",\n  \"message\": \"<string>\",\n  \"document\": \"<string>\",\n  \"passed\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/validation_results",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "validation_results"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:51.000Z",
+                  "updatedAt": "2026-06-05T15:00:51.000Z",
+                  "uid": "35240-3c64b306-eeca-4a3e-b2f4-85d8097d4c45"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:50.000Z",
+              "updatedAt": "2026-06-05T15:00:50.000Z",
+              "uid": "35240-a3996f01-691f-48ac-b62b-7bf82e319c1a"
+            }
+          ],
+          "id": "a1c043ec-6e08-48da-a431-69f55bfbb789",
+          "createdAt": "2026-06-05T15:00:50.000Z",
+          "updatedAt": "2026-06-05T15:00:50.000Z",
+          "uid": "35240-a1c043ec-6e08-48da-a431-69f55bfbb789"
+        }
+      ],
+      "id": "c387db38-2efa-4aed-a0a3-fad29c810c7d",
+      "createdAt": "2026-06-05T15:00:50.000Z",
+      "updatedAt": "2026-06-05T15:00:50.000Z",
+      "uid": "35240-c387db38-2efa-4aed-a0a3-fad29c810c7d"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "api"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{region}}.affinda.com"
+    }
+  ]
+}

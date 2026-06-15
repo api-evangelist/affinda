@@ -1,0 +1,1614 @@
+{
+  "info": {
+    "_postman_id": "344e3268-53dd-4bd1-af10-0335dcee0baf",
+    "name": "Affinda Webhooks API",
+    "description": "Affinda Webhooks API \u2014 subset of the Affinda v3 Document Processing API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:01:06.000Z",
+    "updatedAt": "2026-06-05T15:01:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-344e3268-53dd-4bd1-af10-0335dcee0baf"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "resthook_subscriptions",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Get specific resthook subscription",
+                  "id": "48f3b263-a31b-4d66-984e-d28b01297a58",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "53b3af5f-89e8-4718-8606-6c4776e40f12",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Resthook subscription's ID"
+                        }
+                      ]
+                    },
+                    "description": "Return a specific resthook subscription."
+                  },
+                  "response": [
+                    {
+                      "id": "68b4e814-683b-4575-bc37-10fdb17335f2",
+                      "name": "Successfully retrieved resthook subscription.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"event\": \"resume.parse.completed\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"workspace\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"organization\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"userRole\": \"member\",\n      \"avatar\": \"<string>\",\n      \"resthookSignatureKey\": \"<string>\",\n      \"isTrial\": \"<boolean>\",\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"palette\": {\n            \"mode\": \"dark\",\n            \"background\": \"<string>\",\n            \"text\": {\n              \"primary\": \"<string>\",\n              \"secondary\": \"<string>\",\n              \"disabled\": \"<string>\"\n            },\n            \"divider\": \"<string>\",\n            \"primary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"secondary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"success\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"annotation\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"error\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"info\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"warning\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            }\n          },\n          \"typography\": {\n            \"fontFamily\": \"<string>\",\n            \"fontSize\": \"<string>\",\n            \"fontWeightRegular\": \"<string>\",\n            \"fontWeightMedium\": \"<string>\",\n            \"fontWeightBold\": \"<string>\"\n          },\n          \"borderRadius\": \"<number>\",\n          \"fontUrl\": \"<string>\"\n        },\n        \"hideActions\": \"<boolean>\",\n        \"hideCollection\": \"<boolean>\",\n        \"hideEditPages\": \"<boolean>\",\n        \"hideExport\": \"<boolean>\",\n        \"hideFilename\": \"<boolean>\",\n        \"hideShowRawValues\": \"<boolean>\",\n        \"hideReject\": \"<boolean>\",\n        \"hideReparse\": \"<boolean>\",\n        \"hideRunOcr\": \"<boolean>\",\n        \"hideTags\": \"<boolean>\",\n        \"hideWarnings\": \"<boolean>\",\n        \"restrictDocumentSplitting\": \"<boolean>\",\n        \"disableCurrencyFormatting\": \"<boolean>\",\n        \"disableEditDocumentMetadata\": \"<boolean>\",\n        \"disableManualAnnotationEditing\": \"<boolean>\",\n        \"hideDocumentStatus\": \"<boolean>\"\n      },\n      \"showCustomFieldCreation\": \"<boolean>\"\n    }\n  },\n  \"targetUrl\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"autoDeactivated\": \"<boolean>\",\n  \"autoDeactivateReason\": \"<string>\",\n  \"version\": \"v2\"\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-68b4e814-683b-4575-bc37-10fdb17335f2"
+                    },
+                    {
+                      "id": "20f99715-ebac-45e1-91f4-a6cfcf33961f",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-20f99715-ebac-45e1-91f4-a6cfcf33961f"
+                    },
+                    {
+                      "id": "0e60e35a-6a9a-457a-a8e4-b985ea1691f7",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-0e60e35a-6a9a-457a-a8e4-b985ea1691f7"
+                    },
+                    {
+                      "id": "2fe2d42d-6a18-4b67-9629-230e40ff38fa",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-2fe2d42d-6a18-4b67-9629-230e40ff38fa"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-48f3b263-a31b-4d66-984e-d28b01297a58"
+                },
+                {
+                  "name": "Update a resthook subscription",
+                  "id": "bda47e37-09e2-43de-a190-8ee40b32ab99",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"event\": \"invoice.validate.completed\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"v2\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2e67c5c4-ab74-4354-bc4f-19c33cbc953e",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) ResthookSubscription's ID"
+                        }
+                      ]
+                    },
+                    "description": "Update data of a resthook subscription."
+                  },
+                  "response": [
+                    {
+                      "id": "02023b0e-67be-4feb-9436-daa90ec554f9",
+                      "name": "Successfully updated resthook subscription data.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event\": \"invoice.validate.completed\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"v2\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"event\": \"resume.parse.completed\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"workspace\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"organization\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"userRole\": \"member\",\n      \"avatar\": \"<string>\",\n      \"resthookSignatureKey\": \"<string>\",\n      \"isTrial\": \"<boolean>\",\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"palette\": {\n            \"mode\": \"dark\",\n            \"background\": \"<string>\",\n            \"text\": {\n              \"primary\": \"<string>\",\n              \"secondary\": \"<string>\",\n              \"disabled\": \"<string>\"\n            },\n            \"divider\": \"<string>\",\n            \"primary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"secondary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"success\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"annotation\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"error\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"info\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"warning\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            }\n          },\n          \"typography\": {\n            \"fontFamily\": \"<string>\",\n            \"fontSize\": \"<string>\",\n            \"fontWeightRegular\": \"<string>\",\n            \"fontWeightMedium\": \"<string>\",\n            \"fontWeightBold\": \"<string>\"\n          },\n          \"borderRadius\": \"<number>\",\n          \"fontUrl\": \"<string>\"\n        },\n        \"hideActions\": \"<boolean>\",\n        \"hideCollection\": \"<boolean>\",\n        \"hideEditPages\": \"<boolean>\",\n        \"hideExport\": \"<boolean>\",\n        \"hideFilename\": \"<boolean>\",\n        \"hideShowRawValues\": \"<boolean>\",\n        \"hideReject\": \"<boolean>\",\n        \"hideReparse\": \"<boolean>\",\n        \"hideRunOcr\": \"<boolean>\",\n        \"hideTags\": \"<boolean>\",\n        \"hideWarnings\": \"<boolean>\",\n        \"restrictDocumentSplitting\": \"<boolean>\",\n        \"disableCurrencyFormatting\": \"<boolean>\",\n        \"disableEditDocumentMetadata\": \"<boolean>\",\n        \"disableManualAnnotationEditing\": \"<boolean>\",\n        \"hideDocumentStatus\": \"<boolean>\"\n      },\n      \"showCustomFieldCreation\": \"<boolean>\"\n    }\n  },\n  \"targetUrl\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"autoDeactivated\": \"<boolean>\",\n  \"autoDeactivateReason\": \"<string>\",\n  \"version\": \"v2\"\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-02023b0e-67be-4feb-9436-daa90ec554f9"
+                    },
+                    {
+                      "id": "ae193c6e-c288-47f4-a99f-03fcf2ea4eee",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event\": \"invoice.validate.completed\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"v2\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-ae193c6e-c288-47f4-a99f-03fcf2ea4eee"
+                    },
+                    {
+                      "id": "3b831fd6-d7d9-446a-92ab-ff2e3ad565eb",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event\": \"invoice.validate.completed\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"v2\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-3b831fd6-d7d9-446a-92ab-ff2e3ad565eb"
+                    },
+                    {
+                      "id": "0ca9433e-fc49-41f8-a6f7-7db83aaa836b",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event\": \"invoice.validate.completed\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"v2\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-0ca9433e-fc49-41f8-a6f7-7db83aaa836b"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-bda47e37-09e2-43de-a190-8ee40b32ab99"
+                },
+                {
+                  "name": "Delete a resthook subscription",
+                  "id": "f7606229-a13a-4137-90cc-c480edf2ae03",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "930f1e8b-b4fa-4299-819b-c82d6041646b",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) ResthookSubscription's ID"
+                        }
+                      ]
+                    },
+                    "description": "Deletes the specified resthook subscription from the database."
+                  },
+                  "response": [
+                    {
+                      "id": "922dac60-76e9-44f5-b157-325f3e9095aa",
+                      "name": "Delete successful, no content returned",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-922dac60-76e9-44f5-b157-325f3e9095aa"
+                    },
+                    {
+                      "id": "d64add17-110c-4657-a014-48229a3c4580",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-d64add17-110c-4657-a014-48229a3c4580"
+                    },
+                    {
+                      "id": "6f0e669b-ad4f-47a7-9083-9c21ec599532",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-6f0e669b-ad4f-47a7-9083-9c21ec599532"
+                    },
+                    {
+                      "id": "4724e9c1-97ee-49e2-8f55-60c1d34905f8",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-4724e9c1-97ee-49e2-8f55-60c1d34905f8"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-f7606229-a13a-4137-90cc-c480edf2ae03"
+                }
+              ],
+              "id": "96db9816-9b0b-4ccc-b0ab-fd5f9bfa2e33",
+              "createdAt": "2026-06-05T15:01:06.000Z",
+              "updatedAt": "2026-06-05T15:01:06.000Z",
+              "uid": "35240-96db9816-9b0b-4ccc-b0ab-fd5f9bfa2e33"
+            },
+            {
+              "name": "activate",
+              "item": [
+                {
+                  "name": "Activate a resthook subscription",
+                  "id": "93422b10-3588-45a3-8594-fe13d489405c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The secret received when creating a subscription.",
+                        "key": "X-Hook-Secret",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions/activate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions",
+                        "activate"
+                      ]
+                    },
+                    "description": "After creating a subscription, we'll send a POST request to your target URL with a `X-Hook-Secret` header. <br />\nYou should response to this with a 200 status code, and use the value of the `X-Hook-Secret` header that you received to activate the subscription using this endpoint."
+                  },
+                  "response": [
+                    {
+                      "id": "6817ab8e-a7da-432b-89d9-ac9e72b59b57",
+                      "name": "Successfully activated a resthook subscription.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The secret received when creating a subscription.",
+                            "key": "X-Hook-Secret",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            "activate"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"event\": \"resume.parse.completed\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"workspace\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"organization\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"userRole\": \"member\",\n      \"avatar\": \"<string>\",\n      \"resthookSignatureKey\": \"<string>\",\n      \"isTrial\": \"<boolean>\",\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"palette\": {\n            \"mode\": \"dark\",\n            \"background\": \"<string>\",\n            \"text\": {\n              \"primary\": \"<string>\",\n              \"secondary\": \"<string>\",\n              \"disabled\": \"<string>\"\n            },\n            \"divider\": \"<string>\",\n            \"primary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"secondary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"success\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"annotation\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"error\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"info\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"warning\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            }\n          },\n          \"typography\": {\n            \"fontFamily\": \"<string>\",\n            \"fontSize\": \"<string>\",\n            \"fontWeightRegular\": \"<string>\",\n            \"fontWeightMedium\": \"<string>\",\n            \"fontWeightBold\": \"<string>\"\n          },\n          \"borderRadius\": \"<number>\",\n          \"fontUrl\": \"<string>\"\n        },\n        \"hideActions\": \"<boolean>\",\n        \"hideCollection\": \"<boolean>\",\n        \"hideEditPages\": \"<boolean>\",\n        \"hideExport\": \"<boolean>\",\n        \"hideFilename\": \"<boolean>\",\n        \"hideShowRawValues\": \"<boolean>\",\n        \"hideReject\": \"<boolean>\",\n        \"hideReparse\": \"<boolean>\",\n        \"hideRunOcr\": \"<boolean>\",\n        \"hideTags\": \"<boolean>\",\n        \"hideWarnings\": \"<boolean>\",\n        \"restrictDocumentSplitting\": \"<boolean>\",\n        \"disableCurrencyFormatting\": \"<boolean>\",\n        \"disableEditDocumentMetadata\": \"<boolean>\",\n        \"disableManualAnnotationEditing\": \"<boolean>\",\n        \"hideDocumentStatus\": \"<boolean>\"\n      },\n      \"showCustomFieldCreation\": \"<boolean>\"\n    }\n  },\n  \"targetUrl\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"autoDeactivated\": \"<boolean>\",\n  \"autoDeactivateReason\": \"<string>\",\n  \"version\": \"v2\"\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-6817ab8e-a7da-432b-89d9-ac9e72b59b57"
+                    },
+                    {
+                      "id": "8e5f4dd0-f870-429e-aa83-1138586c17ed",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The secret received when creating a subscription.",
+                            "key": "X-Hook-Secret",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            "activate"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-8e5f4dd0-f870-429e-aa83-1138586c17ed"
+                    },
+                    {
+                      "id": "0b9afdd3-b431-4ae3-b60f-09b4c598933d",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The secret received when creating a subscription.",
+                            "key": "X-Hook-Secret",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            "activate"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-0b9afdd3-b431-4ae3-b60f-09b4c598933d"
+                    },
+                    {
+                      "id": "8dee9ff8-7675-426c-b91f-0927883aff10",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The secret received when creating a subscription.",
+                            "key": "X-Hook-Secret",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/resthook_subscriptions/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "resthook_subscriptions",
+                            "activate"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:06.000Z",
+                      "updatedAt": "2026-06-05T15:01:06.000Z",
+                      "uid": "35240-8dee9ff8-7675-426c-b91f-0927883aff10"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-93422b10-3588-45a3-8594-fe13d489405c"
+                }
+              ],
+              "id": "615cb2cf-427c-48cd-8861-932d9c1325d4",
+              "createdAt": "2026-06-05T15:01:06.000Z",
+              "updatedAt": "2026-06-05T15:01:06.000Z",
+              "uid": "35240-615cb2cf-427c-48cd-8861-932d9c1325d4"
+            },
+            {
+              "name": "Get list of all resthook subscriptions",
+              "id": "dd0c9b31-0845-4f53-91d0-ccbabeef0431",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v3/resthook_subscriptions?offset=<integer>&limit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "The number of documents to skip before starting to collect the result set.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The numbers of results to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Returns your resthook subscriptions."
+              },
+              "response": [
+                {
+                  "id": "0a40ba25-5160-4c54-9631-8e562ba30292",
+                  "name": "All matching resthook subscriptions.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions?offset=<integer>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"results\": [\n    {\n      \"id\": \"<integer>\",\n      \"event\": \"annotation.validated\",\n      \"organization\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"userRole\": \"member\",\n        \"avatar\": \"<string>\",\n        \"resthookSignatureKey\": \"<string>\",\n        \"isTrial\": \"<boolean>\",\n        \"validationToolConfig\": {\n          \"theme\": {\n            \"palette\": {\n              \"mode\": \"light\",\n              \"background\": \"<string>\",\n              \"text\": {\n                \"primary\": \"<string>\",\n                \"secondary\": \"<string>\",\n                \"disabled\": \"<string>\"\n              },\n              \"divider\": \"<string>\",\n              \"primary\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"secondary\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"success\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"annotation\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"error\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"info\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"warning\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              }\n            },\n            \"typography\": {\n              \"fontFamily\": \"<string>\",\n              \"fontSize\": \"<string>\",\n              \"fontWeightRegular\": \"<string>\",\n              \"fontWeightMedium\": \"<string>\",\n              \"fontWeightBold\": \"<string>\"\n            },\n            \"borderRadius\": \"<number>\",\n            \"fontUrl\": \"<string>\"\n          },\n          \"hideActions\": \"<boolean>\",\n          \"hideCollection\": \"<boolean>\",\n          \"hideEditPages\": \"<boolean>\",\n          \"hideExport\": \"<boolean>\",\n          \"hideFilename\": \"<boolean>\",\n          \"hideShowRawValues\": \"<boolean>\",\n          \"hideReject\": \"<boolean>\",\n          \"hideReparse\": \"<boolean>\",\n          \"hideRunOcr\": \"<boolean>\",\n          \"hideTags\": \"<boolean>\",\n          \"hideWarnings\": \"<boolean>\",\n          \"restrictDocumentSplitting\": \"<boolean>\",\n          \"disableCurrencyFormatting\": \"<boolean>\",\n          \"disableEditDocumentMetadata\": \"<boolean>\",\n          \"disableManualAnnotationEditing\": \"<boolean>\",\n          \"hideDocumentStatus\": \"<boolean>\"\n        },\n        \"showCustomFieldCreation\": \"<boolean>\"\n      },\n      \"workspace\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"organization\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"userRole\": \"admin\",\n          \"avatar\": \"<string>\",\n          \"resthookSignatureKey\": \"<string>\",\n          \"isTrial\": \"<boolean>\",\n          \"validationToolConfig\": {\n            \"theme\": {\n              \"palette\": {\n                \"mode\": \"light\",\n                \"background\": \"<string>\",\n                \"text\": {\n                  \"primary\": \"<string>\",\n                  \"secondary\": \"<string>\",\n                  \"disabled\": \"<string>\"\n                },\n                \"divider\": \"<string>\",\n                \"primary\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"secondary\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"success\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"annotation\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"error\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"info\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"warning\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                }\n              },\n              \"typography\": {\n                \"fontFamily\": \"<string>\",\n                \"fontSize\": \"<string>\",\n                \"fontWeightRegular\": \"<string>\",\n                \"fontWeightMedium\": \"<string>\",\n                \"fontWeightBold\": \"<string>\"\n              },\n              \"borderRadius\": \"<number>\",\n              \"fontUrl\": \"<string>\"\n            },\n            \"hideActions\": \"<boolean>\",\n            \"hideCollection\": \"<boolean>\",\n            \"hideEditPages\": \"<boolean>\",\n            \"hideExport\": \"<boolean>\",\n            \"hideFilename\": \"<boolean>\",\n            \"hideShowRawValues\": \"<boolean>\",\n            \"hideReject\": \"<boolean>\",\n            \"hideReparse\": \"<boolean>\",\n            \"hideRunOcr\": \"<boolean>\",\n            \"hideTags\": \"<boolean>\",\n            \"hideWarnings\": \"<boolean>\",\n            \"restrictDocumentSplitting\": \"<boolean>\",\n            \"disableCurrencyFormatting\": \"<boolean>\",\n            \"disableEditDocumentMetadata\": \"<boolean>\",\n            \"disableManualAnnotationEditing\": \"<boolean>\",\n            \"hideDocumentStatus\": \"<boolean>\"\n          },\n          \"showCustomFieldCreation\": \"<boolean>\"\n        }\n      },\n      \"targetUrl\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"autoDeactivated\": \"<boolean>\",\n      \"autoDeactivateReason\": \"<string>\",\n      \"version\": \"v1\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"event\": \"resume.parse.completed\",\n      \"organization\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"userRole\": \"admin\",\n        \"avatar\": \"<string>\",\n        \"resthookSignatureKey\": \"<string>\",\n        \"isTrial\": \"<boolean>\",\n        \"validationToolConfig\": {\n          \"theme\": {\n            \"palette\": {\n              \"mode\": \"light\",\n              \"background\": \"<string>\",\n              \"text\": {\n                \"primary\": \"<string>\",\n                \"secondary\": \"<string>\",\n                \"disabled\": \"<string>\"\n              },\n              \"divider\": \"<string>\",\n              \"primary\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"secondary\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"success\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"annotation\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"error\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"info\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              },\n              \"warning\": {\n                \"main\": \"<string>\",\n                \"light\": \"<string>\",\n                \"dark\": \"<string>\",\n                \"contrastText\": \"<string>\"\n              }\n            },\n            \"typography\": {\n              \"fontFamily\": \"<string>\",\n              \"fontSize\": \"<string>\",\n              \"fontWeightRegular\": \"<string>\",\n              \"fontWeightMedium\": \"<string>\",\n              \"fontWeightBold\": \"<string>\"\n            },\n            \"borderRadius\": \"<number>\",\n            \"fontUrl\": \"<string>\"\n          },\n          \"hideActions\": \"<boolean>\",\n          \"hideCollection\": \"<boolean>\",\n          \"hideEditPages\": \"<boolean>\",\n          \"hideExport\": \"<boolean>\",\n          \"hideFilename\": \"<boolean>\",\n          \"hideShowRawValues\": \"<boolean>\",\n          \"hideReject\": \"<boolean>\",\n          \"hideReparse\": \"<boolean>\",\n          \"hideRunOcr\": \"<boolean>\",\n          \"hideTags\": \"<boolean>\",\n          \"hideWarnings\": \"<boolean>\",\n          \"restrictDocumentSplitting\": \"<boolean>\",\n          \"disableCurrencyFormatting\": \"<boolean>\",\n          \"disableEditDocumentMetadata\": \"<boolean>\",\n          \"disableManualAnnotationEditing\": \"<boolean>\",\n          \"hideDocumentStatus\": \"<boolean>\"\n        },\n        \"showCustomFieldCreation\": \"<boolean>\"\n      },\n      \"workspace\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"organization\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"userRole\": \"member\",\n          \"avatar\": \"<string>\",\n          \"resthookSignatureKey\": \"<string>\",\n          \"isTrial\": \"<boolean>\",\n          \"validationToolConfig\": {\n            \"theme\": {\n              \"palette\": {\n                \"mode\": \"light\",\n                \"background\": \"<string>\",\n                \"text\": {\n                  \"primary\": \"<string>\",\n                  \"secondary\": \"<string>\",\n                  \"disabled\": \"<string>\"\n                },\n                \"divider\": \"<string>\",\n                \"primary\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"secondary\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"success\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"annotation\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"error\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"info\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                },\n                \"warning\": {\n                  \"main\": \"<string>\",\n                  \"light\": \"<string>\",\n                  \"dark\": \"<string>\",\n                  \"contrastText\": \"<string>\"\n                }\n              },\n              \"typography\": {\n                \"fontFamily\": \"<string>\",\n                \"fontSize\": \"<string>\",\n                \"fontWeightRegular\": \"<string>\",\n                \"fontWeightMedium\": \"<string>\",\n                \"fontWeightBold\": \"<string>\"\n              },\n              \"borderRadius\": \"<number>\",\n              \"fontUrl\": \"<string>\"\n            },\n            \"hideActions\": \"<boolean>\",\n            \"hideCollection\": \"<boolean>\",\n            \"hideEditPages\": \"<boolean>\",\n            \"hideExport\": \"<boolean>\",\n            \"hideFilename\": \"<boolean>\",\n            \"hideShowRawValues\": \"<boolean>\",\n            \"hideReject\": \"<boolean>\",\n            \"hideReparse\": \"<boolean>\",\n            \"hideRunOcr\": \"<boolean>\",\n            \"hideTags\": \"<boolean>\",\n            \"hideWarnings\": \"<boolean>\",\n            \"restrictDocumentSplitting\": \"<boolean>\",\n            \"disableCurrencyFormatting\": \"<boolean>\",\n            \"disableEditDocumentMetadata\": \"<boolean>\",\n            \"disableManualAnnotationEditing\": \"<boolean>\",\n            \"hideDocumentStatus\": \"<boolean>\"\n          },\n          \"showCustomFieldCreation\": \"<boolean>\"\n        }\n      },\n      \"targetUrl\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"autoDeactivated\": \"<boolean>\",\n      \"autoDeactivateReason\": \"<string>\",\n      \"version\": \"v2\"\n    }\n  ],\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-0a40ba25-5160-4c54-9631-8e562ba30292"
+                },
+                {
+                  "id": "c0e93f79-1656-425d-b0eb-771b89c12740",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions?offset=<integer>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-c0e93f79-1656-425d-b0eb-771b89c12740"
+                },
+                {
+                  "id": "7b5dead9-98df-4c77-a9b7-06bffec4046a",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions?offset=<integer>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-7b5dead9-98df-4c77-a9b7-06bffec4046a"
+                },
+                {
+                  "id": "224ef2e9-34ab-4dba-87a6-5f892842fca1",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions?offset=<integer>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-224ef2e9-34ab-4dba-87a6-5f892842fca1"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:06.000Z",
+              "updatedAt": "2026-06-05T15:01:06.000Z",
+              "uid": "35240-dd0c9b31-0845-4f53-91d0-ccbabeef0431"
+            },
+            {
+              "name": "Create a resthook subscription",
+              "id": "8592e9a3-7e51-40a9-b440-c59d51c2a4e4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetUrl\": \"<string>\",\n  \"event\": \"document.parse.completed\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"v3\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v3/resthook_subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "resthook_subscriptions"
+                  ]
+                },
+                "description": "After a subscription is successfully created, we'll send a POST request to your target URL with a `X-Hook-Secret` header. <br />\nYou need to response to this request with a 200 status code to confirm your subscribe intention. <br />\nThen, you need to use the `X-Hook-Secret` to activate the subscription using the [/resthook_subscriptions/activate](#post-/v3/resthook_subscriptions/activate) endpoint. <br />\nFor more information and detailed instructions, [see our webhooks documentation here.](https://docs.affinda.com/docs/webhooks)"
+              },
+              "response": [
+                {
+                  "id": "276f5bd0-afdd-4675-8422-c939dcb39452",
+                  "name": "Successfully created a resthook subscription.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"targetUrl\": \"<string>\",\n  \"event\": \"document.parse.completed\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"v3\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"event\": \"resume.parse.completed\",\n  \"organization\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"userRole\": \"member\",\n    \"avatar\": \"<string>\",\n    \"resthookSignatureKey\": \"<string>\",\n    \"isTrial\": \"<boolean>\",\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"<string>\",\n          \"text\": {\n            \"primary\": \"<string>\",\n            \"secondary\": \"<string>\",\n            \"disabled\": \"<string>\"\n          },\n          \"divider\": \"<string>\",\n          \"primary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"secondary\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"success\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"annotation\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"error\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"info\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          },\n          \"warning\": {\n            \"main\": \"<string>\",\n            \"light\": \"<string>\",\n            \"dark\": \"<string>\",\n            \"contrastText\": \"<string>\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": \"<string>\",\n          \"fontWeightRegular\": \"<string>\",\n          \"fontWeightMedium\": \"<string>\",\n          \"fontWeightBold\": \"<string>\"\n        },\n        \"borderRadius\": \"<number>\",\n        \"fontUrl\": \"<string>\"\n      },\n      \"hideActions\": \"<boolean>\",\n      \"hideCollection\": \"<boolean>\",\n      \"hideEditPages\": \"<boolean>\",\n      \"hideExport\": \"<boolean>\",\n      \"hideFilename\": \"<boolean>\",\n      \"hideShowRawValues\": \"<boolean>\",\n      \"hideReject\": \"<boolean>\",\n      \"hideReparse\": \"<boolean>\",\n      \"hideRunOcr\": \"<boolean>\",\n      \"hideTags\": \"<boolean>\",\n      \"hideWarnings\": \"<boolean>\",\n      \"restrictDocumentSplitting\": \"<boolean>\",\n      \"disableCurrencyFormatting\": \"<boolean>\",\n      \"disableEditDocumentMetadata\": \"<boolean>\",\n      \"disableManualAnnotationEditing\": \"<boolean>\",\n      \"hideDocumentStatus\": \"<boolean>\"\n    },\n    \"showCustomFieldCreation\": \"<boolean>\"\n  },\n  \"workspace\": {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"organization\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"userRole\": \"member\",\n      \"avatar\": \"<string>\",\n      \"resthookSignatureKey\": \"<string>\",\n      \"isTrial\": \"<boolean>\",\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"palette\": {\n            \"mode\": \"dark\",\n            \"background\": \"<string>\",\n            \"text\": {\n              \"primary\": \"<string>\",\n              \"secondary\": \"<string>\",\n              \"disabled\": \"<string>\"\n            },\n            \"divider\": \"<string>\",\n            \"primary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"secondary\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"success\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"annotation\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"error\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"info\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            },\n            \"warning\": {\n              \"main\": \"<string>\",\n              \"light\": \"<string>\",\n              \"dark\": \"<string>\",\n              \"contrastText\": \"<string>\"\n            }\n          },\n          \"typography\": {\n            \"fontFamily\": \"<string>\",\n            \"fontSize\": \"<string>\",\n            \"fontWeightRegular\": \"<string>\",\n            \"fontWeightMedium\": \"<string>\",\n            \"fontWeightBold\": \"<string>\"\n          },\n          \"borderRadius\": \"<number>\",\n          \"fontUrl\": \"<string>\"\n        },\n        \"hideActions\": \"<boolean>\",\n        \"hideCollection\": \"<boolean>\",\n        \"hideEditPages\": \"<boolean>\",\n        \"hideExport\": \"<boolean>\",\n        \"hideFilename\": \"<boolean>\",\n        \"hideShowRawValues\": \"<boolean>\",\n        \"hideReject\": \"<boolean>\",\n        \"hideReparse\": \"<boolean>\",\n        \"hideRunOcr\": \"<boolean>\",\n        \"hideTags\": \"<boolean>\",\n        \"hideWarnings\": \"<boolean>\",\n        \"restrictDocumentSplitting\": \"<boolean>\",\n        \"disableCurrencyFormatting\": \"<boolean>\",\n        \"disableEditDocumentMetadata\": \"<boolean>\",\n        \"disableManualAnnotationEditing\": \"<boolean>\",\n        \"hideDocumentStatus\": \"<boolean>\"\n      },\n      \"showCustomFieldCreation\": \"<boolean>\"\n    }\n  },\n  \"targetUrl\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"autoDeactivated\": \"<boolean>\",\n  \"autoDeactivateReason\": \"<string>\",\n  \"version\": \"v2\"\n}",
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-276f5bd0-afdd-4675-8422-c939dcb39452"
+                },
+                {
+                  "id": "6c6881de-d7c5-42d4-982c-125c19911b19",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"targetUrl\": \"<string>\",\n  \"event\": \"document.parse.completed\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"v3\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-6c6881de-d7c5-42d4-982c-125c19911b19"
+                },
+                {
+                  "id": "944ce527-28ba-4230-b49d-60e56bcb1c27",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"targetUrl\": \"<string>\",\n  \"event\": \"document.parse.completed\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"v3\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-944ce527-28ba-4230-b49d-60e56bcb1c27"
+                },
+                {
+                  "id": "f820b16a-54d7-4930-8f37-24a14d6fff38",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"targetUrl\": \"<string>\",\n  \"event\": \"document.parse.completed\",\n  \"organization\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"version\": \"v3\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/resthook_subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "resthook_subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:01:06.000Z",
+                  "updatedAt": "2026-06-05T15:01:06.000Z",
+                  "uid": "35240-f820b16a-54d7-4930-8f37-24a14d6fff38"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:06.000Z",
+              "updatedAt": "2026-06-05T15:01:06.000Z",
+              "uid": "35240-8592e9a3-7e51-40a9-b440-c59d51c2a4e4"
+            }
+          ],
+          "id": "a5b11e8f-3708-4756-97eb-57895d21f296",
+          "createdAt": "2026-06-05T15:01:06.000Z",
+          "updatedAt": "2026-06-05T15:01:06.000Z",
+          "uid": "35240-a5b11e8f-3708-4756-97eb-57895d21f296"
+        }
+      ],
+      "id": "c83215a9-1561-4c7d-b891-3c4c7c967f55",
+      "createdAt": "2026-06-05T15:01:06.000Z",
+      "updatedAt": "2026-06-05T15:01:06.000Z",
+      "uid": "35240-c83215a9-1561-4c7d-b891-3c4c7c967f55"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "api"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{region}}.affinda.com"
+    }
+  ]
+}

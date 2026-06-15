@@ -1,0 +1,2121 @@
+{
+  "info": {
+    "_postman_id": "9ded9103-685b-4e37-b251-1bfe16203961",
+    "name": "Affinda Document Types API",
+    "description": "Affinda Document Types API \u2014 subset of the Affinda v3 Document Processing API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:00:31.000Z",
+    "updatedAt": "2026-06-05T15:00:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9ded9103-685b-4e37-b251-1bfe16203961"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "document_types",
+          "item": [
+            {
+              "name": "{identifier}",
+              "item": [
+                {
+                  "name": "json_schema",
+                  "item": [
+                    {
+                      "name": "Generate JSON schema from a document type",
+                      "id": "3a5205cb-57af-40cf-8e37-ad6a2ba5f8ec",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier/json_schema?title=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier",
+                            "json_schema"
+                          ],
+                          "query": [
+                            {
+                              "description": "Title for the JSON schema",
+                              "key": "title",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "0013089f-20d6-4766-8bfd-9f7278cab8d8",
+                              "key": "identifier",
+                              "value": "<string>",
+                              "description": "(Required) Document type's identifier"
+                            }
+                          ]
+                        },
+                        "description": "Generate JSON schema from a document type."
+                      },
+                      "response": [
+                        {
+                          "id": "d4eaa72b-2a6f-48ca-ac5f-7e0fd67b05d2",
+                          "name": "JSON schema for the document type.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/document_types/:identifier/json_schema?title=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "document_types",
+                                ":identifier",
+                                "json_schema"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Title for the JSON schema",
+                                  "key": "title",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"consequat_7ff\": \"aliquip id non magna\"\n}",
+                          "createdAt": "2026-06-05T15:00:31.000Z",
+                          "updatedAt": "2026-06-05T15:00:31.000Z",
+                          "uid": "35240-d4eaa72b-2a6f-48ca-ac5f-7e0fd67b05d2"
+                        },
+                        {
+                          "id": "78c59763-f02d-410e-a838-0a318dd0e85b",
+                          "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/document_types/:identifier/json_schema?title=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "document_types",
+                                ":identifier",
+                                "json_schema"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Title for the JSON schema",
+                                  "key": "title",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:31.000Z",
+                          "updatedAt": "2026-06-05T15:00:31.000Z",
+                          "uid": "35240-78c59763-f02d-410e-a838-0a318dd0e85b"
+                        },
+                        {
+                          "id": "9e3c6e79-00ec-4a1c-83b7-1864a2c566ae",
+                          "name": "Authorisation error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/document_types/:identifier/json_schema?title=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "document_types",
+                                ":identifier",
+                                "json_schema"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Title for the JSON schema",
+                                  "key": "title",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:31.000Z",
+                          "updatedAt": "2026-06-05T15:00:31.000Z",
+                          "uid": "35240-9e3c6e79-00ec-4a1c-83b7-1864a2c566ae"
+                        },
+                        {
+                          "id": "00c75ecc-85f9-4394-9d6f-7f92024a448d",
+                          "name": "UnexpectedError",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/document_types/:identifier/json_schema?title=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "document_types",
+                                ":identifier",
+                                "json_schema"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Title for the JSON schema",
+                                  "key": "title",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:31.000Z",
+                          "updatedAt": "2026-06-05T15:00:31.000Z",
+                          "uid": "35240-00c75ecc-85f9-4394-9d6f-7f92024a448d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-3a5205cb-57af-40cf-8e37-ad6a2ba5f8ec"
+                    }
+                  ],
+                  "id": "9a55f0b4-1b4c-497e-bd53-bd2f8c172172",
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-9a55f0b4-1b4c-497e-bd53-bd2f8c172172"
+                },
+                {
+                  "name": "pydantic_models",
+                  "item": [
+                    {
+                      "name": "Generate Pydantic models from a document type",
+                      "id": "2a79774f-fcc2-4f65-a6b2-eb0ade67476a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier/pydantic_models?model_name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier",
+                            "pydantic_models"
+                          ],
+                          "query": [
+                            {
+                              "description": "Name for the Pydantic model",
+                              "key": "model_name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "8cbcec7c-9f31-4d79-a46c-d6272e33db3a",
+                              "key": "identifier",
+                              "value": "<string>",
+                              "description": "(Required) Document type's identifier"
+                            }
+                          ]
+                        },
+                        "description": "Generate Pydantic models from a document type."
+                      },
+                      "response": [
+                        {
+                          "id": "8a6a9515-a1e3-42f5-866c-60e08f71daae",
+                          "name": "Pydantic models for the document type.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/document_types/:identifier/pydantic_models?model_name=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "document_types",
+                                ":identifier",
+                                "pydantic_models"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Name for the Pydantic model",
+                                  "key": "model_name",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:00:31.000Z",
+                          "updatedAt": "2026-06-05T15:00:31.000Z",
+                          "uid": "35240-8a6a9515-a1e3-42f5-866c-60e08f71daae"
+                        },
+                        {
+                          "id": "8f59364e-c6e8-409a-8747-41c0db3e5b3f",
+                          "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/document_types/:identifier/pydantic_models?model_name=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "document_types",
+                                ":identifier",
+                                "pydantic_models"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Name for the Pydantic model",
+                                  "key": "model_name",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:31.000Z",
+                          "updatedAt": "2026-06-05T15:00:31.000Z",
+                          "uid": "35240-8f59364e-c6e8-409a-8747-41c0db3e5b3f"
+                        },
+                        {
+                          "id": "a2f4ecfe-e3c5-4460-aff8-787da6d96517",
+                          "name": "Authorisation error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/document_types/:identifier/pydantic_models?model_name=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "document_types",
+                                ":identifier",
+                                "pydantic_models"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Name for the Pydantic model",
+                                  "key": "model_name",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:31.000Z",
+                          "updatedAt": "2026-06-05T15:00:31.000Z",
+                          "uid": "35240-a2f4ecfe-e3c5-4460-aff8-787da6d96517"
+                        },
+                        {
+                          "id": "3386233c-aae3-443a-83af-6f619d5e93ba",
+                          "name": "UnexpectedError",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/document_types/:identifier/pydantic_models?model_name=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "document_types",
+                                ":identifier",
+                                "pydantic_models"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Name for the Pydantic model",
+                                  "key": "model_name",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:31.000Z",
+                          "updatedAt": "2026-06-05T15:00:31.000Z",
+                          "uid": "35240-3386233c-aae3-443a-83af-6f619d5e93ba"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-2a79774f-fcc2-4f65-a6b2-eb0ade67476a"
+                    }
+                  ],
+                  "id": "f038bb75-4e8e-459b-a3cd-22dcf6ac1305",
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-f038bb75-4e8e-459b-a3cd-22dcf6ac1305"
+                },
+                {
+                  "name": "Get a document type",
+                  "id": "ab0d6162-5531-4bbe-9cd7-0c721423c387",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fde831a8-36e7-4834-b37f-c8dad27c4199",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Document type identifier"
+                        }
+                      ]
+                    },
+                    "description": "Returns the details of a specific document type."
+                  },
+                  "response": [
+                    {
+                      "id": "5a230d50-2094-4fa9-8b15-16766f9f8d17",
+                      "name": "Successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identifier\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ingest_email\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-5a230d50-2094-4fa9-8b15-16766f9f8d17"
+                    },
+                    {
+                      "id": "9275e66d-c1ef-4919-81e1-8b292c23339f",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-9275e66d-c1ef-4919-81e1-8b292c23339f"
+                    },
+                    {
+                      "id": "c6b79b49-7f42-47b5-aff2-51e58fef7912",
+                      "name": "Document type not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-c6b79b49-7f42-47b5-aff2-51e58fef7912"
+                    },
+                    {
+                      "id": "2af95ae8-e605-49e2-8502-43b30571eecb",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-2af95ae8-e605-49e2-8502-43b30571eecb"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-ab0d6162-5531-4bbe-9cd7-0c721423c387"
+                },
+                {
+                  "name": "Update a document type",
+                  "id": "68818659-2bab-4282-8e9c-491e1a712446",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6dd703ca-4ffa-4453-88a7-a98eda2e2db9",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Document type identifier"
+                        }
+                      ]
+                    },
+                    "description": "Update an existing document type."
+                  },
+                  "response": [
+                    {
+                      "id": "91fba454-02d4-45e8-ab2f-93ae3d29ec59",
+                      "name": "Document type updated successfully",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identifier\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ingest_email\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-91fba454-02d4-45e8-ab2f-93ae3d29ec59"
+                    },
+                    {
+                      "id": "198f4b35-57d0-4098-9b6b-6d88a9890bd7",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-198f4b35-57d0-4098-9b6b-6d88a9890bd7"
+                    },
+                    {
+                      "id": "4a4cca09-a736-4e1c-9150-090c56f2d844",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-4a4cca09-a736-4e1c-9150-090c56f2d844"
+                    },
+                    {
+                      "id": "c45652a8-9892-4cba-b70f-4c60ebfb4ea2",
+                      "name": "Forbidden - User doesn't have permission to update this document type",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-c45652a8-9892-4cba-b70f-4c60ebfb4ea2"
+                    },
+                    {
+                      "id": "7df7dbb2-27ec-4576-a9ac-da96cc3a7ee6",
+                      "name": "Document type not found",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-7df7dbb2-27ec-4576-a9ac-da96cc3a7ee6"
+                    },
+                    {
+                      "id": "1f2a15f1-098b-46a0-ae8f-695b0b5224a8",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-1f2a15f1-098b-46a0-ae8f-695b0b5224a8"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-68818659-2bab-4282-8e9c-491e1a712446"
+                },
+                {
+                  "name": "Delete a document type",
+                  "id": "1fd7ba89-02a8-470a-a1af-d8c65714007f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0b1d998e-8e1b-4750-91b6-2dd321f4e027",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Document type identifier"
+                        }
+                      ]
+                    },
+                    "description": "Delete a document type."
+                  },
+                  "response": [
+                    {
+                      "id": "f44c693c-1fd2-400a-a46f-a513ae620ffd",
+                      "name": "Delete successful, no content returned",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-f44c693c-1fd2-400a-a46f-a513ae620ffd"
+                    },
+                    {
+                      "id": "49a1f7b0-40c3-4298-a6c5-8b851ab59413",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-49a1f7b0-40c3-4298-a6c5-8b851ab59413"
+                    },
+                    {
+                      "id": "ace9b66e-a7b6-49f6-bce1-3529af561f07",
+                      "name": "Forbidden - User doesn't have permission to delete this document type",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-ace9b66e-a7b6-49f6-bce1-3529af561f07"
+                    },
+                    {
+                      "id": "73a67e58-db13-484b-a31f-3e5017928784",
+                      "name": "Document type not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-73a67e58-db13-484b-a31f-3e5017928784"
+                    },
+                    {
+                      "id": "7430d5ec-059b-4bf0-b361-a144104cd43d",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/document_types/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "document_types",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:31.000Z",
+                      "updatedAt": "2026-06-05T15:00:31.000Z",
+                      "uid": "35240-7430d5ec-059b-4bf0-b361-a144104cd43d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-1fd7ba89-02a8-470a-a1af-d8c65714007f"
+                }
+              ],
+              "id": "9d825b70-a227-4f7d-8477-bd1979b10c82",
+              "createdAt": "2026-06-05T15:00:31.000Z",
+              "updatedAt": "2026-06-05T15:00:31.000Z",
+              "uid": "35240-9d825b70-a227-4f7d-8477-bd1979b10c82"
+            },
+            {
+              "name": "List document types",
+              "id": "8d792919-1a5e-443f-943e-95407066a835",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v3/document_types?organization=<string>&workspace=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "document_types"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by organization identifier",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by workspace identifier",
+                      "key": "workspace",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of document types that the user has access to."
+              },
+              "response": [
+                {
+                  "id": "51709286-a738-4549-829f-e497f246fa17",
+                  "name": "Successful operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types?organization=<string>&workspace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by organization identifier",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by workspace identifier",
+                          "key": "workspace",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"organization\": \"<string>\",\n    \"description\": \"<string>\",\n    \"ingest_email\": \"<string>\"\n  },\n  {\n    \"identifier\": \"<string>\",\n    \"name\": \"<string>\",\n    \"organization\": \"<string>\",\n    \"description\": \"<string>\",\n    \"ingest_email\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-51709286-a738-4549-829f-e497f246fa17"
+                },
+                {
+                  "id": "3a910f27-fdc5-4381-8114-840e97f56541",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types?organization=<string>&workspace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by organization identifier",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by workspace identifier",
+                          "key": "workspace",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-3a910f27-fdc5-4381-8114-840e97f56541"
+                },
+                {
+                  "id": "eecdf2d3-7d6b-40f1-a8da-f043b270d33b",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types?organization=<string>&workspace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by organization identifier",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by workspace identifier",
+                          "key": "workspace",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-eecdf2d3-7d6b-40f1-a8da-f043b270d33b"
+                },
+                {
+                  "id": "aa2f17c9-6d9b-436f-aa10-f24fbb046d91",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types?organization=<string>&workspace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by organization identifier",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by workspace identifier",
+                          "key": "workspace",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-aa2f17c9-6d9b-436f-aa10-f24fbb046d91"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:31.000Z",
+              "updatedAt": "2026-06-05T15:00:31.000Z",
+              "uid": "35240-8d792919-1a5e-443f-943e-95407066a835"
+            },
+            {
+              "name": "Create a document type",
+              "id": "bbf288ab-3bdd-4cf6-8c2f-247790848698",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v3/document_types",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "document_types"
+                  ]
+                },
+                "description": "Create a new document type in the specified organization."
+              },
+              "response": [
+                {
+                  "id": "b6df03fa-c1dd-491e-92bb-92283317b701",
+                  "name": "Document type created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"identifier\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ingest_email\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-b6df03fa-c1dd-491e-92bb-92283317b701"
+                },
+                {
+                  "id": "9e389724-55bc-46f2-a18e-cd5fec198e0f",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-9e389724-55bc-46f2-a18e-cd5fec198e0f"
+                },
+                {
+                  "id": "8937762e-c4d0-4a5d-b08a-9f4b93ddaa69",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-8937762e-c4d0-4a5d-b08a-9f4b93ddaa69"
+                },
+                {
+                  "id": "11126851-9fb3-4c9c-a09f-2be136c2a8c1",
+                  "name": "Forbidden - User doesn't have permission to create document types in this organization",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-11126851-9fb3-4c9c-a09f-2be136c2a8c1"
+                },
+                {
+                  "id": "d818eb52-1e1f-4aa6-834c-066d3e312f2c",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/document_types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "document_types"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:31.000Z",
+                  "updatedAt": "2026-06-05T15:00:31.000Z",
+                  "uid": "35240-d818eb52-1e1f-4aa6-834c-066d3e312f2c"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:31.000Z",
+              "updatedAt": "2026-06-05T15:00:31.000Z",
+              "uid": "35240-bbf288ab-3bdd-4cf6-8c2f-247790848698"
+            }
+          ],
+          "id": "6d76e8d2-1c7a-4d39-836c-eb6e0437e1e5",
+          "createdAt": "2026-06-05T15:00:31.000Z",
+          "updatedAt": "2026-06-05T15:00:31.000Z",
+          "uid": "35240-6d76e8d2-1c7a-4d39-836c-eb6e0437e1e5"
+        }
+      ],
+      "id": "7e4326bc-d47a-494d-8b65-91d8fa234b4f",
+      "createdAt": "2026-06-05T15:00:31.000Z",
+      "updatedAt": "2026-06-05T15:00:31.000Z",
+      "uid": "35240-7e4326bc-d47a-494d-8b65-91d8fa234b4f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "api"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{region}}.affinda.com"
+    }
+  ]
+}

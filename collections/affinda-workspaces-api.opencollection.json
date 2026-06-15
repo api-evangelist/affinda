@@ -1,0 +1,246 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Workspaces API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workspaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of all workspaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/workspaces",
+            "params": [
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "Filter by organization."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by name."
+              }
+            ]
+          },
+          "docs": "Returns your workspaces."
+        },
+        {
+          "info": {
+            "name": "Create a workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/workspaces",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a workspace"
+        },
+        {
+          "info": {
+            "name": "Get specific workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/workspaces/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Workspace's identifier"
+              }
+            ]
+          },
+          "docs": "Return a specific workspace."
+        },
+        {
+          "info": {
+            "name": "Update a workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/workspaces/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Workspace's identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a workspace."
+        },
+        {
+          "info": {
+            "name": "Delete a workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/workspaces/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Workspace's identifier"
+              }
+            ]
+          },
+          "docs": "Deletes the specified workspace from the database."
+        },
+        {
+          "info": {
+            "name": "Get usage by workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/workspaces/:identifier/usage",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Workspace's identifier"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the period to retrieve. Format: YYYY-MM"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End date of the period to retrieve. Format: YYYY-MM"
+              }
+            ]
+          },
+          "docs": "Return monthly credits consumption of a workspace.\nDeprecated: use `GET /v3/usage?organization={id}&workspace={id}` instead. The new endpoint returns a unified daily series and supports the same workspace scoping along with organization- and document-type-level reporting."
+        },
+        {
+          "info": {
+            "name": "Get list of all workspace memberships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/workspace_memberships",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "workspace",
+                "value": "",
+                "type": "query",
+                "description": "Filter by workspace."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Partial text match on user's email, case-insensitive."
+              }
+            ]
+          },
+          "docs": "Returns the memberships of your workspaces."
+        },
+        {
+          "info": {
+            "name": "Create a workspace membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/workspace_memberships",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a workspace membership."
+        },
+        {
+          "info": {
+            "name": "Get specific workspace membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/workspace_memberships/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Workspace membership's identifier."
+              }
+            ]
+          },
+          "docs": "Return a specific workspace membership."
+        },
+        {
+          "info": {
+            "name": "Delete a workspace membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/workspace_memberships/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Workspace membership's identifier."
+              }
+            ]
+          },
+          "docs": "Remove an user from a workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

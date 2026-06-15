@@ -1,0 +1,3374 @@
+{
+  "info": {
+    "_postman_id": "0318cb27-258b-4644-8a29-4ad9ba4d25f3",
+    "name": "Affinda Documents API",
+    "description": "Affinda Documents API \u2014 subset of the Affinda v3 Document Processing API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:00:29.000Z",
+    "updatedAt": "2026-06-05T15:00:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0318cb27-258b-4644-8a29-4ad9ba4d25f3"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "documents",
+          "item": [
+            {
+              "name": "{identifier}",
+              "item": [
+                {
+                  "name": "redacted",
+                  "item": [
+                    {
+                      "name": "Get redacted document",
+                      "id": "ec02d6f7-555b-482e-bd08-cb7829c2049e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/pdf"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier/redacted",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier",
+                            "redacted"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2f3677a9-08cb-4be3-93c7-5b2d883971e4",
+                              "key": "identifier",
+                              "value": "<string>",
+                              "description": "(Required) Document identifier"
+                            }
+                          ]
+                        },
+                        "description": "Get the redacted version of a document. The original document is not modified."
+                      },
+                      "response": [
+                        {
+                          "id": "2f2a3db4-ced2-472b-9e9e-4dc4cd9b89bf",
+                          "name": "Successfully retrieved redacted document",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/pdf"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/documents/:identifier/redacted",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "documents",
+                                ":identifier",
+                                "redacted"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/pdf"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<binary>",
+                          "createdAt": "2026-06-05T15:00:29.000Z",
+                          "updatedAt": "2026-06-05T15:00:29.000Z",
+                          "uid": "35240-2f2a3db4-ced2-472b-9e9e-4dc4cd9b89bf"
+                        },
+                        {
+                          "id": "a0701291-ac43-4ca1-8192-189b65116c32",
+                          "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/documents/:identifier/redacted",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "documents",
+                                ":identifier",
+                                "redacted"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:29.000Z",
+                          "updatedAt": "2026-06-05T15:00:29.000Z",
+                          "uid": "35240-a0701291-ac43-4ca1-8192-189b65116c32"
+                        },
+                        {
+                          "id": "fb3858dd-b44e-4f3e-ac04-10454a82b793",
+                          "name": "Authorisation error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/documents/:identifier/redacted",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "documents",
+                                ":identifier",
+                                "redacted"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:29.000Z",
+                          "updatedAt": "2026-06-05T15:00:29.000Z",
+                          "uid": "35240-fb3858dd-b44e-4f3e-ac04-10454a82b793"
+                        },
+                        {
+                          "id": "1e2df704-e816-4659-8a98-3992d68a468e",
+                          "name": "UnexpectedError",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/documents/:identifier/redacted",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "documents",
+                                ":identifier",
+                                "redacted"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:00:29.000Z",
+                          "updatedAt": "2026-06-05T15:00:29.000Z",
+                          "uid": "35240-1e2df704-e816-4659-8a98-3992d68a468e"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-ec02d6f7-555b-482e-bd08-cb7829c2049e"
+                    }
+                  ],
+                  "id": "b90b0a99-bf8c-479e-b81f-45d3e00e9152",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-b90b0a99-bf8c-479e-b81f-45d3e00e9152"
+                },
+                {
+                  "name": "Get specific document",
+                  "id": "a0a638db-cd71-4a29-998f-b662387078a2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents/:identifier?format=xml&compact=<boolean>&snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents",
+                        ":identifier"
+                      ],
+                      "query": [
+                        {
+                          "description": "Specify which format you want the response to be. Default is \"json\"",
+                          "key": "format",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                          "key": "compact",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "89344603-77bb-4fb2-8a32-b815fe068179",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Document's identifier"
+                        }
+                      ]
+                    },
+                    "description": "Return a specific document."
+                  },
+                  "response": [
+                    {
+                      "id": "527d60b0-046c-4f0e-9b5b-d681af9d0a09",
+                      "name": "Successfully retrieved document.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier?format=xml&compact=<boolean>&snake_case=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "query": [
+                            {
+                              "description": "Specify which format you want the response to be. Default is \"json\"",
+                              "key": "format",
+                              "value": "xml"
+                            },
+                            {
+                              "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                              "key": "compact",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                              "key": "snake_case",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"meta\": {\n    \"identifier\": \"<string>\",\n    \"pages\": [\n      {\n        \"id\": \"<integer>\",\n        \"pageIndex\": \"<integer>\",\n        \"image\": \"<string>\",\n        \"width\": \"<number>\",\n        \"height\": \"<number>\",\n        \"rotation\": \"<integer>\",\n        \"imageTranslated\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"pageIndex\": \"<integer>\",\n        \"image\": \"<string>\",\n        \"width\": \"<number>\",\n        \"height\": \"<number>\",\n        \"rotation\": \"<integer>\",\n        \"imageTranslated\": \"<string>\"\n      }\n    ],\n    \"workspace\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"customIdentifier\": \"<string>\",\n    \"fileName\": \"<string>\",\n    \"ready\": \"<boolean>\",\n    \"readyDt\": \"<dateTime>\",\n    \"failed\": \"<boolean>\",\n    \"expiryTime\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"pdf\": \"<string>\",\n    \"parentDocument\": {\n      \"identifier\": \"<string>\",\n      \"customIdentifier\": \"<string>\"\n    },\n    \"childDocuments\": [\n      {\n        \"identifier\": \"<string>\",\n        \"customIdentifier\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"customIdentifier\": \"<string>\"\n      }\n    ],\n    \"isOcrd\": \"<boolean>\",\n    \"ocrConfidence\": \"<number>\",\n    \"reviewUrl\": \"<string>\",\n    \"documentType\": \"<string>\",\n    \"collection\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"extractor\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"baseExtractor\": \"<string>\",\n        \"validatable\": \"<boolean>\"\n      },\n      \"validationRules\": [\n        {\n          \"slug\": \"e3hds\",\n          \"dataPoints\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"slug\": \"a6whwq\",\n          \"dataPoints\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"autoRefreshValidationResults\": \"<boolean>\"\n    },\n    \"archivedDt\": \"<dateTime>\",\n    \"isArchived\": \"<boolean>\",\n    \"skipParse\": \"<boolean>\",\n    \"confirmedDt\": \"<dateTime>\",\n    \"confirmedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"isConfirmed\": \"<boolean>\",\n    \"rejectedDt\": \"<dateTime>\",\n    \"rejectedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"archivedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"isRejected\": \"<boolean>\",\n    \"createdDt\": \"<dateTime>\",\n    \"errorCode\": \"<string>\",\n    \"errorDetail\": \"<string>\",\n    \"file\": \"<string>\",\n    \"html\": \"<string>\",\n    \"llmHint\": \"<string>\",\n    \"tags\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"workspace\": \"<string>\",\n        \"documentCount\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"workspace\": \"<string>\",\n        \"documentCount\": \"<integer>\"\n      }\n    ],\n    \"createdBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"sourceEmail\": \"<string>\",\n    \"sourceEmailAddress\": \"<string>\",\n    \"regionBias\": {\n      \"country\": \"<string>\",\n      \"countries\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"squareCoordinates\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"strict\": \"<boolean>\"\n    }\n  },\n  \"extractor\": \"<string>\",\n  \"data\": {},\n  \"error\": {\n    \"errorCode\": \"<string>\",\n    \"errorDetail\": \"<string>\"\n  },\n  \"warnings\": [\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    },\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-527d60b0-046c-4f0e-9b5b-d681af9d0a09"
+                    },
+                    {
+                      "id": "e3711c59-fed6-428f-bf1d-7b69bd30e57a",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier?format=xml&compact=<boolean>&snake_case=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "query": [
+                            {
+                              "description": "Specify which format you want the response to be. Default is \"json\"",
+                              "key": "format",
+                              "value": "xml"
+                            },
+                            {
+                              "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                              "key": "compact",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                              "key": "snake_case",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-e3711c59-fed6-428f-bf1d-7b69bd30e57a"
+                    },
+                    {
+                      "id": "de683085-c02d-4c07-912a-965824521f4e",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier?format=xml&compact=<boolean>&snake_case=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "query": [
+                            {
+                              "description": "Specify which format you want the response to be. Default is \"json\"",
+                              "key": "format",
+                              "value": "xml"
+                            },
+                            {
+                              "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                              "key": "compact",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                              "key": "snake_case",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-de683085-c02d-4c07-912a-965824521f4e"
+                    },
+                    {
+                      "id": "7444c92f-2c2a-459e-a018-59aa9da09167",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier?format=xml&compact=<boolean>&snake_case=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "query": [
+                            {
+                              "description": "Specify which format you want the response to be. Default is \"json\"",
+                              "key": "format",
+                              "value": "xml"
+                            },
+                            {
+                              "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                              "key": "compact",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                              "key": "snake_case",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-7444c92f-2c2a-459e-a018-59aa9da09167"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-a0a638db-cd71-4a29-998f-b662387078a2"
+                },
+                {
+                  "name": "Update a document",
+                  "id": "a7cc76ba-d704-4ea7-b4fc-0f1a92ae9a92",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"collection\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"documentType\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"expiryTime\": \"<dateTime>\",\n  \"isConfirmed\": \"<boolean>\",\n  \"isRejected\": \"<boolean>\",\n  \"isArchived\": \"<boolean>\",\n  \"skipParse\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"customIdentifier\": \"<string>\",\n  \"llmHint\": \"<string>\",\n  \"warningMessages\": [\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    },\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents/:identifier?compact=<boolean>&snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents",
+                        ":identifier"
+                      ],
+                      "query": [
+                        {
+                          "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                          "key": "compact",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "37db600e-79e9-4f26-b525-ee818d496ff7",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Document's identifier"
+                        }
+                      ]
+                    },
+                    "description": "Update file name, expiry time, or move to another collection, etc."
+                  },
+                  "response": [
+                    {
+                      "id": "74023619-70ef-477a-a728-a4e72aee5c7b",
+                      "name": "Successfully updated document data.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"collection\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"documentType\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"expiryTime\": \"<dateTime>\",\n  \"isConfirmed\": \"<boolean>\",\n  \"isRejected\": \"<boolean>\",\n  \"isArchived\": \"<boolean>\",\n  \"skipParse\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"customIdentifier\": \"<string>\",\n  \"llmHint\": \"<string>\",\n  \"warningMessages\": [\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    },\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier?compact=<boolean>&snake_case=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "query": [
+                            {
+                              "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                              "key": "compact",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                              "key": "snake_case",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"meta\": {\n    \"identifier\": \"<string>\",\n    \"pages\": [\n      {\n        \"id\": \"<integer>\",\n        \"pageIndex\": \"<integer>\",\n        \"image\": \"<string>\",\n        \"width\": \"<number>\",\n        \"height\": \"<number>\",\n        \"rotation\": \"<integer>\",\n        \"imageTranslated\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"pageIndex\": \"<integer>\",\n        \"image\": \"<string>\",\n        \"width\": \"<number>\",\n        \"height\": \"<number>\",\n        \"rotation\": \"<integer>\",\n        \"imageTranslated\": \"<string>\"\n      }\n    ],\n    \"workspace\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"customIdentifier\": \"<string>\",\n    \"fileName\": \"<string>\",\n    \"ready\": \"<boolean>\",\n    \"readyDt\": \"<dateTime>\",\n    \"failed\": \"<boolean>\",\n    \"expiryTime\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"pdf\": \"<string>\",\n    \"parentDocument\": {\n      \"identifier\": \"<string>\",\n      \"customIdentifier\": \"<string>\"\n    },\n    \"childDocuments\": [\n      {\n        \"identifier\": \"<string>\",\n        \"customIdentifier\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"customIdentifier\": \"<string>\"\n      }\n    ],\n    \"isOcrd\": \"<boolean>\",\n    \"ocrConfidence\": \"<number>\",\n    \"reviewUrl\": \"<string>\",\n    \"documentType\": \"<string>\",\n    \"collection\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"extractor\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"baseExtractor\": \"<string>\",\n        \"validatable\": \"<boolean>\"\n      },\n      \"validationRules\": [\n        {\n          \"slug\": \"e3hds\",\n          \"dataPoints\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"slug\": \"a6whwq\",\n          \"dataPoints\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"autoRefreshValidationResults\": \"<boolean>\"\n    },\n    \"archivedDt\": \"<dateTime>\",\n    \"isArchived\": \"<boolean>\",\n    \"skipParse\": \"<boolean>\",\n    \"confirmedDt\": \"<dateTime>\",\n    \"confirmedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"isConfirmed\": \"<boolean>\",\n    \"rejectedDt\": \"<dateTime>\",\n    \"rejectedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"archivedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"isRejected\": \"<boolean>\",\n    \"createdDt\": \"<dateTime>\",\n    \"errorCode\": \"<string>\",\n    \"errorDetail\": \"<string>\",\n    \"file\": \"<string>\",\n    \"html\": \"<string>\",\n    \"llmHint\": \"<string>\",\n    \"tags\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"workspace\": \"<string>\",\n        \"documentCount\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"workspace\": \"<string>\",\n        \"documentCount\": \"<integer>\"\n      }\n    ],\n    \"createdBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"sourceEmail\": \"<string>\",\n    \"sourceEmailAddress\": \"<string>\",\n    \"regionBias\": {\n      \"country\": \"<string>\",\n      \"countries\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"squareCoordinates\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"strict\": \"<boolean>\"\n    }\n  },\n  \"extractor\": \"<string>\",\n  \"data\": {},\n  \"error\": {\n    \"errorCode\": \"<string>\",\n    \"errorDetail\": \"<string>\"\n  },\n  \"warnings\": [\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    },\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-74023619-70ef-477a-a728-a4e72aee5c7b"
+                    },
+                    {
+                      "id": "dcd3e038-ae21-43bd-979f-e7b86322d109",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"collection\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"documentType\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"expiryTime\": \"<dateTime>\",\n  \"isConfirmed\": \"<boolean>\",\n  \"isRejected\": \"<boolean>\",\n  \"isArchived\": \"<boolean>\",\n  \"skipParse\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"customIdentifier\": \"<string>\",\n  \"llmHint\": \"<string>\",\n  \"warningMessages\": [\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    },\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier?compact=<boolean>&snake_case=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "query": [
+                            {
+                              "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                              "key": "compact",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                              "key": "snake_case",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-dcd3e038-ae21-43bd-979f-e7b86322d109"
+                    },
+                    {
+                      "id": "f3d882a9-bfa3-402b-b670-f09271016102",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"collection\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"documentType\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"expiryTime\": \"<dateTime>\",\n  \"isConfirmed\": \"<boolean>\",\n  \"isRejected\": \"<boolean>\",\n  \"isArchived\": \"<boolean>\",\n  \"skipParse\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"customIdentifier\": \"<string>\",\n  \"llmHint\": \"<string>\",\n  \"warningMessages\": [\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    },\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier?compact=<boolean>&snake_case=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "query": [
+                            {
+                              "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                              "key": "compact",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                              "key": "snake_case",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-f3d882a9-bfa3-402b-b670-f09271016102"
+                    },
+                    {
+                      "id": "9a59db2a-a5b8-4943-8d1c-63f33c255d33",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"collection\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"documentType\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"expiryTime\": \"<dateTime>\",\n  \"isConfirmed\": \"<boolean>\",\n  \"isRejected\": \"<boolean>\",\n  \"isArchived\": \"<boolean>\",\n  \"skipParse\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"customIdentifier\": \"<string>\",\n  \"llmHint\": \"<string>\",\n  \"warningMessages\": [\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    },\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier?compact=<boolean>&snake_case=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "query": [
+                            {
+                              "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                              "key": "compact",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                              "key": "snake_case",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-9a59db2a-a5b8-4943-8d1c-63f33c255d33"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-a7cc76ba-d704-4ea7-b4fc-0f1a92ae9a92"
+                },
+                {
+                  "name": "Delete a document",
+                  "id": "0577904f-d886-4eb4-a0b9-fa0d63600eb9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents/:identifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents",
+                        ":identifier"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4ea34c54-4893-4db2-af52-318713ca8e71",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "description": "(Required) Document's identifier"
+                        }
+                      ]
+                    },
+                    "description": "Deletes the specified document from the database."
+                  },
+                  "response": [
+                    {
+                      "id": "dc21e8c3-4c1a-4bbc-973d-4d9d59d1ca82",
+                      "name": "Delete successful, no content returned",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-dc21e8c3-4c1a-4bbc-973d-4d9d59d1ca82"
+                    },
+                    {
+                      "id": "a611162f-1628-41db-ba03-6187bf8595ea",
+                      "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-a611162f-1628-41db-ba03-6187bf8595ea"
+                    },
+                    {
+                      "id": "d21d4b6d-35eb-455d-bf98-fb4f69392b54",
+                      "name": "Authorisation error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-d21d4b6d-35eb-455d-bf98-fb4f69392b54"
+                    },
+                    {
+                      "id": "f00b1095-9722-47a0-891f-29365227dcd2",
+                      "name": "UnexpectedError",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/documents/:identifier",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "documents",
+                            ":identifier"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:00:29.000Z",
+                      "updatedAt": "2026-06-05T15:00:29.000Z",
+                      "uid": "35240-f00b1095-9722-47a0-891f-29365227dcd2"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-0577904f-d886-4eb4-a0b9-fa0d63600eb9"
+                }
+              ],
+              "id": "1e396441-e0bf-45df-9618-4205de2f9a86",
+              "createdAt": "2026-06-05T15:00:29.000Z",
+              "updatedAt": "2026-06-05T15:00:29.000Z",
+              "uid": "35240-1e396441-e0bf-45df-9618-4205de2f9a86"
+            },
+            {
+              "name": "Get list of all documents",
+              "id": "3dc267b7-40eb-44f4-afb2-33b5daebb0c3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v3/documents?offset=<integer>&limit=<integer>&workspace=<string>&collection=<string>&state=uploaded&tags=<integer>&tags=<integer>&created_dt=month&search=<string>&ordering=<string>&ordering=<string>&include_data=<boolean>&exclude=<string>&exclude=<string>&in_review=<boolean>&failed=<boolean>&ready=<boolean>&validatable=<boolean>&has_challenges=<boolean>&custom_identifier=<string>&compact=<boolean>&count=<boolean>&snake_case=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "query": [
+                    {
+                      "description": "The number of documents to skip before starting to collect the result set.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The numbers of results to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by workspace.",
+                      "key": "workspace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by collection.",
+                      "key": "collection",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the document's state.",
+                      "key": "state",
+                      "value": "uploaded"
+                    },
+                    {
+                      "description": "Filter by tag's IDs.",
+                      "key": "tags",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by tag's IDs.",
+                      "key": "tags",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by created datetime.",
+                      "key": "created_dt",
+                      "value": "month"
+                    },
+                    {
+                      "description": "Partial, case-insensitive match with file name or tag name.",
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort the result set. A \"-\" at the beginning denotes DESC sort, e.g. -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name', 'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__<dataPointSlug>'.",
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort the result set. A \"-\" at the beginning denotes DESC sort, e.g. -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name', 'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__<dataPointSlug>'.",
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "By default, this endpoint returns only the meta data of the documents. Set this to `true` will return a summary of the data that was parsed. If you want to retrieve the full set of data for a document, use the `GET /documents/{identifier}` endpoint.",
+                      "key": "include_data",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Exclude some documents from the result.",
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Exclude some documents from the result.",
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Exclude documents that are currently being reviewed.",
+                      "key": "in_review",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by failed status.",
+                      "key": "failed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by ready status.",
+                      "key": "ready",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter for validatable documents.",
+                      "key": "validatable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter for documents with challenges.",
+                      "key": "has_challenges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter for documents with this custom identifier.",
+                      "key": "custom_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "If \"false\", the documents count is not computed, thus saving time for large collections. Default is \"true\".",
+                      "key": "count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "description": "Returns all the document summaries for that user, limited to 300 per page."
+              },
+              "response": [
+                {
+                  "id": "ed156fc2-bfcf-41d4-9500-d2af6c59ccf1",
+                  "name": "All documents for user",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents?offset=<integer>&limit=<integer>&workspace=<string>&collection=<string>&state=uploaded&tags=<integer>&created_dt=month&search=<string>&ordering=<string>&include_data=<boolean>&exclude=<string>&in_review=<boolean>&failed=<boolean>&ready=<boolean>&validatable=<boolean>&has_challenges=<boolean>&custom_identifier=<string>&compact=<boolean>&count=<boolean>&snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by collection.",
+                          "key": "collection",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the document's state.",
+                          "key": "state",
+                          "value": "uploaded"
+                        },
+                        {
+                          "description": "Filter by tag's IDs.",
+                          "key": "tags",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by created datetime.",
+                          "key": "created_dt",
+                          "value": "month"
+                        },
+                        {
+                          "description": "Partial, case-insensitive match with file name or tag name.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort the result set. A \"-\" at the beginning denotes DESC sort, e.g. -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name', 'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__<dataPointSlug>'.",
+                          "key": "ordering",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "By default, this endpoint returns only the meta data of the documents. Set this to `true` will return a summary of the data that was parsed. If you want to retrieve the full set of data for a document, use the `GET /documents/{identifier}` endpoint.",
+                          "key": "include_data",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Exclude some documents from the result.",
+                          "key": "exclude",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Exclude documents that are currently being reviewed.",
+                          "key": "in_review",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by failed status.",
+                          "key": "failed",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by ready status.",
+                          "key": "ready",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for validatable documents.",
+                          "key": "validatable",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for documents with challenges.",
+                          "key": "has_challenges",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for documents with this custom identifier.",
+                          "key": "custom_identifier",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                          "key": "compact",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "If \"false\", the documents count is not computed, thus saving time for large collections. Default is \"true\".",
+                          "key": "count",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"results\": [\n    {\n      \"meta\": {\n        \"identifier\": \"<string>\",\n        \"pages\": [\n          {\n            \"id\": \"<integer>\",\n            \"pageIndex\": \"<integer>\",\n            \"image\": \"<string>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\",\n            \"rotation\": \"<integer>\",\n            \"imageTranslated\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"pageIndex\": \"<integer>\",\n            \"image\": \"<string>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\",\n            \"rotation\": \"<integer>\",\n            \"imageTranslated\": \"<string>\"\n          }\n        ],\n        \"workspace\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        \"customIdentifier\": \"<string>\",\n        \"fileName\": \"<string>\",\n        \"ready\": \"<boolean>\",\n        \"readyDt\": \"<dateTime>\",\n        \"failed\": \"<boolean>\",\n        \"expiryTime\": \"<dateTime>\",\n        \"language\": \"<string>\",\n        \"pdf\": \"<string>\",\n        \"parentDocument\": {\n          \"identifier\": \"<string>\",\n          \"customIdentifier\": \"<string>\"\n        },\n        \"childDocuments\": [\n          {\n            \"identifier\": \"<string>\",\n            \"customIdentifier\": \"<string>\"\n          },\n          {\n            \"identifier\": \"<string>\",\n            \"customIdentifier\": \"<string>\"\n          }\n        ],\n        \"isOcrd\": \"<boolean>\",\n        \"ocrConfidence\": \"<number>\",\n        \"reviewUrl\": \"<string>\",\n        \"documentType\": \"<string>\",\n        \"collection\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"extractor\": {\n            \"identifier\": \"<string>\",\n            \"name\": \"<string>\",\n            \"baseExtractor\": \"<string>\",\n            \"validatable\": \"<boolean>\"\n          },\n          \"validationRules\": [\n            {\n              \"slug\": \"alsvjzp1n\",\n              \"dataPoints\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"slug\": \"6orx9\",\n              \"dataPoints\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"autoRefreshValidationResults\": \"<boolean>\"\n        },\n        \"archivedDt\": \"<dateTime>\",\n        \"isArchived\": \"<boolean>\",\n        \"skipParse\": \"<boolean>\",\n        \"confirmedDt\": \"<dateTime>\",\n        \"confirmedBy\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"username\": \"<string>\",\n          \"email\": \"<string>\",\n          \"avatar\": \"<string>\"\n        },\n        \"isConfirmed\": \"<boolean>\",\n        \"rejectedDt\": \"<dateTime>\",\n        \"rejectedBy\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"username\": \"<string>\",\n          \"email\": \"<string>\",\n          \"avatar\": \"<string>\"\n        },\n        \"archivedBy\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"username\": \"<string>\",\n          \"email\": \"<string>\",\n          \"avatar\": \"<string>\"\n        },\n        \"isRejected\": \"<boolean>\",\n        \"createdDt\": \"<dateTime>\",\n        \"errorCode\": \"<string>\",\n        \"errorDetail\": \"<string>\",\n        \"file\": \"<string>\",\n        \"html\": \"<string>\",\n        \"llmHint\": \"<string>\",\n        \"tags\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"workspace\": \"<string>\",\n            \"documentCount\": \"<integer>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"workspace\": \"<string>\",\n            \"documentCount\": \"<integer>\"\n          }\n        ],\n        \"createdBy\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"username\": \"<string>\",\n          \"email\": \"<string>\",\n          \"avatar\": \"<string>\"\n        },\n        \"sourceEmail\": \"<string>\",\n        \"sourceEmailAddress\": \"<string>\",\n        \"regionBias\": {\n          \"country\": \"<string>\",\n          \"countries\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"squareCoordinates\": [\n            \"<number>\",\n            \"<number>\"\n          ],\n          \"strict\": \"<boolean>\"\n        }\n      },\n      \"extractor\": \"<string>\",\n      \"data\": {},\n      \"error\": {\n        \"errorCode\": \"<string>\",\n        \"errorDetail\": \"<string>\"\n      },\n      \"warnings\": [\n        {\n          \"warningCode\": \"<string>\",\n          \"warningDetail\": \"<string>\"\n        },\n        {\n          \"warningCode\": \"<string>\",\n          \"warningDetail\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"meta\": {\n        \"identifier\": \"<string>\",\n        \"pages\": [\n          {\n            \"id\": \"<integer>\",\n            \"pageIndex\": \"<integer>\",\n            \"image\": \"<string>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\",\n            \"rotation\": \"<integer>\",\n            \"imageTranslated\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"pageIndex\": \"<integer>\",\n            \"image\": \"<string>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\",\n            \"rotation\": \"<integer>\",\n            \"imageTranslated\": \"<string>\"\n          }\n        ],\n        \"workspace\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        \"customIdentifier\": \"<string>\",\n        \"fileName\": \"<string>\",\n        \"ready\": \"<boolean>\",\n        \"readyDt\": \"<dateTime>\",\n        \"failed\": \"<boolean>\",\n        \"expiryTime\": \"<dateTime>\",\n        \"language\": \"<string>\",\n        \"pdf\": \"<string>\",\n        \"parentDocument\": {\n          \"identifier\": \"<string>\",\n          \"customIdentifier\": \"<string>\"\n        },\n        \"childDocuments\": [\n          {\n            \"identifier\": \"<string>\",\n            \"customIdentifier\": \"<string>\"\n          },\n          {\n            \"identifier\": \"<string>\",\n            \"customIdentifier\": \"<string>\"\n          }\n        ],\n        \"isOcrd\": \"<boolean>\",\n        \"ocrConfidence\": \"<number>\",\n        \"reviewUrl\": \"<string>\",\n        \"documentType\": \"<string>\",\n        \"collection\": {\n          \"identifier\": \"<string>\",\n          \"name\": \"<string>\",\n          \"extractor\": {\n            \"identifier\": \"<string>\",\n            \"name\": \"<string>\",\n            \"baseExtractor\": \"<string>\",\n            \"validatable\": \"<boolean>\"\n          },\n          \"validationRules\": [\n            {\n              \"slug\": \"un4vn1bh70\",\n              \"dataPoints\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"slug\": \"ykma9p5\",\n              \"dataPoints\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"autoRefreshValidationResults\": \"<boolean>\"\n        },\n        \"archivedDt\": \"<dateTime>\",\n        \"isArchived\": \"<boolean>\",\n        \"skipParse\": \"<boolean>\",\n        \"confirmedDt\": \"<dateTime>\",\n        \"confirmedBy\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"username\": \"<string>\",\n          \"email\": \"<string>\",\n          \"avatar\": \"<string>\"\n        },\n        \"isConfirmed\": \"<boolean>\",\n        \"rejectedDt\": \"<dateTime>\",\n        \"rejectedBy\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"username\": \"<string>\",\n          \"email\": \"<string>\",\n          \"avatar\": \"<string>\"\n        },\n        \"archivedBy\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"username\": \"<string>\",\n          \"email\": \"<string>\",\n          \"avatar\": \"<string>\"\n        },\n        \"isRejected\": \"<boolean>\",\n        \"createdDt\": \"<dateTime>\",\n        \"errorCode\": \"<string>\",\n        \"errorDetail\": \"<string>\",\n        \"file\": \"<string>\",\n        \"html\": \"<string>\",\n        \"llmHint\": \"<string>\",\n        \"tags\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"workspace\": \"<string>\",\n            \"documentCount\": \"<integer>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"workspace\": \"<string>\",\n            \"documentCount\": \"<integer>\"\n          }\n        ],\n        \"createdBy\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"username\": \"<string>\",\n          \"email\": \"<string>\",\n          \"avatar\": \"<string>\"\n        },\n        \"sourceEmail\": \"<string>\",\n        \"sourceEmailAddress\": \"<string>\",\n        \"regionBias\": {\n          \"country\": \"<string>\",\n          \"countries\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"squareCoordinates\": [\n            \"<number>\",\n            \"<number>\"\n          ],\n          \"strict\": \"<boolean>\"\n        }\n      },\n      \"extractor\": \"<string>\",\n      \"data\": {},\n      \"error\": {\n        \"errorCode\": \"<string>\",\n        \"errorDetail\": \"<string>\"\n      },\n      \"warnings\": [\n        {\n          \"warningCode\": \"<string>\",\n          \"warningDetail\": \"<string>\"\n        },\n        {\n          \"warningCode\": \"<string>\",\n          \"warningDetail\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-ed156fc2-bfcf-41d4-9500-d2af6c59ccf1"
+                },
+                {
+                  "id": "4b5e85e4-1418-41ca-aa14-1bc26f1146c6",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents?offset=<integer>&limit=<integer>&workspace=<string>&collection=<string>&state=uploaded&tags=<integer>&created_dt=month&search=<string>&ordering=<string>&include_data=<boolean>&exclude=<string>&in_review=<boolean>&failed=<boolean>&ready=<boolean>&validatable=<boolean>&has_challenges=<boolean>&custom_identifier=<string>&compact=<boolean>&count=<boolean>&snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by collection.",
+                          "key": "collection",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the document's state.",
+                          "key": "state",
+                          "value": "uploaded"
+                        },
+                        {
+                          "description": "Filter by tag's IDs.",
+                          "key": "tags",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by created datetime.",
+                          "key": "created_dt",
+                          "value": "month"
+                        },
+                        {
+                          "description": "Partial, case-insensitive match with file name or tag name.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort the result set. A \"-\" at the beginning denotes DESC sort, e.g. -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name', 'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__<dataPointSlug>'.",
+                          "key": "ordering",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "By default, this endpoint returns only the meta data of the documents. Set this to `true` will return a summary of the data that was parsed. If you want to retrieve the full set of data for a document, use the `GET /documents/{identifier}` endpoint.",
+                          "key": "include_data",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Exclude some documents from the result.",
+                          "key": "exclude",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Exclude documents that are currently being reviewed.",
+                          "key": "in_review",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by failed status.",
+                          "key": "failed",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by ready status.",
+                          "key": "ready",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for validatable documents.",
+                          "key": "validatable",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for documents with challenges.",
+                          "key": "has_challenges",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for documents with this custom identifier.",
+                          "key": "custom_identifier",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                          "key": "compact",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "If \"false\", the documents count is not computed, thus saving time for large collections. Default is \"true\".",
+                          "key": "count",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-4b5e85e4-1418-41ca-aa14-1bc26f1146c6"
+                },
+                {
+                  "id": "3fcd4eb2-0590-4c17-83e9-b08436e2e100",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents?offset=<integer>&limit=<integer>&workspace=<string>&collection=<string>&state=uploaded&tags=<integer>&created_dt=month&search=<string>&ordering=<string>&include_data=<boolean>&exclude=<string>&in_review=<boolean>&failed=<boolean>&ready=<boolean>&validatable=<boolean>&has_challenges=<boolean>&custom_identifier=<string>&compact=<boolean>&count=<boolean>&snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by collection.",
+                          "key": "collection",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the document's state.",
+                          "key": "state",
+                          "value": "uploaded"
+                        },
+                        {
+                          "description": "Filter by tag's IDs.",
+                          "key": "tags",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by created datetime.",
+                          "key": "created_dt",
+                          "value": "month"
+                        },
+                        {
+                          "description": "Partial, case-insensitive match with file name or tag name.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort the result set. A \"-\" at the beginning denotes DESC sort, e.g. -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name', 'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__<dataPointSlug>'.",
+                          "key": "ordering",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "By default, this endpoint returns only the meta data of the documents. Set this to `true` will return a summary of the data that was parsed. If you want to retrieve the full set of data for a document, use the `GET /documents/{identifier}` endpoint.",
+                          "key": "include_data",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Exclude some documents from the result.",
+                          "key": "exclude",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Exclude documents that are currently being reviewed.",
+                          "key": "in_review",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by failed status.",
+                          "key": "failed",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by ready status.",
+                          "key": "ready",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for validatable documents.",
+                          "key": "validatable",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for documents with challenges.",
+                          "key": "has_challenges",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for documents with this custom identifier.",
+                          "key": "custom_identifier",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                          "key": "compact",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "If \"false\", the documents count is not computed, thus saving time for large collections. Default is \"true\".",
+                          "key": "count",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-3fcd4eb2-0590-4c17-83e9-b08436e2e100"
+                },
+                {
+                  "id": "715b0a15-cbc3-4e51-9823-1a09ee8b5a5f",
+                  "name": "Forbidden error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents?offset=<integer>&limit=<integer>&workspace=<string>&collection=<string>&state=uploaded&tags=<integer>&created_dt=month&search=<string>&ordering=<string>&include_data=<boolean>&exclude=<string>&in_review=<boolean>&failed=<boolean>&ready=<boolean>&validatable=<boolean>&has_challenges=<boolean>&custom_identifier=<string>&compact=<boolean>&count=<boolean>&snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by collection.",
+                          "key": "collection",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the document's state.",
+                          "key": "state",
+                          "value": "uploaded"
+                        },
+                        {
+                          "description": "Filter by tag's IDs.",
+                          "key": "tags",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by created datetime.",
+                          "key": "created_dt",
+                          "value": "month"
+                        },
+                        {
+                          "description": "Partial, case-insensitive match with file name or tag name.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort the result set. A \"-\" at the beginning denotes DESC sort, e.g. -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name', 'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__<dataPointSlug>'.",
+                          "key": "ordering",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "By default, this endpoint returns only the meta data of the documents. Set this to `true` will return a summary of the data that was parsed. If you want to retrieve the full set of data for a document, use the `GET /documents/{identifier}` endpoint.",
+                          "key": "include_data",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Exclude some documents from the result.",
+                          "key": "exclude",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Exclude documents that are currently being reviewed.",
+                          "key": "in_review",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by failed status.",
+                          "key": "failed",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by ready status.",
+                          "key": "ready",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for validatable documents.",
+                          "key": "validatable",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for documents with challenges.",
+                          "key": "has_challenges",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for documents with this custom identifier.",
+                          "key": "custom_identifier",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                          "key": "compact",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "If \"false\", the documents count is not computed, thus saving time for large collections. Default is \"true\".",
+                          "key": "count",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-715b0a15-cbc3-4e51-9823-1a09ee8b5a5f"
+                },
+                {
+                  "id": "25fc8288-ae22-4423-8950-f2461c09d51b",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents?offset=<integer>&limit=<integer>&workspace=<string>&collection=<string>&state=uploaded&tags=<integer>&created_dt=month&search=<string>&ordering=<string>&include_data=<boolean>&exclude=<string>&in_review=<boolean>&failed=<boolean>&ready=<boolean>&validatable=<boolean>&has_challenges=<boolean>&custom_identifier=<string>&compact=<boolean>&count=<boolean>&snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of documents to skip before starting to collect the result set.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The numbers of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by workspace.",
+                          "key": "workspace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by collection.",
+                          "key": "collection",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the document's state.",
+                          "key": "state",
+                          "value": "uploaded"
+                        },
+                        {
+                          "description": "Filter by tag's IDs.",
+                          "key": "tags",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by created datetime.",
+                          "key": "created_dt",
+                          "value": "month"
+                        },
+                        {
+                          "description": "Partial, case-insensitive match with file name or tag name.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort the result set. A \"-\" at the beginning denotes DESC sort, e.g. -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name', 'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__<dataPointSlug>'.",
+                          "key": "ordering",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "By default, this endpoint returns only the meta data of the documents. Set this to `true` will return a summary of the data that was parsed. If you want to retrieve the full set of data for a document, use the `GET /documents/{identifier}` endpoint.",
+                          "key": "include_data",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Exclude some documents from the result.",
+                          "key": "exclude",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Exclude documents that are currently being reviewed.",
+                          "key": "in_review",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by failed status.",
+                          "key": "failed",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by ready status.",
+                          "key": "ready",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for validatable documents.",
+                          "key": "validatable",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for documents with challenges.",
+                          "key": "has_challenges",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter for documents with this custom identifier.",
+                          "key": "custom_identifier",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "If \"true\", the response is compacted to annotations' parsed data. Annotations' meta data are excluded. Default is \"false\".",
+                          "key": "compact",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "If \"false\", the documents count is not computed, thus saving time for large collections. Default is \"true\".",
+                          "key": "count",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-25fc8288-ae22-4423-8950-f2461c09d51b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:29.000Z",
+              "updatedAt": "2026-06-05T15:00:29.000Z",
+              "uid": "35240-3dc267b7-40eb-44f4-afb2-33b5daebb0c3"
+            },
+            {
+              "name": "Upload a document for parsing",
+              "id": "1f405dc7-8550-40b1-a36c-604b8a9036b9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG, JPG, TIFF, ODT, XLS, XLSX",
+                      "key": "file",
+                      "type": "file",
+                      "value": null
+                    },
+                    {
+                      "description": "URL to download the document.",
+                      "key": "url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Uniquely identify a collection.",
+                      "key": "collection",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The document type's identifier.  Provide if you already know the document type.",
+                      "key": "documentType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Uniquely identify a workspace.",
+                      "key": "workspace",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "If \"true\" (default), will return a response only after processing has completed. If \"false\", will return an empty data object which can be polled at the GET endpoint until processing is complete.",
+                      "key": "wait",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Deprecated in favor of `customIdentifier`.",
+                      "key": "identifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                      "key": "customIdentifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Optional filename of the file",
+                      "key": "fileName",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.",
+                      "key": "expiryTime",
+                      "value": "<dateTime>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.",
+                      "key": "language",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "If \"true\", parsing will fail when the uploaded document is duplicate of an existing document, no credits will be consumed. If \"false\", will parse the document normally whether its a duplicate or not. If not provided, will fallback to the workspace settings.",
+                      "key": "rejectDuplicates",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "A JSON representation of the RegionBias object.",
+                      "key": "regionBias",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Explicitly mark this document as low priority.",
+                      "key": "lowPriority",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                      "key": "compact",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                      "key": "deleteAfterParse",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                      "key": "enableValidationTool",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                      "key": "useOcr",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Optional hint inserted into the LLM prompt when processing this document.",
+                      "key": "llmHint",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Restrict LLM example selection to the specified document identifiers.",
+                      "key": "limitToExamples",
+                      "value": "<string>,<string>",
+                      "type": "text"
+                    },
+                    {
+                      "key": "warningMessages",
+                      "value": "[object Object],[object Object]",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v3/documents?snake_case=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v3",
+                    "documents"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                      "key": "snake_case",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "description": "\nUploads a document for parsing via file upload or URL.\nWhen successful, returns an `identifier` in the response for subsequent use with the [/documents/{identifier}](#get-/v3/documents/-identifier-) endpoint to check processing status and retrieve results.<br/>"
+              },
+              "response": [
+                {
+                  "id": "7c8f18fc-6e8b-498c-b9b0-2a60685a60b5",
+                  "name": "Only returned when wait=True, will return the created document",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG, JPG, TIFF, ODT, XLS, XLSX",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "URL to download the document.",
+                          "key": "url",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a collection.",
+                          "key": "collection",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The document type's identifier.  Provide if you already know the document type.",
+                          "key": "documentType",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a workspace.",
+                          "key": "workspace",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\" (default), will return a response only after processing has completed. If \"false\", will return an empty data object which can be polled at the GET endpoint until processing is complete.",
+                          "key": "wait",
+                          "value": "true",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Deprecated in favor of `customIdentifier`.",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                          "key": "customIdentifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional filename of the file",
+                          "key": "fileName",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.",
+                          "key": "expiryTime",
+                          "value": "<dateTime>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.",
+                          "key": "language",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\", parsing will fail when the uploaded document is duplicate of an existing document, no credits will be consumed. If \"false\", will parse the document normally whether its a duplicate or not. If not provided, will fallback to the workspace settings.",
+                          "key": "rejectDuplicates",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A JSON representation of the RegionBias object.",
+                          "key": "regionBias",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Explicitly mark this document as low priority.",
+                          "key": "lowPriority",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                          "key": "compact",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                          "key": "deleteAfterParse",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                          "key": "enableValidationTool",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                          "key": "useOcr",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional hint inserted into the LLM prompt when processing this document.",
+                          "key": "llmHint",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Restrict LLM example selection to the specified document identifiers.",
+                          "key": "limitToExamples",
+                          "value": "<string>,<string>",
+                          "type": "text"
+                        },
+                        {
+                          "key": "warningMessages",
+                          "value": "[object Object],[object Object]",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents?snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"meta\": {\n    \"identifier\": \"<string>\",\n    \"pages\": [\n      {\n        \"id\": \"<integer>\",\n        \"pageIndex\": \"<integer>\",\n        \"image\": \"<string>\",\n        \"width\": \"<number>\",\n        \"height\": \"<number>\",\n        \"rotation\": \"<integer>\",\n        \"imageTranslated\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"pageIndex\": \"<integer>\",\n        \"image\": \"<string>\",\n        \"width\": \"<number>\",\n        \"height\": \"<number>\",\n        \"rotation\": \"<integer>\",\n        \"imageTranslated\": \"<string>\"\n      }\n    ],\n    \"workspace\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"customIdentifier\": \"<string>\",\n    \"fileName\": \"<string>\",\n    \"ready\": \"<boolean>\",\n    \"readyDt\": \"<dateTime>\",\n    \"failed\": \"<boolean>\",\n    \"expiryTime\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"pdf\": \"<string>\",\n    \"parentDocument\": {\n      \"identifier\": \"<string>\",\n      \"customIdentifier\": \"<string>\"\n    },\n    \"childDocuments\": [\n      {\n        \"identifier\": \"<string>\",\n        \"customIdentifier\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"customIdentifier\": \"<string>\"\n      }\n    ],\n    \"isOcrd\": \"<boolean>\",\n    \"ocrConfidence\": \"<number>\",\n    \"reviewUrl\": \"<string>\",\n    \"documentType\": \"<string>\",\n    \"collection\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"extractor\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"baseExtractor\": \"<string>\",\n        \"validatable\": \"<boolean>\"\n      },\n      \"validationRules\": [\n        {\n          \"slug\": \"e3hds\",\n          \"dataPoints\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"slug\": \"a6whwq\",\n          \"dataPoints\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"autoRefreshValidationResults\": \"<boolean>\"\n    },\n    \"archivedDt\": \"<dateTime>\",\n    \"isArchived\": \"<boolean>\",\n    \"skipParse\": \"<boolean>\",\n    \"confirmedDt\": \"<dateTime>\",\n    \"confirmedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"isConfirmed\": \"<boolean>\",\n    \"rejectedDt\": \"<dateTime>\",\n    \"rejectedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"archivedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"isRejected\": \"<boolean>\",\n    \"createdDt\": \"<dateTime>\",\n    \"errorCode\": \"<string>\",\n    \"errorDetail\": \"<string>\",\n    \"file\": \"<string>\",\n    \"html\": \"<string>\",\n    \"llmHint\": \"<string>\",\n    \"tags\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"workspace\": \"<string>\",\n        \"documentCount\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"workspace\": \"<string>\",\n        \"documentCount\": \"<integer>\"\n      }\n    ],\n    \"createdBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"sourceEmail\": \"<string>\",\n    \"sourceEmailAddress\": \"<string>\",\n    \"regionBias\": {\n      \"country\": \"<string>\",\n      \"countries\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"squareCoordinates\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"strict\": \"<boolean>\"\n    }\n  },\n  \"extractor\": \"<string>\",\n  \"data\": {},\n  \"error\": {\n    \"errorCode\": \"<string>\",\n    \"errorDetail\": \"<string>\"\n  },\n  \"warnings\": [\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    },\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-7c8f18fc-6e8b-498c-b9b0-2a60685a60b5"
+                },
+                {
+                  "id": "38b4f0ed-6fe4-4da9-92ac-42752f8df33e",
+                  "name": "Only returned when wait=False, will return document uploaded and identifier created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG, JPG, TIFF, ODT, XLS, XLSX",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "URL to download the document.",
+                          "key": "url",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a collection.",
+                          "key": "collection",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The document type's identifier.  Provide if you already know the document type.",
+                          "key": "documentType",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a workspace.",
+                          "key": "workspace",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\" (default), will return a response only after processing has completed. If \"false\", will return an empty data object which can be polled at the GET endpoint until processing is complete.",
+                          "key": "wait",
+                          "value": "true",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Deprecated in favor of `customIdentifier`.",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                          "key": "customIdentifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional filename of the file",
+                          "key": "fileName",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.",
+                          "key": "expiryTime",
+                          "value": "<dateTime>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.",
+                          "key": "language",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\", parsing will fail when the uploaded document is duplicate of an existing document, no credits will be consumed. If \"false\", will parse the document normally whether its a duplicate or not. If not provided, will fallback to the workspace settings.",
+                          "key": "rejectDuplicates",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A JSON representation of the RegionBias object.",
+                          "key": "regionBias",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Explicitly mark this document as low priority.",
+                          "key": "lowPriority",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                          "key": "compact",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                          "key": "deleteAfterParse",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                          "key": "enableValidationTool",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                          "key": "useOcr",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional hint inserted into the LLM prompt when processing this document.",
+                          "key": "llmHint",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Restrict LLM example selection to the specified document identifiers.",
+                          "key": "limitToExamples",
+                          "value": "<string>,<string>",
+                          "type": "text"
+                        },
+                        {
+                          "key": "warningMessages",
+                          "value": "[object Object],[object Object]",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents?snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"meta\": {\n    \"identifier\": \"<string>\",\n    \"pages\": [\n      {\n        \"id\": \"<integer>\",\n        \"pageIndex\": \"<integer>\",\n        \"image\": \"<string>\",\n        \"width\": \"<number>\",\n        \"height\": \"<number>\",\n        \"rotation\": \"<integer>\",\n        \"imageTranslated\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"pageIndex\": \"<integer>\",\n        \"image\": \"<string>\",\n        \"width\": \"<number>\",\n        \"height\": \"<number>\",\n        \"rotation\": \"<integer>\",\n        \"imageTranslated\": \"<string>\"\n      }\n    ],\n    \"workspace\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"customIdentifier\": \"<string>\",\n    \"fileName\": \"<string>\",\n    \"ready\": \"<boolean>\",\n    \"readyDt\": \"<dateTime>\",\n    \"failed\": \"<boolean>\",\n    \"expiryTime\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"pdf\": \"<string>\",\n    \"parentDocument\": {\n      \"identifier\": \"<string>\",\n      \"customIdentifier\": \"<string>\"\n    },\n    \"childDocuments\": [\n      {\n        \"identifier\": \"<string>\",\n        \"customIdentifier\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"customIdentifier\": \"<string>\"\n      }\n    ],\n    \"isOcrd\": \"<boolean>\",\n    \"ocrConfidence\": \"<number>\",\n    \"reviewUrl\": \"<string>\",\n    \"documentType\": \"<string>\",\n    \"collection\": {\n      \"identifier\": \"<string>\",\n      \"name\": \"<string>\",\n      \"extractor\": {\n        \"identifier\": \"<string>\",\n        \"name\": \"<string>\",\n        \"baseExtractor\": \"<string>\",\n        \"validatable\": \"<boolean>\"\n      },\n      \"validationRules\": [\n        {\n          \"slug\": \"e3hds\",\n          \"dataPoints\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"slug\": \"a6whwq\",\n          \"dataPoints\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"autoRefreshValidationResults\": \"<boolean>\"\n    },\n    \"archivedDt\": \"<dateTime>\",\n    \"isArchived\": \"<boolean>\",\n    \"skipParse\": \"<boolean>\",\n    \"confirmedDt\": \"<dateTime>\",\n    \"confirmedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"isConfirmed\": \"<boolean>\",\n    \"rejectedDt\": \"<dateTime>\",\n    \"rejectedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"archivedBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"isRejected\": \"<boolean>\",\n    \"createdDt\": \"<dateTime>\",\n    \"errorCode\": \"<string>\",\n    \"errorDetail\": \"<string>\",\n    \"file\": \"<string>\",\n    \"html\": \"<string>\",\n    \"llmHint\": \"<string>\",\n    \"tags\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"workspace\": \"<string>\",\n        \"documentCount\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"workspace\": \"<string>\",\n        \"documentCount\": \"<integer>\"\n      }\n    ],\n    \"createdBy\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"username\": \"<string>\",\n      \"email\": \"<string>\",\n      \"avatar\": \"<string>\"\n    },\n    \"sourceEmail\": \"<string>\",\n    \"sourceEmailAddress\": \"<string>\",\n    \"regionBias\": {\n      \"country\": \"<string>\",\n      \"countries\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"squareCoordinates\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"strict\": \"<boolean>\"\n    }\n  },\n  \"extractor\": \"<string>\",\n  \"data\": {},\n  \"error\": {\n    \"errorCode\": \"<string>\",\n    \"errorDetail\": \"<string>\"\n  },\n  \"warnings\": [\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    },\n    {\n      \"warningCode\": \"<string>\",\n      \"warningDetail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-38b4f0ed-6fe4-4da9-92ac-42752f8df33e"
+                },
+                {
+                  "id": "b425cef6-431e-43c8-99fd-62e2c0acbd25",
+                  "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG, JPG, TIFF, ODT, XLS, XLSX",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "URL to download the document.",
+                          "key": "url",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a collection.",
+                          "key": "collection",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The document type's identifier.  Provide if you already know the document type.",
+                          "key": "documentType",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a workspace.",
+                          "key": "workspace",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\" (default), will return a response only after processing has completed. If \"false\", will return an empty data object which can be polled at the GET endpoint until processing is complete.",
+                          "key": "wait",
+                          "value": "true",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Deprecated in favor of `customIdentifier`.",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                          "key": "customIdentifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional filename of the file",
+                          "key": "fileName",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.",
+                          "key": "expiryTime",
+                          "value": "<dateTime>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.",
+                          "key": "language",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\", parsing will fail when the uploaded document is duplicate of an existing document, no credits will be consumed. If \"false\", will parse the document normally whether its a duplicate or not. If not provided, will fallback to the workspace settings.",
+                          "key": "rejectDuplicates",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A JSON representation of the RegionBias object.",
+                          "key": "regionBias",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Explicitly mark this document as low priority.",
+                          "key": "lowPriority",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                          "key": "compact",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                          "key": "deleteAfterParse",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                          "key": "enableValidationTool",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                          "key": "useOcr",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional hint inserted into the LLM prompt when processing this document.",
+                          "key": "llmHint",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Restrict LLM example selection to the specified document identifiers.",
+                          "key": "limitToExamples",
+                          "value": "<string>,<string>",
+                          "type": "text"
+                        },
+                        {
+                          "key": "warningMessages",
+                          "value": "[object Object],[object Object]",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents?snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-b425cef6-431e-43c8-99fd-62e2c0acbd25"
+                },
+                {
+                  "id": "fbd73fac-5b06-4051-b5f1-257fa3fa79d1",
+                  "name": "Authorisation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG, JPG, TIFF, ODT, XLS, XLSX",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "URL to download the document.",
+                          "key": "url",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a collection.",
+                          "key": "collection",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The document type's identifier.  Provide if you already know the document type.",
+                          "key": "documentType",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a workspace.",
+                          "key": "workspace",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\" (default), will return a response only after processing has completed. If \"false\", will return an empty data object which can be polled at the GET endpoint until processing is complete.",
+                          "key": "wait",
+                          "value": "true",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Deprecated in favor of `customIdentifier`.",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                          "key": "customIdentifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional filename of the file",
+                          "key": "fileName",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.",
+                          "key": "expiryTime",
+                          "value": "<dateTime>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.",
+                          "key": "language",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\", parsing will fail when the uploaded document is duplicate of an existing document, no credits will be consumed. If \"false\", will parse the document normally whether its a duplicate or not. If not provided, will fallback to the workspace settings.",
+                          "key": "rejectDuplicates",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A JSON representation of the RegionBias object.",
+                          "key": "regionBias",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Explicitly mark this document as low priority.",
+                          "key": "lowPriority",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                          "key": "compact",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                          "key": "deleteAfterParse",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                          "key": "enableValidationTool",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                          "key": "useOcr",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional hint inserted into the LLM prompt when processing this document.",
+                          "key": "llmHint",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Restrict LLM example selection to the specified document identifiers.",
+                          "key": "limitToExamples",
+                          "value": "<string>,<string>",
+                          "type": "text"
+                        },
+                        {
+                          "key": "warningMessages",
+                          "value": "[object Object],[object Object]",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents?snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-fbd73fac-5b06-4051-b5f1-257fa3fa79d1"
+                },
+                {
+                  "id": "3f2b03b8-5c38-4868-837e-c506951ed4b6",
+                  "name": "Forbidden error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG, JPG, TIFF, ODT, XLS, XLSX",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "URL to download the document.",
+                          "key": "url",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a collection.",
+                          "key": "collection",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The document type's identifier.  Provide if you already know the document type.",
+                          "key": "documentType",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a workspace.",
+                          "key": "workspace",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\" (default), will return a response only after processing has completed. If \"false\", will return an empty data object which can be polled at the GET endpoint until processing is complete.",
+                          "key": "wait",
+                          "value": "true",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Deprecated in favor of `customIdentifier`.",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                          "key": "customIdentifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional filename of the file",
+                          "key": "fileName",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.",
+                          "key": "expiryTime",
+                          "value": "<dateTime>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.",
+                          "key": "language",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\", parsing will fail when the uploaded document is duplicate of an existing document, no credits will be consumed. If \"false\", will parse the document normally whether its a duplicate or not. If not provided, will fallback to the workspace settings.",
+                          "key": "rejectDuplicates",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A JSON representation of the RegionBias object.",
+                          "key": "regionBias",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Explicitly mark this document as low priority.",
+                          "key": "lowPriority",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                          "key": "compact",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                          "key": "deleteAfterParse",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                          "key": "enableValidationTool",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                          "key": "useOcr",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional hint inserted into the LLM prompt when processing this document.",
+                          "key": "llmHint",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Restrict LLM example selection to the specified document identifiers.",
+                          "key": "limitToExamples",
+                          "value": "<string>,<string>",
+                          "type": "text"
+                        },
+                        {
+                          "key": "warningMessages",
+                          "value": "[object Object],[object Object]",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents?snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-3f2b03b8-5c38-4868-837e-c506951ed4b6"
+                },
+                {
+                  "id": "13b31ad7-fc0a-4128-bee8-2c5d41a368ea",
+                  "name": "UnexpectedError",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG, JPG, TIFF, ODT, XLS, XLSX",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "URL to download the document.",
+                          "key": "url",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a collection.",
+                          "key": "collection",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The document type's identifier.  Provide if you already know the document type.",
+                          "key": "documentType",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Uniquely identify a workspace.",
+                          "key": "workspace",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\" (default), will return a response only after processing has completed. If \"false\", will return an empty data object which can be polled at the GET endpoint until processing is complete.",
+                          "key": "wait",
+                          "value": "true",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Deprecated in favor of `customIdentifier`.",
+                          "key": "identifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Specify a custom identifier for the document if you need one, not required to be unique.",
+                          "key": "customIdentifier",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional filename of the file",
+                          "key": "fileName",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.",
+                          "key": "expiryTime",
+                          "value": "<dateTime>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.",
+                          "key": "language",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If \"true\", parsing will fail when the uploaded document is duplicate of an existing document, no credits will be consumed. If \"false\", will parse the document normally whether its a duplicate or not. If not provided, will fallback to the workspace settings.",
+                          "key": "rejectDuplicates",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A JSON representation of the RegionBias object.",
+                          "key": "regionBias",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Explicitly mark this document as low priority.",
+                          "key": "lowPriority",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the returned parse result (assuming `wait` is also true) will be a compact version of the full result.",
+                          "key": "compact",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, no data will be stored after parsing. Only compatible with requests where wait: True.",
+                          "key": "deleteAfterParse",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be viewable in the Affinda Validation Tool. Set to False to optimize parsing speed.",
+                          "key": "enableValidationTool",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "If true, the document will be treated like an image, and the text will be extracted using OCR. If false, the document will be treated like a PDF, and the text will be extracted using the parser. If not set, we will determine whether to use OCR based on whether words are found in the document.",
+                          "key": "useOcr",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional hint inserted into the LLM prompt when processing this document.",
+                          "key": "llmHint",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Restrict LLM example selection to the specified document identifiers.",
+                          "key": "limitToExamples",
+                          "value": "<string>,<string>",
+                          "type": "text"
+                        },
+                        {
+                          "key": "warningMessages",
+                          "value": "[object Object],[object Object]",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/documents?snake_case=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "documents"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to return the response in snake_case instead of camelCase. Default is false.",
+                          "key": "snake_case",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"errors\": [\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"attr\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:00:29.000Z",
+                  "updatedAt": "2026-06-05T15:00:29.000Z",
+                  "uid": "35240-13b31ad7-fc0a-4128-bee8-2c5d41a368ea"
+                }
+              ],
+              "createdAt": "2026-06-05T15:00:29.000Z",
+              "updatedAt": "2026-06-05T15:00:29.000Z",
+              "uid": "35240-1f405dc7-8550-40b1-a36c-604b8a9036b9"
+            }
+          ],
+          "id": "c1845c3c-23cd-4e51-8e6c-b17d8637a487",
+          "createdAt": "2026-06-05T15:00:29.000Z",
+          "updatedAt": "2026-06-05T15:00:29.000Z",
+          "uid": "35240-c1845c3c-23cd-4e51-8e6c-b17d8637a487"
+        }
+      ],
+      "id": "c461bfd7-30c9-4be8-a302-ae4d52d0f619",
+      "createdAt": "2026-06-05T15:00:29.000Z",
+      "updatedAt": "2026-06-05T15:00:29.000Z",
+      "uid": "35240-c461bfd7-30c9-4be8-a302-ae4d52d0f619"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "api"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{region}}.affinda.com"
+    }
+  ]
+}

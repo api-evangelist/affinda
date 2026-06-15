@@ -1,0 +1,300 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Data Sources API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Sources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List data sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/mapping_data_sources",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by name."
+              },
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "Filter by organization."
+              },
+              {
+                "name": "workspace",
+                "value": "",
+                "type": "query",
+                "description": "Filter by workspace."
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "query",
+                "description": "Filter by identifier."
+              }
+            ]
+          },
+          "docs": "Returns the list of all custom mapping data sources."
+        },
+        {
+          "info": {
+            "name": "Create a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/mapping_data_sources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom mapping data source."
+        },
+        {
+          "info": {
+            "name": "Get specific data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/mapping_data_sources/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Data source's identifier"
+              }
+            ]
+          },
+          "docs": "Return a specific mapping data source."
+        },
+        {
+          "info": {
+            "name": "Delete specific data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/mapping_data_sources/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Data source's identifier"
+              }
+            ]
+          },
+          "docs": "Delete the specified mapping data source from the database."
+        },
+        {
+          "info": {
+            "name": "List values for a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/mapping_data_sources/:identifier/values",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search for specific values"
+              },
+              {
+                "name": "annotation",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on annotation ID"
+              },
+              {
+                "name": "document",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the document to apply filter lookups on if available"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Data source's identifier"
+              }
+            ]
+          },
+          "docs": "Returns the list of all values in a mapping data source"
+        },
+        {
+          "info": {
+            "name": "Add value for a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/mapping_data_sources/:identifier/values",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Data source's identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a value to a mapping data source"
+        },
+        {
+          "info": {
+            "name": "Replace values for a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{region}.affinda.com/v3/mapping_data_sources/:identifier/values",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Data source's identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces the list of all values in a mapping data source\nNote: For large data sources (e.g. > 1000 values), it can take a few minutes after the request completes for the new values to be searchable."
+        },
+        {
+          "info": {
+            "name": "Get specific data source value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/mapping_data_sources/:identifier/values/:value",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Data source's identifier"
+              },
+              {
+                "name": "value",
+                "value": "",
+                "type": "path",
+                "description": "Data Source Value's value"
+              }
+            ]
+          },
+          "docs": "Return a specific mapping dta source value."
+        },
+        {
+          "info": {
+            "name": "Update specific data source value",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{region}.affinda.com/v3/mapping_data_sources/:identifier/values/:value",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Data source's identifier"
+              },
+              {
+                "name": "value",
+                "value": "",
+                "type": "path",
+                "description": "Data Source's value"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the specified mapping data source value."
+        },
+        {
+          "info": {
+            "name": "Delete specific data source value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/mapping_data_sources/:identifier/values/:value",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Data source's identifier"
+              },
+              {
+                "name": "value",
+                "value": "",
+                "type": "path",
+                "description": "Data Source Value's value"
+              }
+            ]
+          },
+          "docs": "Delete the specified mapping data source value from the database."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

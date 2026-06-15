@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Webhooks API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of all resthook subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/resthook_subscriptions",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              }
+            ]
+          },
+          "docs": "Returns your resthook subscriptions."
+        },
+        {
+          "info": {
+            "name": "Create a resthook subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/resthook_subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "After a subscription is successfully created, we'll send a POST request to your target URL with a `X-Hook-Secret` header. <br />\nYou need to response to this request with a 200 status code to confirm your subscribe intention. <br />\nThen, you need to use the `X-Hook-Secret` to activate the subscription using the [/resthook_subscriptions/activate](#post-/v3/resthook_subscriptions/activate) endpoint. <br />\nFor more information and detailed instructions, [see our webhooks documentation here.](http"
+        },
+        {
+          "info": {
+            "name": "Get specific resthook subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/resthook_subscriptions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resthook subscription's ID"
+              }
+            ]
+          },
+          "docs": "Return a specific resthook subscription."
+        },
+        {
+          "info": {
+            "name": "Update a resthook subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/resthook_subscriptions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ResthookSubscription's ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update data of a resthook subscription."
+        },
+        {
+          "info": {
+            "name": "Delete a resthook subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/resthook_subscriptions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ResthookSubscription's ID"
+              }
+            ]
+          },
+          "docs": "Deletes the specified resthook subscription from the database."
+        },
+        {
+          "info": {
+            "name": "Activate a resthook subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/resthook_subscriptions/activate",
+            "headers": [
+              {
+                "name": "X-Hook-Secret",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "After creating a subscription, we'll send a POST request to your target URL with a `X-Hook-Secret` header. <br />\nYou should response to this with a 200 status code, and use the value of the `X-Hook-Secret` header that you received to activate the subscription using this endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

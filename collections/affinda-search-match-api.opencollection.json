@@ -1,0 +1,594 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Search and Match API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search & Match",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a document from raw data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/documents/create_from_data",
+            "params": [
+              {
+                "name": "snake_case",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return the response in snake_case instead of camelCase. Default is false."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\nCreates a document directly from structured resume or job description data for use in Search & Match functionality. This endpoint is specifically designed for programmatic document creation without file uploads.<br/>\nIf you want to upload a document with a file or URL, see the main [POST /v3/documents](#post-/v3/documents) endpoint under the Documents tag.<br/>\nWhen successful, returns an `identifier` in the response for subsequent use with the [/documents/{identifier}](#get-/v3/documents/-iden"
+        },
+        {
+          "info": {
+            "name": "Update a document's data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/documents/:identifier/update_data",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Resume or Job Description identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update data of a document.\nOnly applicable for resumes and job descriptions. For other document types, please use the `PATCH /annotations/{id}` endpoint or the `POST /annotations/batch_update` endpoint."
+        },
+        {
+          "info": {
+            "name": "List occupation groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/occupation_groups"
+          },
+          "docs": "Returns the list of searchable occupation groups."
+        },
+        {
+          "info": {
+            "name": "Search through parsed resumes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/resume_search",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches through parsed resumes. Users have 3 options to create a search:<br /><br /> 1.\tMatch to a job description - a parsed job description is used to find candidates that suit it<br /> 2.\tMatch to a resume - a parsed resume is used to find other candidates that have similar attributes<br /> 3.\tSearch using custom criteria<br /><br /> Users should only populate 1 of jobDescription, resume or the custom criteria."
+        },
+        {
+          "info": {
+            "name": "Get search result of specific resume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/resume_search/details/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Resume identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This contains more detailed information about the matching score of the search criteria, or which search criteria is missing in this resume.\nThe `identifier` is the unique ID returned via the [/resume_search](#post-/resume_search) endpoint."
+        },
+        {
+          "info": {
+            "name": "Get the config for the logged in user's embeddable resume search tool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/resume_search/config"
+          },
+          "docs": "Return configurations such as which fields can be displayed in the logged in user's embeddable resume search tool, what are their weights, what is the maximum number of results that can be returned, etc."
+        },
+        {
+          "info": {
+            "name": "Update the config for the logged in user's embeddable resume search tool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/resume_search/config",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update configurations such as which fields can be displayed in the logged in user's embeddable resume search tool, what are their weights, what is the maximum number of results that can be returned, etc."
+        },
+        {
+          "info": {
+            "name": "Create a signed URL for the embeddable resume search tool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/resume_search/embed",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create and return a signed URL of the resume search tool which then can be embedded on a web page. An optional parameter `config_override` can be passed to override the user-level configurations of the embeddable resume search tool."
+        },
+        {
+          "info": {
+            "name": "Match a single resume and job description",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/resume_search/match",
+            "params": [
+              {
+                "name": "resume",
+                "value": "ytBrHSmF",
+                "type": "query",
+                "description": "Identify the resume to match."
+              },
+              {
+                "name": "job_description",
+                "value": "fkAmLQQz",
+                "type": "query",
+                "description": "Identify the job description to match."
+              },
+              {
+                "name": "index",
+                "value": "my-custom-index",
+                "type": "query",
+                "description": "Optionally, specify an index to search in. If not specified, will search in all indexes."
+              },
+              {
+                "name": "search_expression",
+                "value": "",
+                "type": "query",
+                "description": "Add keywords to the search criteria."
+              },
+              {
+                "name": "job_titles_weight",
+                "value": "",
+                "type": "query",
+                "description": "How important is this criteria to the matching score, range from 0 to 1."
+              },
+              {
+                "name": "years_experience_weight",
+                "value": "",
+                "type": "query",
+                "description": "How important is this criteria to the matching score, range from 0 to 1."
+              },
+              {
+                "name": "locations_weight",
+                "value": "",
+                "type": "query",
+                "description": "How important is this criteria to the matching score, range from 0 to 1."
+              },
+              {
+                "name": "languages_weight",
+                "value": "",
+                "type": "query",
+                "description": "How important is this criteria to the matching score, range from 0 to 1."
+              },
+              {
+                "name": "skills_weight",
+                "value": "",
+                "type": "query",
+                "description": "How important is this criteria to the matching score, range from 0 to 1."
+              },
+              {
+                "name": "education_weight",
+                "value": "",
+                "type": "query",
+                "description": "How important is this criteria to the matching score, range from 0 to 1."
+              },
+              {
+                "name": "search_expression_weight",
+                "value": "",
+                "type": "query",
+                "description": "How important is this criteria to the matching score, range from 0 to 1."
+              },
+              {
+                "name": "soc_codes_weight",
+                "value": "",
+                "type": "query",
+                "description": "How important is this criteria to the matching score, range from 0 to 1."
+              },
+              {
+                "name": "management_level_weight",
+                "value": "",
+                "type": "query",
+                "description": "How important is this criteria to the matching score, range from 0 to 1."
+              }
+            ]
+          },
+          "docs": "Get the matching score between a resume and a job description. The score ranges between 0 and 1, with 0 being not a match at all, and 1 being perfect match.<br/> Note, this score will not directly match the score returned from POST [/resume_search/details/{identifier}](#post-/resume_search/details/-identifier-)."
+        },
+        {
+          "info": {
+            "name": "Get job title suggestions based on provided job title(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/resume_search/suggestion_job_title",
+            "params": [
+              {
+                "name": "job_titles",
+                "value": "",
+                "type": "query",
+                "description": "Job title to query suggestions for"
+              }
+            ]
+          },
+          "docs": "Provided one or more job titles, get related suggestions for your search."
+        },
+        {
+          "info": {
+            "name": "Get skill suggestions based on provided skill(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/resume_search/suggestion_skill",
+            "params": [
+              {
+                "name": "skills",
+                "value": "",
+                "type": "query",
+                "description": "Skill to query suggestions for"
+              }
+            ]
+          },
+          "docs": "Provided one or more skills, get related suggestions for your search."
+        },
+        {
+          "info": {
+            "name": "Search through parsed job descriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/job_description_search",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches through parsed job descriptions. You can search with custom criterias or a resume."
+        },
+        {
+          "info": {
+            "name": "Get search result of specific job description",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/job_description_search/details/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Job Description identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This contains more detailed information about the matching score of the search criteria, or which search criteria is missing in this job description.\nThe `identifier` is the unique ID returned via the [/job_description_search](#post-/job_description_search) endpoint."
+        },
+        {
+          "info": {
+            "name": "Get the config for the logged in user's embeddable job description search tool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/job_description_search/config"
+          },
+          "docs": "Return configurations such as which fields can be displayed in the logged in user's embeddable job description search tool, what are their weights, what is the maximum number of results that can be returned, etc."
+        },
+        {
+          "info": {
+            "name": "Update the config for the logged in user's embeddable job description search tool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/job_description_search/config",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update configurations such as which fields can be displayed in the logged in user's embeddable job description search tool, what are their weights, what is the maximum number of results that can be returned, etc."
+        },
+        {
+          "info": {
+            "name": "Create a signed URL for the embeddable job description search tool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/job_description_search/embed",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create and return a signed URL of the job description search tool which then can be embedded on a web page. An optional parameter `config_override` can be passed to override the user-level configurations of the embeddable search tool."
+        },
+        {
+          "info": {
+            "name": "Get list of all indexes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/index",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "document_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter indices by a document type"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter indices by name"
+              }
+            ]
+          },
+          "docs": "Returns all the indexes"
+        },
+        {
+          "info": {
+            "name": "Create a new index",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/index",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an index for the search tool"
+        },
+        {
+          "info": {
+            "name": "Update an index",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/index/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Index name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified index"
+        },
+        {
+          "info": {
+            "name": "Delete an index",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/index/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Index name"
+              }
+            ]
+          },
+          "docs": "Deletes the specified index from the database"
+        },
+        {
+          "info": {
+            "name": "Get indexed documents for a specific index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/index/:name/documents",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Index name"
+              }
+            ]
+          },
+          "docs": "Returns all the indexed documents for that index"
+        },
+        {
+          "info": {
+            "name": "Index a new document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/index/:name/documents",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Index name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an indexed document for the search tool"
+        },
+        {
+          "info": {
+            "name": "Delete an indexed document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/index/:name/documents/:identifier",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Index name"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document identifier"
+              }
+            ]
+          },
+          "docs": "Delete the specified indexed document from the database"
+        },
+        {
+          "info": {
+            "name": "Re-index a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/index/:name/documents/:identifier/re_index",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Index name"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document identifier"
+              }
+            ]
+          },
+          "docs": "Re-index a document.\nThis is relevant if you updated the document's data via the /annotations endpoint, and want to refresh\nthe document's data in the search index.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Document Splitters API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Document API - Splitting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of all document splitters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/document_splitters",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "Filter by organization."
+              },
+              {
+                "name": "include_public",
+                "value": "",
+                "type": "query",
+                "description": "Allows you to include public splitters in the response when you're filtering by organization."
+              }
+            ]
+          },
+          "docs": "Returns all the document splitters visible to the user."
+        },
+        {
+          "info": {
+            "name": "Get specific document splitter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/document_splitters/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document splitter's identifier"
+              }
+            ]
+          },
+          "docs": "Return a specific document splitter."
+        },
+        {
+          "info": {
+            "name": "Split pages of a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/validate/:identifier/split",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Document's identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Split / merge / rotate / delete pages of a document.\nDocuments with multiple pages can be splitted into multiple documents, or merged into one document.\nEach page can also be rotated. Edit operations will trigger re-parsing of the documents involved.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
