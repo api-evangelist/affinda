@@ -14,7 +14,7 @@ schemes:
   type: http
   scheme: bearer
   description: |-
-    Basic authentication using an API key, e.g. `{Authorization: Bearer aff_0bb4fbdf97b7e4111ff6c0015471094155f91}`.
+    Basic authentication using an API key, e.g. `{Authorization: Bearer [example key]}`.
     You can find your API key within the Settings page of the [Affinda web app](https://app.affinda.com/). You can obtain an API key by [signing up for a free trial](https://app.affinda.com/auth/register).
   sources:
   - openapi/affinda-annotations-api-openapi.yml
