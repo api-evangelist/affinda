@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Affinda Annotations Add x-hidden to endpoints Webhooks API
+  title: Affinda Annotations Add x-hidden to endpoints Organization API - Invitation API
   version: 3.0.0
   description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
 servers:
@@ -18,29 +18,37 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: Webhooks
-  description: 'Manage webhook integrations with your apps.
-
-
-    Affinda have implemented webhooks to allow the data extracted by Affinda to be ''pushed'' to you when an event occurs
-
-    (e.g. document parsed or document validated), instead of you having to constantly poll our API to ''pull'' the data to your system.
-
-    '
+- name: Organization API - Invitation
 paths:
-  /v3/resthook_subscriptions:
+  /v3/invitations:
     get:
+      x-hidden: true
       tags:
-      - Webhooks
-      summary: Get list of all resthook subscriptions
-      operationId: getAllResthookSubscriptions
-      description: Returns your resthook subscriptions.
+      - Organization API - Invitation
+      summary: Get list of all invitations
+      operationId: getAllInvitations
+      description: Get list of all invitations you created or sent to you.
       parameters:
       - $ref: '#/components/parameters/offsetParam'
       - $ref: '#/components/parameters/limitParam'
+      - in: query
+        name: organization
+        schema:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        description: Filter by organization.
+      - in: query
+        name: status
+        schema:
+          $ref: '#/components/schemas/InvitationStatus'
+        description: Filter by status.
+      - in: query
+        name: role
+        schema:
+          $ref: '#/components/schemas/OrganizationRole'
+        description: Filter by role.
       responses:
         '200':
-          description: All matching resthook subscriptions.
+          description: All invitations you created or sent to you.
           content:
             application/json:
               schema:
@@ -55,7 +63,7 @@ paths:
                     results:
                       type: array
                       items:
-                        $ref: '#/components/schemas/ResthookSubscription'
+                        $ref: '#/components/schemas/Invitation'
         '400':
           $ref: '#/components/responses/400Error'
         '401':
@@ -63,24 +71,19 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
     post:
+      x-hidden: true
       tags:
-      - Webhooks
-      summary: Create a resthook subscription
-      operationId: createResthookSubscription
-      description: 'After a subscription is successfully created, we''ll send a POST request to your target URL with a `X-Hook-Secret` header. <br />
-
-        You need to response to this request with a 200 status code to confirm your subscribe intention. <br />
-
-        Then, you need to use the `X-Hook-Secret` to activate the subscription using the [/resthook_subscriptions/activate](#post-/v3/resthook_subscriptions/activate) endpoint. <br />
-
-        For more information and detailed instructions, [see our webhooks documentation here.](https://docs.affinda.com/docs/webhooks)'
+      - Organization API - Invitation
+      summary: Create a new invitation
+      operationId: createInvitation
+      description: Create a new invitation.
       responses:
         '201':
-          description: Successfully created a resthook subscription.
+          description: Returns the created invitation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResthookSubscription'
+                $ref: '#/components/schemas/Invitation'
         '400':
           $ref: '#/components/responses/400Error'
         '401':
@@ -88,32 +91,34 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
       requestBody:
+        description: Invitation to create.
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ResthookSubscriptionCreate'
-  /v3/resthook_subscriptions/{id}:
+              $ref: '#/components/schemas/InvitationCreate'
+  /v3/invitations/{identifier}:
     get:
+      x-hidden: true
       tags:
-      - Webhooks
-      summary: Get specific resthook subscription
-      operationId: getResthookSubscription
-      description: Return a specific resthook subscription.
+      - Organization API - Invitation
+      summary: Get detail of an invitation
+      operationId: getInvitation
+      description: Get detail of an invitation.
       parameters:
       - in: path
         required: true
-        name: id
-        description: Resthook subscription's ID
+        name: identifier
+        description: Invitation identifier.
         schema:
-          $ref: '#/components/schemas/ResthookSubscription_properties-id'
+          $ref: '#/components/schemas/Invitation_properties-identifier'
       responses:
         '200':
-          description: Successfully retrieved resthook subscription.
+          description: Successfully retrieved invitation.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResthookSubscription'
+                $ref: '#/components/schemas/Invitation'
         '400':
           $ref: '#/components/responses/400Error'
         '401':
@@ -121,32 +126,32 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
     patch:
+      x-hidden: true
       tags:
-      - Webhooks
-      summary: Update a resthook subscription
-      operationId: updateResthookSubscription
-      description: Update data of a resthook subscription.
+      - Organization API - Invitation
+      summary: Update an invitation
+      operationId: updateInvitation
+      description: Update the detail of an invitation.
       parameters:
       - in: path
         required: true
-        name: id
-        description: ResthookSubscription's ID
+        name: identifier
+        description: Invitation identifier.
         schema:
-          $ref: '#/components/schemas/ResthookSubscription_properties-id'
+          $ref: '#/components/schemas/Invitation_properties-identifier'
       requestBody:
-        description: ResthookSubscription data to update
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ResthookSubscriptionUpdate'
+              $ref: '#/components/schemas/InvitationUpdate'
       responses:
         '200':
-          description: Successfully updated resthook subscription data.
+          description: Successfully updated invitation.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResthookSubscription'
+                $ref: '#/components/schemas/Invitation'
         '400':
           $ref: '#/components/responses/400Error'
         '401':
@@ -154,18 +159,19 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
     delete:
+      x-hidden: true
       tags:
-      - Webhooks
-      summary: Delete a resthook subscription
-      operationId: deleteResthookSubscription
-      description: Deletes the specified resthook subscription from the database.
+      - Organization API - Invitation
+      summary: Delete an invitation
+      operationId: deleteInvitation
+      description: Delete the specified invitation from the database.
       parameters:
       - in: path
         required: true
-        name: id
-        description: ResthookSubscription's ID
+        name: identifier
+        description: Invitation identifier.
         schema:
-          $ref: '#/components/schemas/ResthookSubscription_properties-id'
+          $ref: '#/components/schemas/Invitation_properties-identifier'
       responses:
         '204':
           $ref: '#/components/responses/204NoContent'
@@ -175,30 +181,59 @@ paths:
           $ref: '#/components/responses/401Error'
         default:
           $ref: '#/components/responses/DefaultError'
-  /v3/resthook_subscriptions/activate:
-    post:
+  /v3/invitations/token/{token}:
+    get:
+      x-hidden: true
       tags:
-      - Webhooks
-      summary: Activate a resthook subscription
-      operationId: activateResthookSubscription
-      description: 'After creating a subscription, we''ll send a POST request to your target URL with a `X-Hook-Secret` header. <br />
-
-        You should response to this with a 200 status code, and use the value of the `X-Hook-Secret` header that you received to activate the subscription using this endpoint.'
+      - Organization API - Invitation
+      summary: Get detail of an invitation by token
+      operationId: getInvitationByToken
+      description: Get detail of an invitation using a secret token. This allows users who have not registered/logged in to view the invitation.
       parameters:
-      - in: header
+      - in: path
         required: true
-        name: X-Hook-Secret
-        description: The secret received when creating a subscription.
+        name: token
+        description: Invitation token.
         schema:
           type: string
-          example: 36bacde97882f563992b00a89163eb9058d956fdc2f914870b8903ec93cdf372
       responses:
         '200':
-          description: Successfully activated a resthook subscription.
+          description: Successfully retrieved invitation.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResthookSubscription'
+                $ref: '#/components/schemas/Invitation'
+        '400':
+          $ref: '#/components/responses/400Error'
+        default:
+          $ref: '#/components/responses/DefaultError'
+    patch:
+      x-hidden: true
+      tags:
+      - Organization API - Invitation
+      summary: Respond to an invitation
+      operationId: respondToInvitation
+      description: Choose to accept or decline an invitation.
+      parameters:
+      - in: path
+        required: true
+        name: token
+        description: Invitation token.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvitationResponse'
+      responses:
+        '200':
+          description: Successfully responded to the invitation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invitation'
         '400':
           $ref: '#/components/responses/400Error'
         '401':
@@ -207,54 +242,45 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
-    ResthookSubscription:
+    InvitationStatus:
+      type: string
+      enum:
+      - pending
+      - accepted
+      - declined
+    Invitation:
       type: object
-      required:
-      - id
-      - event
-      - organization
-      - workspace
-      - targetUrl
-      - active
-      - autoDeactivated
-      - autoDeactivateReason
-      - version
       properties:
-        id:
-          type: integer
-          description: Resthook subscription's ID.
-        event:
-          $ref: '#/components/schemas/ResthookEvent'
+        identifier:
+          type: string
+          description: Uniquely identify an invitation.
+          example: mEFayXdO
         organization:
           $ref: '#/components/schemas/Organization'
+        email:
+          type: string
+          example: carljohnson@grove.street
+          description: The email which the invitation is sent to.
+        role:
+          $ref: '#/components/schemas/OrganizationRole'
+        status:
+          $ref: '#/components/schemas/InvitationStatus'
+        expiryDate:
+          type: string
+          format: date
+          description: The date after which the invitation expires. Default is 10 days from now.
+        invitedBy:
+          $ref: '#/components/schemas/User'
+        respondedBy:
+          type: object
           nullable: true
-        workspace:
-          $ref: '#/components/schemas/ResthookSubscriptionWorkspace'
-          nullable: true
-        targetUrl:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          - type: object
+            description: The person who receives this invitation can register/signin with any account and respond to it. This field stores which account has responded to the invitation.
+        createdDt:
           type: string
-          description: URL of the resthook's receiver.
-          example: https://my-site.com/receive
-        active:
-          type: boolean
-          description: Resthooks only fire for active subscriptions.
-          example: true
-        autoDeactivated:
-          type: boolean
-          description: Resthook subscriptions can be auto deactivated if the receiver continuously returns error status code over a period of time.
-          example: true
-        autoDeactivateReason:
-          type: string
-          description: The reason for the subscription being auto deactivated. May contains the error response that the receiver returned.
-          example: 'Resthook fails after 10 retries. The last error received was: 500 - Internal server error.'
-        version:
-          type: string
-          enum:
-          - v1
-          - v2
-          - v3
-          description: Version of the resthook subscription. Determines the resthook body being fired.
-          example: v3
+          format: date-time
     ThemeConfig:
       type: object
       properties:
@@ -348,39 +374,18 @@ components:
               detail:
                 type: string
                 example: This index name has already been used
-    version:
+    properties-email:
       type: string
-      enum:
-      - v1
-      - v2
-      - v3
-      description: Version of the resthook subscription. Determines the resthook body being fired.
-      example: v3
-    targetUrl:
-      type: string
-      description: URL of the resthook's receiver.
-      example: https://my-site.com/receive
-    ResthookEvent:
-      type: string
-      enum:
-      - resume.parse.succeeded
-      - resume.parse.failed
-      - resume.parse.completed
-      - invoice.parse.succeeded
-      - invoice.parse.failed
-      - invoice.parse.completed
-      - invoice.validate.completed
-      - document.parse.succeeded
-      - document.parse.failed
-      - document.parse.completed
-      - document.validate.completed
-      - document.classify.succeeded
-      - document.classify.failed
-      - document.classify.completed
-      - document.rejected
-      - annotation.validated
-      description: The event name to subscribe to.
-      example: document.parse.succeeded
+      example: carljohnson@grove.street
+      description: The email which the invitation is sent to.
+    InvitationResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - accepted
+          - declined
     PaginatedResponse:
       type: object
       required:
@@ -403,69 +408,43 @@ components:
       type: string
       description: Uniquely identify an organization.
       example: mEFayXdO
-    identifier:
+    Invitation_properties-identifier:
       type: string
-      description: Uniquely identify a workspace.
+      description: Uniquely identify an invitation.
       example: mEFayXdO
-    ResthookSubscriptionCreate:
-      type: object
-      required:
-      - targetUrl
-      - event
-      properties:
-        targetUrl:
-          $ref: '#/components/schemas/targetUrl'
-        event:
-          $ref: '#/components/schemas/ResthookEvent'
-        organization:
-          type: string
-          allOf:
-          - $ref: '#/components/schemas/Organization_properties-identifier'
-          - type: string
-            description: Specify to create an organization scope resthook. Not required if you're a member of only 1 organization.
-        workspace:
-          type: string
-          allOf:
-          - $ref: '#/components/schemas/identifier'
-          - type: string
-            description: Specify to create a workspace scope resthook.
-        version:
-          $ref: '#/components/schemas/version'
-    ResthookSubscriptionWorkspace:
-      type: object
-      required:
-      - identifier
-      - name
-      - organization
-      properties:
-        identifier:
-          $ref: '#/components/schemas/identifier'
-        name:
-          $ref: '#/components/schemas/name'
-        organization:
-          $ref: '#/components/schemas/Organization'
     OrganizationRole:
       type: string
       enum:
       - admin
       - member
       example: admin
-    name:
-      type: string
-    ResthookSubscriptionUpdate:
+    User:
       type: object
       properties:
-        event:
-          $ref: '#/components/schemas/ResthookEvent'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        workspace:
-          $ref: '#/components/schemas/identifier'
-        version:
-          $ref: '#/components/schemas/version'
-    ResthookSubscription_properties-id:
-      type: integer
-      description: Resthook subscription's ID.
+        id:
+          type: integer
+          description: Uniquely identify a user.
+          example: 1
+          minimum: 1
+        name:
+          type: string
+          example: Carl Johnson
+        username:
+          type: string
+          example: carljohnson
+        email:
+          type: string
+          example: carljohnson@grove.street
+        avatar:
+          type: string
+          nullable: true
+          description: URL of the user's avatar.
+          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+    InvitationUpdate:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/OrganizationRole'
     Organization:
       type: object
       properties:
@@ -552,6 +531,19 @@ components:
         showCustomFieldCreation:
           type: boolean
           description: Whether to show the custom field creation in the UI.
+    InvitationCreate:
+      type: object
+      required:
+      - organization
+      - email
+      - role
+      properties:
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        email:
+          $ref: '#/components/schemas/properties-email'
+        role:
+          $ref: '#/components/schemas/OrganizationRole'
     PaletteColorOptions:
       type: object
       required:

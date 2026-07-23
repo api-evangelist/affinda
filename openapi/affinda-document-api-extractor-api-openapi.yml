@@ -1,0 +1,622 @@
+openapi: 3.0.3
+info:
+  title: Affinda Annotations Add x-hidden to endpoints Document API - Extractor API
+  version: 3.0.0
+  description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
+servers:
+- url: https://{region}.affinda.com
+  description: 'Select the correct server for your instance: api (AUS/Global), api.us1 (US), or api.eu1 (EU).'
+  variables:
+    region:
+      default: api
+      description: The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL.
+      enum:
+      - api
+      - api.eu1
+      - api.us1
+      x-ms-parameter-location: client
+security:
+- ApiKeyAuth: []
+tags:
+- name: Document API - Extractor
+paths:
+  /v3/extractors:
+    get:
+      x-hidden: true
+      tags:
+      - Document API - Extractor
+      summary: Get list of all extractors
+      operationId: getAllExtractors
+      description: Returns your custom extractors as well as Affinda's off-the-shelf extractors.
+      deprecated: true
+      parameters:
+      - in: query
+        name: organization
+        required: true
+        schema:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        description: Filter by organization.
+      - in: query
+        name: include_public_extractors
+        schema:
+          type: boolean
+        description: Whether to include Affinda's off-the-shelf extractors.
+      - in: query
+        name: name
+        schema:
+          type: string
+        description: Filter by name.
+      - in: query
+        name: validatable
+        schema:
+          type: boolean
+        description: Filter by validatable.
+      responses:
+        '200':
+          description: All matching extractors.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Extractor'
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        default:
+          $ref: '#/components/responses/DefaultError'
+    post:
+      x-hidden: true
+      tags:
+      - Document API - Extractor
+      summary: Create an extractor
+      operationId: createExtractor
+      description: Create a custom extractor.
+      deprecated: true
+      responses:
+        '201':
+          description: Successfully created an extractor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Extractor'
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        default:
+          $ref: '#/components/responses/DefaultError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtractorCreate'
+  /v3/extractors/{identifier}:
+    get:
+      x-hidden: true
+      tags:
+      - Document API - Extractor
+      summary: Get specific extractor
+      operationId: getExtractor
+      description: Return a specific extractor.
+      deprecated: true
+      parameters:
+      - in: path
+        required: true
+        name: identifier
+        description: Extractor's identifier
+        schema:
+          $ref: '#/components/schemas/Extractor_properties-identifier'
+      responses:
+        '200':
+          description: Successfully retrieved extractor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Extractor'
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        default:
+          $ref: '#/components/responses/DefaultError'
+    patch:
+      x-hidden: true
+      tags:
+      - Document API - Extractor
+      summary: Update an extractor
+      operationId: updateExtractor
+      description: Update data of an extractor.
+      deprecated: true
+      parameters:
+      - in: path
+        required: true
+        name: identifier
+        description: Extractor's identifier
+        schema:
+          $ref: '#/components/schemas/Extractor_properties-identifier'
+      requestBody:
+        description: Extractor data to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtractorUpdate'
+      responses:
+        '200':
+          description: Successfully updated extractor data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Extractor'
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        default:
+          $ref: '#/components/responses/DefaultError'
+    delete:
+      x-hidden: true
+      tags:
+      - Document API - Extractor
+      summary: Delete an extractor
+      operationId: deleteExtractor
+      description: Deletes the specified extractor from the database.
+      deprecated: true
+      parameters:
+      - in: path
+        required: true
+        name: identifier
+        description: Extractor's identifier
+        schema:
+          $ref: '#/components/schemas/Extractor_properties-identifier'
+      responses:
+        '204':
+          $ref: '#/components/responses/204NoContent'
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  responses:
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    DefaultError:
+      description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    204NoContent:
+      description: Delete successful, no content returned
+    401Error:
+      description: Authorisation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+  schemas:
+    ThemeConfig:
+      type: object
+      properties:
+        palette:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+              - light
+              - dark
+            background:
+              oneOf:
+              - type: string
+              - type: object
+                properties:
+                  default:
+                    type: string
+                  paper:
+                    type: string
+            text:
+              type: object
+              properties:
+                primary:
+                  type: string
+                secondary:
+                  type: string
+                disabled:
+                  type: string
+            divider:
+              type: string
+            primary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            secondary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            success:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            annotation:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            error:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            info:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            warning:
+              $ref: '#/components/schemas/PaletteColorOptions'
+        typography:
+          type: object
+          properties:
+            fontFamily:
+              type: string
+            fontSize:
+              oneOf:
+              - type: string
+              - type: number
+            fontWeightRegular:
+              type: string
+            fontWeightMedium:
+              type: string
+            fontWeightBold:
+              type: string
+        borderRadius:
+          type: number
+        fontUrl:
+          type: string
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type: string
+                nullable: true
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
+    ExtractorUpdate:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/name'
+        namePlural:
+          $ref: '#/components/schemas/namePlural'
+        baseExtractor:
+          $ref: '#/components/schemas/Extractor_properties-identifier'
+        category:
+          $ref: '#/components/schemas/category'
+        validatable:
+          $ref: '#/components/schemas/validatable'
+        fieldGroups:
+          $ref: '#/components/schemas/fieldGroups'
+    FieldGroup:
+      type: object
+      properties:
+        label:
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldDeprecated'
+      required:
+      - label
+      - fields
+      additionalProperties: false
+    FieldDeprecated:
+      type: object
+      properties:
+        label:
+          type: string
+        slug:
+          type: string
+          nullable: true
+          deprecated: true
+        fieldType:
+          $ref: '#/components/schemas/AnnotationContentType'
+        dataSource:
+          type: string
+          description: Data source mapping identifier
+          nullable: true
+        mapping:
+          type: string
+          description: Defines how the data point is mapped to the data source
+          nullable: true
+        dataPoint:
+          type: string
+        mandatory:
+          type: boolean
+        disabled:
+          type: boolean
+        autoValidationThreshold:
+          type: number
+          nullable: true
+        showDropdown:
+          type: boolean
+        displayRawText:
+          type: boolean
+        dropNull:
+          type: boolean
+          description: If True, any dropdown annotations that fail to parse to a value will be discarded
+        displayEnumValue:
+          type: boolean
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldDeprecated'
+      required:
+      - label
+      - dataPoint
+      - fieldType
+      additionalProperties: true
+    AnnotationContentType:
+      type: string
+      description: The different data types of annotations
+      enum:
+      - text
+      - integer
+      - float
+      - decimal
+      - date
+      - datetime
+      - daterange
+      - boolean
+      - enum
+      - location
+      - phonenumber
+      - json
+      - table
+      - expectedremuneration
+      - jobtitle
+      - language
+      - skill
+      - yearsexperience
+      - group
+      - table_deprecated
+      - url
+      - image
+      - docclf
+    createdDt:
+      type: string
+      format: date-time
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    Extractor:
+      type: object
+      required:
+      - identifier
+      - name
+      - namePlural
+      - validatable
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify an extractor.
+          example: resume
+        name:
+          type: string
+        namePlural:
+          type: string
+        baseExtractor:
+          type: object
+          nullable: true
+          required:
+          - identifier
+          - name
+          - namePlural
+          - validatable
+          properties:
+            identifier:
+              $ref: '#/components/schemas/Extractor_properties-identifier'
+            name:
+              $ref: '#/components/schemas/name'
+            namePlural:
+              $ref: '#/components/schemas/namePlural'
+            validatable:
+              $ref: '#/components/schemas/validatable'
+            isCustom:
+              $ref: '#/components/schemas/isCustom'
+            createdDt:
+              $ref: '#/components/schemas/createdDt'
+        organization:
+          $ref: '#/components/schemas/Organization'
+          nullable: true
+        category:
+          type: string
+          nullable: true
+          example: Recruitment
+        validatable:
+          type: boolean
+        isCustom:
+          type: boolean
+        fieldGroups:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/FieldGroup'
+        createdDt:
+          type: string
+          format: date-time
+        lastTrainedDt:
+          type: string
+          format: date-time
+          nullable: true
+    category:
+      type: string
+      nullable: true
+      example: Recruitment
+    fieldGroups:
+      type: array
+      nullable: true
+      items:
+        $ref: '#/components/schemas/FieldGroup'
+    namePlural:
+      type: string
+    OrganizationRole:
+      type: string
+      enum:
+      - admin
+      - member
+      example: admin
+    name:
+      type: string
+    validatable:
+      type: boolean
+    Extractor_properties-identifier:
+      type: string
+      description: Uniquely identify an extractor.
+      example: resume
+    Organization:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify an organization.
+          example: mEFayXdO
+        name:
+          type: string
+          example: Grove Street King
+        userRole:
+          type: string
+          allOf:
+          - $ref: '#/components/schemas/OrganizationRole'
+          nullable: true
+          description: The role of the logged in user within the organization.
+        avatar:
+          type: string
+          nullable: true
+          description: URL of the organization's avatar.
+          example: https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+        resthookSignatureKey:
+          type: string
+          nullable: true
+          description: Used to sign webhook payloads so you can verify their integrity.
+          example: 465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad
+        isTrial:
+          type: boolean
+        validationToolConfig:
+          type: object
+          nullable: true
+          description: Configuration of the embeddable validation tool.
+          properties:
+            theme:
+              $ref: '#/components/schemas/ThemeConfig'
+            hideActions:
+              type: boolean
+              description: Hide the confirm document button and other actions.
+            hideCollection:
+              type: boolean
+              description: Hide the collection selector.
+            hideEditPages:
+              type: boolean
+              description: Hide the edit pages button.
+            hideExport:
+              type: boolean
+              description: Hide the export menu.
+            hideFilename:
+              type: boolean
+              description: Hide the filename input.
+            hideShowRawValues:
+              type: boolean
+              description: Hide the toggle for showing raw annotation values.
+            hideReject:
+              type: boolean
+              description: Hide the reject document button.
+            hideReparse:
+              type: boolean
+              description: Hide the reparse button.
+            hideRunOcr:
+              type: boolean
+              description: Hide the run OCR button.
+            hideTags:
+              type: boolean
+              description: Hide the tags editor.
+            hideWarnings:
+              type: boolean
+              description: Hide the warnings panel.
+            restrictDocumentSplitting:
+              type: boolean
+              description: Disable the page editor after a document has been split once.
+            disableCurrencyFormatting:
+              type: boolean
+              description: Disable currency formatting of decimals values.
+            disableEditDocumentMetadata:
+              type: boolean
+              description: Disable editing document metadata. Makes the collection selector, filename input and tags editor read only.
+            disableManualAnnotationEditing:
+              type: boolean
+              description: Disable manual editing of annotation values via the validation popover.
+            hideDocumentStatus:
+              type: boolean
+              description: Hide the document status indicator in the toolbar.
+        showCustomFieldCreation:
+          type: boolean
+          description: Whether to show the custom field creation in the UI.
+    ExtractorCreate:
+      type: object
+      required:
+      - name
+      - organization
+      properties:
+        name:
+          $ref: '#/components/schemas/name'
+        namePlural:
+          $ref: '#/components/schemas/namePlural'
+        baseExtractor:
+          $ref: '#/components/schemas/Extractor_properties-identifier'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        category:
+          $ref: '#/components/schemas/category'
+        validatable:
+          $ref: '#/components/schemas/validatable'
+        fieldGroups:
+          $ref: '#/components/schemas/fieldGroups'
+    PaletteColorOptions:
+      type: object
+      required:
+      - main
+      properties:
+        main:
+          type: string
+        light:
+          type: string
+        dark:
+          type: string
+        contrastText:
+          type: string
+    isCustom:
+      type: boolean
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: 'Basic authentication using an API key, e.g. `{Authorization: Bearer aff_0bb4fbdf97b7e4111ff6c0015471094155f91}`.
+
+        You can find your API key within the Settings page of the [Affinda web app](https://app.affinda.com/). You can obtain an API key by [signing up for a free trial](https://app.affinda.com/auth/register).'

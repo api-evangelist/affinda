@@ -1,0 +1,475 @@
+openapi: 3.0.3
+info:
+  title: Affinda Annotations Add x-hidden to endpoints Document API - Splitting API
+  version: 3.0.0
+  description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
+servers:
+- url: https://{region}.affinda.com
+  description: 'Select the correct server for your instance: api (AUS/Global), api.us1 (US), or api.eu1 (EU).'
+  variables:
+    region:
+      default: api
+      description: The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL.
+      enum:
+      - api
+      - api.eu1
+      - api.us1
+      x-ms-parameter-location: client
+security:
+- ApiKeyAuth: []
+tags:
+- name: Document API - Splitting
+paths:
+  /v3/document_splitters:
+    get:
+      x-hidden: true
+      tags:
+      - Document API - Splitting
+      summary: Get list of all document splitters
+      operationId: getAllDocumentSplitters
+      description: Returns all the document splitters visible to the user.
+      deprecated: true
+      parameters:
+      - $ref: '#/components/parameters/offsetParam'
+      - $ref: '#/components/parameters/limitParam'
+      - in: query
+        name: organization
+        schema:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        description: Filter by organization.
+      - in: query
+        name: include_public
+        schema:
+          type: boolean
+        description: Allows you to include public splitters in the response when you're filtering by organization.
+      responses:
+        '200':
+          description: All documents splitters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentSplitter'
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /v3/document_splitters/{identifier}:
+    get:
+      x-hidden: true
+      tags:
+      - Document API - Splitting
+      summary: Get specific document splitter
+      operationId: getDocumentSplitter
+      description: Return a specific document splitter.
+      deprecated: true
+      parameters:
+      - in: path
+        required: true
+        name: identifier
+        description: Document splitter's identifier
+        schema:
+          $ref: '#/components/schemas/DocumentSplitter_properties-identifier'
+      responses:
+        '200':
+          description: Successfully retrieved document splitter.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentSplitter'
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /v3/validate/{identifier}/split:
+    post:
+      x-hidden: true
+      tags:
+      - Document API - Splitting
+      summary: Split pages of a document
+      operationId: editDocumentPages
+      description: 'Split / merge / rotate / delete pages of a document.
+
+        Documents with multiple pages can be splitted into multiple documents, or merged into one document.
+
+        Each page can also be rotated. Edit operations will trigger re-parsing of the documents involved.
+
+        '
+      deprecated: true
+      parameters:
+      - in: path
+        required: true
+        name: identifier
+        description: Document's identifier
+        schema:
+          $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+      requestBody:
+        description: Describe how the pages should be edited
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentEditRequest'
+      responses:
+        '200':
+          description: Successfully edited the document and re-parsing is underway.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentEditResponse'
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  schemas:
+    RegionBias:
+      type: object
+      nullable: true
+      properties:
+        country:
+          type: string
+          nullable: true
+          description: A single alpha-2 country code (e.g. AU) used by google geocoding service
+        countries:
+          type: array
+          items:
+            type: string
+          nullable: true
+          description: A list of alpha-2 country codes used by Pelias
+        squareCoordinates:
+          type: array
+          items:
+            type: number
+          nullable: true
+          description: A list of coordinates used by Pelias in the shape of [min_lon, min_lat, max_lon, max_lat]
+        strict:
+          type: boolean
+          description: 'If true, the location must be within the region, as opposed to prefering locations within the region.
+
+            Default to false.
+
+            '
+          example: true
+    DocumentSplit:
+      type: object
+      required:
+      - pages
+      description: Describe a split of a document.
+      properties:
+        identifier:
+          allOf:
+          - $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+          - description: Specify document identifier in the first split to signal that this is the root document where other splits are splitted from. Don't specify document identifier in subsequent splits.
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentSplitPage'
+    Meta:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Unique identifier for the document
+        customIdentifier:
+          type: string
+          nullable: true
+          description: Optional identifier for the document that you can set to track the document in the Affinda system.  Is not required to be unique.
+          example: 46ab8b02-0e5b-420c-877c-8b678d46a834
+        fileName:
+          $ref: '#/components/schemas/FileName'
+        ready:
+          type: boolean
+          nullable: false
+          example: true
+          description: If true, the document has finished processing. Particularly useful if an endpoint request specified wait=False, when polling use this variable to determine when to stop polling
+        readyDt:
+          type: string
+          format: date-time
+          example: '2020-12-10T01:43:32.276724Z'
+          nullable: true
+          description: The datetime when the document was ready
+        failed:
+          type: boolean
+          nullable: false
+          example: false
+          description: If true, some exception was raised during processing. Check the 'error' field of the main return object.
+        expiryTime:
+          $ref: '#/components/schemas/ExpiryTime'
+        language:
+          type: string
+          nullable: true
+          example: en
+          description: The document's language.
+        pdf:
+          type: string
+          nullable: true
+          example: https://affinda-api.s3.amazonaws.com/media/documents/Document.pdf?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
+          description: The URL to the document's pdf (if the uploaded document is not already pdf, it's converted to pdf as part of the parsing process).
+        parentDocument:
+          type: object
+          nullable: true
+          description: If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
+          properties:
+            identifier:
+              $ref: '#/components/schemas/Meta_properties-identifier'
+        childDocuments:
+          type: array
+          description: If this document has been splitted into a number of child documents, this attribute points to those child documents.
+          items:
+            type: object
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Meta_properties-identifier'
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/PageMeta'
+          description: The document's pages.
+        isVerified:
+          type: boolean
+          nullable: false
+          example: false
+          description: This is true if the 'confirm' button has been clicked in the Affinda validation tool
+        reviewUrl:
+          type: string
+          nullable: true
+          example: https://app.affinda.com/review/XJ5kK123?signature=12345
+          description: Signed URL (valid for 60 minutes) to access the validation tool.  Not applicable for documents types such a resumes.
+        ocrConfidence:
+          type: number
+          nullable: true
+          example: 0.97
+          description: The overall confidence in the conversion of image to text.  (only applicable for images or PDF documents without a text layer)
+        createdDt:
+          type: string
+          format: date-time
+        documentType:
+          type: string
+          example: resume
+        regionBias:
+          $ref: '#/components/schemas/RegionBias'
+        isOcrd:
+          type: boolean
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type: string
+                nullable: true
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
+    DocumentMeta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
+    DocumentSplitPage:
+      type: object
+      required:
+      - id
+      description: List the pages within this split. Not including a page here will signal that the page should be deleted.
+      properties:
+        id:
+          type: integer
+          description: Page's ID
+          minimum: 1
+        rotation:
+          type: integer
+          minimum: -360
+          maximum: 360
+          description: Specify a degree of rotation if you want to rotate a page. Possitive number for clockwise rotation, and negative number for counter-clockwise rotation.
+          example: 90
+    DocumentSplitter_properties-identifier:
+      type: string
+      description: Uniquely identify a document splitter.
+      example: NqIvMvZl
+    DocumentEditRequest:
+      type: object
+      required:
+      - splits
+      properties:
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentSplit'
+    DocumentSplitter:
+      type: object
+      required:
+      - identifier
+      - name
+      - type
+      - organization
+      - extractor
+      - llmHint
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify a document splitter.
+          example: NqIvMvZl
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/DocumentSplitterType'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+          nullable: true
+        extractor:
+          $ref: '#/components/schemas/Extractor_properties-identifier'
+          nullable: true
+        llmHint:
+          type: string
+          nullable: true
+          description: The hint about when to split which is passed into the LLM prompt.
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    ExpiryTime:
+      type: string
+      nullable: true
+      format: date-time
+      description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
+    DocumentSplitterType:
+      type: string
+      description: The different types of document splitters
+      enum:
+      - llm
+      - llm_v2
+      - extractor
+      - keyword
+    FileName:
+      type: string
+      nullable: true
+      description: Optional filename of the file
+      example: Document.pdf
+    Meta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
+    PageMeta:
+      type: object
+      required:
+      - id
+      - pageIndex
+      - image
+      - width
+      - height
+      - rotation
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        pageIndex:
+          type: integer
+          example: 0
+          minimum: 0
+          description: Page number within the document, starts from 0.
+        image:
+          type: string
+          nullable: true
+          example: https://affinda-api.s3.amazonaws.com/media/pages/Page.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
+          description: The URL to the image of the page.
+        imageTranslated:
+          type: string
+          nullable: true
+          example: https://affinda-api.s3.amazonaws.com/media/pages/PageTranslated.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
+          description: The URL to the translated image of the page.
+        height:
+          type: number
+          example: 700
+          description: Height of the page's image in px.
+        width:
+          type: number
+          example: 500
+          description: Width of the page's image in px.
+        rotation:
+          type: integer
+          example: 90
+          minimum: -360
+          maximum: 360
+          description: The degree of rotation applied to the page. Greater than 0 indicates clockwise rotation. Less than 0 indicates counter-clockwise rotation.
+    Extractor_properties-identifier:
+      type: string
+      description: Uniquely identify an extractor.
+      example: resume
+    DocumentEditResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Meta'
+  responses:
+    DefaultError:
+      description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    401Error:
+      description: Authorisation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+  parameters:
+    limitParam:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        example: 20
+      description: The numbers of results to return.
+      x-ms-parameter-location: method
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: 'Basic authentication using an API key, e.g. `{Authorization: Bearer aff_0bb4fbdf97b7e4111ff6c0015471094155f91}`.
+
+        You can find your API key within the Settings page of the [Affinda web app](https://app.affinda.com/). You can obtain an API key by [signing up for a free trial](https://app.affinda.com/auth/register).'
