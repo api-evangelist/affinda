@@ -1,239 +1,259 @@
 aid: affinda
 url: https://raw.githubusercontent.com/api-evangelist/affinda/refs/heads/main/apis.yml
 apis:
-  - aid: affinda:affinda-documents-api
-    name: Affinda Documents API
-    tags:
-      - Document Processing
-      - Document Extraction
-      - AI
-      - OCR
-    humanURL: https://docs.affinda.com/reference/getting-started
-    properties:
-      - url: https://docs.affinda.com/reference/getting-started
-        type: Documentation
-      - url: openapi/affinda-documents-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/affinda-document-schema.json
-        type: JSONSchema
-      - url: json-ld/affinda-context.jsonld
-        type: JSONLD
-    description: >-
-      Upload documents (PDF, images, DOCX, XLSX, TXT, HTML) and Affinda returns structured JSON extraction with
-      confidence scores, bounding boxes, and OCR text. Supports invoices, resumes, receipts, contracts, passports, and
-      custom document types. 20 MB file size limit (5 MB for resumes), 20 pages default. Returns parsing status, raw
-      text, parsed fields, and original file references.
-  - aid: affinda:affinda-document-types-api
-    name: Affinda Document Types API
-    tags:
-      - Document Processing
-      - Document Types
-      - Models
-      - Configuration
-    humanURL: https://docs.affinda.com/reference/document-types
-    properties:
-      - url: https://docs.affinda.com/reference/document-types
-        type: Documentation
-      - url: openapi/affinda-document-types-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Manage document type definitions — the model configuration governing how a specific document category (invoice,
-      resume, custom contract) is parsed. Each document type exposes a JSON Schema and optional Pydantic model
-      representation. Document types are configured in the dashboard or natural-language workflow builder and reused
-      across workspaces and collections.
-  - aid: affinda:affinda-extractors-api
-    name: Affinda Extractors API
-    tags:
-      - Document Processing
-      - Extractors
-      - Models
-    humanURL: https://docs.affinda.com/reference
-    properties:
-      - url: https://docs.affinda.com/reference
-        type: Documentation
-      - url: openapi/affinda-extractors-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      List and inspect the underlying extractor models that power document parsing. Extractors are Affinda's named ML
-      pipelines (resume extractor, invoice extractor, receipt extractor, passport extractor, etc.) and are referenced
-      from document type configurations.
-  - aid: affinda:affinda-document-splitters-api
-    name: Affinda Document Splitters API
-    tags:
-      - Document Processing
-      - Splitting
-      - Classification
-    humanURL: https://docs.affinda.com/reference
-    properties:
-      - url: https://docs.affinda.com/reference
-        type: Documentation
-      - url: openapi/affinda-document-splitters-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Configure and run document splitting and classification across multi-document PDFs. Splitters identify document
-      boundaries inside a single uploaded file, classify each segment by document type, and route each segment to the
-      correct extractor.
-  - aid: affinda:affinda-workspaces-api
-    name: Affinda Workspaces API
-    tags:
-      - Workspaces
-      - Organization
-      - Permissions
-    humanURL: https://docs.affinda.com/reference/workspaces
-    properties:
-      - url: https://docs.affinda.com/reference/workspaces
-        type: Documentation
-      - url: openapi/affinda-workspaces-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Workspaces group together related collections, documents, members, and webhook subscriptions. Workspace
-      identifiers scope every document upload, listing, and webhook delivery. Includes per-workspace usage reporting for
-      credits and pages processed.
-  - aid: affinda:affinda-organizations-api
-    name: Affinda Organizations API
-    tags:
-      - Organization
-      - Administration
-      - Account
-    humanURL: https://docs.affinda.com/reference
-    properties:
-      - url: https://docs.affinda.com/reference
-        type: Documentation
-      - url: openapi/affinda-organizations-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Manage the top-level organization account — read and update organization details. Organizations contain users,
-      billing, document types, and workspaces. Per-user limit of 3 API keys.
-  - aid: affinda:affinda-invitations-api
-    name: Affinda Invitations API
-    tags:
-      - Organization
-      - Members
-      - Invitations
-    humanURL: https://docs.affinda.com/reference
-    properties:
-      - url: https://docs.affinda.com/reference
-        type: Documentation
-      - url: openapi/affinda-invitations-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Create, list, and respond to invitations adding users to the organization. Supports invitation token lookup for
-      join flows and revocation of pending invitations.
-  - aid: affinda:affinda-data-sources-api
-    name: Affinda Data Sources API
-    tags:
-      - Data Sources
-      - Master Data
-      - Matching
-    humanURL: https://docs.affinda.com/reference
-    properties:
-      - url: https://docs.affinda.com/reference
-        type: Documentation
-      - url: openapi/affinda-data-sources-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Manage custom mapping data sources — master-data lists used to match raw extracted values (vendor names, SKUs,
-      categories) to known canonical entities. Upload values via the API and reference the data source from a document
-      type field to enable automatic data matching during parsing.
-  - aid: affinda:affinda-annotations-api
-    name: Affinda Annotations API
-    tags:
-      - Annotations
-      - Validation
-      - Human in the Loop
-    humanURL: https://docs.affinda.com/reference/annotations
-    properties:
-      - url: https://docs.affinda.com/reference/annotations
-        type: Documentation
-      - url: openapi/affinda-annotations-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Manually create, update, and delete annotations on uploaded documents. Annotations are the field-level extraction
-      objects (value, confidence, bounding box, parent field) and provide the surface for human-in-the-loop validation
-      and review. Supports batch create, update, and delete for high-throughput review workflows.
-  - aid: affinda:affinda-validation-results-api
-    name: Affinda Validation Results API
-    tags:
-      - Validation
-      - Quality
-      - Human in the Loop
-    humanURL: https://docs.affinda.com/reference
-    properties:
-      - url: https://docs.affinda.com/reference
-        type: Documentation
-      - url: openapi/affinda-validation-results-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Track the status and findings of validation rules attached to parsed documents. Validation results record passes,
-      failures, and remediation context for field-level rules and inform the embeddable validation UI. Supports batch
-      create and delete.
-  - aid: affinda:affinda-tags-api
-    name: Affinda Tags API
-    tags:
-      - Tags
-      - Metadata
-      - Organization
-    humanURL: https://docs.affinda.com/reference
-    properties:
-      - url: https://docs.affinda.com/reference
-        type: Documentation
-      - url: openapi/affinda-tags-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Tag management for parsed documents. Tags can be arbitrarily attached to documents to support routing,
-      segmentation, search filters, and downstream workflow triggers. Supports batch-add and batch-remove on document
-      collections.
-  - aid: affinda:affinda-usage-api
-    name: Affinda Usage API
-    tags:
-      - Usage
-      - Credits
-      - Reporting
-      - FinOps
-    humanURL: https://docs.affinda.com/reference
-    properties:
-      - url: https://docs.affinda.com/reference
-        type: Documentation
-      - url: openapi/affinda-usage-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Retrieve daily credits consumption for the organization across all workspaces and document types. Used for billing
-      reconciliation, budget tracking, and FinOps reporting.
-  - aid: affinda:affinda-webhooks-api
-    name: Affinda Webhooks API
-    tags:
-      - Webhooks
-      - Events
-      - Integration
-    humanURL: https://docs.affinda.com/reference/webhooks
-    properties:
-      - url: https://docs.affinda.com/reference/webhooks
-        type: Documentation
-      - url: openapi/affinda-webhooks-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Resthook-style webhook subscriptions for document parsing events. Create a subscription, receive a probe payload,
-      and call the activation endpoint to confirm the receiver. Affinda delivers events such as document parsed,
-      document failed, and validation completed to the registered URL.
-  - aid: affinda:affinda-search-match-api
-    name: Affinda Search and Match API
-    tags:
-      - Search
-      - Matching
-      - Resume Search
-      - Job Description Search
-      - Recruitment
-    humanURL: https://docs.affinda.com/reference
-    properties:
-      - url: https://docs.affinda.com/reference
-        type: Documentation
-      - url: openapi/affinda-search-match-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Resume search, job description search, and matching across parsed-document indexes. Score candidates against a job
-      description (or vice versa), retrieve match details, configure search and embed parameters, and request job-title
-      and skill suggestions. Includes index management for organizing parsed documents and embeddable UI configuration
-      for resume and JD search components.
+- aid: affinda:affinda-documents-api
+  name: Affinda Documents API
+  tags:
+  - Document Processing
+  - Document Extraction
+  - AI
+  - OCR
+  humanURL: https://docs.affinda.com/reference/getting-started
+  properties:
+  - url: https://docs.affinda.com/reference/getting-started
+    type: Documentation
+  - url: openapi/affinda-documents-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/affinda-document-schema.json
+    type: JSONSchema
+  - url: json-ld/affinda-context.jsonld
+    type: JSONLD
+  description: >-
+    Upload documents (PDF, images, DOCX, XLSX, TXT, HTML) and Affinda returns structured JSON extraction
+    with confidence scores, bounding boxes, and OCR text. Supports invoices, resumes, receipts, contracts,
+    passports, and custom document types. 20 MB file size limit (5 MB for resumes), 20 pages default.
+    Returns parsing status, raw text, parsed fields, and original file references.
+- aid: affinda:affinda-document-types-api
+  name: Affinda Document Types API
+  tags:
+  - Document Processing
+  - Document Types
+  - Models
+  - Configuration
+  humanURL: https://docs.affinda.com/reference/document-types
+  properties:
+  - url: https://docs.affinda.com/reference/document-types
+    type: Documentation
+  - url: openapi/affinda-document-types-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Manage document type definitions — the model configuration governing how a specific document category
+    (invoice, resume, custom contract) is parsed. Each document type exposes a JSON Schema and optional
+    Pydantic model representation. Document types are configured in the dashboard or natural-language
+    workflow builder and reused across workspaces and collections.
+- aid: affinda:affinda-workspaces-api
+  name: Affinda Workspaces API
+  tags:
+  - Workspaces
+  - Organization
+  - Permissions
+  humanURL: https://docs.affinda.com/reference/workspaces
+  properties:
+  - url: https://docs.affinda.com/reference/workspaces
+    type: Documentation
+  - url: openapi/affinda-workspaces-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Workspaces group together related collections, documents, members, and webhook subscriptions. Workspace
+    identifiers scope every document upload, listing, and webhook delivery. Includes per-workspace usage
+    reporting for credits and pages processed.
+- aid: affinda:affinda-organizations-api
+  name: Affinda Organizations API
+  tags:
+  - Organization
+  - Administration
+  - Account
+  humanURL: https://docs.affinda.com/reference
+  properties:
+  - url: https://docs.affinda.com/reference
+    type: Documentation
+  - url: openapi/affinda-organizations-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Manage the top-level organization account — read and update organization details. Organizations contain
+    users, billing, document types, and workspaces. Per-user limit of 3 API keys.
+- aid: affinda:affinda-data-sources-api
+  name: Affinda Data Sources API
+  tags:
+  - Data Sources
+  - Master Data
+  - Matching
+  humanURL: https://docs.affinda.com/reference
+  properties:
+  - url: https://docs.affinda.com/reference
+    type: Documentation
+  - url: openapi/affinda-data-sources-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Manage custom mapping data sources — master-data lists used to match raw extracted values (vendor
+    names, SKUs, categories) to known canonical entities. Upload values via the API and reference the
+    data source from a document type field to enable automatic data matching during parsing.
+- aid: affinda:affinda-annotations-api
+  name: Affinda Annotations API
+  tags:
+  - Annotations
+  - Validation
+  - Human in the Loop
+  humanURL: https://docs.affinda.com/reference/annotations
+  properties:
+  - url: https://docs.affinda.com/reference/annotations
+    type: Documentation
+  - url: openapi/affinda-annotations-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Manually create, update, and delete annotations on uploaded documents. Annotations are the field-level
+    extraction objects (value, confidence, bounding box, parent field) and provide the surface for human-in-the-loop
+    validation and review. Supports batch create, update, and delete for high-throughput review workflows.
+- aid: affinda:affinda-validation-results-api
+  name: Affinda Validation Results API
+  tags:
+  - Validation
+  - Quality
+  - Human in the Loop
+  humanURL: https://docs.affinda.com/reference
+  properties:
+  - url: https://docs.affinda.com/reference
+    type: Documentation
+  - url: openapi/affinda-validation-results-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Track the status and findings of validation rules attached to parsed documents. Validation results
+    record passes, failures, and remediation context for field-level rules and inform the embeddable validation
+    UI. Supports batch create and delete.
+- aid: affinda:affinda-tags-api
+  name: Affinda Tags API
+  tags:
+  - Tags
+  - Metadata
+  - Organization
+  humanURL: https://docs.affinda.com/reference
+  properties:
+  - url: https://docs.affinda.com/reference
+    type: Documentation
+  - url: openapi/affinda-tags-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Tag management for parsed documents. Tags can be arbitrarily attached to documents to support routing,
+    segmentation, search filters, and downstream workflow triggers. Supports batch-add and batch-remove
+    on document collections.
+- aid: affinda:affinda-usage-api
+  name: Affinda Usage API
+  tags:
+  - Usage
+  - Credits
+  - Reporting
+  - FinOps
+  humanURL: https://docs.affinda.com/reference
+  properties:
+  - url: https://docs.affinda.com/reference
+    type: Documentation
+  - url: openapi/affinda-usage-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Retrieve daily credits consumption for the organization across all workspaces and document types.
+    Used for billing reconciliation, budget tracking, and FinOps reporting.
+- aid: affinda:affinda-webhooks-api
+  name: Affinda Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Integration
+  humanURL: https://docs.affinda.com/reference/webhooks
+  properties:
+  - url: https://docs.affinda.com/reference/webhooks
+    type: Documentation
+  - url: openapi/affinda-webhooks-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Resthook-style webhook subscriptions for document parsing events. Create a subscription, receive a
+    probe payload, and call the activation endpoint to confirm the receiver. Affinda delivers events such
+    as document parsed, document failed, and validation completed to the registered URL.
+- aid: affinda:affinda-search-match-api
+  name: Affinda Search and Match API
+  tags:
+  - Search
+  - Matching
+  - Resume Search
+  - Job Description Search
+  - Recruitment
+  humanURL: https://docs.affinda.com/reference
+  properties:
+  - url: https://docs.affinda.com/reference
+    type: Documentation
+  - url: openapi/affinda-search-match-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Resume search, job description search, and matching across parsed-document indexes. Score candidates
+    against a job description (or vice versa), retrieve match details, configure search and embed parameters,
+    and request job-title and skill suggestions. Includes index management for organizing parsed documents
+    and embeddable UI configuration for resume and JD search components.
+- aid: affinda:affinda-add-x-hidden-to-endpoints-api
+  name: Affinda Add x-hidden to endpoints API
+  description: >-
+    Hidden endpoints not intended for public use.
+
+
+    These endpoints include Splitting, Extractor, Organization, and Workspace Memberships & Usage functionality.
+  humanURL: https://docs.affinda.com/reference/getting-started
+  tags:
+  - Add x-hidden to endpoints
+  properties:
+  - type: OpenAPI
+    url: openapi/affinda-add-x-hidden-to-endpoints-api-openapi.yml
+  - type: Documentation
+    url: https://docs.affinda.com/reference
+- aid: affinda:affinda-deprecated-end-points-api
+  name: Affinda Deprecated End Points API
+  description: >-
+    Deprecated endpoints that are maintained for backward compatibility.
+
+
+    These endpoints include Data Point, Collection, and Users functionality that has been superseded by
+    newer APIs.
+  humanURL: https://docs.affinda.com/reference/getting-started
+  tags:
+  - Deprecated End Points
+  properties:
+  - type: OpenAPI
+    url: openapi/affinda-deprecated-end-points-api-openapi.yml
+  - type: Documentation
+    url: https://docs.affinda.com/reference
+- aid: affinda:affinda-document-api-extractor-api
+  name: Affinda Document API - Extractor API
+  description: >-
+    The Document API - Extractor API from Affinda — 2 operation(s) for document api - extractor.
+  humanURL: https://docs.affinda.com/reference/getting-started
+  tags:
+  - Document API - Extractor
+  properties:
+  - type: OpenAPI
+    url: openapi/affinda-document-api-extractor-api-openapi.yml
+  - type: Documentation
+    url: https://docs.affinda.com/reference
+- aid: affinda:affinda-document-api-splitting-api
+  name: Affinda Document API - Splitting API
+  description: >-
+    The Document API - Splitting API from Affinda — 3 operation(s) for document api - splitting.
+  humanURL: https://docs.affinda.com/reference/getting-started
+  tags:
+  - Document API - Splitting
+  properties:
+  - type: OpenAPI
+    url: openapi/affinda-document-api-splitting-api-openapi.yml
+  - type: Documentation
+    url: https://docs.affinda.com/reference
+- aid: affinda:affinda-organization-api-invitation-api
+  name: Affinda Organization API - Invitation API
+  description: >-
+    The Organization API - Invitation API from Affinda — 3 operation(s) for organization api - invitation.
+  humanURL: https://docs.affinda.com/reference/getting-started
+  tags:
+  - Organization API - Invitation
+  properties:
+  - type: OpenAPI
+    url: openapi/affinda-organization-api-invitation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.affinda.com/reference
 name: Affinda
 tags:
   - AI
@@ -255,7 +275,20 @@ tags:
   - Healthcare
   - Government
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Paid (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/affinda.png
 access: 3rd-Party
 common:
   - type: AgenticAccess
