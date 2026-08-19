@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Annotations Add x-hidden to endpoints API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Add x-hidden to endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/organizations",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Create a new organization."
+        },
+        {
+          "info": {
+            "name": "Update an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/organizations/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Organization identifier."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Update the detail of an organization."
+        },
+        {
+          "info": {
+            "name": "Delete an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/organizations/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Organization identifier."
+              }
+            ]
+          },
+          "docs": "Delete the specified organization from the database."
+        },
+        {
+          "info": {
+            "name": "Get list of all organization memberships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/organization_memberships",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "Filter by organization."
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query",
+                "description": "Filter by role."
+              }
+            ]
+          },
+          "docs": "Returns all the organization memberships"
+        },
+        {
+          "info": {
+            "name": "Get detail of an organization membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/organization_memberships/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Membership identifier."
+              }
+            ]
+          },
+          "docs": "Get detail of an organization membership."
+        },
+        {
+          "info": {
+            "name": "Update an organization membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/organization_memberships/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Membership identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The admin users can use this endpoint to update the role of the members within their organization."
+        },
+        {
+          "info": {
+            "name": "Delete an organization membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/organization_memberships/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Membership identifier."
+              }
+            ]
+          },
+          "docs": "The admin users can use this endpoint to remove member from their organization. Other users can also use this to leave their organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

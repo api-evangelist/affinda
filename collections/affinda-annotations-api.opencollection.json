@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Affinda Annotations API",
+    "name": "Affinda Add x-hidden to endpoints Annotations API",
     "version": "3.0.0"
   },
   "request": {

@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "24265aae-406c-4feb-8dd8-236059817cac",
+      "id": "21f4a7ad-e99b-4e60-985b-657d5278a01c",
       "name": "Usage",
       "description": {
         "content": "",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "16f1d16b-1eec-4253-a266-6604e93cfce1",
+          "id": "9067b7e2-7b90-4724-9e02-3f541bd55b7b",
           "name": "Get usage",
           "request": {
             "name": "Get usage",
@@ -77,7 +77,7 @@
           },
           "response": [
             {
-              "id": "e8154bc0-7a04-4fc8-bdb5-9e60b6e3ae45",
+              "id": "40604dc5-cd22-4e28-968e-15a1f34c9536",
               "name": "Daily credits consumption for the requested scope.",
               "originalRequest": {
                 "url": {
@@ -149,7 +149,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "d944554a-c19f-459d-a946-9cfd6aabd740",
+              "id": "29fa0924-0dd1-4ede-a22e-bc0b8154b6e1",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -221,7 +221,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "2f01be3d-3327-4572-adf1-f44f7ac87092",
+              "id": "33646ebe-4dbb-4fd9-84b1-57aa1dbd85ae",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -293,7 +293,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e097a1ef-8582-4f8d-8d2d-3903ec7dea04",
+              "id": "6b679caf-9286-4811-983b-35bf46111d05",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -401,11 +401,11 @@
     ]
   },
   "info": {
-    "_postman_id": "023340e2-62d5-43d5-b3e4-3b90fec23d57",
-    "name": "Affinda Usage API",
+    "_postman_id": "61ab163b-7514-4226-878d-ac2cbe77ff92",
+    "name": "Affinda Annotations Add x-hidden to endpoints Usage API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Affinda Usage API — subset of the Affinda v3 Document Processing API.",
+      "content": "Affinda Annotations API — subset of the Affinda v3 Document Processing API.",
       "type": "text/plain"
     }
   }

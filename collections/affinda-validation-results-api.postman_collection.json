@@ -1,15 +1,15 @@
 {
   "item": [
     {
-      "id": "1c404257-8e91-4297-9fe9-7fbe79f19132",
+      "id": "226b4387-7ffe-4911-8c6a-8aa4e2e750c7",
       "name": "Validation Results",
       "description": {
-        "content": "",
+        "content": "Operations to manage validation results.\n\nValidation results track the status and outcomes of document validation processes.\n",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "1331ac59-9102-40bd-8971-139067ead043",
+          "id": "2606c1ea-da08-40ca-9664-ded0c7fb958f",
           "name": "Get list of all validation results",
           "request": {
             "name": "Get list of all validation results",
@@ -65,7 +65,7 @@
           },
           "response": [
             {
-              "id": "cbc800f5-92b3-4f8e-b3b7-0b6e2d275e0f",
+              "id": "bef05ef6-0012-46eb-8bcb-e14b53be8d18",
               "name": "All matching workspace memberships.",
               "originalRequest": {
                 "url": {
@@ -129,7 +129,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "bdb6d7dd-ef06-45ba-8b48-4ef9c2c6ddf3",
+              "id": "cfd95575-38d3-4248-b48c-17eda8844882",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -193,7 +193,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "9a48d201-9f9c-43b0-b9ef-1e4ee90fa801",
+              "id": "87a34176-c721-4d82-ba83-dbce2b8578c1",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -257,7 +257,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "c4ab5527-cfe8-46f6-965c-a821f97d7109",
+              "id": "55bf9970-9ba7-4c3e-ba8b-46c825f5b28a",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -327,7 +327,7 @@
           }
         },
         {
-          "id": "39063263-3cad-48e2-a5ef-1a2f7707bc65",
+          "id": "c9a1a584-3121-4347-89a3-724d5c3622a9",
           "name": "Create a validation result",
           "request": {
             "name": "Create a validation result",
@@ -377,7 +377,7 @@
           },
           "response": [
             {
-              "id": "e96847d7-f398-4b03-9c0c-bed03ba215a8",
+              "id": "dd969791-33e2-48ee-af57-2f4dd180946e",
               "name": "Successfully created a validation result.",
               "originalRequest": {
                 "url": {
@@ -436,7 +436,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "37a98d57-8815-4ada-831f-3921c09b2301",
+              "id": "8f2cbf17-d7d6-49a4-8ff6-91b32801f5d6",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -495,7 +495,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "085cd6f9-0b66-4d62-a4f6-b4795339c444",
+              "id": "501bf9b1-d617-459c-9d59-412e89bbdcf2",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -554,7 +554,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "da3e9819-fdee-4c75-a2d3-5a915f9c6685",
+              "id": "96e7a5f1-3a34-4ee0-a8f8-7367d8909559",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -619,7 +619,7 @@
           }
         },
         {
-          "id": "23972a18-bc5a-4123-b0b3-6856ab00481b",
+          "id": "8d05a76d-3bc2-4526-bdb9-2a0bf08e8eaf",
           "name": "Get specific validation result",
           "request": {
             "name": "Get specific validation result",
@@ -664,7 +664,7 @@
           },
           "response": [
             {
-              "id": "f6d61731-cb0a-481a-93b5-a669062fa522",
+              "id": "d6d427d6-382a-42d1-91d2-35cf1e3eb394",
               "name": "Successfully retrieved validation result.",
               "originalRequest": {
                 "url": {
@@ -723,7 +723,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "c815bbd9-882f-4843-8bfe-744ef107e00b",
+              "id": "ab8010f0-4766-4d40-8191-ef5a77ddc241",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -782,7 +782,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "49a91922-5957-4399-8fa8-b107b81def8d",
+              "id": "d6787de6-33d4-4535-a54a-9c629f8247ac",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -841,7 +841,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "5d1d50ed-d30f-4956-9983-ea93d110f625",
+              "id": "e994ed22-dacf-4515-aa51-f97c25443169",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -906,7 +906,7 @@
           }
         },
         {
-          "id": "179d3438-922e-4669-a0da-8a99391656a9",
+          "id": "3ad60623-9234-4a35-9461-a393dd63b767",
           "name": "Update a validation result",
           "request": {
             "name": "Update a validation result",
@@ -964,7 +964,7 @@
           },
           "response": [
             {
-              "id": "860bafd1-7924-4004-ac11-e636e09e510d",
+              "id": "dfa36d27-1949-44b8-8ee3-a2d9af7261fd",
               "name": "Successfully updated validation result.",
               "originalRequest": {
                 "url": {
@@ -1031,7 +1031,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "fa6dfc5c-fb29-4135-93c1-38a0a48b7f3c",
+              "id": "1d0d17df-3bd4-4cae-9d64-fd27e9a70ab8",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -1098,7 +1098,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3ed26523-044b-46dc-8f7f-f5cd4c226895",
+              "id": "013332ca-8f97-4b55-bcbd-fe76683fdf05",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -1165,7 +1165,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "298485ab-2e76-4599-8de3-c6e07d2e33b7",
+              "id": "297f8133-eea2-4ec6-adb9-cdf7971288b2",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -1238,7 +1238,7 @@
           }
         },
         {
-          "id": "0e9ac74d-853d-461f-868a-f9a9c45f59d9",
+          "id": "62859a99-50d8-4f30-950e-b437ea0db11a",
           "name": "Delete a validation result",
           "request": {
             "name": "Delete a validation result",
@@ -1283,7 +1283,7 @@
           },
           "response": [
             {
-              "id": "29610eaa-2198-4bc8-b84e-8da0a013a0d7",
+              "id": "24f52673-9897-4265-bee0-4854f3ee2470",
               "name": "Delete successful, no content returned",
               "originalRequest": {
                 "url": {
@@ -1338,7 +1338,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "e921640d-a5be-4b01-b08f-74857d3c88e9",
+              "id": "f5951340-0ba9-4ca5-a705-80718210c273",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -1397,7 +1397,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "f38fc247-7733-4eb9-83e2-438f5bfa2d81",
+              "id": "34702a73-1a43-460c-bea9-2d22bd3fdce0",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -1456,7 +1456,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3b49622e-bae8-4b42-bb0d-816c4e63cbf9",
+              "id": "15ef9632-8b46-4907-b26b-cd8cb4edc4d6",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -1521,7 +1521,7 @@
           }
         },
         {
-          "id": "a1056e91-4cf2-4bac-9975-745da5d1fb57",
+          "id": "b028e6d6-d087-44e2-abd2-e6734d5643cd",
           "name": "Batch create validation results",
           "request": {
             "name": "Batch create validation results",
@@ -1572,7 +1572,7 @@
           },
           "response": [
             {
-              "id": "374ffbe2-2e79-4c45-886b-de0b0e07bc8f",
+              "id": "f3db59c2-840b-428e-80e4-b39065452d9e",
               "name": "Successfully created validation results.",
               "originalRequest": {
                 "url": {
@@ -1632,7 +1632,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "881002be-77c9-490e-ac6f-e2383eda704b",
+              "id": "2eec5004-9783-4346-8505-e8d571626a64",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -1692,7 +1692,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "4fc2f7df-7081-4f58-a37b-7df7fa715597",
+              "id": "805afa8a-cc0b-4beb-b799-925c0645ede1",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -1752,7 +1752,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "cf78cbfc-5398-4567-b2c1-c941b6c117fa",
+              "id": "aa556aab-fdd2-4877-b124-f03c30ce30ff",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -1818,7 +1818,7 @@
           }
         },
         {
-          "id": "5115d654-4a31-4fa5-9135-41e7592066b9",
+          "id": "1b19f289-28f7-4dad-ad2f-1bbf1e5266a3",
           "name": "Batch delete validation results",
           "request": {
             "name": "Batch delete validation results",
@@ -1869,7 +1869,7 @@
           },
           "response": [
             {
-              "id": "93689ad5-6a52-4f25-8ca8-e7558fd3019e",
+              "id": "6b192bf3-99a4-4f72-a62f-47229b632e40",
               "name": "Delete successful, no content returned",
               "originalRequest": {
                 "url": {
@@ -1925,7 +1925,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "a87e67b3-a317-4a11-ba2a-436b7ac93ef0",
+              "id": "51ebf038-aa41-4c7a-b92c-b0dbda6cc0ca",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -1985,7 +1985,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "9009abab-a75b-4113-ae04-b8d23525436f",
+              "id": "0258d76c-d3c5-49cf-8385-487b2019cc6b",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -2045,7 +2045,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "f441e7e0-d2a0-4494-9baf-2c6f624cedfc",
+              "id": "f17d8214-23db-4ffd-bcf7-0fff6962f5fb",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -2141,11 +2141,11 @@
     ]
   },
   "info": {
-    "_postman_id": "90cac025-61e1-4784-ad25-ea493b320ca8",
-    "name": "Affinda Validation Results API",
+    "_postman_id": "80f249e3-7c37-4c43-940d-07800f4e0346",
+    "name": "Affinda Annotations Add x-hidden to endpoints Validation Results API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Affinda Validation Results API — subset of the Affinda v3 Document Processing API.",
+      "content": "Affinda Annotations API — subset of the Affinda v3 Document Processing API.",
       "type": "text/plain"
     }
   }

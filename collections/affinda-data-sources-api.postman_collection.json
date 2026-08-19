@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "aa6fa1ad-a5fc-4b54-bc0a-da13bfbac272",
+      "id": "4d3cc6ef-4c1a-4197-9c35-961e7d43306f",
       "name": "Data Sources",
       "description": {
         "content": "",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "0307e99c-e2a2-42f1-bce5-ee0395a96ae1",
+          "id": "125148ac-7be1-4142-87e3-049c855afbbb",
           "name": "Create a data source",
           "request": {
             "name": "Create a data source",
@@ -59,7 +59,7 @@
           },
           "response": [
             {
-              "id": "404f923e-b8fc-4daf-a511-8a3be506f46c",
+              "id": "d15c9809-5daa-4bd3-b61d-dff1881c3ffc",
               "name": "Successfully created a mapping data source.",
               "originalRequest": {
                 "url": {
@@ -118,7 +118,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "f42edcd8-3e93-448e-8cad-857ae7035db3",
+              "id": "d3918430-eec1-4f0a-9117-bc21f1441410",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -177,7 +177,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "30f40eb9-0c5e-4bbb-9b07-bb6db48b2311",
+              "id": "9cfd5629-a88f-4e9b-9c6d-594794845571",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -236,7 +236,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "22523925-154c-487d-9a29-a6f694d354ac",
+              "id": "8b109779-43e6-4e0b-8ea1-a7af489ca7ce",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -301,7 +301,7 @@
           }
         },
         {
-          "id": "263cc485-13c0-4ec9-b2f1-94e25dc6ff05",
+          "id": "1417d050-f994-46fa-bce6-63e24e399890",
           "name": "List data sources",
           "request": {
             "name": "List data sources",
@@ -375,7 +375,7 @@
           },
           "response": [
             {
-              "id": "57c50a3b-0656-4796-84eb-bc65cf220aa4",
+              "id": "5faa1655-1915-4bf1-965c-588b9834fd9b",
               "name": "Will return matching data sources",
               "originalRequest": {
                 "url": {
@@ -451,7 +451,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "84776593-2390-4382-abe9-0c440561717e",
+              "id": "0827e0d9-b192-4bd3-9f93-4a20dfe39002",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -527,7 +527,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "61f16af8-69f6-4ec8-b694-7de4d8241a95",
+              "id": "991115d4-0775-4c7e-ad49-15946fe59546",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -603,7 +603,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "cd30a7e4-a214-4a8d-b846-851e3cbed854",
+              "id": "28ffa1e3-82e7-478d-b491-0c16301d99cc",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -685,7 +685,7 @@
           }
         },
         {
-          "id": "000a8fb9-a4e1-42f2-a5e2-9b9389bd7143",
+          "id": "b131c0d7-52db-4cc7-9b25-0107ce87b17c",
           "name": "Get specific data source",
           "request": {
             "name": "Get specific data source",
@@ -730,7 +730,7 @@
           },
           "response": [
             {
-              "id": "168867e6-b8ce-45f5-8739-f4efb9d6e4e6",
+              "id": "a0f577cf-3e3a-49c0-ae41-07e22886142a",
               "name": "Successfully retrieved mapping data source value.",
               "originalRequest": {
                 "url": {
@@ -789,7 +789,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "06a01145-e203-4c09-8138-0101ce28bf2a",
+              "id": "48ce20b9-58cf-4a93-931b-e24464b58cba",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -848,7 +848,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "db76ae97-c03c-4ee9-b511-26dd365dd77e",
+              "id": "5d1a1fdf-f11c-438f-b8b8-8da1f1d08ae4",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -907,7 +907,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "5e573c17-82ec-4115-a1d9-c1c980ff5247",
+              "id": "4de99bd0-f68b-4a42-bd51-81a7b1bf8c1d",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -972,7 +972,7 @@
           }
         },
         {
-          "id": "f2688a98-f2f3-4d1b-afe0-7bbfef3621aa",
+          "id": "3ea0e8c3-973f-4e0e-9429-018bdcc4a92a",
           "name": "Delete specific data source",
           "request": {
             "name": "Delete specific data source",
@@ -1017,7 +1017,7 @@
           },
           "response": [
             {
-              "id": "84b8409b-9e9b-4291-8c54-9522ab09c5ed",
+              "id": "c459eaa2-77ba-4612-beb9-6c470d1f7549",
               "name": "Delete successful, no content returned",
               "originalRequest": {
                 "url": {
@@ -1072,7 +1072,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5b2966b2-9391-4ee6-8222-a845055eb84e",
+              "id": "85fa3fb3-a747-4ba2-8ca2-ae371da02f66",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -1131,7 +1131,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "f51d8865-ee1e-4987-a9bc-f3d9625bbca2",
+              "id": "80a6915f-1ddb-4e03-a404-b0fe75e15dea",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -1190,7 +1190,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6c05bd84-fba7-49b2-90e7-1ecf24cebcf4",
+              "id": "da9bbbc7-f57f-439f-9477-14f07a3de694",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -1255,7 +1255,7 @@
           }
         },
         {
-          "id": "e3a5dfac-9642-4376-ba72-36e996be8f62",
+          "id": "62c70bab-9069-4c0c-9b9e-ccb569d02946",
           "name": "List values for a data source",
           "request": {
             "name": "List values for a data source",
@@ -1332,7 +1332,7 @@
           },
           "response": [
             {
-              "id": "5395bdd2-7e35-4a1c-809d-f55991334dd2",
+              "id": "0e2080da-d036-4345-9a14-85de9c932469",
               "name": "Will return matching data source values",
               "originalRequest": {
                 "url": {
@@ -1413,7 +1413,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "714e6e71-ac35-4d0a-b1d7-5cca484dc0d4",
+              "id": "306f52e3-932a-4813-b659-dd0158ca022f",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -1494,7 +1494,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "9083043e-158e-4a0d-a55e-95ef81c01eb4",
+              "id": "517c40c8-7386-4d52-8cb4-10cbcdfbb698",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -1575,7 +1575,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "20f7fd1e-9d53-43f5-a7a8-8676934c7be5",
+              "id": "41cd40c9-afbc-41b8-9d1f-fb3c50895360",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -1662,7 +1662,7 @@
           }
         },
         {
-          "id": "0fb52556-0dc3-4313-b8a9-1051cc2599be",
+          "id": "03484793-fb22-4ad5-a221-44b3cbed2fd6",
           "name": "Replace values for a data source",
           "request": {
             "name": "Replace values for a data source",
@@ -1721,7 +1721,7 @@
           },
           "response": [
             {
-              "id": "a23c1195-1df7-4191-86d5-a63c2b1c583e",
+              "id": "5e25137f-ff2a-4507-ba7b-50795f67feb9",
               "name": "Will return matching data source values",
               "originalRequest": {
                 "url": {
@@ -1789,7 +1789,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6b8e9dba-808f-4918-93fe-7edf39151b80",
+              "id": "f592a2f5-9bfe-4f55-bda8-0bda6a13fb70",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -1857,7 +1857,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e384e7e6-37be-4f9b-9e82-037b7768dc06",
+              "id": "cd74d4fa-d147-4873-b555-a3b2aef6d61f",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -1925,7 +1925,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "fa2b0681-5cee-4d92-bf07-6c5a4115375b",
+              "id": "abc359a8-eb27-4e38-b70b-b003fea97d8f",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -1999,7 +1999,7 @@
           }
         },
         {
-          "id": "6fe15a18-aea5-43d9-8672-10254d436bff",
+          "id": "8c2e4c6a-fcfd-46b8-a242-e430561659e2",
           "name": "Add value for a data source",
           "request": {
             "name": "Add value for a data source",
@@ -2058,7 +2058,7 @@
           },
           "response": [
             {
-              "id": "4d4417f3-0ba9-4757-9f03-78be574b9c43",
+              "id": "feeaeb3f-0f3d-4198-ab9d-0d8b4a6487c6",
               "name": "Will return the created mapping data source value",
               "originalRequest": {
                 "url": {
@@ -2126,7 +2126,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "0acd5eb4-d474-4c8f-a2cf-1678aa679c51",
+              "id": "1ec3ed84-fcdd-4e1e-a97a-e12aa1a061c5",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -2194,7 +2194,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "17bd70bc-263d-44a7-b17a-6f2c24d250cd",
+              "id": "ed93ba23-4c48-4d04-9d4d-27c7ef13f686",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -2262,7 +2262,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "80aa93f4-2ea6-4d80-99b7-94c7a452fa2a",
+              "id": "0bd703a8-7357-4599-bb64-4278484c853f",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -2336,7 +2336,7 @@
           }
         },
         {
-          "id": "9f490c87-2869-4ac6-b88c-832d8b9206e2",
+          "id": "84b78982-0760-466b-bc53-464186b1c2f7",
           "name": "Get specific data source value",
           "request": {
             "name": "Get specific data source value",
@@ -2390,7 +2390,7 @@
           },
           "response": [
             {
-              "id": "a45be38a-d1f7-4bf9-9c36-090369e6e605",
+              "id": "8272e394-9c13-4cf1-86cd-5e2d33eeea6c",
               "name": "Successfully retrieved mapping data source value.",
               "originalRequest": {
                 "url": {
@@ -2458,7 +2458,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "f104b3de-9645-4f4a-a4fe-bbc71959659e",
+              "id": "95bbaff7-b7f7-4cc0-bdc5-300cae0bf2bf",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -2526,7 +2526,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "1e35232b-6379-467d-91e5-74517bd5c275",
+              "id": "4b4c8e43-ec23-49fa-b62c-d50b4141c1c7",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -2594,7 +2594,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "58b7ed74-72c2-4ddf-a669-4fd5e6a895aa",
+              "id": "a163b7ec-2f1c-4670-ae22-e070093e5290",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -2668,7 +2668,7 @@
           }
         },
         {
-          "id": "f96c3f30-5ed8-44fa-8d23-90217af3c73f",
+          "id": "13f60f94-8b17-431f-9184-9d56d5c65546",
           "name": "Update specific data source value",
           "request": {
             "name": "Update specific data source value",
@@ -2735,7 +2735,7 @@
           },
           "response": [
             {
-              "id": "a75facd4-1f2d-46d1-890d-f45b76d3a1ff",
+              "id": "b64ea2ec-83fc-4c86-bb1e-7e2f22817e4c",
               "name": "Successfully updated mapping data source value.",
               "originalRequest": {
                 "url": {
@@ -2811,7 +2811,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "ba97ca7d-2b6d-4602-9d4b-3668bff9b2ab",
+              "id": "f98de8c1-0b96-4a10-be85-0da0c978966d",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -2887,7 +2887,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "1ab4ac3b-efba-48ff-8285-70a4182ce0e8",
+              "id": "dc09b7a9-a5ed-48a8-a0e2-45b3c1322048",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -2963,7 +2963,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "47757fc3-7975-4a1b-9066-634ba1fb2633",
+              "id": "e13758c9-068a-46ab-8a7f-3d3c61c0c44e",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -3045,7 +3045,7 @@
           }
         },
         {
-          "id": "041cc605-4192-4c46-b336-0f3266ce3bbb",
+          "id": "b9633488-7844-47d0-abde-50cb017a883c",
           "name": "Delete specific data source value",
           "request": {
             "name": "Delete specific data source value",
@@ -3099,7 +3099,7 @@
           },
           "response": [
             {
-              "id": "4417e3c1-6999-484e-b0f4-7cc0955a665f",
+              "id": "cd252df1-4665-4e73-a2ca-cb5071250364",
               "name": "Delete successful, no content returned",
               "originalRequest": {
                 "url": {
@@ -3163,7 +3163,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "34782782-7286-4f93-a66d-d8197b948754",
+              "id": "7e9f4d5a-bbb4-4ba7-b87c-5a04e21e8575",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -3231,7 +3231,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "0d6f464f-134d-4218-a64f-f134916f8590",
+              "id": "93127617-a3af-4fdf-8e52-9a5fe0c02496",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -3299,7 +3299,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "ab126888-b2ac-4dd4-91d5-9ad6ec38a139",
+              "id": "965512f8-07df-48bb-bdfd-653e294e0d74",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -3403,11 +3403,11 @@
     ]
   },
   "info": {
-    "_postman_id": "16295e89-8d2a-47df-a3b5-cf1b5553ab57",
-    "name": "Affinda Data Sources API",
+    "_postman_id": "c9b35978-6ac7-4a5f-ab56-07ecbdff66d7",
+    "name": "Affinda Annotations Add x-hidden to endpoints Data Sources API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Affinda Data Sources API — subset of the Affinda v3 Document Processing API.",
+      "content": "Affinda Annotations API — subset of the Affinda v3 Document Processing API.",
       "type": "text/plain"
     }
   }

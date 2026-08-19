@@ -1,0 +1,1584 @@
+{
+  "item": [
+    {
+      "id": "a304bdb0-4aac-49a2-bf50-622eb442c58b",
+      "name": "Document API - Extractor",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee4f353e-73b9-4580-a9b7-6e5f2f31c0dc",
+          "name": "Get list of all extractors",
+          "request": {
+            "name": "Get list of all extractors",
+            "description": {
+              "content": "Returns your custom extractors as well as Affinda's off-the-shelf extractors.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "extractors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "(Required) Filter by organization."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_public_extractors",
+                  "value": "<boolean>",
+                  "description": "Whether to include Affinda's off-the-shelf extractors."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by name."
+                },
+                {
+                  "disabled": false,
+                  "key": "validatable",
+                  "value": "<boolean>",
+                  "description": "Filter by validatable."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b206194-eaec-4157-aef5-6d68278fa505",
+              "name": "All matching extractors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "include_public_extractors",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "validatable",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"identifier\": \"resume\",\n    \"name\": \"string\",\n    \"namePlural\": \"string\",\n    \"validatable\": true,\n    \"baseExtractor\": {\n      \"identifier\": \"resume\",\n      \"name\": \"string\",\n      \"namePlural\": \"string\",\n      \"validatable\": false,\n      \"isCustom\": false,\n      \"createdDt\": \"1990-05-31T04:27:20.751Z\"\n    },\n    \"organization\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"Grove Street King\",\n      \"userRole\": \"admin\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n      \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n      \"isTrial\": true,\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"palette\": {\n            \"mode\": \"light\",\n            \"background\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"text\": {\n              \"primary\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"secondary\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"disabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"divider\": \"string\",\n            \"primary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"success\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"annotation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"error\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"info\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"warning\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"typography\": {\n            \"fontFamily\": \"string\",\n            \"fontSize\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fontWeightRegular\": \"string\",\n            \"fontWeightMedium\": \"string\",\n            \"fontWeightBold\": \"string\"\n          },\n          \"borderRadius\": 3097.1875894152568,\n          \"fontUrl\": \"string\"\n        },\n        \"hideActions\": false,\n        \"hideCollection\": true,\n        \"hideEditPages\": true,\n        \"hideExport\": false,\n        \"hideFilename\": true,\n        \"hideShowRawValues\": false,\n        \"hideReject\": false,\n        \"hideReparse\": true,\n        \"hideRunOcr\": false,\n        \"hideTags\": false,\n        \"hideWarnings\": true,\n        \"restrictDocumentSplitting\": true,\n        \"disableCurrencyFormatting\": false,\n        \"disableEditDocumentMetadata\": true,\n        \"disableManualAnnotationEditing\": true,\n        \"hideDocumentStatus\": false\n      },\n      \"showCustomFieldCreation\": false\n    },\n    \"category\": \"Recruitment\",\n    \"isCustom\": true,\n    \"fieldGroups\": [\n      {\n        \"label\": \"string\",\n        \"fields\": [\n          {\n            \"label\": \"string\",\n            \"dataPoint\": \"string\",\n            \"fieldType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slug\": \"string\",\n            \"dataSource\": \"string\",\n            \"mapping\": \"string\",\n            \"mandatory\": true,\n            \"disabled\": true,\n            \"autoValidationThreshold\": 5832.194863237996,\n            \"showDropdown\": false,\n            \"displayRawText\": true,\n            \"dropNull\": true,\n            \"displayEnumValue\": false,\n            \"fields\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"label\": \"string\",\n            \"dataPoint\": \"string\",\n            \"fieldType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slug\": \"string\",\n            \"dataSource\": \"string\",\n            \"mapping\": \"string\",\n            \"mandatory\": false,\n            \"disabled\": false,\n            \"autoValidationThreshold\": 8214.916194616482,\n            \"showDropdown\": false,\n            \"displayRawText\": false,\n            \"dropNull\": true,\n            \"displayEnumValue\": false,\n            \"fields\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"label\": \"string\",\n        \"fields\": [\n          {\n            \"label\": \"string\",\n            \"dataPoint\": \"string\",\n            \"fieldType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slug\": \"string\",\n            \"dataSource\": \"string\",\n            \"mapping\": \"string\",\n            \"mandatory\": true,\n            \"disabled\": true,\n            \"autoValidationThreshold\": 7158.295181553604,\n            \"showDropdown\": false,\n            \"displayRawText\": true,\n            \"dropNull\": true,\n            \"displayEnumValue\": true,\n            \"fields\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"label\": \"string\",\n            \"dataPoint\": \"string\",\n            \"fieldType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slug\": \"string\",\n            \"dataSource\": \"string\",\n            \"mapping\": \"string\",\n            \"mandatory\": true,\n            \"disabled\": false,\n            \"autoValidationThreshold\": 9216.89965166547,\n            \"showDropdown\": false,\n            \"displayRawText\": true,\n            \"dropNull\": true,\n            \"displayEnumValue\": true,\n            \"fields\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"createdDt\": \"1969-08-27T08:24:31.255Z\",\n    \"lastTrainedDt\": \"2008-07-04T02:24:11.782Z\"\n  },\n  {\n    \"identifier\": \"resume\",\n    \"name\": \"string\",\n    \"namePlural\": \"string\",\n    \"validatable\": false,\n    \"baseExtractor\": {\n      \"identifier\": \"resume\",\n      \"name\": \"string\",\n      \"namePlural\": \"string\",\n      \"validatable\": false,\n      \"isCustom\": false,\n      \"createdDt\": \"1947-09-22T04:56:30.033Z\"\n    },\n    \"organization\": {\n      \"identifier\": \"mEFayXdO\",\n      \"name\": \"Grove Street King\",\n      \"userRole\": \"admin\",\n      \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n      \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n      \"isTrial\": false,\n      \"validationToolConfig\": {\n        \"theme\": {\n          \"palette\": {\n            \"mode\": \"light\",\n            \"background\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"text\": {\n              \"primary\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"secondary\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"disabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"divider\": \"string\",\n            \"primary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"success\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"annotation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"error\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"info\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"warning\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"typography\": {\n            \"fontFamily\": \"string\",\n            \"fontSize\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fontWeightRegular\": \"string\",\n            \"fontWeightMedium\": \"string\",\n            \"fontWeightBold\": \"string\"\n          },\n          \"borderRadius\": 3862.734291456592,\n          \"fontUrl\": \"string\"\n        },\n        \"hideActions\": false,\n        \"hideCollection\": false,\n        \"hideEditPages\": true,\n        \"hideExport\": false,\n        \"hideFilename\": true,\n        \"hideShowRawValues\": true,\n        \"hideReject\": false,\n        \"hideReparse\": false,\n        \"hideRunOcr\": true,\n        \"hideTags\": false,\n        \"hideWarnings\": true,\n        \"restrictDocumentSplitting\": false,\n        \"disableCurrencyFormatting\": false,\n        \"disableEditDocumentMetadata\": true,\n        \"disableManualAnnotationEditing\": false,\n        \"hideDocumentStatus\": false\n      },\n      \"showCustomFieldCreation\": false\n    },\n    \"category\": \"Recruitment\",\n    \"isCustom\": false,\n    \"fieldGroups\": [\n      {\n        \"label\": \"string\",\n        \"fields\": [\n          {\n            \"label\": \"string\",\n            \"dataPoint\": \"string\",\n            \"fieldType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slug\": \"string\",\n            \"dataSource\": \"string\",\n            \"mapping\": \"string\",\n            \"mandatory\": false,\n            \"disabled\": true,\n            \"autoValidationThreshold\": 2433.7223870632574,\n            \"showDropdown\": true,\n            \"displayRawText\": false,\n            \"dropNull\": false,\n            \"displayEnumValue\": true,\n            \"fields\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"label\": \"string\",\n            \"dataPoint\": \"string\",\n            \"fieldType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slug\": \"string\",\n            \"dataSource\": \"string\",\n            \"mapping\": \"string\",\n            \"mandatory\": false,\n            \"disabled\": false,\n            \"autoValidationThreshold\": 9418.60883316217,\n            \"showDropdown\": true,\n            \"displayRawText\": false,\n            \"dropNull\": false,\n            \"displayEnumValue\": true,\n            \"fields\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"label\": \"string\",\n        \"fields\": [\n          {\n            \"label\": \"string\",\n            \"dataPoint\": \"string\",\n            \"fieldType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slug\": \"string\",\n            \"dataSource\": \"string\",\n            \"mapping\": \"string\",\n            \"mandatory\": false,\n            \"disabled\": true,\n            \"autoValidationThreshold\": 4559.9038320661375,\n            \"showDropdown\": false,\n            \"displayRawText\": false,\n            \"dropNull\": true,\n            \"displayEnumValue\": false,\n            \"fields\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"label\": \"string\",\n            \"dataPoint\": \"string\",\n            \"fieldType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slug\": \"string\",\n            \"dataSource\": \"string\",\n            \"mapping\": \"string\",\n            \"mandatory\": true,\n            \"disabled\": true,\n            \"autoValidationThreshold\": 2489.0885890947266,\n            \"showDropdown\": true,\n            \"displayRawText\": false,\n            \"dropNull\": false,\n            \"displayEnumValue\": false,\n            \"fields\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"createdDt\": \"2026-08-02T03:24:07.832Z\",\n    \"lastTrainedDt\": \"2026-04-05T12:43:19.185Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a20bd34-4d2c-4638-9e55-091d81d0f21e",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "include_public_extractors",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "validatable",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09083efa-d740-4146-a02e-88c09ff6b11e",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "include_public_extractors",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "validatable",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95299220-22ab-4619-bb04-4588caaf0566",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "mEFayXdO"
+                    },
+                    {
+                      "key": "include_public_extractors",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "validatable",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f57939d-c5ab-4a84-8f36-c833274c1c93",
+          "name": "Create an extractor",
+          "request": {
+            "name": "Create an extractor",
+            "description": {
+              "content": "Create a custom extractor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "extractors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80abb856-370d-4992-ae7f-e799b607ccee",
+              "name": "Successfully created an extractor.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"mEFayXdO\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"resume\",\n  \"category\": \"Recruitment\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identifier\": \"resume\",\n  \"name\": \"string\",\n  \"namePlural\": \"string\",\n  \"validatable\": false,\n  \"baseExtractor\": {\n    \"identifier\": \"resume\",\n    \"name\": \"<string>\",\n    \"namePlural\": \"<string>\",\n    \"validatable\": \"<boolean>\",\n    \"isCustom\": true,\n    \"createdDt\": \"2005-10-14T23:01:55.482Z\"\n  },\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": false,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"string\",\n          \"text\": {\n            \"primary\": \"string\",\n            \"secondary\": \"string\",\n            \"disabled\": \"string\"\n          },\n          \"divider\": \"string\",\n          \"primary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"secondary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"success\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"annotation\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"error\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"info\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"warning\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"string\",\n          \"fontSize\": \"string\",\n          \"fontWeightRegular\": \"string\",\n          \"fontWeightMedium\": \"string\",\n          \"fontWeightBold\": \"string\"\n        },\n        \"borderRadius\": 5033.746035056434,\n        \"fontUrl\": \"string\"\n      },\n      \"hideActions\": false,\n      \"hideCollection\": true,\n      \"hideEditPages\": true,\n      \"hideExport\": false,\n      \"hideFilename\": true,\n      \"hideShowRawValues\": false,\n      \"hideReject\": false,\n      \"hideReparse\": true,\n      \"hideRunOcr\": false,\n      \"hideTags\": false,\n      \"hideWarnings\": false,\n      \"restrictDocumentSplitting\": false,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": true,\n      \"hideDocumentStatus\": false\n    },\n    \"showCustomFieldCreation\": false\n  },\n  \"category\": \"Recruitment\",\n  \"isCustom\": false,\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"createdDt\": \"1949-03-20T23:46:08.043Z\",\n  \"lastTrainedDt\": \"2022-04-13T13:24:43.098Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad2e6d91-cbd2-4199-8e5f-464f1d479028",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"mEFayXdO\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"resume\",\n  \"category\": \"Recruitment\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "366da1bc-c23a-4cdc-a7ec-b97909c0aa34",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"mEFayXdO\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"resume\",\n  \"category\": \"Recruitment\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1f3aa64-d1f2-494a-9371-814326d9795b",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"organization\": \"mEFayXdO\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"resume\",\n  \"category\": \"Recruitment\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd5f9d83-d3ef-467b-93dc-9d30e495ace1",
+          "name": "Get specific extractor",
+          "request": {
+            "name": "Get specific extractor",
+            "description": {
+              "content": "Return a specific extractor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "extractors",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Extractor's identifier"
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7552f7ff-59ca-4425-bd60-c151be991d6a",
+              "name": "Successfully retrieved extractor.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identifier\": \"resume\",\n  \"name\": \"string\",\n  \"namePlural\": \"string\",\n  \"validatable\": false,\n  \"baseExtractor\": {\n    \"identifier\": \"resume\",\n    \"name\": \"<string>\",\n    \"namePlural\": \"<string>\",\n    \"validatable\": \"<boolean>\",\n    \"isCustom\": true,\n    \"createdDt\": \"2005-10-14T23:01:55.482Z\"\n  },\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": false,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"string\",\n          \"text\": {\n            \"primary\": \"string\",\n            \"secondary\": \"string\",\n            \"disabled\": \"string\"\n          },\n          \"divider\": \"string\",\n          \"primary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"secondary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"success\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"annotation\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"error\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"info\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"warning\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"string\",\n          \"fontSize\": \"string\",\n          \"fontWeightRegular\": \"string\",\n          \"fontWeightMedium\": \"string\",\n          \"fontWeightBold\": \"string\"\n        },\n        \"borderRadius\": 5033.746035056434,\n        \"fontUrl\": \"string\"\n      },\n      \"hideActions\": false,\n      \"hideCollection\": true,\n      \"hideEditPages\": true,\n      \"hideExport\": false,\n      \"hideFilename\": true,\n      \"hideShowRawValues\": false,\n      \"hideReject\": false,\n      \"hideReparse\": true,\n      \"hideRunOcr\": false,\n      \"hideTags\": false,\n      \"hideWarnings\": false,\n      \"restrictDocumentSplitting\": false,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": true,\n      \"hideDocumentStatus\": false\n    },\n    \"showCustomFieldCreation\": false\n  },\n  \"category\": \"Recruitment\",\n  \"isCustom\": false,\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"createdDt\": \"1949-03-20T23:46:08.043Z\",\n  \"lastTrainedDt\": \"2022-04-13T13:24:43.098Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "178bd788-dbef-4efa-9d25-5ebb6a30b95b",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a175896-1688-4937-8b51-dc3ca3a04b20",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "895467f4-116c-4b85-a21f-d4238acf82d4",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d860e407-4ec4-4693-82fa-f1c3d7583c2a",
+          "name": "Update an extractor",
+          "request": {
+            "name": "Update an extractor",
+            "description": {
+              "content": "Update data of an extractor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "extractors",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Extractor's identifier"
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"<string>\",\n  \"category\": \"<string>\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4fecf0ea-97df-4eac-9537-a3e37f19a6b4",
+              "name": "Successfully updated extractor data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"resume\",\n  \"category\": \"Recruitment\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identifier\": \"resume\",\n  \"name\": \"string\",\n  \"namePlural\": \"string\",\n  \"validatable\": false,\n  \"baseExtractor\": {\n    \"identifier\": \"resume\",\n    \"name\": \"<string>\",\n    \"namePlural\": \"<string>\",\n    \"validatable\": \"<boolean>\",\n    \"isCustom\": true,\n    \"createdDt\": \"2005-10-14T23:01:55.482Z\"\n  },\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": false,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"dark\",\n          \"background\": \"string\",\n          \"text\": {\n            \"primary\": \"string\",\n            \"secondary\": \"string\",\n            \"disabled\": \"string\"\n          },\n          \"divider\": \"string\",\n          \"primary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"secondary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"success\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"annotation\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"error\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"info\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"warning\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"string\",\n          \"fontSize\": \"string\",\n          \"fontWeightRegular\": \"string\",\n          \"fontWeightMedium\": \"string\",\n          \"fontWeightBold\": \"string\"\n        },\n        \"borderRadius\": 5033.746035056434,\n        \"fontUrl\": \"string\"\n      },\n      \"hideActions\": false,\n      \"hideCollection\": true,\n      \"hideEditPages\": true,\n      \"hideExport\": false,\n      \"hideFilename\": true,\n      \"hideShowRawValues\": false,\n      \"hideReject\": false,\n      \"hideReparse\": true,\n      \"hideRunOcr\": false,\n      \"hideTags\": false,\n      \"hideWarnings\": false,\n      \"restrictDocumentSplitting\": false,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": true,\n      \"hideDocumentStatus\": false\n    },\n    \"showCustomFieldCreation\": false\n  },\n  \"category\": \"Recruitment\",\n  \"isCustom\": false,\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"createdDt\": \"1949-03-20T23:46:08.043Z\",\n  \"lastTrainedDt\": \"2022-04-13T13:24:43.098Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7129732a-b1d6-4324-8faf-3d93775fc74c",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"resume\",\n  \"category\": \"Recruitment\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cffe8dad-3da7-4138-af0c-efc9f5a38377",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"resume\",\n  \"category\": \"Recruitment\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b85046dc-b036-43a3-a853-6a464838d5fc",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"namePlural\": \"<string>\",\n  \"baseExtractor\": \"resume\",\n  \"category\": \"Recruitment\",\n  \"validatable\": \"<boolean>\",\n  \"fieldGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        },\n        {\n          \"label\": \"<string>\",\n          \"dataPoint\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"dataSource\": \"<string>\",\n          \"mapping\": \"<string>\",\n          \"mandatory\": \"<boolean>\",\n          \"disabled\": \"<boolean>\",\n          \"autoValidationThreshold\": \"<number>\",\n          \"showDropdown\": \"<boolean>\",\n          \"displayRawText\": \"<boolean>\",\n          \"dropNull\": \"<boolean>\",\n          \"displayEnumValue\": \"<boolean>\",\n          \"fields\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/FieldDeprecated detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7960914c-87ee-4ab2-b5f8-58fe432bc6bf",
+          "name": "Delete an extractor",
+          "request": {
+            "name": "Delete an extractor",
+            "description": {
+              "content": "Deletes the specified extractor from the database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "extractors",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Extractor's identifier"
+                },
+                {
+                  "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b314548-2433-4b8a-baf4-b5cfb00faf80",
+              "name": "Delete successful, no content returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f9276d08-9ae7-418c-acaf-6347c4711cb8",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62385186-a5af-4b5d-a4ba-2b8a59e03437",
+              "name": "Authorisation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98497572-0253-476c-9f5f-a4b7eec28c54",
+              "name": "UnexpectedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "extractors",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Extractor's identifier"
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{region}}.affinda.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f56c0bc9-7979-4300-8133-0b7bbca0163c",
+    "name": "Affinda Annotations Add x-hidden to endpoints Document API - Extractor API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Affinda Annotations API — subset of the Affinda v3 Document Processing API.",
+      "type": "text/plain"
+    }
+  }
+}

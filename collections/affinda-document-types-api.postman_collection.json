@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "18f5bbe0-908c-40c4-a319-7f712f319bad",
+      "id": "3a82160e-8568-44d1-963b-aff08096d2f2",
       "name": "Document Types",
       "description": {
         "content": "",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "42347ffc-4e5b-42c9-b0c6-b780551b8475",
+          "id": "0000dc94-f791-453b-ac2b-28ed6a3a6533",
           "name": "List document types",
           "request": {
             "name": "List document types",
@@ -59,7 +59,7 @@
           },
           "response": [
             {
-              "id": "a73370f0-9d79-4761-ab10-27d356105bda",
+              "id": "fdd01afb-26a2-4b13-989c-4e6da931d131",
               "name": "Successful operation",
               "originalRequest": {
                 "url": {
@@ -119,7 +119,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "34a06ebd-37c6-438c-a767-ba2a8de107a3",
+              "id": "72b6797e-c589-4155-aee2-be31355df81f",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -179,7 +179,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "c8007271-4c3e-4769-b71b-ef71a5e5b7e9",
+              "id": "289aba06-e9e2-4750-a95f-4bc6e07ee516",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -239,7 +239,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "da5812f8-ed6b-4cb0-95d9-13b1c82e01c0",
+              "id": "0d59ca78-54e3-4a4a-804c-0ba3848f889d",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -305,7 +305,7 @@
           }
         },
         {
-          "id": "b4f44da1-d06b-43b5-98f6-ff6112578349",
+          "id": "8cbd40f6-dcc2-446f-a30a-3e5c076b263b",
           "name": "Create a document type",
           "request": {
             "name": "Create a document type",
@@ -355,7 +355,7 @@
           },
           "response": [
             {
-              "id": "7638e3dc-cca4-4f5a-967f-42bf07523837",
+              "id": "96472183-de21-40f7-80f1-6b823f6ff5fb",
               "name": "Document type created successfully",
               "originalRequest": {
                 "url": {
@@ -414,7 +414,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "cf28ce9b-25ca-4f3b-ab6d-8d8721ed8220",
+              "id": "aa351093-dbed-4c83-80ad-fcb51cab0c84",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -473,7 +473,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "183ce46b-e651-4490-9338-535ff1f5d320",
+              "id": "4aea6e11-2749-4608-a84e-0f648d259e97",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -532,7 +532,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "2040529d-81be-4910-9bcd-980acdf2ed78",
+              "id": "6c478741-0d62-492e-b38f-d6da280be42d",
               "name": "Forbidden - User doesn't have permission to create document types in this organization",
               "originalRequest": {
                 "url": {
@@ -587,7 +587,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "82fabbe4-00a6-4781-a9b6-1ee0b3380194",
+              "id": "9bf15d07-7c03-4fb2-9404-35f80dbe2233",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -652,7 +652,7 @@
           }
         },
         {
-          "id": "380f0239-f02a-4893-b4cd-57e237218765",
+          "id": "cb75dad7-8e54-4a15-addb-12ad82de5b6c",
           "name": "Get a document type",
           "request": {
             "name": "Get a document type",
@@ -697,7 +697,7 @@
           },
           "response": [
             {
-              "id": "f8c43813-334a-4e06-b6de-55a6231c627c",
+              "id": "d4a438d7-1a8b-489d-af46-4d7c171e3253",
               "name": "Successful operation",
               "originalRequest": {
                 "url": {
@@ -756,7 +756,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "0aa2bca8-5c13-4af3-b0cb-a7324d416bbd",
+              "id": "61d40404-99a8-4e45-8bf8-f4b60864bbaa",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -815,7 +815,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "d3d512c9-b8f5-40bb-96a6-271ae780d3a2",
+              "id": "4a66191a-1d04-46db-ac81-ce55ceeb3e3c",
               "name": "Document type not found",
               "originalRequest": {
                 "url": {
@@ -870,7 +870,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "9931ee10-bc9e-4e3a-9427-a9fa4e032b2a",
+              "id": "323f7ff9-5697-4f57-87d0-49e1fe4b8332",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -935,7 +935,7 @@
           }
         },
         {
-          "id": "fe3620eb-9c8a-46bf-92ae-6ab5aac34810",
+          "id": "721ad6a3-d95c-4b93-be32-89f5b34526d5",
           "name": "Update a document type",
           "request": {
             "name": "Update a document type",
@@ -993,7 +993,7 @@
           },
           "response": [
             {
-              "id": "05b4e650-ab70-41e2-80fe-9dc24a8e7aed",
+              "id": "0f802e3d-275d-4511-9d67-5057ca9c901e",
               "name": "Document type updated successfully",
               "originalRequest": {
                 "url": {
@@ -1060,7 +1060,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "c8393a89-b7e1-41e2-bf99-b4f398a081ed",
+              "id": "1b817a2b-8c3d-42e3-bef9-09040aa17601",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -1127,7 +1127,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "944e47cb-0186-4537-9e92-d12f76bd043d",
+              "id": "b93609f5-d2b6-4bbc-a21a-7c9ae7332b6d",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -1194,7 +1194,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "53a826ef-bc90-4a9a-bd01-c0617092fac8",
+              "id": "2e6f7a2f-f50d-410f-81bb-2abf8fd67031",
               "name": "Forbidden - User doesn't have permission to update this document type",
               "originalRequest": {
                 "url": {
@@ -1257,7 +1257,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "209631c2-ee7b-4f65-8f8e-0a075cf07cd2",
+              "id": "795193ef-0ad9-4160-b7bf-3668285fb9f4",
               "name": "Document type not found",
               "originalRequest": {
                 "url": {
@@ -1320,7 +1320,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "8ce3083f-b223-45d7-80f9-036485207e0e",
+              "id": "23b92869-fffe-4058-b14f-962d093363b6",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -1393,7 +1393,7 @@
           }
         },
         {
-          "id": "f757fbf8-b8ec-4492-82b7-ecce3dbb9526",
+          "id": "5d22ce11-55bc-46d5-a36a-db061a7ed82b",
           "name": "Delete a document type",
           "request": {
             "name": "Delete a document type",
@@ -1438,7 +1438,7 @@
           },
           "response": [
             {
-              "id": "6724cc0d-5f8d-4568-8bbc-2ccd9d9039f6",
+              "id": "90f0eb3e-bc75-4222-a463-4022d0b7de45",
               "name": "Delete successful, no content returned",
               "originalRequest": {
                 "url": {
@@ -1493,7 +1493,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "7bcabd18-b363-4be9-a202-f93ad8d4ebb0",
+              "id": "dce6c01b-c781-4d0a-bde5-45dd51ee68da",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -1552,7 +1552,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "40008d51-3cc4-4549-a484-aaab62c25706",
+              "id": "428a5c6a-71fd-4fca-9a4f-962deeb8e1e2",
               "name": "Forbidden - User doesn't have permission to delete this document type",
               "originalRequest": {
                 "url": {
@@ -1607,7 +1607,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "7e9e3eb9-5060-4831-8ed7-099684fe6028",
+              "id": "918d8b6e-9268-466c-af66-d4f8048889c7",
               "name": "Document type not found",
               "originalRequest": {
                 "url": {
@@ -1662,7 +1662,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "e8d02deb-a14d-4cc4-b6a9-be68b36a98ec",
+              "id": "db4efbf3-17bb-41cb-85c4-a203757a49a1",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -1727,7 +1727,7 @@
           }
         },
         {
-          "id": "b0053f7b-6a4f-4fc4-a683-121ad3a04c9a",
+          "id": "966547b9-ebaf-42b2-a308-fce8bd63a15c",
           "name": "Generate JSON schema from a document type",
           "request": {
             "name": "Generate JSON schema from a document type",
@@ -1780,7 +1780,7 @@
           },
           "response": [
             {
-              "id": "c34e3fc4-f1b7-4e61-9a4e-25f60e576f93",
+              "id": "e1ee95a8-065e-4483-8d2f-8b0f5406be21",
               "name": "JSON schema for the document type.",
               "originalRequest": {
                 "url": {
@@ -1840,12 +1840,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"key_0\": true\n}",
+              "body": "{\n  \"key_0\": false,\n  \"key_1\": 8150.79264581069,\n  \"key_2\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "a9a50dfc-c0a4-441a-9b17-74d669b4e253",
+              "id": "5549774f-c5a4-47a3-9d4c-4ccc38742c6a",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -1910,7 +1910,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "2bb856aa-55f3-48d3-8734-a315c6de21a2",
+              "id": "31b6bbb5-a3b9-4c08-aaef-8d136b90ab02",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -1975,7 +1975,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "2f317451-f991-40d2-8d72-09586c70abb6",
+              "id": "4f16a87f-7db7-44b6-be49-1db154d29ec3",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -2046,7 +2046,7 @@
           }
         },
         {
-          "id": "d841d7a5-f3cc-40d6-9d69-7850b6ad9c82",
+          "id": "97be05f0-d5c1-4ce7-81f6-d5784e235247",
           "name": "Generate Pydantic models from a document type",
           "request": {
             "name": "Generate Pydantic models from a document type",
@@ -2099,7 +2099,7 @@
           },
           "response": [
             {
-              "id": "fa742e6f-f77a-479e-872f-434ab0f8d3cb",
+              "id": "c5e4e2c4-338a-45e1-ae95-a6ed766a9773",
               "name": "Pydantic models for the document type.",
               "originalRequest": {
                 "url": {
@@ -2164,7 +2164,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "89e5ea81-7d95-41c4-ab40-3883b440868e",
+              "id": "91e11f9b-d158-4826-aaf0-64556095071f",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
@@ -2229,7 +2229,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "31a87e46-f760-45ee-976e-2350abb99b5d",
+              "id": "d455f2c4-b5a8-42a9-8e0c-e9f6f0809564",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
@@ -2294,7 +2294,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "a9134ec7-f7cd-4f4d-a581-8be099346feb",
+              "id": "fb2711c2-6b8f-4a3d-8dd7-5a92fb8efb4f",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
@@ -2395,11 +2395,11 @@
     ]
   },
   "info": {
-    "_postman_id": "938fe1cb-7f02-4e8e-8985-8751df399d63",
-    "name": "Affinda Document Types API",
+    "_postman_id": "10dfa16d-694c-4f0e-a47a-895a8347fb53",
+    "name": "Affinda Annotations Add x-hidden to endpoints Document Types API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Affinda Document Types API — subset of the Affinda v3 Document Processing API.",
+      "content": "Affinda Annotations API — subset of the Affinda v3 Document Processing API.",
       "type": "text/plain"
     }
   }

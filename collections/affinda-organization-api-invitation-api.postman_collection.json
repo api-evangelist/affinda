@@ -1,37 +1,31 @@
 {
   "item": [
     {
-      "id": "e3d59432-6d01-43c4-8d9f-b2224ac5ede2",
-      "name": "Tags",
+      "id": "7893aace-e60f-4910-8cd0-27b3b016ac43",
+      "name": "Organization API - Invitation",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "8c493aaa-fa03-44cf-a9da-d703044c8de4",
-          "name": "Get list of all tags",
+          "id": "6e67071a-cf05-4f07-9b9f-8368a373b883",
+          "name": "Get list of all invitations",
           "request": {
-            "name": "Get list of all tags",
+            "name": "Get list of all invitations",
             "description": {
-              "content": "Returns your tags.",
+              "content": "Get list of all invitations you created or sent to you.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "v3",
-                "tags"
+                "invitations"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
               "query": [
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "<integer>",
-                  "description": "The numbers of results to return."
-                },
                 {
                   "disabled": false,
                   "key": "offset",
@@ -40,15 +34,27 @@
                 },
                 {
                   "disabled": false,
-                  "key": "workspace",
-                  "value": "<string>",
-                  "description": "Filter by workspace."
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The numbers of results to return."
                 },
                 {
                   "disabled": false,
-                  "key": "name",
+                  "key": "organization",
                   "value": "<string>",
-                  "description": "Filter by name."
+                  "description": "Filter by organization."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by status."
+                },
+                {
+                  "disabled": false,
+                  "key": "role",
+                  "value": "<string>",
+                  "description": "Filter by role."
                 }
               ],
               "variable": [
@@ -71,33 +77,37 @@
           },
           "response": [
             {
-              "id": "91f19203-d8dc-41c3-99c1-948b860f8439",
-              "name": "All matching tags.",
+              "id": "01b62818-aa60-44d5-a36f-0bf6b1c3af41",
+              "name": "All invitations you created or sent to you.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags"
+                    "invitations"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [
                     {
-                      "key": "limit",
-                      "value": "20"
-                    },
-                    {
                       "key": "offset",
                       "value": "0"
                     },
                     {
-                      "key": "workspace",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "organization",
                       "value": "mEFayXdO"
                     },
                     {
-                      "key": "name",
+                      "key": "status",
                       "value": "<string>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "admin"
                     }
                   ],
                   "variable": [
@@ -134,38 +144,42 @@
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"string\",\n    \"workspace\": \"mEFayXdO\",\n    \"documentCount\": 259\n  },\n  {\n    \"id\": 1,\n    \"name\": \"string\",\n    \"workspace\": \"mEFayXdO\",\n    \"documentCount\": 7017\n  }\n]",
+              "body": "{\n  \"count\": 10,\n  \"results\": [\n    {\n      \"identifier\": \"mEFayXdO\",\n      \"organization\": {\n        \"identifier\": \"mEFayXdO\",\n        \"name\": \"Grove Street King\",\n        \"userRole\": \"admin\",\n        \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n        \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n        \"isTrial\": false,\n        \"validationToolConfig\": {\n          \"theme\": {\n            \"palette\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"typography\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"borderRadius\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fontUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"hideActions\": true,\n          \"hideCollection\": true,\n          \"hideEditPages\": true,\n          \"hideExport\": true,\n          \"hideFilename\": false,\n          \"hideShowRawValues\": true,\n          \"hideReject\": true,\n          \"hideReparse\": false,\n          \"hideRunOcr\": true,\n          \"hideTags\": true,\n          \"hideWarnings\": true,\n          \"restrictDocumentSplitting\": false,\n          \"disableCurrencyFormatting\": false,\n          \"disableEditDocumentMetadata\": true,\n          \"disableManualAnnotationEditing\": true,\n          \"hideDocumentStatus\": false\n        },\n        \"showCustomFieldCreation\": false\n      },\n      \"email\": \"carljohnson@grove.street\",\n      \"role\": \"admin\",\n      \"status\": \"<string>\",\n      \"expiryDate\": \"1987-05-03\",\n      \"invitedBy\": {\n        \"id\": 1,\n        \"name\": \"Carl Johnson\",\n        \"username\": \"carljohnson\",\n        \"email\": \"carljohnson@grove.street\",\n        \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n      },\n      \"respondedBy\": {\n        \"id\": 1,\n        \"name\": \"Carl Johnson\",\n        \"username\": \"carljohnson\",\n        \"email\": \"carljohnson@grove.street\",\n        \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n      },\n      \"createdDt\": \"1985-08-02T18:44:20.145Z\"\n    },\n    {\n      \"identifier\": \"mEFayXdO\",\n      \"organization\": {\n        \"identifier\": \"mEFayXdO\",\n        \"name\": \"Grove Street King\",\n        \"userRole\": \"admin\",\n        \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n        \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n        \"isTrial\": false,\n        \"validationToolConfig\": {\n          \"theme\": {\n            \"palette\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"typography\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"borderRadius\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fontUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"hideActions\": false,\n          \"hideCollection\": false,\n          \"hideEditPages\": false,\n          \"hideExport\": false,\n          \"hideFilename\": true,\n          \"hideShowRawValues\": true,\n          \"hideReject\": true,\n          \"hideReparse\": false,\n          \"hideRunOcr\": true,\n          \"hideTags\": false,\n          \"hideWarnings\": false,\n          \"restrictDocumentSplitting\": false,\n          \"disableCurrencyFormatting\": false,\n          \"disableEditDocumentMetadata\": false,\n          \"disableManualAnnotationEditing\": false,\n          \"hideDocumentStatus\": false\n        },\n        \"showCustomFieldCreation\": false\n      },\n      \"email\": \"carljohnson@grove.street\",\n      \"role\": \"admin\",\n      \"status\": \"<string>\",\n      \"expiryDate\": \"2025-09-11\",\n      \"invitedBy\": {\n        \"id\": 1,\n        \"name\": \"Carl Johnson\",\n        \"username\": \"carljohnson\",\n        \"email\": \"carljohnson@grove.street\",\n        \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n      },\n      \"respondedBy\": {\n        \"id\": 1,\n        \"name\": \"Carl Johnson\",\n        \"username\": \"carljohnson\",\n        \"email\": \"carljohnson@grove.street\",\n        \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n      },\n      \"createdDt\": \"1947-05-14T20:28:02.831Z\"\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "69f6a911-3dad-495e-a5ae-7c5603910b37",
+              "id": "56dee9b6-e819-4035-a08e-e4b9f8373e9c",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags"
+                    "invitations"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [
                     {
-                      "key": "limit",
-                      "value": "20"
-                    },
-                    {
                       "key": "offset",
                       "value": "0"
                     },
                     {
-                      "key": "workspace",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "organization",
                       "value": "mEFayXdO"
                     },
                     {
-                      "key": "name",
+                      "key": "status",
                       "value": "<string>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "admin"
                     }
                   ],
                   "variable": [
@@ -207,33 +221,37 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "26c19f78-4e81-45b1-b09b-dbdb7d3677f5",
+              "id": "a9a9802f-a680-4d61-b50e-273b9722e6e9",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags"
+                    "invitations"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [
                     {
-                      "key": "limit",
-                      "value": "20"
-                    },
-                    {
                       "key": "offset",
                       "value": "0"
                     },
                     {
-                      "key": "workspace",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "organization",
                       "value": "mEFayXdO"
                     },
                     {
-                      "key": "name",
+                      "key": "status",
                       "value": "<string>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "admin"
                     }
                   ],
                   "variable": [
@@ -275,33 +293,37 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e4191d04-1b71-48b1-8f1a-b03341d01c31",
+              "id": "1ee7e3eb-a906-4db3-b5b1-00153a9c4983",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags"
+                    "invitations"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [
                     {
-                      "key": "limit",
-                      "value": "20"
-                    },
-                    {
                       "key": "offset",
                       "value": "0"
                     },
                     {
-                      "key": "workspace",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "organization",
                       "value": "mEFayXdO"
                     },
                     {
-                      "key": "name",
+                      "key": "status",
                       "value": "<string>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "admin"
                     }
                   ],
                   "variable": [
@@ -349,18 +371,18 @@
           }
         },
         {
-          "id": "16109ffc-71c1-4b1f-af29-f1819d4ee029",
-          "name": "Create a tag",
+          "id": "838b8231-99a0-4655-8f91-60d5733b2b21",
+          "name": "Create a new invitation",
           "request": {
-            "name": "Create a tag",
+            "name": "Create a new invitation",
             "description": {
-              "content": "Create a tag",
+              "content": "Create a new invitation.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "v3",
-                "tags"
+                "invitations"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -389,7 +411,7 @@
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"workspace\": \"<string>\"\n}",
+              "raw": "{\n  \"organization\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -399,13 +421,13 @@
           },
           "response": [
             {
-              "id": "d901eba6-456f-4b85-a69e-a4d45e315c82",
-              "name": "Successfully created a tag.",
+              "id": "0bd5e0d6-8506-43dc-b1a1-79bef76f2b6f",
+              "name": "Returns the created invitation",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags"
+                    "invitations"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -437,7 +459,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspace\": \"mEFayXdO\"\n}",
+                  "raw": "{\n  \"organization\": \"mEFayXdO\",\n  \"email\": \"carljohnson@grove.street\",\n  \"role\": \"admin\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -453,18 +475,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": 1,\n  \"name\": \"string\",\n  \"workspace\": \"mEFayXdO\",\n  \"documentCount\": 2536\n}",
+              "body": "{\n  \"identifier\": \"mEFayXdO\",\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": true,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"string\",\n          \"text\": {\n            \"primary\": \"string\",\n            \"secondary\": \"string\",\n            \"disabled\": \"string\"\n          },\n          \"divider\": \"string\",\n          \"primary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"secondary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"success\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"annotation\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"error\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"info\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"warning\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"string\",\n          \"fontSize\": \"string\",\n          \"fontWeightRegular\": \"string\",\n          \"fontWeightMedium\": \"string\",\n          \"fontWeightBold\": \"string\"\n        },\n        \"borderRadius\": 6406.353558107195,\n        \"fontUrl\": \"string\"\n      },\n      \"hideActions\": false,\n      \"hideCollection\": false,\n      \"hideEditPages\": true,\n      \"hideExport\": true,\n      \"hideFilename\": false,\n      \"hideShowRawValues\": true,\n      \"hideReject\": true,\n      \"hideReparse\": true,\n      \"hideRunOcr\": false,\n      \"hideTags\": true,\n      \"hideWarnings\": false,\n      \"restrictDocumentSplitting\": true,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": false,\n      \"hideDocumentStatus\": true\n    },\n    \"showCustomFieldCreation\": false\n  },\n  \"email\": \"carljohnson@grove.street\",\n  \"role\": \"admin\",\n  \"status\": \"<string>\",\n  \"expiryDate\": \"1956-12-15\",\n  \"invitedBy\": {\n    \"id\": 1,\n    \"name\": \"Carl Johnson\",\n    \"username\": \"carljohnson\",\n    \"email\": \"carljohnson@grove.street\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n  },\n  \"respondedBy\": {\n    \"id\": 1,\n    \"name\": \"Carl Johnson\",\n    \"username\": \"carljohnson\",\n    \"email\": \"carljohnson@grove.street\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n  },\n  \"createdDt\": \"2002-08-02T19:00:04.205Z\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "2ed5826a-8c62-40a8-b655-b4ea37a02803",
+              "id": "7351bb9e-a46a-45f7-9038-480521c1649f",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags"
+                    "invitations"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -496,7 +518,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspace\": \"mEFayXdO\"\n}",
+                  "raw": "{\n  \"organization\": \"mEFayXdO\",\n  \"email\": \"carljohnson@grove.street\",\n  \"role\": \"admin\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -517,13 +539,13 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "eaa0803c-3cd1-4372-bc21-9ffdef38fec6",
+              "id": "6fc964b8-e437-40cf-9a6c-bb9632423ade",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags"
+                    "invitations"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -555,7 +577,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspace\": \"mEFayXdO\"\n}",
+                  "raw": "{\n  \"organization\": \"mEFayXdO\",\n  \"email\": \"carljohnson@grove.street\",\n  \"role\": \"admin\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -576,13 +598,13 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e57ab8d4-cb7b-4cb3-9d85-7ec93071e357",
+              "id": "60212b48-8aaf-4822-9c57-057dcfc48b0f",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags"
+                    "invitations"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -614,7 +636,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspace\": \"mEFayXdO\"\n}",
+                  "raw": "{\n  \"organization\": \"mEFayXdO\",\n  \"email\": \"carljohnson@grove.street\",\n  \"role\": \"admin\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -641,19 +663,19 @@
           }
         },
         {
-          "id": "9d5f07d5-fe82-4ea2-828b-3471f0aa470d",
-          "name": "Get specific tag",
+          "id": "4209fa30-faaf-4bd7-8638-04cc259871bf",
+          "name": "Get detail of an invitation",
           "request": {
-            "name": "Get specific tag",
+            "name": "Get detail of an invitation",
             "description": {
-              "content": "Return a specific tag.",
+              "content": "Get detail of an invitation.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "v3",
-                "tags",
-                ":id"
+                "invitations",
+                ":identifier"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -663,9 +685,9 @@
                 {
                   "disabled": false,
                   "type": "any",
-                  "value": "<integer>",
-                  "key": "id",
-                  "description": "(Required) Tag's ID"
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Invitation identifier."
                 },
                 {
                   "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -686,14 +708,14 @@
           },
           "response": [
             {
-              "id": "f23a855b-369b-463a-b808-ae0662f385bb",
-              "name": "Successfully retrieved tag.",
+              "id": "a8c905f5-5718-4202-9a5c-2bf54bb49588",
+              "name": "Successfully retrieved invitation.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -703,9 +725,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -740,19 +762,19 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": 1,\n  \"name\": \"string\",\n  \"workspace\": \"mEFayXdO\",\n  \"documentCount\": 2536\n}",
+              "body": "{\n  \"identifier\": \"mEFayXdO\",\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": true,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"string\",\n          \"text\": {\n            \"primary\": \"string\",\n            \"secondary\": \"string\",\n            \"disabled\": \"string\"\n          },\n          \"divider\": \"string\",\n          \"primary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"secondary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"success\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"annotation\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"error\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"info\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"warning\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"string\",\n          \"fontSize\": \"string\",\n          \"fontWeightRegular\": \"string\",\n          \"fontWeightMedium\": \"string\",\n          \"fontWeightBold\": \"string\"\n        },\n        \"borderRadius\": 6406.353558107195,\n        \"fontUrl\": \"string\"\n      },\n      \"hideActions\": false,\n      \"hideCollection\": false,\n      \"hideEditPages\": true,\n      \"hideExport\": true,\n      \"hideFilename\": false,\n      \"hideShowRawValues\": true,\n      \"hideReject\": true,\n      \"hideReparse\": true,\n      \"hideRunOcr\": false,\n      \"hideTags\": true,\n      \"hideWarnings\": false,\n      \"restrictDocumentSplitting\": true,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": false,\n      \"hideDocumentStatus\": true\n    },\n    \"showCustomFieldCreation\": false\n  },\n  \"email\": \"carljohnson@grove.street\",\n  \"role\": \"admin\",\n  \"status\": \"<string>\",\n  \"expiryDate\": \"1956-12-15\",\n  \"invitedBy\": {\n    \"id\": 1,\n    \"name\": \"Carl Johnson\",\n    \"username\": \"carljohnson\",\n    \"email\": \"carljohnson@grove.street\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n  },\n  \"respondedBy\": {\n    \"id\": 1,\n    \"name\": \"Carl Johnson\",\n    \"username\": \"carljohnson\",\n    \"email\": \"carljohnson@grove.street\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n  },\n  \"createdDt\": \"2002-08-02T19:00:04.205Z\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "5ce82f13-62e6-491c-b826-6456cb9c5414",
+              "id": "45ea11ea-e40a-4d19-ae58-e214f27a43e5",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -762,9 +784,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -804,14 +826,14 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "b6daeec0-1843-47c1-8065-00193c8b7534",
+              "id": "18f5aef1-182a-4d3c-8259-7f3dd39282ef",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -821,9 +843,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -863,14 +885,14 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "ea44fa4c-3c8e-48b7-bb94-64fe83e48896",
+              "id": "23b0457b-941d-4b5b-8410-27a7c862cf21",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -880,9 +902,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -928,19 +950,19 @@
           }
         },
         {
-          "id": "07cfcfb3-065c-479c-8420-72e8a6eaed0a",
-          "name": "Update a tag",
+          "id": "271c20dc-bcd8-416e-8306-e9bc149843c3",
+          "name": "Update an invitation",
           "request": {
-            "name": "Update a tag",
+            "name": "Update an invitation",
             "description": {
-              "content": "Update data of an tag.",
+              "content": "Update the detail of an invitation.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "v3",
-                "tags",
-                ":id"
+                "invitations",
+                ":identifier"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -950,9 +972,9 @@
                 {
                   "disabled": false,
                   "type": "any",
-                  "value": "<integer>",
-                  "key": "id",
-                  "description": "(Required) Tag's ID"
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Invitation identifier."
                 },
                 {
                   "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -976,7 +998,7 @@
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"workspace\": \"<string>\"\n}",
+              "raw": "{\n  \"role\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -986,14 +1008,14 @@
           },
           "response": [
             {
-              "id": "888d26a6-a074-467a-bb6a-9eaefb5d8cf7",
-              "name": "Successfully updated tag data.",
+              "id": "ca717582-4885-45b6-aa64-55d3297df9a6",
+              "name": "Successfully updated invitation.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -1003,9 +1025,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -1032,7 +1054,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspace\": \"mEFayXdO\"\n}",
+                  "raw": "{\n  \"role\": \"admin\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1048,19 +1070,19 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": 1,\n  \"name\": \"string\",\n  \"workspace\": \"mEFayXdO\",\n  \"documentCount\": 2536\n}",
+              "body": "{\n  \"identifier\": \"mEFayXdO\",\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": true,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"string\",\n          \"text\": {\n            \"primary\": \"string\",\n            \"secondary\": \"string\",\n            \"disabled\": \"string\"\n          },\n          \"divider\": \"string\",\n          \"primary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"secondary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"success\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"annotation\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"error\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"info\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"warning\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"string\",\n          \"fontSize\": \"string\",\n          \"fontWeightRegular\": \"string\",\n          \"fontWeightMedium\": \"string\",\n          \"fontWeightBold\": \"string\"\n        },\n        \"borderRadius\": 6406.353558107195,\n        \"fontUrl\": \"string\"\n      },\n      \"hideActions\": false,\n      \"hideCollection\": false,\n      \"hideEditPages\": true,\n      \"hideExport\": true,\n      \"hideFilename\": false,\n      \"hideShowRawValues\": true,\n      \"hideReject\": true,\n      \"hideReparse\": true,\n      \"hideRunOcr\": false,\n      \"hideTags\": true,\n      \"hideWarnings\": false,\n      \"restrictDocumentSplitting\": true,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": false,\n      \"hideDocumentStatus\": true\n    },\n    \"showCustomFieldCreation\": false\n  },\n  \"email\": \"carljohnson@grove.street\",\n  \"role\": \"admin\",\n  \"status\": \"<string>\",\n  \"expiryDate\": \"1956-12-15\",\n  \"invitedBy\": {\n    \"id\": 1,\n    \"name\": \"Carl Johnson\",\n    \"username\": \"carljohnson\",\n    \"email\": \"carljohnson@grove.street\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n  },\n  \"respondedBy\": {\n    \"id\": 1,\n    \"name\": \"Carl Johnson\",\n    \"username\": \"carljohnson\",\n    \"email\": \"carljohnson@grove.street\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n  },\n  \"createdDt\": \"2002-08-02T19:00:04.205Z\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "18547b59-14fd-4a20-ab0d-7c984d12139c",
+              "id": "875f657c-13ed-4313-8b23-8d3ecc04f63c",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -1070,9 +1092,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -1099,7 +1121,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspace\": \"mEFayXdO\"\n}",
+                  "raw": "{\n  \"role\": \"admin\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1120,14 +1142,14 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "ea155507-9ee4-41a2-9060-28956d15c192",
+              "id": "bc304a88-8707-4770-8f01-f87b949bcfdd",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -1137,9 +1159,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -1166,7 +1188,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspace\": \"mEFayXdO\"\n}",
+                  "raw": "{\n  \"role\": \"admin\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1187,14 +1209,14 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "f2747a96-fb52-492f-8b28-d58b7a3f3e0f",
+              "id": "899c81ff-d4cb-4643-9df8-6c279b75342a",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -1204,9 +1226,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -1233,7 +1255,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspace\": \"mEFayXdO\"\n}",
+                  "raw": "{\n  \"role\": \"admin\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1260,19 +1282,19 @@
           }
         },
         {
-          "id": "8a1c48fa-ee5f-41cf-85a9-ec81722d95d2",
-          "name": "Delete an tag",
+          "id": "132f78f9-3e6c-46d0-b72c-4876ba43517e",
+          "name": "Delete an invitation",
           "request": {
-            "name": "Delete an tag",
+            "name": "Delete an invitation",
             "description": {
-              "content": "Deletes the specified tag from the database.",
+              "content": "Delete the specified invitation from the database.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "v3",
-                "tags",
-                ":id"
+                "invitations",
+                ":identifier"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -1282,9 +1304,9 @@
                 {
                   "disabled": false,
                   "type": "any",
-                  "value": "<integer>",
-                  "key": "id",
-                  "description": "(Required) Tag's ID"
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Invitation identifier."
                 },
                 {
                   "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -1305,14 +1327,14 @@
           },
           "response": [
             {
-              "id": "fd840f7f-6d55-437c-8e2f-df6dc8cdd576",
+              "id": "daa5ff9d-b4ed-4085-a85d-83df235a88ec",
               "name": "Delete successful, no content returned",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -1322,9 +1344,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -1360,14 +1382,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "51704aa7-4bfd-45d0-8e03-9bfd094e7513",
+              "id": "4cbb48b1-229d-4acd-81de-7932108578c3",
               "name": "Bad request. If it is a validation error will contain a list of each invalid field",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -1377,9 +1399,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -1419,14 +1441,14 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "b1bdb84d-9278-469d-adc0-1cc5c3f924f1",
+              "id": "248ab4e2-6379-4c72-9d91-3dc82517e50c",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -1436,9 +1458,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -1478,14 +1500,14 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "9dca3fb5-bc76-4ddd-a25f-6aed1b1aef3a",
+              "id": "6c5b664e-bb0b-4b29-af6d-982eedcae93f",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "tags",
-                    ":id"
+                    "invitations",
+                    ":identifier"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -1495,9 +1517,9 @@
                     {
                       "disabled": false,
                       "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Tag's ID"
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Invitation identifier."
                     },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
@@ -1543,25 +1565,33 @@
           }
         },
         {
-          "id": "7c5c2e51-eeac-47c7-bca6-5504eb07c88b",
-          "name": "Add a tag to documents",
+          "id": "f1d9800b-89e7-49dc-9c7c-3f928f59665c",
+          "name": "Get detail of an invitation by token",
           "request": {
-            "name": "Add a tag to documents",
+            "name": "Get detail of an invitation by token",
             "description": {
-              "content": "Add a tag to documents.\nTags are used to group documents together.\nTags can be used to filter documents.\n",
+              "content": "Get detail of an invitation using a secret token. This allows users who have not registered/logged in to view the invitation.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "v3",
-                "documents",
-                "batch_add_tag"
+                "invitations",
+                "token",
+                ":token"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
               "query": [],
               "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) Invitation token."
+                },
                 {
                   "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
                   "type": "any",
@@ -1572,36 +1602,24 @@
             },
             "header": [
               {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"identifiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tag\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
+            "method": "GET",
+            "auth": null
           },
           "response": [
             {
-              "id": "5c4742b3-961e-49b0-9c13-1493e88cd931",
-              "name": "Document successfully tagged",
+              "id": "760673b6-9bce-49e8-bd85-0587b66ae233",
+              "name": "Successfully retrieved invitation.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "documents",
-                    "batch_add_tag"
+                    "invitations",
+                    "token",
+                    ":token"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -1609,61 +1627,12 @@
                   "query": [],
                   "variable": [
                     {
-                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "disabled": false,
                       "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) Invitation token."
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"identifiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tag\": 1\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d3a3c989-f767-450e-a66a-63be4a2e725e",
-              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v3",
-                    "documents",
-                    "batch_add_tag"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
                       "type": "any",
@@ -1686,16 +1655,68 @@
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"identifiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tag\": 1\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
                 }
+              ],
+              "body": "{\n  \"identifier\": \"mEFayXdO\",\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": true,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"string\",\n          \"text\": {\n            \"primary\": \"string\",\n            \"secondary\": \"string\",\n            \"disabled\": \"string\"\n          },\n          \"divider\": \"string\",\n          \"primary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"secondary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"success\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"annotation\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"error\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"info\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"warning\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"string\",\n          \"fontSize\": \"string\",\n          \"fontWeightRegular\": \"string\",\n          \"fontWeightMedium\": \"string\",\n          \"fontWeightBold\": \"string\"\n        },\n        \"borderRadius\": 6406.353558107195,\n        \"fontUrl\": \"string\"\n      },\n      \"hideActions\": false,\n      \"hideCollection\": false,\n      \"hideEditPages\": true,\n      \"hideExport\": true,\n      \"hideFilename\": false,\n      \"hideShowRawValues\": true,\n      \"hideReject\": true,\n      \"hideReparse\": true,\n      \"hideRunOcr\": false,\n      \"hideTags\": true,\n      \"hideWarnings\": false,\n      \"restrictDocumentSplitting\": true,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": false,\n      \"hideDocumentStatus\": true\n    },\n    \"showCustomFieldCreation\": false\n  },\n  \"email\": \"carljohnson@grove.street\",\n  \"role\": \"admin\",\n  \"status\": \"<string>\",\n  \"expiryDate\": \"1956-12-15\",\n  \"invitedBy\": {\n    \"id\": 1,\n    \"name\": \"Carl Johnson\",\n    \"username\": \"carljohnson\",\n    \"email\": \"carljohnson@grove.street\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n  },\n  \"respondedBy\": {\n    \"id\": 1,\n    \"name\": \"Carl Johnson\",\n    \"username\": \"carljohnson\",\n    \"email\": \"carljohnson@grove.street\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n  },\n  \"createdDt\": \"2002-08-02T19:00:04.205Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8d81780-ce8b-40f9-8db9-b05440bf12f7",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "invitations",
+                    "token",
+                    ":token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) Invitation token."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
               },
               "status": "Bad Request",
               "code": 400,
@@ -1710,80 +1731,28 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "7db1fea8-c41d-4734-8a27-026c77923fc9",
-              "name": "Authorisation error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v3",
-                    "documents",
-                    "batch_add_tag"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"identifiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tag\": 1\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    },\n    {\n      \"attr\": \"non_field_errors\",\n      \"code\": \"unique\",\n      \"detail\": \"This index name has already been used\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d0d157be-04f3-44ba-8308-d278e3dbed08",
+              "id": "00e56822-6469-4469-809e-ee255f64f40d",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "documents",
-                    "batch_add_tag"
+                    "invitations",
+                    "token",
+                    ":token"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [],
                   "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) Invitation token."
+                    },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
                       "type": "any",
@@ -1806,16 +1775,8 @@
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"identifiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tag\": 1\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "method": "GET",
+                "body": {}
               },
               "status": "Internal Server Error",
               "code": 500,
@@ -1836,25 +1797,33 @@
           }
         },
         {
-          "id": "4cdd2122-af6e-4f15-bfa3-54f3ea4fb354",
-          "name": "Remove a tag from documents",
+          "id": "a9c0eb5a-038b-494d-bf8f-d9fba669e053",
+          "name": "Respond to an invitation",
           "request": {
-            "name": "Remove a tag from documents",
+            "name": "Respond to an invitation",
             "description": {
-              "content": "Remove a tag from documents.",
+              "content": "Choose to accept or decline an invitation.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "v3",
-                "documents",
-                "batch_remove_tag"
+                "invitations",
+                "token",
+                ":token"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
               "query": [],
               "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) Invitation token."
+                },
                 {
                   "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
                   "type": "any",
@@ -1873,11 +1842,11 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
+            "method": "PATCH",
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"identifiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tag\": \"<integer>\"\n}",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1887,14 +1856,15 @@
           },
           "response": [
             {
-              "id": "d3cb8fc1-85ad-494c-b514-60e96fab889f",
-              "name": "Document successfully tagged",
+              "id": "ed0f6475-2a81-45dc-82bd-fde0327aa15e",
+              "name": "Successfully responded to the invitation.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "documents",
-                    "batch_remove_tag"
+                    "invitations",
+                    "token",
+                    ":token"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -1902,61 +1872,12 @@
                   "query": [],
                   "variable": [
                     {
-                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "disabled": false,
                       "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) Invitation token."
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"identifiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tag\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "fb67c1af-2870-4ad8-9dab-794417f71287",
-              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v3",
-                    "documents",
-                    "batch_remove_tag"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
                       "type": "any",
@@ -1979,10 +1900,78 @@
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
+                "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"identifiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tag\": \"<integer>\"\n}",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identifier\": \"mEFayXdO\",\n  \"organization\": {\n    \"identifier\": \"mEFayXdO\",\n    \"name\": \"Grove Street King\",\n    \"userRole\": \"admin\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\",\n    \"resthookSignatureKey\": \"465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad\",\n    \"isTrial\": true,\n    \"validationToolConfig\": {\n      \"theme\": {\n        \"palette\": {\n          \"mode\": \"light\",\n          \"background\": \"string\",\n          \"text\": {\n            \"primary\": \"string\",\n            \"secondary\": \"string\",\n            \"disabled\": \"string\"\n          },\n          \"divider\": \"string\",\n          \"primary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"secondary\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"success\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"annotation\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"error\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"info\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          },\n          \"warning\": {\n            \"main\": \"string\",\n            \"light\": \"string\",\n            \"dark\": \"string\",\n            \"contrastText\": \"string\"\n          }\n        },\n        \"typography\": {\n          \"fontFamily\": \"string\",\n          \"fontSize\": \"string\",\n          \"fontWeightRegular\": \"string\",\n          \"fontWeightMedium\": \"string\",\n          \"fontWeightBold\": \"string\"\n        },\n        \"borderRadius\": 6406.353558107195,\n        \"fontUrl\": \"string\"\n      },\n      \"hideActions\": false,\n      \"hideCollection\": false,\n      \"hideEditPages\": true,\n      \"hideExport\": true,\n      \"hideFilename\": false,\n      \"hideShowRawValues\": true,\n      \"hideReject\": true,\n      \"hideReparse\": true,\n      \"hideRunOcr\": false,\n      \"hideTags\": true,\n      \"hideWarnings\": false,\n      \"restrictDocumentSplitting\": true,\n      \"disableCurrencyFormatting\": false,\n      \"disableEditDocumentMetadata\": false,\n      \"disableManualAnnotationEditing\": false,\n      \"hideDocumentStatus\": true\n    },\n    \"showCustomFieldCreation\": false\n  },\n  \"email\": \"carljohnson@grove.street\",\n  \"role\": \"admin\",\n  \"status\": \"<string>\",\n  \"expiryDate\": \"1956-12-15\",\n  \"invitedBy\": {\n    \"id\": 1,\n    \"name\": \"Carl Johnson\",\n    \"username\": \"carljohnson\",\n    \"email\": \"carljohnson@grove.street\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n  },\n  \"respondedBy\": {\n    \"id\": 1,\n    \"name\": \"Carl Johnson\",\n    \"username\": \"carljohnson\",\n    \"email\": \"carljohnson@grove.street\",\n    \"avatar\": \"https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG\"\n  },\n  \"createdDt\": \"2002-08-02T19:00:04.205Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e63b9260-341a-403e-9de1-861148b60355",
+              "name": "Bad request. If it is a validation error will contain a list of each invalid field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "invitations",
+                    "token",
+                    ":token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) Invitation token."
+                    },
+                    {
+                      "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2003,20 +1992,28 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "51608b6c-f8b0-4114-9dd5-7a1456766656",
+              "id": "7e71d02a-0108-4a59-86c3-1a455dd986c9",
               "name": "Authorisation error",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "documents",
-                    "batch_remove_tag"
+                    "invitations",
+                    "token",
+                    ":token"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [],
                   "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) Invitation token."
+                    },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
                       "type": "any",
@@ -2039,10 +2036,10 @@
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
+                "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"identifiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tag\": \"<integer>\"\n}",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2063,20 +2060,28 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "a2c74fed-f681-4bf2-926b-a20cb06b5cb6",
+              "id": "3cff2179-f003-455f-9f89-7371999e9aa3",
               "name": "UnexpectedError",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v3",
-                    "documents",
-                    "batch_remove_tag"
+                    "invitations",
+                    "token",
+                    ":token"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [],
                   "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) Invitation token."
+                    },
                     {
                       "description": "The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can find your region in the Affinda web app URL. (This can only be one of api,api.eu1,api.us1)",
                       "type": "any",
@@ -2099,10 +2104,10 @@
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
+                "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"identifiers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tag\": \"<integer>\"\n}",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2159,8 +2164,8 @@
     ]
   },
   "info": {
-    "_postman_id": "36607eb4-8c92-45fa-8ef2-9ccdf063f7da",
-    "name": "Affinda Annotations Add x-hidden to endpoints Tags API",
+    "_postman_id": "14e2a5f4-1134-4ae8-94a9-7ac6b7c5637f",
+    "name": "Affinda Annotations Add x-hidden to endpoints Organization API - Invitation API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Affinda Annotations API — subset of the Affinda v3 Document Processing API.",

@@ -1,0 +1,725 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affinda Annotations Add x-hidden to endpoints Deprecated End Points API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deprecated End Points",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of all collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/collections",
+            "params": [
+              {
+                "name": "workspace",
+                "value": "",
+                "type": "query",
+                "description": "Filter by workspace."
+              }
+            ]
+          },
+          "docs": "Returns your collections."
+        },
+        {
+          "info": {
+            "name": "Create a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/collections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a collection"
+        },
+        {
+          "info": {
+            "name": "Get specific collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/collections/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Collection's identifier"
+              }
+            ]
+          },
+          "docs": "Return a specific collection."
+        },
+        {
+          "info": {
+            "name": "Update a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/collections/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Collection's identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update data of a collection."
+        },
+        {
+          "info": {
+            "name": "Delete a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/collections/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Collection's identifier"
+              }
+            ]
+          },
+          "docs": "Deletes the specified collection from the database."
+        },
+        {
+          "info": {
+            "name": "Create data field for a collection along with a new data point.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/collections/:identifier/create_data_field",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Collection's identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create data field for a collection along with a new data point."
+        },
+        {
+          "info": {
+            "name": "Get data field for a collection assosciated with a data point.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/collections/:identifier/fields/:datapoint_identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Collection's identifier"
+              },
+              {
+                "name": "datapoint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "Datapoint's identifier"
+              }
+            ]
+          },
+          "docs": "Get a data field for a collection assosciated with a data point"
+        },
+        {
+          "info": {
+            "name": "Update data field for a collection assosciated with a data point.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/collections/:identifier/fields/:datapoint_identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Collection's identifier"
+              },
+              {
+                "name": "datapoint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "Datapoint's identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update data field for a collection assosciated with a data point"
+        },
+        {
+          "info": {
+            "name": "Get usage by collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/collections/:identifier/usage",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Collection's identifier"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the period to retrieve. Format: YYYY-MM"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End date of the period to retrieve. Format: YYYY-MM"
+              }
+            ]
+          },
+          "docs": "Return monthly credits consumption of a collection.\nDeprecated: use `GET /v3/usage?organization={id}&document_type={id}` instead. The new endpoint returns a unified daily series and uses the modern \"document type\" terminology."
+        },
+        {
+          "info": {
+            "name": "Get list of all data points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/data_points",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "Filter by organization."
+              },
+              {
+                "name": "include_public",
+                "value": "",
+                "type": "query",
+                "description": "Allows you to include public data points in the response when you're filtering by organization."
+              },
+              {
+                "name": "extractor",
+                "value": "",
+                "type": "query",
+                "description": "Filter by extractor."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Filter by slug."
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Filter by description."
+              },
+              {
+                "name": "annotation_content_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by annotation content type, e.g. text, integer, float, date, etc."
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specific identifiers."
+              }
+            ]
+          },
+          "docs": "Returns your custom data points as well as Affinda's off-the-shelf data points."
+        },
+        {
+          "info": {
+            "name": "Create a data point",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/data_points",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom data point."
+        },
+        {
+          "info": {
+            "name": "Get specific data point",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/data_points/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Data point's identifier"
+              }
+            ]
+          },
+          "docs": "Return a specific data point."
+        },
+        {
+          "info": {
+            "name": "Update a data point",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/data_points/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "DataPoint's identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update data of a data point."
+        },
+        {
+          "info": {
+            "name": "Delete a data point",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/data_points/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "DataPoint's identifier"
+              }
+            ]
+          },
+          "docs": "Deletes the specified data point from the database."
+        },
+        {
+          "info": {
+            "name": "Get list of data point choices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/data_point_choices",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "data_point",
+                "value": "",
+                "type": "query",
+                "description": "The data point to get choices for."
+              },
+              {
+                "name": "collection",
+                "value": "",
+                "type": "query",
+                "description": "The collection to get choices for."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Filter choices by searching for a substring."
+              }
+            ]
+          },
+          "docs": "Returns available choices for a specific enum data point."
+        },
+        {
+          "info": {
+            "name": "Create a data point choice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/data_point_choices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom data point choice."
+        },
+        {
+          "info": {
+            "name": "Get specific data point choice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/data_point_choices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Data point choice's ID"
+              }
+            ]
+          },
+          "docs": "Return a specific data point choice."
+        },
+        {
+          "info": {
+            "name": "Update a data point choice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/data_point_choices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Data point choice's ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update data of a data point choice."
+        },
+        {
+          "info": {
+            "name": "Delete a data point choice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/data_point_choices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Data point choice's ID"
+              }
+            ]
+          },
+          "docs": "Deletes the specified data point choice from the database."
+        },
+        {
+          "info": {
+            "name": "Replace choices of a data point",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/data_point_choices/replace",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace choices of a data point. Existing choices and incoming choices are matched base on their `value`. New `value` will be created, existing `value` will be updated, and `value` not in incoming choices will be deleted."
+        },
+        {
+          "info": {
+            "name": "Get list of all API users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/api_users",
+            "params": [
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "Filter by organization."
+              }
+            ]
+          },
+          "docs": "Returns your API users."
+        },
+        {
+          "info": {
+            "name": "Create an API user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/api_users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an API user"
+        },
+        {
+          "info": {
+            "name": "Get specific API user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/api_users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "API user's ID"
+              }
+            ]
+          },
+          "docs": "Return a specific API user."
+        },
+        {
+          "info": {
+            "name": "Update an API user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/api_users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "API user's ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update data of an API user."
+        },
+        {
+          "info": {
+            "name": "Delete an API user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/api_users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "API user's ID"
+              }
+            ]
+          },
+          "docs": "Deletes the specified API user from the database."
+        },
+        {
+          "info": {
+            "name": "Regenerate API key for an API user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/api_users/:id/regenerate_api_key",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "API user's ID"
+              }
+            ]
+          },
+          "docs": "Regenerate API key for an API user."
+        },
+        {
+          "info": {
+            "name": "List mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/mappings",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of documents to skip before starting to collect the result set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of results to return."
+              },
+              {
+                "name": "mapping_data_source",
+                "value": "",
+                "type": "query",
+                "description": "Data source's identifier"
+              }
+            ]
+          },
+          "docs": "Returns the list of all custom data mappings."
+        },
+        {
+          "info": {
+            "name": "Create a mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.affinda.com/v3/mappings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom mapping."
+        },
+        {
+          "info": {
+            "name": "Get specific mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.affinda.com/v3/mappings/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Mapping's identifier"
+              }
+            ]
+          },
+          "docs": "Return a specific mapping."
+        },
+        {
+          "info": {
+            "name": "Update specific mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{region}.affinda.com/v3/mappings/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Mapping's identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a specific mapping."
+        },
+        {
+          "info": {
+            "name": "Delete specific mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{region}.affinda.com/v3/mappings/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Mapping's identifier"
+              }
+            ]
+          },
+          "docs": "Delete the specified mapping from the database."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
