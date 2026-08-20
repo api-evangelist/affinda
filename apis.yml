@@ -6,6 +6,11 @@ apis:
   tags:
   - Document Processing
   - Document Extraction
+  - Artificial Intelligence
+  - OCR
+  tags_raw:
+  - Document Processing
+  - Document Extraction
   - AI
   - OCR
   humanURL: https://docs.affinda.com/reference/getting-started
@@ -93,6 +98,10 @@ apis:
   tags:
   - Annotations
   - Validation
+  - Human-in-the-Loop
+  tags_raw:
+  - Annotations
+  - Validation
   - Human in the Loop
   humanURL: https://docs.affinda.com/reference/annotations
   properties:
@@ -107,6 +116,10 @@ apis:
 - aid: affinda:affinda-validation-results-api
   name: Affinda Validation Results API
   tags:
+  - Validation
+  - Quality
+  - Human-in-the-Loop
+  tags_raw:
   - Validation
   - Quality
   - Human in the Loop
@@ -155,6 +168,10 @@ apis:
 - aid: affinda:affinda-webhooks-api
   name: Affinda Webhooks API
   tags:
+  - Webhook
+  - Event
+  - Integration
+  tags_raw:
   - Webhooks
   - Events
   - Integration
@@ -256,6 +273,24 @@ apis:
     url: https://docs.affinda.com/reference
 name: Affinda
 tags:
+  - Artificial Intelligence
+  - Document Processing
+  - Intelligent Document Processing
+  - IDP
+  - OCR
+  - Resume Parsing
+  - Invoice Parsing
+  - Receipt Parsing
+  - Document Extraction
+  - Document Classification
+  - Document Splitting
+  - Recruitment
+  - Banking
+  - Insurance
+  - Logistics
+  - Healthcare
+  - Government
+tags_raw:
   - AI
   - Artificial Intelligence
   - Document Processing
