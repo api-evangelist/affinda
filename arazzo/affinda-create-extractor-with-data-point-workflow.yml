@@ -13,8 +13,11 @@ info:
     specification but remain the documented way to author custom extraction models.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: deprecatedEndPointsApi
+  url: ../openapi/affinda-deprecated-end-points-api-openapi.yml
+  type: openapi
+- name: documentApiExtractorApi
+  url: ../openapi/affinda-document-api-extractor-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-extractor-with-data-point

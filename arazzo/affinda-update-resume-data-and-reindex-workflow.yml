@@ -10,8 +10,8 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: searchMatchApi
+  url: ../openapi/affinda-search-match-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: update-resume-data-and-reindex

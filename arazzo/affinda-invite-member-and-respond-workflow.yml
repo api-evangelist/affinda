@@ -12,8 +12,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: organizationApiInvitationApi
+  url: ../openapi/affinda-organization-api-invitation-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: invite-member-and-respond

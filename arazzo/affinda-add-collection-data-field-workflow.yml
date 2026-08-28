@@ -13,8 +13,11 @@ info:
     remain the documented way to manage collection data fields.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: deprecatedEndPointsApi
+  url: ../openapi/affinda-deprecated-end-points-api-openapi.yml
+  type: openapi
+- name: workspacesApi
+  url: ../openapi/affinda-workspaces-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: add-collection-data-field

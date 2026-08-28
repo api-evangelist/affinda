@@ -10,8 +10,11 @@ info:
     be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: documentsApi
+  url: ../openapi/affinda-documents-api-openapi.yml
+  type: openapi
+- name: searchMatchApi
+  url: ../openapi/affinda-search-match-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-document-from-data-and-index

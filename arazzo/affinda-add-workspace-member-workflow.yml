@@ -9,8 +9,8 @@ info:
     read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: workspacesApi
+  url: ../openapi/affinda-workspaces-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: add-workspace-member

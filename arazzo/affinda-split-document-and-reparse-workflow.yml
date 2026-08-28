@@ -13,8 +13,11 @@ info:
     but remains the documented way to split, merge, or rotate document pages.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: documentApiSplittingApi
+  url: ../openapi/affinda-document-api-splitting-api-openapi.yml
+  type: openapi
+- name: documentsApi
+  url: ../openapi/affinda-documents-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: split-document-and-reparse

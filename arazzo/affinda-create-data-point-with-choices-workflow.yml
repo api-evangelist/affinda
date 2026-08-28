@@ -12,8 +12,8 @@ info:
     specification but remain the documented way to author enum data points.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: deprecatedEndPointsApi
+  url: ../openapi/affinda-deprecated-end-points-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-data-point-with-choices

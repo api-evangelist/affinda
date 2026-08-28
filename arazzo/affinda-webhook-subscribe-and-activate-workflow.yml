@@ -12,8 +12,8 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: webhooksApi
+  url: ../openapi/affinda-webhooks-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: webhook-subscribe-and-activate

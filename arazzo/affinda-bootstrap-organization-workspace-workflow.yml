@@ -10,8 +10,14 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: addXHiddenToEndpointsApi
+  url: ../openapi/affinda-add-x-hidden-to-endpoints-api-openapi.yml
+  type: openapi
+- name: organizationsApi
+  url: ../openapi/affinda-organizations-api-openapi.yml
+  type: openapi
+- name: workspacesApi
+  url: ../openapi/affinda-workspaces-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: bootstrap-organization-and-workspace

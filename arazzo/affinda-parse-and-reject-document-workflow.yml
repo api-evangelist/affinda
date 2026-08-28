@@ -11,8 +11,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: documentsApi
+  url: ../openapi/affinda-documents-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: parse-and-reject-document

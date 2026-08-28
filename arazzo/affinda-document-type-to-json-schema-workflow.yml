@@ -11,8 +11,8 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: documentTypesApi
+  url: ../openapi/affinda-document-types-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: document-type-to-json-schema

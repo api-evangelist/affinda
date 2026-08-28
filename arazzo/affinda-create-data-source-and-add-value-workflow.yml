@@ -10,8 +10,8 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: dataSourcesApi
+  url: ../openapi/affinda-data-sources-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-data-source-and-add-value

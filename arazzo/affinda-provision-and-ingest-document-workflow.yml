@@ -13,8 +13,14 @@ info:
     but remain the documented way to bind an extractor to a document container.
   version: 1.0.0
 sourceDescriptions:
-- name: affindaV3Api
-  url: ../openapi/affinda-v3-openapi.yml
+- name: deprecatedEndPointsApi
+  url: ../openapi/affinda-deprecated-end-points-api-openapi.yml
+  type: openapi
+- name: documentsApi
+  url: ../openapi/affinda-documents-api-openapi.yml
+  type: openapi
+- name: workspacesApi
+  url: ../openapi/affinda-workspaces-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: provision-and-ingest-document
