@@ -1,0 +1,26 @@
+slug: affinda
+provider: Affinda
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Search & Match
+  spec_file: affinda-search-match-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.8
+  evidence: POST /v3/resume_search createResumeSearch Search through parsed resumes; GET /v3/resume_search/match
+    Match a single resume and job description; getResumeSearchSuggestionSkill
+  reason: Operations perform candidate resume search, resume-to-job-description matching, job title and
+    skill suggestion and occupation groups — recruiting/candidate sourcing, which realises Talent Acquisition
+    Management for whoever buys it.
