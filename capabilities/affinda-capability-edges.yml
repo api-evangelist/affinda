@@ -3,7 +3,7 @@ provider: Affinda
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
-- Healthcare Providers
+- Transportation & Logistics
 min_confidence: 0.7
 capability_model:
   source: https://github.com/vincentmakes/turbo-ea-capabilities
@@ -18,9 +18,9 @@ edges:
   capability_id: BC-300.10
   capability_id_l1: BC-300
   capability_name: Talent Acquisition Management
-  confidence: 0.8
-  evidence: POST /v3/resume_search createResumeSearch Search through parsed resumes; GET /v3/resume_search/match
-    Match a single resume and job description; getResumeSearchSuggestionSkill
-  reason: Operations perform candidate resume search, resume-to-job-description matching, job title and
-    skill suggestion and occupation groups — recruiting/candidate sourcing, which realises Talent Acquisition
-    Management for whoever buys it.
+  confidence: 0.82
+  evidence: POST /v3/resume_search 'Search through parsed resumes'; GET /v3/resume_search/match 'Match
+    a single resume and job description'; 'Get job title suggestions'
+  reason: Operations perform candidate resume search, resume-to-job-description matching and job-title/skill
+    suggestion — recruiting/sourcing functionality, i.e. Talent Acquisition. Slight discount because the
+    vendor frames it as a document-search feature rather than an ATS.
