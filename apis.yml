@@ -98,7 +98,7 @@ apis:
   tags:
   - Annotations
   - Validation
-  - Human in the Loop
+  - Human-in-the-Loop
   tags_raw:
   - Annotations
   - Validation
@@ -118,7 +118,7 @@ apis:
   tags:
   - Validation
   - Quality
-  - Human in the Loop
+  - Human-in-the-Loop
   tags_raw:
   - Validation
   - Quality
