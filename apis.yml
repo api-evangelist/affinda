@@ -1,5 +1,8 @@
 aid: affinda
 url: https://raw.githubusercontent.com/api-evangelist/affinda/refs/heads/main/apis.yml
+x-docs-platform: mintlify
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-17
 apis:
 - aid: affinda:affinda-documents-api
   name: Affinda Documents API
@@ -49,6 +52,10 @@ apis:
 - aid: affinda:affinda-workspaces-api
   name: Affinda Workspaces API
   tags:
+  - Workspace
+  - Organization
+  - Permissions
+  tags_raw:
   - Workspaces
   - Organization
   - Permissions
@@ -96,7 +103,7 @@ apis:
 - aid: affinda:affinda-annotations-api
   name: Affinda Annotations API
   tags:
-  - Annotations
+  - Annotation
   - Validation
   - Human-in-the-Loop
   tags_raw:
@@ -152,6 +159,11 @@ apis:
 - aid: affinda:affinda-usage-api
   name: Affinda Usage API
   tags:
+  - Usage
+  - Credit
+  - Reporting
+  - FinOps
+  tags_raw:
   - Usage
   - Credits
   - Reporting
