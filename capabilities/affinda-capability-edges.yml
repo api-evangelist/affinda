@@ -11,8 +11,20 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 1
+edge_count: 2
 edges:
+- tag: Webhooks
+  spec_file: affinda-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.85
+  evidence: POST /v3/resthook_subscriptions createResthookSubscription; schemas ResthookEvent, ResthookSubscription,
+    targetUrl
+  reason: Lifecycle management of outbound event subscriptions (create/update/activate resthooks with
+    target URL and event types), which matches Webhook & Event Subscription Management in the developer-platform
+    capability.
+  recovered_from: vertical-banking-capital-markets-edges.json
 - tag: Search & Match
   spec_file: affinda-search-match-api-openapi.yml
   capability_id: BC-300.10
