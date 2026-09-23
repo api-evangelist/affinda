@@ -1,8 +1,19 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affinda Annotations Add x-hidden to endpoints Deprecated End Points API
-  version: 3.0.0
-  description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
+  description: '# Introduction
+
+    Affinda uses the latest advancements in AI technology to rapidly process documents with better-than-human accuracy.'
+  version: v3
+  title: Affinda Deprecated End Points API
+  contact:
+    email: contact@affinda.com
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/affinda/affinda-api-spec/master/LICENSE
+  x-logo:
+    url: https://api.affinda.com/static/documentation/affinda_logo.png
+    backgroundColor: '#FFFFFF'
+    altText: Affinda logo
 servers:
 - url: https://{region}.affinda.com
   description: 'Select the correct server for your instance: api (AUS/Global), api.us1 (US), or api.eu1 (EU).'
@@ -22,9 +33,7 @@ tags:
   description: 'Deprecated endpoints that are maintained for backward compatibility.
 
 
-    These endpoints include Data Point, Collection, and Users functionality that has been superseded by newer APIs.
-
-    '
+    These endpoints include Data Point, Collection, and Users functionality that has been superseded by newer APIs.'
 paths:
   /v3/collections:
     get:
@@ -61,7 +70,6 @@ paths:
       - Deprecated End Points
       summary: Create a collection
       operationId: createCollection
-      description: Create a collection
       deprecated: true
       responses:
         '201':
@@ -171,7 +179,7 @@ paths:
     post:
       tags:
       - Deprecated End Points
-      summary: Create data field for a collection along with a new data point.
+      summary: Create data field for a collection along with a new data point
       operationId: createDataFieldForCollection
       description: Create data field for a collection along with a new data point.
       deprecated: true
@@ -206,7 +214,7 @@ paths:
     get:
       tags:
       - Deprecated End Points
-      summary: Get data field for a collection assosciated with a data point.
+      summary: Get data field for a collection assosciated with a data point
       operationId: getDataFieldForCollection
       description: Get a data field for a collection assosciated with a data point
       deprecated: true
@@ -239,9 +247,8 @@ paths:
     patch:
       tags:
       - Deprecated End Points
-      summary: Update data field for a collection assosciated with a data point.
+      summary: Update data field for a collection assosciated with a data point
       operationId: updateDataFieldForCollection
-      description: Update data field for a collection assosciated with a data point
       deprecated: true
       parameters:
       - in: path
@@ -726,7 +733,6 @@ paths:
       - Deprecated End Points
       summary: Create an API user
       operationId: createApiUser
-      description: Create an API user
       requestBody:
         required: true
         content:
@@ -1016,292 +1022,219 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
 components:
+  responses:
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    401Error:
+      description: Authorisation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    DefaultError:
+      description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    204NoContent:
+      description: Delete successful, no content returned
   schemas:
-    properties-enableAutoValidationThreshold:
-      type: boolean
-      nullable: true
-      description: If true, the autoValidationThreshold enable auto validation from the threshold from this field if specified, else from the collection
-    allowOpenai:
-      type: boolean
-      default: false
-      description: Whether to allow OpenAI API to be used to assist in creating a model for this collection.
-    disableConfirmationIfValidationRulesFail:
-      type: boolean
-      default: false
-      description: If True, users cannot validate documents with missing mandatory fields, or failing validation rules.
-    fields:
-      type: array
-      nullable: true
-      items:
-        $ref: '#/components/schemas/FieldGroup'
-      deprecated: true
-    description:
-      type: string
-      nullable: true
-    mandatory:
-      type: boolean
-    availableDataSources:
-      type: array
-      items:
-        $ref: '#/components/schemas/MappingDataSource'
-    Mapping_properties-identifier:
-      type: string
-      description: Uniquely identify a mapping.
-      example: mEFayXdO
-      readOnly: true
-    Collection:
+    ApiUserUpdate:
       type: object
-      required:
-      - identifier
       properties:
-        identifier:
-          type: string
-          description: Uniquely identify a collection.
-          example: mEFayXdO
         name:
-          type: string
-        workspace:
-          type: object
-          properties:
-            identifier:
-              $ref: '#/components/schemas/identifier'
-            organization:
-              $ref: '#/components/schemas/Organization'
-            name:
-              $ref: '#/components/schemas/name'
-        extractor:
-          $ref: '#/components/schemas/Extractor'
-          nullable: true
-        autoValidationThreshold:
-          type: number
-        enableAutoValidationThreshold:
-          type: boolean
-          default: false
-        autoValidateIfValidationRulesPass:
-          type: boolean
-          default: false
-        fields:
-          type: array
-          nullable: true
-          items:
-            $ref: '#/components/schemas/FieldGroup'
-          deprecated: true
-        fieldsLayout:
-          $ref: '#/components/schemas/FieldsLayout'
-        fieldsConfigured:
-          type: boolean
-        dateFormatPreference:
-          type: string
-          enum:
-          - DMY
-          - MDY
-          - YMD
-          nullable: true
-        dateFormatFromDocument:
-          type: boolean
-          nullable: true
-          description: Predict the date format from any dates in the document that is not ambiguous.
-        extractorConfig:
-          $ref: '#/components/schemas/ExtractorConfig'
-        unvalidatedDocsCount:
-          type: integer
-          nullable: true
-          minimum: 0
-          description: Number of unvalidated documents in the collection.
-        confirmedDocsCount:
-          type: integer
-          nullable: true
-          minimum: 0
-          description: Number of validated documents in the collection.
-        ingestEmail:
-          type: string
-          description: When you send email to this address, any document attached in the body will be uploaded to this collection.
-        tailoredExtractorRequested:
-          type: boolean
-          description: Whether a tailored extractor has been requested for this collection.
-        allowOpenai:
-          type: boolean
-          default: false
-          description: Whether to allow OpenAI API to be used to assist in creating a model for this collection.
-        trainsExtractor:
-          type: boolean
-          description: Whether this collection feeds documents into the extractor's training queue. This setting can only be toggled for custom extractors.
-        disableConfirmationIfValidationRulesFail:
-          type: boolean
-          default: false
-          description: If True, users cannot validate documents with missing mandatory fields, or failing validation rules.
-        autoRefreshValidationResults:
-          type: boolean
-          default: true
-          description: If True, validation results are refreshed whenever annotations are changed.
-    scoreCutoff:
-      type: number
-      example: 10
-      description: Higher values will result in more strict matching.
-      nullable: true
-    properties-id:
-      type: integer
-      description: Uniquely identify a user.
-      example: 1
-      minimum: 1
-    DataPointChoice:
-      type: object
-      required:
-      - id
-      - label
-      - value
-      properties:
-        id:
-          type: integer
-          description: Data point choice's ID
-          example: 1
-          minimum: 1
-        label:
-          type: string
-          example: USD
-        value:
-          type: string
-          example: USD
-        synonyms:
-          type: array
-          nullable: true
-          items:
-            type: string
-        description:
-          type: string
-          nullable: true
-    createdDt:
-      type: string
-      format: date-time
-    PaginatedResponse:
-      type: object
-      required:
-      - count
-      properties:
-        count:
-          type: integer
-          example: 10
-          description: Number of items in results.
-          minimum: 0
-        next:
-          type: string
-          nullable: true
-          description: URL to request next page of results.
-        previous:
-          type: string
-          nullable: true
-          description: URL to request previous page of results.
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
-    synonyms:
-      type: array
-      nullable: true
-      items:
-        type: string
-    email:
-      type: string
-      example: carljohnson@grove.street
-    dateFormatFromDocument:
-      type: boolean
-      nullable: true
-      description: Predict the date format from any dates in the document that is not ambiguous.
-    displayRawText:
-      type: boolean
-      description: If true, then the validation tool will show the user the raw text found on the page, not the value that has been parsed to a specific type.
-    name:
+          $ref: '#/components/schemas/User_properties-name'
+        username:
+          $ref: '#/components/schemas/username'
+        email:
+          $ref: '#/components/schemas/email'
+        avatar:
+          $ref: '#/components/schemas/properties-avatar'
+      additionalProperties: false
+    label:
       type: string
     dataSource:
-      type: string
+      type:
+      - string
+      - 'null'
       description: Data source mapping identifier
-      nullable: true
-    CollectionField:
+    FieldCategory:
       type: object
       properties:
         label:
-          $ref: '#/components/schemas/label'
-        fieldType:
-          $ref: '#/components/schemas/AnnotationContentType'
-        mandatory:
-          $ref: '#/components/schemas/mandatory'
-        showDropdown:
-          $ref: '#/components/schemas/showDropdown'
-        displayEnumValue:
-          $ref: '#/components/schemas/displayEnumValue'
+          type: string
+        enabledFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+        disabledFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+      required:
+      - label
+      - enabledFields
+      - disabledFields
+      additionalProperties: false
+    CollectionCreate:
+      type: object
+      required:
+      - name
+      - workspace
+      properties:
+        name:
+          $ref: '#/components/schemas/name'
+        workspace:
+          $ref: '#/components/schemas/identifier'
+        extractor:
+          type: string
+          description: Uniquely identify an extractor. Required if you are not a super user.
+          example: resume
+        baseExtractor:
+          type: string
+          description: Not applicable, please leave empty. This feature is reserved for super user.
         autoValidationThreshold:
-          $ref: '#/components/schemas/properties-autoValidationThreshold'
+          $ref: '#/components/schemas/autoValidationThreshold'
         enableAutoValidationThreshold:
-          $ref: '#/components/schemas/properties-enableAutoValidationThreshold'
-        dataSource:
-          $ref: '#/components/schemas/dataSource'
-        mapping:
-          $ref: '#/components/schemas/mapping'
-        displayRawText:
-          $ref: '#/components/schemas/mapping'
-    Extractor_properties-identifier:
-      type: string
-      description: Uniquely identify an extractor.
-      example: resume
+          $ref: '#/components/schemas/enableAutoValidationThreshold'
+        fields:
+          $ref: '#/components/schemas/fields'
+        fieldsLayout:
+          $ref: '#/components/schemas/FieldsLayout'
+        dateFormatPreference:
+          $ref: '#/components/schemas/dateFormatPreference'
+        dateFormatFromDocument:
+          $ref: '#/components/schemas/dateFormatFromDocument'
+        extractorConfig:
+          $ref: '#/components/schemas/ExtractorConfig'
+        allowOpenai:
+          $ref: '#/components/schemas/allowOpenai'
+        trainsExtractor:
+          $ref: '#/components/schemas/trainsExtractor'
+        disableConfirmationIfValidationRulesFail:
+          $ref: '#/components/schemas/disableConfirmationIfValidationRulesFail'
+    disabledChildFields:
+      type: array
+      items:
+        $ref: '#/components/schemas/Field'
+    MappingUpdate:
+      type: object
+      properties:
+        scoreCutoff:
+          $ref: '#/components/schemas/scoreCutoff'
+        orderBy:
+          $ref: '#/components/schemas/orderBy'
+    enableAutoValidationThreshold:
+      type: boolean
+      default: false
+    dateFormatPreference:
+      type:
+      - string
+      - 'null'
+      enum:
+      - DMY
+      - MDY
+      - YMD
     properties-label:
       type: string
       example: USD
-    DataPointChoiceReplaceResponse:
+    DataPointChoiceReplaceRequest:
       type: object
+      description: Request body for replacing choices of a data point. Either `collection` or `organization` is required.
       required:
       - dataPoint
-      - collection
-      - organization
       - choices
       additionalProperties: false
       properties:
         dataPoint:
           $ref: '#/components/schemas/DataPoint_properties-identifier'
         collection:
-          nullable: true
-          type: string
-          description: Uniquely identify a collection.
-          example: mEFayXdO
+          $ref: '#/components/schemas/properties-identifier'
         organization:
-          nullable: true
-          type: string
-          description: Uniquely identify an organization.
-          example: mEFayXdO
+          $ref: '#/components/schemas/Organization_properties-identifier'
         choices:
           type: array
+          description: Incoming choices to replace existing choices of a data point. Existing choices and incoming choices are matched base on their `value`. New `value` will be created, existing `value` will be updated, and `value` not in incoming choices will be deleted.
           items:
-            type: object
-            required:
-            - id
-            - value
-            - label
-            - synonyms
-            - description
-            additionalProperties: false
-            properties:
-              id:
-                $ref: '#/components/schemas/DataPointChoice_properties-id'
-              value:
-                $ref: '#/components/schemas/value'
-              label:
-                $ref: '#/components/schemas/properties-label'
-              synonyms:
-                $ref: '#/components/schemas/synonyms'
-              description:
-                $ref: '#/components/schemas/description'
-    DataPoint_properties-name:
-      type: string
-      description: Name of the data point.
-    multiple:
+            $ref: '#/components/schemas/DataPointChoiceForReplace'
+    DataPointChoice_properties-id:
+      type: integer
+      description: Data point choice's ID
+      example: 1
+      minimum: 1
+    DataFieldCreateDataPoint:
+      type: object
+      description: The data point to be created for this field. If a data point with the same slug and collection already exists, it will be reused.
+      required:
+      - name
+      - slug
+      - type
+      properties:
+        name:
+          $ref: '#/components/schemas/DataPoint_properties-name'
+        slug:
+          $ref: '#/components/schemas/slug'
+        description:
+          $ref: '#/components/schemas/description'
+        type:
+          $ref: '#/components/schemas/AnnotationContentType'
+        multiple:
+          $ref: '#/components/schemas/multiple'
+        noRect:
+          $ref: '#/components/schemas/noRect'
+        parent:
+          $ref: '#/components/schemas/properties-parent'
+        manualEntry:
+          $ref: '#/components/schemas/manualEntry'
+        mappingDataSource:
+          $ref: '#/components/schemas/mappingDataSource'
+    displayEnumValue:
       type: boolean
-    enabledChildFields:
-      type: array
+      description: If true, both the value and the label for the enums will appear in the dropdown in the validation tool.
+    fields:
+      type:
+      - array
+      - 'null'
       items:
-        $ref: '#/components/schemas/Field'
+        $ref: '#/components/schemas/FieldGroup'
+      deprecated: true
+    mapping:
+      type:
+      - string
+      - 'null'
+      description: Defines how the data point is mapped to the data source
+    trainsExtractor:
+      type: boolean
+      description: Whether this collection feeds documents into the extractor's training queue. This setting can only be toggled for custom extractors.
+    DataPoint_properties-identifier:
+      type: string
+      description: Uniquely identify a data point.
+      example: XprEvgai
+    properties-parent:
+      type:
+      - string
+      - 'null'
+      description: The identifier of the parent data point if applicable.
+      example: DdCbJhhx
+    scoreCutoff:
+      type:
+      - number
+      - 'null'
+      example: 10
+      description: Higher values will result in more strict matching.
+    properties-id:
+      type: integer
+      description: Uniquely identify a user.
+      example: 1
+      minimum: 1
     ThemeConfig:
       type: object
       properties:
@@ -1366,48 +1299,629 @@ components:
           type: number
         fontUrl:
           type: string
-    RequestError:
+    description:
+      type:
+      - string
+      - 'null'
+    namePlural:
+      type: string
+    Collection:
       type: object
-      additionalProperties: false
       required:
-      - type
-      - errors
+      - identifier
       properties:
-        type:
+        identifier:
           type: string
-          example: validation_error
-        errors:
-          type: array
+          description: Uniquely identify a collection.
+          example: mEFayXdO
+        name:
+          type: string
+        workspace:
+          type: object
+          properties:
+            identifier:
+              $ref: '#/components/schemas/identifier'
+            organization:
+              $ref: '#/components/schemas/Organization'
+            name:
+              $ref: '#/components/schemas/name'
+        extractor:
+          $ref: '#/components/schemas/Extractor'
+        autoValidationThreshold:
+          type: number
+        enableAutoValidationThreshold:
+          type: boolean
+          default: false
+        autoValidateIfValidationRulesPass:
+          type: boolean
+          default: false
+        fields:
+          type:
+          - array
+          - 'null'
           items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type: string
-                nullable: true
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    FieldGroup:
+            $ref: '#/components/schemas/FieldGroup'
+          deprecated: true
+        fieldsLayout:
+          $ref: '#/components/schemas/FieldsLayout'
+        fieldsConfigured:
+          type: boolean
+        dateFormatPreference:
+          type:
+          - string
+          - 'null'
+          enum:
+          - DMY
+          - MDY
+          - YMD
+        dateFormatFromDocument:
+          type:
+          - boolean
+          - 'null'
+          description: Predict the date format from any dates in the document that is not ambiguous.
+        extractorConfig:
+          $ref: '#/components/schemas/ExtractorConfig'
+        unvalidatedDocsCount:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+          description: Number of unvalidated documents in the collection.
+        confirmedDocsCount:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+          description: Number of validated documents in the collection.
+        ingestEmail:
+          type: string
+          description: When you send email to this address, any document attached in the body will be uploaded to this collection.
+        tailoredExtractorRequested:
+          type: boolean
+          description: Whether a tailored extractor has been requested for this collection.
+        allowOpenai:
+          type: boolean
+          default: false
+          description: Whether to allow OpenAI API to be used to assist in creating a model for this collection.
+        trainsExtractor:
+          type: boolean
+          description: Whether this collection feeds documents into the extractor's training queue. This setting can only be toggled for custom extractors.
+        disableConfirmationIfValidationRulesFail:
+          type: boolean
+          default: false
+          description: If True, users cannot validate documents with missing mandatory fields, or failing validation rules.
+        autoRefreshValidationResults:
+          type: boolean
+          default: true
+          description: If True, validation results are refreshed whenever annotations are changed.
+    Field:
       type: object
       properties:
         label:
           type: string
+        dataPoint:
+          type: string
+          description: Data point identifier
+        fieldType:
+          $ref: '#/components/schemas/AnnotationContentType'
+        dataSource:
+          type:
+          - string
+          - 'null'
+          description: Data source mapping identifier
+        mapping:
+          type:
+          - string
+          - 'null'
+          description: Defines how the data point is mapped to the data source
+        mandatory:
+          type: boolean
+        autoValidationThreshold:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+          maximum: 1
+          description: Threshold for auto validation. If null, uses the collection's autoValidationThreshold.
+        enableAutoValidationThreshold:
+          type:
+          - boolean
+          - 'null'
+          description: If true, the autoValidationThreshold enable auto validation from the threshold from this field if specified, else from the collection
+        showDropdown:
+          type: boolean
+          deprecated: true
+        displayEnumValue:
+          type: boolean
+          description: If true, both the value and the label for the enums will appear in the dropdown in the validation tool.
+        hideEnumDetail:
+          type: boolean
+          description: If true, the hoverable enum value detail icon will be hidden.
+        dropNull:
+          type: boolean
+          description: If True, any dropdown annotations that fail to parse to a value will be discarded
+        enabledChildFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+        disabledChildFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+        slug:
+          type:
+          - string
+          - 'null'
+          deprecated: true
+        displayRawText:
+          type: boolean
+          description: If true, then the validation tool will show the user the raw text found on the page, not the value that has been parsed to a specific type.
+        fields:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+          deprecated: true
+      required:
+      - label
+      - dataPoint
+      - fieldType
+      additionalProperties: true
+    mappingDataSource:
+      type:
+      - string
+      - 'null'
+      example: mEFayXdO
+      description: If populated, the model will learn to predict this field using the data source, rather than relying on fuzzy string matching.
+    noRect:
+      type: boolean
+    displayRawText:
+      type: boolean
+      description: If true, then the validation tool will show the user the raw text found on the page, not the value that has been parsed to a specific type.
+    Extractor_properties-identifier:
+      type: string
+      description: Uniquely identify an extractor.
+      example: resume
+    DataPointChoiceForReplace:
+      type: object
+      required:
+      - value
+      additionalProperties: false
+      properties:
+        value:
+          $ref: '#/components/schemas/value'
+        label:
+          $ref: '#/components/schemas/properties-label'
+        synonyms:
+          $ref: '#/components/schemas/synonyms'
+        description:
+          $ref: '#/components/schemas/description'
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
+    MappingCreate:
+      type: object
+      required:
+      - dataSource
+      properties:
+        dataSource:
+          $ref: '#/components/schemas/properties-dataSource'
+        scoreCutoff:
+          $ref: '#/components/schemas/scoreCutoff'
+        organization:
+          $ref: '#/components/schemas/organization'
+        orderBy:
+          $ref: '#/components/schemas/orderBy'
+    ExtractorConfig:
+      type:
+      - object
+      - 'null'
+      description: Extra configurations specific to an extractor.
+      properties:
+        resumeRedact:
+          $ref: '#/components/schemas/RedactConfig'
+    DataPoint_properties-name:
+      type: string
+      description: Name of the data point.
+    categoryLabel:
+      type: string
+      description: The label of the category that this field will be put into. If not provided, the field will be put into the default category. If no category exists with the specified label, a new category will be created.
+    FieldDeprecated:
+      type: object
+      properties:
+        label:
+          type: string
+        slug:
+          type:
+          - string
+          - 'null'
+          deprecated: true
+        fieldType:
+          $ref: '#/components/schemas/AnnotationContentType'
+        dataSource:
+          type:
+          - string
+          - 'null'
+          description: Data source mapping identifier
+        mapping:
+          type:
+          - string
+          - 'null'
+          description: Defines how the data point is mapped to the data source
+        dataPoint:
+          type: string
+        mandatory:
+          type: boolean
+        disabled:
+          type: boolean
+        autoValidationThreshold:
+          type:
+          - number
+          - 'null'
+        showDropdown:
+          type: boolean
+        displayRawText:
+          type: boolean
+        dropNull:
+          type: boolean
+          description: If True, any dropdown annotations that fail to parse to a value will be discarded
+        displayEnumValue:
+          type: boolean
         fields:
           type: array
           items:
             $ref: '#/components/schemas/FieldDeprecated'
       required:
       - label
-      - fields
+      - dataPoint
+      - fieldType
+      additionalProperties: true
+    DataPointChoiceUpdate:
+      type: object
+      properties:
+        dataPoint:
+          $ref: '#/components/schemas/DataPoint_properties-identifier'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        collection:
+          $ref: '#/components/schemas/properties-identifier'
+        label:
+          $ref: '#/components/schemas/properties-label'
+        value:
+          $ref: '#/components/schemas/value'
+        synonyms:
+          $ref: '#/components/schemas/synonyms'
+        description:
+          $ref: '#/components/schemas/description'
+    CollectionUpdate:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/name'
+        autoValidationThreshold:
+          $ref: '#/components/schemas/autoValidationThreshold'
+        enableAutoValidationThreshold:
+          $ref: '#/components/schemas/enableAutoValidationThreshold'
+        fields:
+          $ref: '#/components/schemas/fields'
+        fieldsLayout:
+          $ref: '#/components/schemas/FieldsLayout'
+        dateFormatPreference:
+          $ref: '#/components/schemas/dateFormatPreference'
+        dateFormatFromDocument:
+          $ref: '#/components/schemas/dateFormatFromDocument'
+        extractorConfig:
+          $ref: '#/components/schemas/ExtractorConfig'
+        allowOpenai:
+          $ref: '#/components/schemas/allowOpenai'
+        trainsExtractor:
+          $ref: '#/components/schemas/trainsExtractor'
+        disableConfirmationIfValidationRulesFail:
+          $ref: '#/components/schemas/disableConfirmationIfValidationRulesFail'
+    properties-avatar:
+      type:
+      - string
+      - 'null'
+      description: URL of the user's avatar.
+      example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+    organization:
+      type:
+      - string
+      - 'null'
+      example: mewlkWEKL
+      description: The organization that this mapping belongs to.
+    Mapping:
+      type: object
+      description: A mapping allows you to specify specific settings regarding a lookup against a MappingDataSource should be applied.
+      required:
+      - identifier
+      - dataSource
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify a mapping.
+          example: mEFayXdO
+          readOnly: true
+        organization:
+          type:
+          - string
+          - 'null'
+          example: mewlkWEKL
+          description: The organization that this mapping belongs to.
+        dataSource:
+          type:
+          - string
+          - 'null'
+          example: mewERBRJJ
+          description: The mapping data source this mapping applies to.
+        scoreCutoff:
+          type:
+          - number
+          - 'null'
+          example: 10
+          description: Higher values will result in more strict matching.
+        orderBy:
+          type:
+          - string
+          - 'null'
+          example: label
+          description: The field to order the results by. Leave blank for ordering by relevance.
+    ApiUserWithKey:
+      type: object
+      required:
+      - id
+      - name
+      - username
+      - email
+      - avatar
+      - organizations
+      - apiKey
+      properties:
+        id:
+          $ref: '#/components/schemas/properties-id'
+        name:
+          $ref: '#/components/schemas/User_properties-name'
+        username:
+          $ref: '#/components/schemas/username'
+        email:
+          $ref: '#/components/schemas/email'
+        avatar:
+          $ref: '#/components/schemas/properties-avatar'
+        organizations:
+          type: array
+          items:
+            type: object
+            required:
+            - identifier
+            - name
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Organization_properties-identifier'
+              name:
+                $ref: '#/components/schemas/Organization_properties-name'
+        apiKey:
+          type: string
+          description: Use this key to authenticate with the API.
+        apiKeyLastChars:
+          type: string
+          description: The last 4 characters of the API key.
       additionalProperties: false
+    Organization_properties-name:
+      type: string
+      example: Grove Street King
+    DataPointChoiceCreate:
+      type: object
+      required:
+      - dataPoint
+      - label
+      - value
+      properties:
+        dataPoint:
+          $ref: '#/components/schemas/DataPoint_properties-identifier'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        collection:
+          $ref: '#/components/schemas/properties-identifier'
+        label:
+          $ref: '#/components/schemas/properties-label'
+        value:
+          $ref: '#/components/schemas/value'
+        synonyms:
+          $ref: '#/components/schemas/synonyms'
+        description:
+          $ref: '#/components/schemas/description'
+    multiple:
+      type: boolean
+    autoValidationThreshold:
+      type: number
+    orderBy:
+      type:
+      - string
+      - 'null'
+      example: label
+      description: The field to order the results by. Leave blank for ordering by relevance.
+    enabledChildFields:
+      type: array
+      items:
+        $ref: '#/components/schemas/Field'
+    properties-autoValidationThreshold:
+      type:
+      - number
+      - 'null'
+      minimum: 0
+      maximum: 1
+      description: Threshold for auto validation. If null, uses the collection's autoValidationThreshold.
+    slug:
+      type: string
+      description: A camelCase string that will be used as the key in the API response.
+    username:
+      type: string
+      example: carljohnson
+    Extractor:
+      type: object
+      required:
+      - identifier
+      - name
+      - namePlural
+      - validatable
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify an extractor.
+          example: resume
+        name:
+          type: string
+        namePlural:
+          type: string
+        baseExtractor:
+          type:
+          - object
+          - 'null'
+          required:
+          - identifier
+          - name
+          - namePlural
+          - validatable
+          properties:
+            identifier:
+              $ref: '#/components/schemas/Extractor_properties-identifier'
+            name:
+              $ref: '#/components/schemas/name'
+            namePlural:
+              $ref: '#/components/schemas/namePlural'
+            validatable:
+              $ref: '#/components/schemas/validatable'
+            isCustom:
+              $ref: '#/components/schemas/isCustom'
+            createdDt:
+              $ref: '#/components/schemas/createdDt'
+        organization:
+          $ref: '#/components/schemas/Organization'
+        category:
+          type:
+          - string
+          - 'null'
+          example: Recruitment
+        validatable:
+          type: boolean
+        isCustom:
+          type: boolean
+        fieldGroups:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FieldGroup'
+        createdDt:
+          type: string
+          format: date-time
+        lastTrainedDt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+    value:
+      type: string
+      example: USD
+    DataPointChoice:
+      type: object
+      required:
+      - id
+      - label
+      - value
+      properties:
+        id:
+          type: integer
+          description: Data point choice's ID
+          example: 1
+          minimum: 1
+        label:
+          type: string
+          example: USD
+        value:
+          type: string
+          example: USD
+        synonyms:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        description:
+          type:
+          - string
+          - 'null'
+    name:
+      type: string
+    allowOpenai:
+      type: boolean
+      default: false
+      description: Whether to allow OpenAI API to be used to assist in creating a model for this collection.
+    synonyms:
+      type:
+      - array
+      - 'null'
+      items:
+        type: string
+    DataPoint:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify a data point.
+          example: XprEvgai
+        name:
+          type: string
+          description: Name of the data point.
+        slug:
+          type: string
+          description: A camelCase string that will be used as the key in the API response.
+        description:
+          type:
+          - string
+          - 'null'
+        annotationContentType:
+          $ref: '#/components/schemas/AnnotationContentType'
+        organization:
+          $ref: '#/components/schemas/Organization'
+        extractor:
+          $ref: '#/components/schemas/Extractor_properties-identifier'
+        multiple:
+          type: boolean
+        noRect:
+          type: boolean
+        parent:
+          type:
+          - string
+          - 'null'
+          description: The identifier of the parent data point if applicable.
+          example: DdCbJhhx
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataPoint'
+        availableDataSources:
+          type: array
+          items:
+            $ref: '#/components/schemas/MappingDataSource'
+        mappingDataSource:
+          type:
+          - string
+          - 'null'
+          example: mEFayXdO
+          description: If populated, the model will learn to predict this field using the data source, rather than relying on fuzzy string matching.
+        manualEntry:
+          type: boolean
+          description: If true, the model will not be used to predict this data point. Instead, the user will be able to manually enter the value in the validation tool.
+      required:
+      - identifier
+      - name
+      - slug
+      - organization
+      - annotationContentType
+      - extractor
     DataFieldCreateField:
       type: object
       description: The field to be created.
@@ -1434,43 +1948,156 @@ components:
           $ref: '#/components/schemas/mapping'
         displayRawText:
           $ref: '#/components/schemas/displayRawText'
-    mapping:
+    Mapping_properties-identifier:
       type: string
-      description: Defines how the data point is mapped to the data source
-      nullable: true
-    dateFormatPreference:
-      type: string
-      enum:
-      - DMY
-      - MDY
-      - YMD
-      nullable: true
-    ApiUserCreate:
+      description: Uniquely identify a mapping.
+      example: mEFayXdO
+      readOnly: true
+    DataPointChoiceReplaceResponse:
       type: object
       required:
+      - dataPoint
+      - collection
+      - organization
+      - choices
+      additionalProperties: false
+      properties:
+        dataPoint:
+          $ref: '#/components/schemas/DataPoint_properties-identifier'
+        collection:
+          type:
+          - string
+          - 'null'
+          description: Uniquely identify a collection.
+          example: mEFayXdO
+        organization:
+          type:
+          - string
+          - 'null'
+          description: Uniquely identify an organization.
+          example: mEFayXdO
+        choices:
+          type: array
+          items:
+            type: object
+            required:
+            - id
+            - value
+            - label
+            - synonyms
+            - description
+            additionalProperties: false
+            properties:
+              id:
+                $ref: '#/components/schemas/DataPointChoice_properties-id'
+              value:
+                $ref: '#/components/schemas/value'
+              label:
+                $ref: '#/components/schemas/properties-label'
+              synonyms:
+                $ref: '#/components/schemas/synonyms'
+              description:
+                $ref: '#/components/schemas/description'
+    CollectionField:
+      type: object
+      properties:
+        label:
+          $ref: '#/components/schemas/label'
+        fieldType:
+          $ref: '#/components/schemas/AnnotationContentType'
+        mandatory:
+          $ref: '#/components/schemas/mandatory'
+        showDropdown:
+          $ref: '#/components/schemas/showDropdown'
+        displayEnumValue:
+          $ref: '#/components/schemas/displayEnumValue'
+        autoValidationThreshold:
+          $ref: '#/components/schemas/properties-autoValidationThreshold'
+        enableAutoValidationThreshold:
+          $ref: '#/components/schemas/properties-enableAutoValidationThreshold'
+        dataSource:
+          $ref: '#/components/schemas/dataSource'
+        mapping:
+          $ref: '#/components/schemas/mapping'
+        displayRawText:
+          $ref: '#/components/schemas/mapping'
+    DataPointUpdate:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/DataPoint_properties-name'
+        slug:
+          $ref: '#/components/schemas/slug'
+        description:
+          $ref: '#/components/schemas/description'
+        parent:
+          $ref: '#/components/schemas/properties-parent'
+        mappingDataSource:
+          $ref: '#/components/schemas/mappingDataSource'
+    mandatory:
+      type: boolean
+    DataPointCreate:
+      type: object
+      required:
+      - name
+      - slug
+      - annotationContentType
+      - extractor
       - organization
       properties:
         name:
-          $ref: '#/components/schemas/User_properties-name'
-        username:
-          $ref: '#/components/schemas/username'
-        email:
-          $ref: '#/components/schemas/email'
-        avatar:
-          $ref: '#/components/schemas/properties-avatar'
+          $ref: '#/components/schemas/DataPoint_properties-name'
+        slug:
+          $ref: '#/components/schemas/slug'
+        description:
+          $ref: '#/components/schemas/description'
+        annotationContentType:
+          $ref: '#/components/schemas/AnnotationContentType'
         organization:
           $ref: '#/components/schemas/Organization_properties-identifier'
-      additionalProperties: false
-    properties-identifier:
-      type: string
-      description: Uniquely identify a collection.
-      example: mEFayXdO
+        extractor:
+          $ref: '#/components/schemas/Extractor_properties-identifier'
+        multiple:
+          $ref: '#/components/schemas/multiple'
+        noRect:
+          $ref: '#/components/schemas/noRect'
+        parent:
+          $ref: '#/components/schemas/properties-parent'
+        manualEntry:
+          $ref: '#/components/schemas/manualEntry'
+        mappingDataSource:
+          $ref: '#/components/schemas/mappingDataSource'
     OrganizationRole:
       type: string
       enum:
       - admin
       - member
       example: admin
+    PaginatedResponse:
+      type: object
+      required:
+      - count
+      properties:
+        count:
+          type: integer
+          example: 10
+          description: Number of items in results.
+          minimum: 0
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL to request next page of results.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL to request previous page of results.
+    UsageByCollectionResponse:
+      type: array
+      description: Monthly credits consumption
+      items:
+        $ref: '#/components/schemas/UsageByCollection'
     DataFieldCreate:
       type: object
       required:
@@ -1483,6 +2110,151 @@ components:
           $ref: '#/components/schemas/DataFieldCreateField'
         dataPoint:
           $ref: '#/components/schemas/DataFieldCreateDataPoint'
+    disableConfirmationIfValidationRulesFail:
+      type: boolean
+      default: false
+      description: If True, users cannot validate documents with missing mandatory fields, or failing validation rules.
+    properties-enableAutoValidationThreshold:
+      type:
+      - boolean
+      - 'null'
+      description: If true, the autoValidationThreshold enable auto validation from the threshold from this field if specified, else from the collection
+    manualEntry:
+      type: boolean
+      description: If true, the model will not be used to predict this data point. Instead, the user will be able to manually enter the value in the validation tool.
+    properties-identifier:
+      type: string
+      description: Uniquely identify a collection.
+      example: mEFayXdO
+    dateFormatFromDocument:
+      type:
+      - boolean
+      - 'null'
+      description: Predict the date format from any dates in the document that is not ambiguous.
+    isCustom:
+      type: boolean
+    createdDt:
+      type: string
+      format: date-time
+    UsageByCollection:
+      type: object
+      description: Monthly credits consumption
+      required:
+      - month
+      - count
+      properties:
+        month:
+          type: string
+          description: Month of the usage
+          example: 2023-07
+        count:
+          type: integer
+          description: Usage count
+          example: 100
+      additionalProperties: false
+    showDropdown:
+      type: boolean
+      deprecated: true
+    properties-dataSource:
+      type:
+      - string
+      - 'null'
+      example: mewERBRJJ
+      description: The mapping data source this mapping applies to.
+    children:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataPoint'
+    Organization:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify an organization.
+          example: mEFayXdO
+        name:
+          type: string
+          example: Grove Street King
+        userRole:
+          type:
+          - string
+          - 'null'
+          allOf:
+          - $ref: '#/components/schemas/OrganizationRole'
+          description: The role of the logged in user within the organization.
+        avatar:
+          type:
+          - string
+          - 'null'
+          description: URL of the organization's avatar.
+          example: https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+        resthookSignatureKey:
+          type:
+          - string
+          - 'null'
+          description: Used to sign webhook payloads so you can verify their integrity.
+          example: 465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad
+        isTrial:
+          type: boolean
+        validationToolConfig:
+          type:
+          - object
+          - 'null'
+          description: Configuration of the embeddable validation tool.
+          properties:
+            theme:
+              $ref: '#/components/schemas/ThemeConfig'
+            hideActions:
+              type: boolean
+              description: Hide the confirm document button and other actions.
+            hideCollection:
+              type: boolean
+              description: Hide the collection selector.
+            hideEditPages:
+              type: boolean
+              description: Hide the edit pages button.
+            hideExport:
+              type: boolean
+              description: Hide the export menu.
+            hideFilename:
+              type: boolean
+              description: Hide the filename input.
+            hideShowRawValues:
+              type: boolean
+              description: Hide the toggle for showing raw annotation values.
+            hideReject:
+              type: boolean
+              description: Hide the reject document button.
+            hideReparse:
+              type: boolean
+              description: Hide the reparse button.
+            hideRunOcr:
+              type: boolean
+              description: Hide the run OCR button.
+            hideTags:
+              type: boolean
+              description: Hide the tags editor.
+            hideWarnings:
+              type: boolean
+              description: Hide the warnings panel.
+            restrictDocumentSplitting:
+              type: boolean
+              description: Disable the page editor after a document has been split once.
+            disableCurrencyFormatting:
+              type: boolean
+              description: Disable currency formatting of decimals values.
+            disableEditDocumentMetadata:
+              type: boolean
+              description: Disable editing document metadata. Makes the collection selector, filename input and tags editor read only.
+            disableManualAnnotationEditing:
+              type: boolean
+              description: Disable manual editing of annotation values via the validation popover.
+            hideDocumentStatus:
+              type: boolean
+              description: Hide the document status indicator in the toolbar.
+        showCustomFieldCreation:
+          type: boolean
+          description: Whether to show the custom field creation in the UI.
     FieldsLayout:
       type: object
       properties:
@@ -1496,6 +2268,164 @@ components:
       - defaultCategory
       - categories
       additionalProperties: false
+    FieldGroup:
+      type: object
+      properties:
+        label:
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldDeprecated'
+      required:
+      - label
+      - fields
+      additionalProperties: false
+    email:
+      type: string
+      example: carljohnson@grove.street
+    PaletteColorOptions:
+      type: object
+      required:
+      - main
+      properties:
+        main:
+          type: string
+        light:
+          type: string
+        dark:
+          type: string
+        contrastText:
+          type: string
+    User_properties-name:
+      type: string
+      example: Carl Johnson
+    availableDataSources:
+      type: array
+      items:
+        $ref: '#/components/schemas/MappingDataSource'
+    AnnotationContentType:
+      type: string
+      description: The different data types of annotations
+      enum:
+      - text
+      - integer
+      - float
+      - decimal
+      - date
+      - datetime
+      - daterange
+      - boolean
+      - enum
+      - location
+      - phonenumber
+      - json
+      - table
+      - expectedremuneration
+      - jobtitle
+      - language
+      - skill
+      - yearsexperience
+      - group
+      - table_deprecated
+      - url
+      - image
+      - docclf
+    validatable:
+      type: boolean
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
+    ApiUserWithoutKey:
+      type: object
+      required:
+      - id
+      - name
+      - username
+      - email
+      - avatar
+      - organizations
+      properties:
+        id:
+          $ref: '#/components/schemas/properties-id'
+        name:
+          $ref: '#/components/schemas/User_properties-name'
+        username:
+          $ref: '#/components/schemas/username'
+        email:
+          $ref: '#/components/schemas/email'
+        avatar:
+          $ref: '#/components/schemas/properties-avatar'
+        organizations:
+          type: array
+          items:
+            type: object
+            required:
+            - identifier
+            - name
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Organization_properties-identifier'
+              name:
+                $ref: '#/components/schemas/Organization_properties-name'
+        apiKeyLastChars:
+          type: string
+          description: The last 4 characters of the API key.
+      additionalProperties: false
+    RedactConfig:
+      type: object
+      properties:
+        redactHeadshot:
+          type: boolean
+          example: true
+        redactPersonalDetails:
+          type: boolean
+          example: true
+        redactWorkDetails:
+          type: boolean
+          example: true
+        redactReferees:
+          type: boolean
+          example: true
+        redactEducationDetails:
+          type: boolean
+          example: true
+        redactLocations:
+          type: boolean
+          example: true
+        redactDates:
+          type: boolean
+          example: true
+        redactGender:
+          type: boolean
+          example: true
     DataField:
       type: object
       required:
@@ -1576,825 +2506,6 @@ components:
               $ref: '#/components/schemas/manualEntry'
             availableDataSources:
               $ref: '#/components/schemas/availableDataSources'
-    User_properties-name:
-      type: string
-      example: Carl Johnson
-    PaletteColorOptions:
-      type: object
-      required:
-      - main
-      properties:
-        main:
-          type: string
-        light:
-          type: string
-        dark:
-          type: string
-        contrastText:
-          type: string
-    disabledChildFields:
-      type: array
-      items:
-        $ref: '#/components/schemas/Field'
-    DataFieldCreateDataPoint:
-      type: object
-      description: The data point to be created for this field. If a data point with the same slug and collection already exists, it will be reused.
-      required:
-      - name
-      - slug
-      - type
-      properties:
-        name:
-          $ref: '#/components/schemas/DataPoint_properties-name'
-        slug:
-          $ref: '#/components/schemas/slug'
-        description:
-          $ref: '#/components/schemas/description'
-        type:
-          $ref: '#/components/schemas/AnnotationContentType'
-        multiple:
-          $ref: '#/components/schemas/multiple'
-        noRect:
-          $ref: '#/components/schemas/noRect'
-        parent:
-          $ref: '#/components/schemas/properties-parent'
-        manualEntry:
-          $ref: '#/components/schemas/manualEntry'
-        mappingDataSource:
-          $ref: '#/components/schemas/mappingDataSource'
-    categoryLabel:
-      type: string
-      description: The label of the category that this field will be put into. If not provided, the field will be put into the default category. If no category exists with the specified label, a new category will be created.
-    DataPoint_properties-identifier:
-      type: string
-      description: Uniquely identify a data point.
-      example: XprEvgai
-    orderBy:
-      type: string
-      example: label
-      description: The field to order the results by. Leave blank for ordering by relevance.
-      nullable: true
-    username:
-      type: string
-      example: carljohnson
-    ExtractorConfig:
-      type: object
-      nullable: true
-      description: Extra configurations specific to an extractor.
-      properties:
-        resumeRedact:
-          $ref: '#/components/schemas/RedactConfig'
-    FieldDeprecated:
-      type: object
-      properties:
-        label:
-          type: string
-        slug:
-          type: string
-          nullable: true
-          deprecated: true
-        fieldType:
-          $ref: '#/components/schemas/AnnotationContentType'
-        dataSource:
-          type: string
-          description: Data source mapping identifier
-          nullable: true
-        mapping:
-          type: string
-          description: Defines how the data point is mapped to the data source
-          nullable: true
-        dataPoint:
-          type: string
-        mandatory:
-          type: boolean
-        disabled:
-          type: boolean
-        autoValidationThreshold:
-          type: number
-          nullable: true
-        showDropdown:
-          type: boolean
-        displayRawText:
-          type: boolean
-        dropNull:
-          type: boolean
-          description: If True, any dropdown annotations that fail to parse to a value will be discarded
-        displayEnumValue:
-          type: boolean
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldDeprecated'
-      required:
-      - label
-      - dataPoint
-      - fieldType
-      additionalProperties: true
-    AnnotationContentType:
-      type: string
-      description: The different data types of annotations
-      enum:
-      - text
-      - integer
-      - float
-      - decimal
-      - date
-      - datetime
-      - daterange
-      - boolean
-      - enum
-      - location
-      - phonenumber
-      - json
-      - table
-      - expectedremuneration
-      - jobtitle
-      - language
-      - skill
-      - yearsexperience
-      - group
-      - table_deprecated
-      - url
-      - image
-      - docclf
-    DataPointChoiceUpdate:
-      type: object
-      properties:
-        dataPoint:
-          $ref: '#/components/schemas/DataPoint_properties-identifier'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        collection:
-          $ref: '#/components/schemas/properties-identifier'
-        label:
-          $ref: '#/components/schemas/properties-label'
-        value:
-          $ref: '#/components/schemas/value'
-        synonyms:
-          $ref: '#/components/schemas/synonyms'
-        description:
-          $ref: '#/components/schemas/description'
-    properties-autoValidationThreshold:
-      type: number
-      nullable: true
-      minimum: 0
-      maximum: 1
-      description: Threshold for auto validation. If null, uses the collection's autoValidationThreshold.
-    manualEntry:
-      type: boolean
-      description: If true, the model will not be used to predict this data point. Instead, the user will be able to manually enter the value in the validation tool.
-    ApiUserWithKey:
-      type: object
-      required:
-      - id
-      - name
-      - username
-      - email
-      - avatar
-      - organizations
-      - apiKey
-      properties:
-        id:
-          $ref: '#/components/schemas/properties-id'
-        name:
-          $ref: '#/components/schemas/User_properties-name'
-        username:
-          $ref: '#/components/schemas/username'
-        email:
-          $ref: '#/components/schemas/email'
-        avatar:
-          $ref: '#/components/schemas/properties-avatar'
-        organizations:
-          type: array
-          items:
-            type: object
-            required:
-            - identifier
-            - name
-            properties:
-              identifier:
-                $ref: '#/components/schemas/Organization_properties-identifier'
-              name:
-                $ref: '#/components/schemas/Organization_properties-name'
-        apiKey:
-          type: string
-          description: Use this key to authenticate with the API.
-        apiKeyLastChars:
-          type: string
-          description: The last 4 characters of the API key.
-      additionalProperties: false
-    trainsExtractor:
-      type: boolean
-      description: Whether this collection feeds documents into the extractor's training queue. This setting can only be toggled for custom extractors.
-    FieldCategory:
-      type: object
-      properties:
-        label:
-          type: string
-        enabledFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-        disabledFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-      required:
-      - label
-      - enabledFields
-      - disabledFields
-      additionalProperties: false
-    children:
-      type: array
-      items:
-        $ref: '#/components/schemas/DataPoint'
-    DataPointChoice_properties-id:
-      type: integer
-      description: Data point choice's ID
-      example: 1
-      minimum: 1
-    namePlural:
-      type: string
-    ApiUserUpdate:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/User_properties-name'
-        username:
-          $ref: '#/components/schemas/username'
-        email:
-          $ref: '#/components/schemas/email'
-        avatar:
-          $ref: '#/components/schemas/properties-avatar'
-      additionalProperties: false
-    properties-avatar:
-      type: string
-      nullable: true
-      description: URL of the user's avatar.
-      example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
-    enableAutoValidationThreshold:
-      type: boolean
-      default: false
-    DataPointCreate:
-      type: object
-      required:
-      - name
-      - slug
-      - annotationContentType
-      - extractor
-      - organization
-      properties:
-        name:
-          $ref: '#/components/schemas/DataPoint_properties-name'
-        slug:
-          $ref: '#/components/schemas/slug'
-        description:
-          $ref: '#/components/schemas/description'
-        annotationContentType:
-          $ref: '#/components/schemas/AnnotationContentType'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        extractor:
-          $ref: '#/components/schemas/Extractor_properties-identifier'
-        multiple:
-          $ref: '#/components/schemas/multiple'
-        noRect:
-          $ref: '#/components/schemas/noRect'
-        parent:
-          $ref: '#/components/schemas/properties-parent'
-        manualEntry:
-          $ref: '#/components/schemas/manualEntry'
-        mappingDataSource:
-          $ref: '#/components/schemas/mappingDataSource'
-    noRect:
-      type: boolean
-    properties-dataSource:
-      type: string
-      example: mewERBRJJ
-      description: The mapping data source this mapping applies to.
-      nullable: true
-    DataPointChoiceReplaceRequest:
-      type: object
-      description: Request body for replacing choices of a data point. Either `collection` or `organization` is required.
-      required:
-      - dataPoint
-      - choices
-      additionalProperties: false
-      properties:
-        dataPoint:
-          $ref: '#/components/schemas/DataPoint_properties-identifier'
-        collection:
-          $ref: '#/components/schemas/properties-identifier'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        choices:
-          type: array
-          description: Incoming choices to replace existing choices of a data point. Existing choices and incoming choices are matched base on their `value`. New `value` will be created, existing `value` will be updated, and `value` not in incoming choices will be deleted.
-          items:
-            $ref: '#/components/schemas/DataPointChoiceForReplace'
-    validatable:
-      type: boolean
-    mappingDataSource:
-      type: string
-      nullable: true
-      example: mEFayXdO
-      description: If populated, the model will learn to predict this field using the data source, rather than relying on fuzzy string matching.
-    Organization:
-      type: object
-      properties:
-        identifier:
-          type: string
-          description: Uniquely identify an organization.
-          example: mEFayXdO
-        name:
-          type: string
-          example: Grove Street King
-        userRole:
-          type: string
-          allOf:
-          - $ref: '#/components/schemas/OrganizationRole'
-          nullable: true
-          description: The role of the logged in user within the organization.
-        avatar:
-          type: string
-          nullable: true
-          description: URL of the organization's avatar.
-          example: https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
-        resthookSignatureKey:
-          type: string
-          nullable: true
-          description: Used to sign webhook payloads so you can verify their integrity.
-          example: 465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad
-        isTrial:
-          type: boolean
-        validationToolConfig:
-          type: object
-          nullable: true
-          description: Configuration of the embeddable validation tool.
-          properties:
-            theme:
-              $ref: '#/components/schemas/ThemeConfig'
-            hideActions:
-              type: boolean
-              description: Hide the confirm document button and other actions.
-            hideCollection:
-              type: boolean
-              description: Hide the collection selector.
-            hideEditPages:
-              type: boolean
-              description: Hide the edit pages button.
-            hideExport:
-              type: boolean
-              description: Hide the export menu.
-            hideFilename:
-              type: boolean
-              description: Hide the filename input.
-            hideShowRawValues:
-              type: boolean
-              description: Hide the toggle for showing raw annotation values.
-            hideReject:
-              type: boolean
-              description: Hide the reject document button.
-            hideReparse:
-              type: boolean
-              description: Hide the reparse button.
-            hideRunOcr:
-              type: boolean
-              description: Hide the run OCR button.
-            hideTags:
-              type: boolean
-              description: Hide the tags editor.
-            hideWarnings:
-              type: boolean
-              description: Hide the warnings panel.
-            restrictDocumentSplitting:
-              type: boolean
-              description: Disable the page editor after a document has been split once.
-            disableCurrencyFormatting:
-              type: boolean
-              description: Disable currency formatting of decimals values.
-            disableEditDocumentMetadata:
-              type: boolean
-              description: Disable editing document metadata. Makes the collection selector, filename input and tags editor read only.
-            disableManualAnnotationEditing:
-              type: boolean
-              description: Disable manual editing of annotation values via the validation popover.
-            hideDocumentStatus:
-              type: boolean
-              description: Hide the document status indicator in the toolbar.
-        showCustomFieldCreation:
-          type: boolean
-          description: Whether to show the custom field creation in the UI.
-    MappingCreate:
-      type: object
-      required:
-      - dataSource
-      properties:
-        dataSource:
-          $ref: '#/components/schemas/properties-dataSource'
-        scoreCutoff:
-          $ref: '#/components/schemas/scoreCutoff'
-        organization:
-          $ref: '#/components/schemas/organization'
-        orderBy:
-          $ref: '#/components/schemas/orderBy'
-    DataPointChoiceForReplace:
-      type: object
-      required:
-      - value
-      additionalProperties: false
-      properties:
-        value:
-          $ref: '#/components/schemas/value'
-        label:
-          $ref: '#/components/schemas/properties-label'
-        synonyms:
-          $ref: '#/components/schemas/synonyms'
-        description:
-          $ref: '#/components/schemas/description'
-    ApiUserWithoutKey:
-      type: object
-      required:
-      - id
-      - name
-      - username
-      - email
-      - avatar
-      - organizations
-      properties:
-        id:
-          $ref: '#/components/schemas/properties-id'
-        name:
-          $ref: '#/components/schemas/User_properties-name'
-        username:
-          $ref: '#/components/schemas/username'
-        email:
-          $ref: '#/components/schemas/email'
-        avatar:
-          $ref: '#/components/schemas/properties-avatar'
-        organizations:
-          type: array
-          items:
-            type: object
-            required:
-            - identifier
-            - name
-            properties:
-              identifier:
-                $ref: '#/components/schemas/Organization_properties-identifier'
-              name:
-                $ref: '#/components/schemas/Organization_properties-name'
-        apiKeyLastChars:
-          type: string
-          description: The last 4 characters of the API key.
-      additionalProperties: false
-    Organization_properties-name:
-      type: string
-      example: Grove Street King
-    slug:
-      type: string
-      description: A camelCase string that will be used as the key in the API response.
-    UsageByCollectionResponse:
-      type: array
-      description: Monthly credits consumption
-      items:
-        $ref: '#/components/schemas/UsageByCollection'
-    CollectionUpdate:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/name'
-        autoValidationThreshold:
-          $ref: '#/components/schemas/autoValidationThreshold'
-        enableAutoValidationThreshold:
-          $ref: '#/components/schemas/enableAutoValidationThreshold'
-        fields:
-          $ref: '#/components/schemas/fields'
-        fieldsLayout:
-          $ref: '#/components/schemas/FieldsLayout'
-        dateFormatPreference:
-          $ref: '#/components/schemas/dateFormatPreference'
-        dateFormatFromDocument:
-          $ref: '#/components/schemas/dateFormatFromDocument'
-        extractorConfig:
-          $ref: '#/components/schemas/ExtractorConfig'
-        allowOpenai:
-          $ref: '#/components/schemas/allowOpenai'
-        trainsExtractor:
-          $ref: '#/components/schemas/trainsExtractor'
-        disableConfirmationIfValidationRulesFail:
-          $ref: '#/components/schemas/disableConfirmationIfValidationRulesFail'
-    DataPointUpdate:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/DataPoint_properties-name'
-        slug:
-          $ref: '#/components/schemas/slug'
-        description:
-          $ref: '#/components/schemas/description'
-        parent:
-          $ref: '#/components/schemas/properties-parent'
-        mappingDataSource:
-          $ref: '#/components/schemas/mappingDataSource'
-    organization:
-      type: string
-      example: mewlkWEKL
-      description: The organization that this mapping belongs to.
-      nullable: true
-    DataPoint:
-      type: object
-      properties:
-        identifier:
-          type: string
-          description: Uniquely identify a data point.
-          example: XprEvgai
-        name:
-          type: string
-          description: Name of the data point.
-        slug:
-          type: string
-          description: A camelCase string that will be used as the key in the API response.
-        description:
-          type: string
-          nullable: true
-        annotationContentType:
-          $ref: '#/components/schemas/AnnotationContentType'
-        organization:
-          $ref: '#/components/schemas/Organization'
-          nullable: true
-        extractor:
-          $ref: '#/components/schemas/Extractor_properties-identifier'
-          nullable: true
-        multiple:
-          type: boolean
-        noRect:
-          type: boolean
-        parent:
-          type: string
-          description: The identifier of the parent data point if applicable.
-          nullable: true
-          example: DdCbJhhx
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataPoint'
-        availableDataSources:
-          type: array
-          items:
-            $ref: '#/components/schemas/MappingDataSource'
-        mappingDataSource:
-          type: string
-          nullable: true
-          example: mEFayXdO
-          description: If populated, the model will learn to predict this field using the data source, rather than relying on fuzzy string matching.
-        manualEntry:
-          type: boolean
-          description: If true, the model will not be used to predict this data point. Instead, the user will be able to manually enter the value in the validation tool.
-      required:
-      - identifier
-      - name
-      - slug
-      - organization
-      - annotationContentType
-      - extractor
-    displayEnumValue:
-      type: boolean
-      description: If true, both the value and the label for the enums will appear in the dropdown in the validation tool.
-    Mapping:
-      type: object
-      description: A mapping allows you to specify specific settings regarding a lookup against a MappingDataSource should be applied.
-      required:
-      - identifier
-      - dataSource
-      properties:
-        identifier:
-          type: string
-          description: Uniquely identify a mapping.
-          example: mEFayXdO
-          readOnly: true
-        organization:
-          type: string
-          example: mewlkWEKL
-          description: The organization that this mapping belongs to.
-          nullable: true
-        dataSource:
-          type: string
-          example: mewERBRJJ
-          description: The mapping data source this mapping applies to.
-          nullable: true
-        scoreCutoff:
-          type: number
-          example: 10
-          description: Higher values will result in more strict matching.
-          nullable: true
-        orderBy:
-          type: string
-          example: label
-          description: The field to order the results by. Leave blank for ordering by relevance.
-          nullable: true
-    UsageByCollection:
-      type: object
-      description: Monthly credits consumption
-      required:
-      - month
-      - count
-      properties:
-        month:
-          type: string
-          description: Month of the usage
-          example: 2023-07
-        count:
-          type: integer
-          description: Usage count
-          example: 100
-      additionalProperties: false
-    Extractor:
-      type: object
-      required:
-      - identifier
-      - name
-      - namePlural
-      - validatable
-      properties:
-        identifier:
-          type: string
-          description: Uniquely identify an extractor.
-          example: resume
-        name:
-          type: string
-        namePlural:
-          type: string
-        baseExtractor:
-          type: object
-          nullable: true
-          required:
-          - identifier
-          - name
-          - namePlural
-          - validatable
-          properties:
-            identifier:
-              $ref: '#/components/schemas/Extractor_properties-identifier'
-            name:
-              $ref: '#/components/schemas/name'
-            namePlural:
-              $ref: '#/components/schemas/namePlural'
-            validatable:
-              $ref: '#/components/schemas/validatable'
-            isCustom:
-              $ref: '#/components/schemas/isCustom'
-            createdDt:
-              $ref: '#/components/schemas/createdDt'
-        organization:
-          $ref: '#/components/schemas/Organization'
-          nullable: true
-        category:
-          type: string
-          nullable: true
-          example: Recruitment
-        validatable:
-          type: boolean
-        isCustom:
-          type: boolean
-        fieldGroups:
-          type: array
-          nullable: true
-          items:
-            $ref: '#/components/schemas/FieldGroup'
-        createdDt:
-          type: string
-          format: date-time
-        lastTrainedDt:
-          type: string
-          format: date-time
-          nullable: true
-    value:
-      type: string
-      example: USD
-    autoValidationThreshold:
-      type: number
-    Field:
-      type: object
-      properties:
-        label:
-          type: string
-        dataPoint:
-          type: string
-          description: Data point identifier
-        fieldType:
-          $ref: '#/components/schemas/AnnotationContentType'
-        dataSource:
-          type: string
-          description: Data source mapping identifier
-          nullable: true
-        mapping:
-          type: string
-          description: Defines how the data point is mapped to the data source
-          nullable: true
-        mandatory:
-          type: boolean
-        autoValidationThreshold:
-          type: number
-          nullable: true
-          minimum: 0
-          maximum: 1
-          description: Threshold for auto validation. If null, uses the collection's autoValidationThreshold.
-        enableAutoValidationThreshold:
-          type: boolean
-          nullable: true
-          description: If true, the autoValidationThreshold enable auto validation from the threshold from this field if specified, else from the collection
-        showDropdown:
-          type: boolean
-          deprecated: true
-        displayEnumValue:
-          type: boolean
-          description: If true, both the value and the label for the enums will appear in the dropdown in the validation tool.
-        hideEnumDetail:
-          type: boolean
-          description: If true, the hoverable enum value detail icon will be hidden.
-        dropNull:
-          type: boolean
-          description: If True, any dropdown annotations that fail to parse to a value will be discarded
-        enabledChildFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-        disabledChildFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-        slug:
-          type: string
-          nullable: true
-          deprecated: true
-        displayRawText:
-          type: boolean
-          description: If true, then the validation tool will show the user the raw text found on the page, not the value that has been parsed to a specific type.
-        fields:
-          type: array
-          items:
-            type: object
-          nullable: true
-          deprecated: true
-      required:
-      - label
-      - dataPoint
-      - fieldType
-      additionalProperties: true
-    MappingUpdate:
-      type: object
-      properties:
-        scoreCutoff:
-          $ref: '#/components/schemas/scoreCutoff'
-        orderBy:
-          $ref: '#/components/schemas/orderBy'
-    properties-parent:
-      type: string
-      description: The identifier of the parent data point if applicable.
-      nullable: true
-      example: DdCbJhhx
-    CollectionCreate:
-      type: object
-      required:
-      - name
-      - workspace
-      properties:
-        name:
-          $ref: '#/components/schemas/name'
-        workspace:
-          $ref: '#/components/schemas/identifier'
-        extractor:
-          type: string
-          description: Uniquely identify an extractor. Required if you are not a super user.
-          example: resume
-        baseExtractor:
-          type: string
-          description: Not applicable, please leave empty. This feature is reserved for super user.
-        autoValidationThreshold:
-          $ref: '#/components/schemas/autoValidationThreshold'
-        enableAutoValidationThreshold:
-          $ref: '#/components/schemas/enableAutoValidationThreshold'
-        fields:
-          $ref: '#/components/schemas/fields'
-        fieldsLayout:
-          $ref: '#/components/schemas/FieldsLayout'
-        dateFormatPreference:
-          $ref: '#/components/schemas/dateFormatPreference'
-        dateFormatFromDocument:
-          $ref: '#/components/schemas/dateFormatFromDocument'
-        extractorConfig:
-          $ref: '#/components/schemas/ExtractorConfig'
-        allowOpenai:
-          $ref: '#/components/schemas/allowOpenai'
-        trainsExtractor:
-          $ref: '#/components/schemas/trainsExtractor'
-        disableConfirmationIfValidationRulesFail:
-          $ref: '#/components/schemas/disableConfirmationIfValidationRulesFail'
-    isCustom:
-      type: boolean
-    label:
-      type: string
     MappingDataSource:
       type: object
       description: A mapping data source is used to map from raw data found by our AI models to records in your database.
@@ -2411,9 +2522,10 @@ components:
           example: mEFayXdO
           readOnly: true
         name:
-          type: string
+          type:
+          - string
+          - 'null'
           example: My supplier list
-          nullable: true
         keyProperty:
           type: string
           example: value
@@ -2423,15 +2535,17 @@ components:
           example: value
           description: Attribute in the schema which is used to display the value
         organization:
-          type: string
+          type:
+          - string
+          - 'null'
           example: mewlkWEKL
           description: The organization that this mapping data source belongs to.
-          nullable: true
         workspace:
-          type: string
+          type:
+          - string
+          - 'null'
           example: mewlkWEKL
           description: The workspace that this mapping data source belongs to.
-          nullable: true
         schema:
           type: object
           description: The schema of the mapping data source.
@@ -2445,82 +2559,37 @@ components:
                 type: string
               description:
                 type: string
-    showDropdown:
-      type: boolean
-      deprecated: true
-    RedactConfig:
-      type: object
-      properties:
-        redactHeadshot:
-          type: boolean
-          example: true
-        redactPersonalDetails:
-          type: boolean
-          example: true
-        redactWorkDetails:
-          type: boolean
-          example: true
-        redactReferees:
-          type: boolean
-          example: true
-        redactEducationDetails:
-          type: boolean
-          example: true
-        redactLocations:
-          type: boolean
-          example: true
-        redactDates:
-          type: boolean
-          example: true
-        redactGender:
-          type: boolean
-          example: true
-    DataPointChoiceCreate:
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    ApiUserCreate:
       type: object
       required:
-      - dataPoint
-      - label
-      - value
+      - organization
       properties:
-        dataPoint:
-          $ref: '#/components/schemas/DataPoint_properties-identifier'
+        name:
+          $ref: '#/components/schemas/User_properties-name'
+        username:
+          $ref: '#/components/schemas/username'
+        email:
+          $ref: '#/components/schemas/email'
+        avatar:
+          $ref: '#/components/schemas/properties-avatar'
         organization:
           $ref: '#/components/schemas/Organization_properties-identifier'
-        collection:
-          $ref: '#/components/schemas/properties-identifier'
-        label:
-          $ref: '#/components/schemas/properties-label'
-        value:
-          $ref: '#/components/schemas/value'
-        synonyms:
-          $ref: '#/components/schemas/synonyms'
-        description:
-          $ref: '#/components/schemas/description'
-  responses:
-    DefaultError:
-      description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    204NoContent:
-      description: Delete successful, no content returned
-    401Error:
-      description: Authorisation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
+      additionalProperties: false
   parameters:
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
     limitParam:
       in: query
       name: limit
@@ -2531,16 +2600,6 @@ components:
         maximum: 100
         example: 20
       description: The numbers of results to return.
-      x-ms-parameter-location: method
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
       x-ms-parameter-location: method
   securitySchemes:
     ApiKeyAuth:

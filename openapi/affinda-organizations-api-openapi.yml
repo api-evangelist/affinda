@@ -1,8 +1,19 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affinda Annotations Add x-hidden to endpoints Organizations API
-  version: 3.0.0
-  description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
+  description: '# Introduction
+
+    Affinda uses the latest advancements in AI technology to rapidly process documents with better-than-human accuracy.'
+  version: v3
+  title: Affinda Organizations API
+  contact:
+    email: contact@affinda.com
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/affinda/affinda-api-spec/master/LICENSE
+  x-logo:
+    url: https://api.affinda.com/static/documentation/affinda_logo.png
+    backgroundColor: '#FFFFFF'
+    altText: Affinda logo
 servers:
 - url: https://{region}.affinda.com
   description: 'Select the correct server for your instance: api (AUS/Global), api.us1 (US), or api.eu1 (EU).'
@@ -19,6 +30,10 @@ security:
 - ApiKeyAuth: []
 tags:
 - name: Organizations
+  description: 'Operations to manage organizations and organization memberships.
+
+
+    Organizations are the top-level entity for managing users and workspaces.'
 paths:
   /v3/organizations:
     get:
@@ -82,26 +97,30 @@ components:
           type: string
           example: Grove Street King
         userRole:
-          type: string
+          type:
+          - string
+          - 'null'
           allOf:
           - $ref: '#/components/schemas/OrganizationRole'
-          nullable: true
           description: The role of the logged in user within the organization.
         avatar:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: URL of the organization's avatar.
           example: https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
         resthookSignatureKey:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Used to sign webhook payloads so you can verify their integrity.
           example: 465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad
         isTrial:
           type: boolean
         validationToolConfig:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           description: Configuration of the embeddable validation tool.
           properties:
             theme:
@@ -157,25 +176,40 @@ components:
         showCustomFieldCreation:
           type: boolean
           description: Whether to show the custom field creation in the UI.
-    PaletteColorOptions:
-      type: object
-      required:
-      - main
-      properties:
-        main:
-          type: string
-        light:
-          type: string
-        dark:
-          type: string
-        contrastText:
-          type: string
-    OrganizationRole:
+    Organization_properties-identifier:
       type: string
-      enum:
-      - admin
-      - member
-      example: admin
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
     ThemeConfig:
       type: object
       properties:
@@ -240,40 +274,33 @@ components:
           type: number
         fontUrl:
           type: string
-    RequestError:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - errors
-      properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type: string
-                nullable: true
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    Organization_properties-identifier:
+    OrganizationRole:
       type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
+      enum:
+      - admin
+      - member
+      example: admin
+    PaletteColorOptions:
+      type: object
+      required:
+      - main
+      properties:
+        main:
+          type: string
+        light:
+          type: string
+        dark:
+          type: string
+        contrastText:
+          type: string
   responses:
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
     401Error:
       description: Authorisation error
       content:
@@ -283,13 +310,6 @@ components:
       x-ms-error-response: true
     DefaultError:
       description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
       content:
         application/json:
           schema:

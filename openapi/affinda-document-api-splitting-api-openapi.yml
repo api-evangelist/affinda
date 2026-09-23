@@ -1,8 +1,19 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affinda Annotations Add x-hidden to endpoints Document API - Splitting API
-  version: 3.0.0
-  description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
+  description: '# Introduction
+
+    Affinda uses the latest advancements in AI technology to rapidly process documents with better-than-human accuracy.'
+  version: v3
+  title: Affinda Document API - Splitting API
+  contact:
+    email: contact@affinda.com
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/affinda/affinda-api-spec/master/LICENSE
+  x-logo:
+    url: https://api.affinda.com/static/documentation/affinda_logo.png
+    backgroundColor: '#FFFFFF'
+    altText: Affinda logo
 servers:
 - url: https://{region}.affinda.com
   description: 'Select the correct server for your instance: api (AUS/Global), api.us1 (US), or api.eu1 (EU).'
@@ -97,9 +108,7 @@ paths:
 
         Documents with multiple pages can be splitted into multiple documents, or merged into one document.
 
-        Each page can also be rotated. Edit operations will trigger re-parsing of the documents involved.
-
-        '
+        Each page can also be rotated. Edit operations will trigger re-parsing of the documents involved.'
       deprecated: true
       parameters:
       - in: path
@@ -129,35 +138,33 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
 components:
+  responses:
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    401Error:
+      description: Authorisation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    DefaultError:
+      description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
   schemas:
-    RegionBias:
-      type: object
-      nullable: true
-      properties:
-        country:
-          type: string
-          nullable: true
-          description: A single alpha-2 country code (e.g. AU) used by google geocoding service
-        countries:
-          type: array
-          items:
-            type: string
-          nullable: true
-          description: A list of alpha-2 country codes used by Pelias
-        squareCoordinates:
-          type: array
-          items:
-            type: number
-          nullable: true
-          description: A list of coordinates used by Pelias in the shape of [min_lon, min_lat, max_lon, max_lat]
-        strict:
-          type: boolean
-          description: 'If true, the location must be within the region, as opposed to prefering locations within the region.
-
-            Default to false.
-
-            '
-          example: true
+    Extractor_properties-identifier:
+      type: string
+      description: Uniquely identify an extractor.
+      example: resume
     DocumentSplit:
       type: object
       required:
@@ -172,124 +179,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DocumentSplitPage'
-    Meta:
-      type: object
-      properties:
-        identifier:
-          type: string
-          description: Unique identifier for the document
-        customIdentifier:
-          type: string
-          nullable: true
-          description: Optional identifier for the document that you can set to track the document in the Affinda system.  Is not required to be unique.
-          example: 46ab8b02-0e5b-420c-877c-8b678d46a834
-        fileName:
-          $ref: '#/components/schemas/FileName'
-        ready:
-          type: boolean
-          nullable: false
-          example: true
-          description: If true, the document has finished processing. Particularly useful if an endpoint request specified wait=False, when polling use this variable to determine when to stop polling
-        readyDt:
-          type: string
-          format: date-time
-          example: '2020-12-10T01:43:32.276724Z'
-          nullable: true
-          description: The datetime when the document was ready
-        failed:
-          type: boolean
-          nullable: false
-          example: false
-          description: If true, some exception was raised during processing. Check the 'error' field of the main return object.
-        expiryTime:
-          $ref: '#/components/schemas/ExpiryTime'
-        language:
-          type: string
-          nullable: true
-          example: en
-          description: The document's language.
-        pdf:
-          type: string
-          nullable: true
-          example: https://affinda-api.s3.amazonaws.com/media/documents/Document.pdf?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
-          description: The URL to the document's pdf (if the uploaded document is not already pdf, it's converted to pdf as part of the parsing process).
-        parentDocument:
-          type: object
-          nullable: true
-          description: If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
-          properties:
-            identifier:
-              $ref: '#/components/schemas/Meta_properties-identifier'
-        childDocuments:
-          type: array
-          description: If this document has been splitted into a number of child documents, this attribute points to those child documents.
-          items:
-            type: object
-            properties:
-              identifier:
-                $ref: '#/components/schemas/Meta_properties-identifier'
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/PageMeta'
-          description: The document's pages.
-        isVerified:
-          type: boolean
-          nullable: false
-          example: false
-          description: This is true if the 'confirm' button has been clicked in the Affinda validation tool
-        reviewUrl:
-          type: string
-          nullable: true
-          example: https://app.affinda.com/review/XJ5kK123?signature=12345
-          description: Signed URL (valid for 60 minutes) to access the validation tool.  Not applicable for documents types such a resumes.
-        ocrConfidence:
-          type: number
-          nullable: true
-          example: 0.97
-          description: The overall confidence in the conversion of image to text.  (only applicable for images or PDF documents without a text layer)
-        createdDt:
-          type: string
-          format: date-time
-        documentType:
-          type: string
-          example: resume
-        regionBias:
-          $ref: '#/components/schemas/RegionBias'
-        isOcrd:
-          type: boolean
-    RequestError:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - errors
-      properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type: string
-                nullable: true
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    DocumentMeta_properties-identifier:
-      type: string
-      description: Unique identifier for the document
+    FileName:
+      type:
+      - string
+      - 'null'
+      description: Optional filename of the file
+      example: Document.pdf
     DocumentSplitPage:
       type: object
       required:
@@ -310,15 +205,9 @@ components:
       type: string
       description: Uniquely identify a document splitter.
       example: NqIvMvZl
-    DocumentEditRequest:
-      type: object
-      required:
-      - splits
-      properties:
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentSplit'
+    DocumentMeta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
     DocumentSplitter:
       type: object
       required:
@@ -339,39 +228,13 @@ components:
           $ref: '#/components/schemas/DocumentSplitterType'
         organization:
           $ref: '#/components/schemas/Organization_properties-identifier'
-          nullable: true
         extractor:
           $ref: '#/components/schemas/Extractor_properties-identifier'
-          nullable: true
         llmHint:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: The hint about when to split which is passed into the LLM prompt.
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
-    ExpiryTime:
-      type: string
-      nullable: true
-      format: date-time
-      description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
-    DocumentSplitterType:
-      type: string
-      description: The different types of document splitters
-      enum:
-      - llm
-      - llm_v2
-      - extractor
-      - keyword
-    FileName:
-      type: string
-      nullable: true
-      description: Optional filename of the file
-      example: Document.pdf
-    Meta_properties-identifier:
-      type: string
-      description: Unique identifier for the document
     PageMeta:
       type: object
       required:
@@ -391,13 +254,15 @@ components:
           minimum: 0
           description: Page number within the document, starts from 0.
         image:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           example: https://affinda-api.s3.amazonaws.com/media/pages/Page.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
           description: The URL to the image of the page.
         imageTranslated:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           example: https://affinda-api.s3.amazonaws.com/media/pages/PageTranslated.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
           description: The URL to the translated image of the page.
         height:
@@ -414,37 +279,203 @@ components:
           minimum: -360
           maximum: 360
           description: The degree of rotation applied to the page. Greater than 0 indicates clockwise rotation. Less than 0 indicates counter-clockwise rotation.
-    Extractor_properties-identifier:
+    ExpiryTime:
+      type:
+      - string
+      - 'null'
+      format: date-time
+      description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
+    Meta:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Unique identifier for the document
+        customIdentifier:
+          type:
+          - string
+          - 'null'
+          description: Optional identifier for the document that you can set to track the document in the Affinda system.  Is not required to be unique.
+          example: 46ab8b02-0e5b-420c-877c-8b678d46a834
+        fileName:
+          $ref: '#/components/schemas/FileName'
+        ready:
+          type: boolean
+          example: true
+          description: If true, the document has finished processing. Particularly useful if an endpoint request specified wait=False, when polling use this variable to determine when to stop polling
+        readyDt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          example: '2020-12-10T01:43:32.276724Z'
+          description: The datetime when the document was ready
+        failed:
+          type: boolean
+          example: false
+          description: If true, some exception was raised during processing. Check the 'error' field of the main return object.
+        expiryTime:
+          $ref: '#/components/schemas/ExpiryTime'
+        language:
+          type:
+          - string
+          - 'null'
+          example: en
+          description: The document's language.
+        pdf:
+          type:
+          - string
+          - 'null'
+          example: https://affinda-api.s3.amazonaws.com/media/documents/Document.pdf?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
+          description: The URL to the document's pdf (if the uploaded document is not already pdf, it's converted to pdf as part of the parsing process).
+        parentDocument:
+          type:
+          - object
+          - 'null'
+          description: If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
+          properties:
+            identifier:
+              $ref: '#/components/schemas/Meta_properties-identifier'
+        childDocuments:
+          type: array
+          description: If this document has been splitted into a number of child documents, this attribute points to those child documents.
+          items:
+            type: object
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Meta_properties-identifier'
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/PageMeta'
+          description: The document's pages.
+        isVerified:
+          type: boolean
+          example: false
+          description: This is true if the 'confirm' button has been clicked in the Affinda validation tool
+        reviewUrl:
+          type:
+          - string
+          - 'null'
+          example: https://app.affinda.com/review/XJ5kK123?signature=12345
+          description: Signed URL (valid for 60 minutes) to access the validation tool.  Not applicable for documents types such a resumes.
+        ocrConfidence:
+          type:
+          - number
+          - 'null'
+          example: 0.97
+          description: The overall confidence in the conversion of image to text.  (only applicable for images or PDF documents without a text layer)
+        createdDt:
+          type: string
+          format: date-time
+        documentType:
+          type: string
+          example: resume
+        regionBias:
+          $ref: '#/components/schemas/RegionBias'
+        isOcrd:
+          type: boolean
+    DocumentEditRequest:
+      type: object
+      required:
+      - splits
+      properties:
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentSplit'
+    DocumentSplitterType:
       type: string
-      description: Uniquely identify an extractor.
-      example: resume
+      description: The different types of document splitters
+      enum:
+      - llm
+      - llm_v2
+      - extractor
+      - keyword
+    RegionBias:
+      type:
+      - object
+      - 'null'
+      properties:
+        country:
+          type:
+          - string
+          - 'null'
+          description: A single alpha-2 country code (e.g. AU) used by google geocoding service
+        countries:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: A list of alpha-2 country codes used by Pelias
+        squareCoordinates:
+          type:
+          - array
+          - 'null'
+          items:
+            type: number
+          description: A list of coordinates used by Pelias in the shape of [min_lon, min_lat, max_lon, max_lat]
+        strict:
+          type: boolean
+          description: 'If true, the location must be within the region, as opposed to prefering locations within the region.
+
+            Default to false.
+
+            '
+          example: true
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
+    Meta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
     DocumentEditResponse:
       type: array
       items:
         $ref: '#/components/schemas/Meta'
-  responses:
-    DefaultError:
-      description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    401Error:
-      description: Authorisation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
   parameters:
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
     limitParam:
       in: query
       name: limit
@@ -455,16 +486,6 @@ components:
         maximum: 100
         example: 20
       description: The numbers of results to return.
-      x-ms-parameter-location: method
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
       x-ms-parameter-location: method
   securitySchemes:
     ApiKeyAuth:

@@ -1,8 +1,19 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affinda Annotations Add x-hidden to endpoints Validation Results API
-  version: 3.0.0
-  description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
+  description: '# Introduction
+
+    Affinda uses the latest advancements in AI technology to rapidly process documents with better-than-human accuracy.'
+  version: v3
+  title: Affinda Validation Results API
+  contact:
+    email: contact@affinda.com
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/affinda/affinda-api-spec/master/LICENSE
+  x-logo:
+    url: https://api.affinda.com/static/documentation/affinda_logo.png
+    backgroundColor: '#FFFFFF'
+    altText: Affinda logo
 servers:
 - url: https://{region}.affinda.com
   description: 'Select the correct server for your instance: api (AUS/Global), api.us1 (US), or api.eu1 (EU).'
@@ -22,9 +33,7 @@ tags:
   description: 'Operations to manage validation results.
 
 
-    Validation results track the status and outcomes of document validation processes.
-
-    '
+    Validation results track the status and outcomes of document validation processes.'
 paths:
   /v3/validation_results:
     get:
@@ -200,7 +209,6 @@ paths:
       - Validation Results
       summary: Batch delete validation results
       operationId: batchDeleteValidationResults
-      description: Batch delete validation results
       responses:
         '204':
           $ref: '#/components/responses/204NoContent'
@@ -218,6 +226,12 @@ paths:
               $ref: '#/components/schemas/BatchDeleteValidationResultsRequest'
 components:
   schemas:
+    passed:
+      type:
+      - boolean
+      - 'null'
+      description: Whether the validation passed or not, null if the validation was not applicable
+      example: true
     ValidationResult_properties-id:
       type: integer
       description: Validation Result's ID
@@ -241,92 +255,18 @@ components:
           $ref: '#/components/schemas/message'
         document:
           $ref: '#/components/schemas/DocumentMeta_properties-identifier'
-    ValidationResult:
-      type: object
-      additionalProperties: false
-      nullable: false
-      description: Validation result arising from a ValidationRule
-      required:
-      - id
-      - annotations
-      - passed
-      - ruleSlug
-      - message
-      - document
-      properties:
-        id:
-          type: integer
-          description: Validation Result's ID
-          example: 1
-          minimum: 1
-        annotations:
-          type: array
-          items:
-            type: integer
-          description: List of annotation ids that were validated
-          nullable: false
-          example:
-          - 1
-          - 2
-          - 3
-        passed:
-          type: boolean
-          description: Whether the validation passed or not, null if the validation was not applicable
-          example: true
-          nullable: true
-        ruleSlug:
-          type: string
-          description: The kebab-case slug of the validation rule that was applied
-          example: supplier-name-is-alphanumeric
-          pattern: ^[a-z0-9][a-z0-9-]*[a-z0-9]$
-        message:
-          type: string
-          description: Message explaining why the validation failed
-          example: Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*
-        document:
-          $ref: '#/components/schemas/DocumentMeta_properties-identifier'
-    message:
+    annotations:
+      type: array
+      items:
+        type: integer
+      description: List of annotation ids that were validated
+      example:
+      - 1
+      - 2
+      - 3
+    DocumentMeta_properties-identifier:
       type: string
-      description: Message explaining why the validation failed
-      example: Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*
-    passed:
-      type: boolean
-      description: Whether the validation passed or not, null if the validation was not applicable
-      example: true
-      nullable: true
-    ruleSlug:
-      type: string
-      description: The kebab-case slug of the validation rule that was applied
-      example: supplier-name-is-alphanumeric
-      pattern: ^[a-z0-9][a-z0-9-]*[a-z0-9]$
-    BatchDeleteValidationResultsRequest:
-      type: object
-      additionalProperties: false
-      required:
-      - ids
-      properties:
-        ids:
-          type: array
-          items:
-            type: integer
-          description: List of validation result IDs to delete.
-          example:
-          - 123
-          - 124
-          - 125
-    ValidationResultUpdate:
-      type: object
-      properties:
-        annotations:
-          $ref: '#/components/schemas/annotations'
-        passed:
-          $ref: '#/components/schemas/passed'
-        ruleSlug:
-          $ref: '#/components/schemas/ruleSlug'
-        message:
-          $ref: '#/components/schemas/message'
-        document:
-          $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+      description: Unique identifier for the document
     RequestError:
       type: object
       additionalProperties: false
@@ -347,8 +287,9 @@ components:
             - detail
             properties:
               attr:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 example: non_field_errors
               code:
                 type: string
@@ -356,42 +297,94 @@ components:
               detail:
                 type: string
                 example: This index name has already been used
-    DocumentMeta_properties-identifier:
+    message:
       type: string
-      description: Unique identifier for the document
-    annotations:
-      type: array
-      items:
-        type: integer
-      description: List of annotation ids that were validated
-      nullable: false
-      example:
-      - 1
-      - 2
-      - 3
-  parameters:
-    limitParam:
-      in: query
-      name: limit
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        example: 20
-      description: The numbers of results to return.
-      x-ms-parameter-location: method
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
-      x-ms-parameter-location: method
+      description: Message explaining why the validation failed
+      example: Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*
+    BatchDeleteValidationResultsRequest:
+      type: object
+      additionalProperties: false
+      required:
+      - ids
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+          description: List of validation result IDs to delete.
+          example:
+          - 123
+          - 124
+          - 125
+    ValidationResult:
+      type: object
+      additionalProperties: false
+      description: Validation result arising from a ValidationRule
+      required:
+      - id
+      - annotations
+      - passed
+      - ruleSlug
+      - message
+      - document
+      properties:
+        id:
+          type: integer
+          description: Validation Result's ID
+          example: 1
+          minimum: 1
+        annotations:
+          type: array
+          items:
+            type: integer
+          description: List of annotation ids that were validated
+          example:
+          - 1
+          - 2
+          - 3
+        passed:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the validation passed or not, null if the validation was not applicable
+          example: true
+        ruleSlug:
+          type: string
+          description: The kebab-case slug of the validation rule that was applied
+          example: supplier-name-is-alphanumeric
+          pattern: ^[a-z0-9][a-z0-9-]*[a-z0-9]$
+        message:
+          type: string
+          description: Message explaining why the validation failed
+          example: Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*
+        document:
+          $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+    ValidationResultUpdate:
+      type: object
+      properties:
+        annotations:
+          $ref: '#/components/schemas/annotations'
+        passed:
+          $ref: '#/components/schemas/passed'
+        ruleSlug:
+          $ref: '#/components/schemas/ruleSlug'
+        message:
+          $ref: '#/components/schemas/message'
+        document:
+          $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+    ruleSlug:
+      type: string
+      description: The kebab-case slug of the validation rule that was applied
+      example: supplier-name-is-alphanumeric
+      pattern: ^[a-z0-9][a-z0-9-]*[a-z0-9]$
   responses:
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
     401Error:
       description: Authorisation error
       content:
@@ -406,15 +399,30 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
     204NoContent:
       description: Delete successful, no content returned
+  parameters:
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
+    limitParam:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        example: 20
+      description: The numbers of results to return.
+      x-ms-parameter-location: method
   securitySchemes:
     ApiKeyAuth:
       type: http

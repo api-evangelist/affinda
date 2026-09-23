@@ -1,0 +1,1 @@
+{"resource":"https://mcp.affinda.com/mcp","authorization_servers":["https://app.affinda.com/"],"scopes_supported":["misc:mcp"],"bearer_methods_supported":["header"],"resource_name":"Affinda MCP Server"}

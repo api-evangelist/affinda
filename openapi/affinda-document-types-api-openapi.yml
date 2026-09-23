@@ -1,8 +1,19 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affinda Annotations Add x-hidden to endpoints Document Types API
-  version: 3.0.0
-  description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
+  description: '# Introduction
+
+    Affinda uses the latest advancements in AI technology to rapidly process documents with better-than-human accuracy.'
+  version: v3
+  title: Affinda Document Types API
+  contact:
+    email: contact@affinda.com
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/affinda/affinda-api-spec/master/LICENSE
+  x-logo:
+    url: https://api.affinda.com/static/documentation/affinda_logo.png
+    backgroundColor: '#FFFFFF'
+    altText: Affinda logo
 servers:
 - url: https://{region}.affinda.com
   description: 'Select the correct server for your instance: api (AUS/Global), api.us1 (US), or api.eu1 (EU).'
@@ -19,6 +30,10 @@ security:
 - ApiKeyAuth: []
 tags:
 - name: Document Types
+  description: 'Operations to manage document types.
+
+
+    Document types represent specific categories of documents with common extraction patterns, such as invoices or resumes.'
 paths:
   /v3/document_types:
     get:
@@ -235,17 +250,56 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
 components:
+  responses:
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    401Error:
+      description: Authorisation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    DefaultError:
+      description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    204NoContent:
+      description: Delete successful, no content returned
   schemas:
-    DocumentTypeUpdate:
+    PydanticModelsResponse:
       type: object
+      required:
+      - code
+      properties:
+        code:
+          type: string
+          description: Pydantic model code
+    DocumentTypeCreate:
+      type: object
+      required:
+      - name
+      - organization
       properties:
         name:
           type: string
-          description: The new name of the document type.
+          description: The name of the document type.
         description:
+          type:
+          - string
+          - 'null'
+          description: A description of the document type.
+        organization:
           type: string
-          nullable: true
-          description: A new description of the document type.
+          description: The identifier of the organization this document type belongs to.
     RequestError:
       type: object
       additionalProperties: false
@@ -266,8 +320,9 @@ components:
             - detail
             properties:
               attr:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 example: non_field_errors
               code:
                 type: string
@@ -275,34 +330,21 @@ components:
               detail:
                 type: string
                 example: This index name has already been used
-    DocumentTypeCreate:
+    DocumentTypeUpdate:
       type: object
-      required:
-      - name
-      - organization
       properties:
         name:
           type: string
-          description: The name of the document type.
+          description: The new name of the document type.
         description:
-          type: string
-          nullable: true
-          description: A description of the document type.
-        organization:
-          type: string
-          description: The identifier of the organization this document type belongs to.
+          type:
+          - string
+          - 'null'
+          description: A new description of the document type.
     DocumentType_properties-identifier:
       type: string
       description: Uniquely identify a document type.
       example: mEFayXdO
-    PydanticModelsResponse:
-      type: object
-      required:
-      - code
-      properties:
-        code:
-          type: string
-          description: Pydantic model code
     DocumentType:
       type: object
       required:
@@ -318,8 +360,9 @@ components:
           type: string
           description: The name of the document type.
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: A description of the document type.
         ingest_email:
           type: string
@@ -327,30 +370,6 @@ components:
         organization:
           type: string
           description: The identifier of the organization this document type belongs to.
-  responses:
-    401Error:
-      description: Authorisation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    DefaultError:
-      description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    204NoContent:
-      description: Delete successful, no content returned
   securitySchemes:
     ApiKeyAuth:
       type: http

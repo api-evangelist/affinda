@@ -1,8 +1,19 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affinda Annotations Add x-hidden to endpoints Webhooks API
-  version: 3.0.0
-  description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
+  description: '# Introduction
+
+    Affinda uses the latest advancements in AI technology to rapidly process documents with better-than-human accuracy.'
+  version: v3
+  title: Affinda Webhooks API
+  contact:
+    email: contact@affinda.com
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/affinda/affinda-api-spec/master/LICENSE
+  x-logo:
+    url: https://api.affinda.com/static/documentation/affinda_logo.png
+    backgroundColor: '#FFFFFF'
+    altText: Affinda logo
 servers:
 - url: https://{region}.affinda.com
   description: 'Select the correct server for your instance: api (AUS/Global), api.us1 (US), or api.eu1 (EU).'
@@ -24,9 +35,7 @@ tags:
 
     Affinda have implemented webhooks to allow the data extracted by Affinda to be ''pushed'' to you when an event occurs
 
-    (e.g. document parsed or document validated), instead of you having to constantly poll our API to ''pull'' the data to your system.
-
-    '
+    (e.g. document parsed or document validated), instead of you having to constantly poll our API to ''pull'' the data to your system.'
 paths:
   /v3/resthook_subscriptions:
     get:
@@ -67,13 +76,16 @@ paths:
       - Webhooks
       summary: Create a resthook subscription
       operationId: createResthookSubscription
-      description: 'After a subscription is successfully created, we''ll send a POST request to your target URL with a `X-Hook-Secret` header. <br />
+      description: 'After a subscription is successfully created, we''ll send a POST request to your target URL with a `X-Hook-Secret` header.
 
-        You need to response to this request with a 200 status code to confirm your subscribe intention. <br />
 
-        Then, you need to use the `X-Hook-Secret` to activate the subscription using the [/resthook_subscriptions/activate](#post-/v3/resthook_subscriptions/activate) endpoint. <br />
+        You need to response to this request with a 200 status code to confirm your subscribe intention.
 
-        For more information and detailed instructions, [see our webhooks documentation here.](https://docs.affinda.com/docs/webhooks)'
+
+        Then, you need to use the `X-Hook-Secret` to activate the subscription using the /resthook_subscriptions/activate endpoint.
+
+
+        For more information and detailed instructions, see our webhooks documentation here.'
       responses:
         '201':
           description: Successfully created a resthook subscription.
@@ -181,7 +193,8 @@ paths:
       - Webhooks
       summary: Activate a resthook subscription
       operationId: activateResthookSubscription
-      description: 'After creating a subscription, we''ll send a POST request to your target URL with a `X-Hook-Secret` header. <br />
+      description: 'After creating a subscription, we''ll send a POST request to your target URL with a `X-Hook-Secret` header.
+
 
         You should response to this with a 200 status code, and use the value of the `X-Hook-Secret` header that you received to activate the subscription using this endpoint.'
       parameters:
@@ -206,7 +219,235 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
 components:
+  responses:
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    204NoContent:
+      description: Delete successful, no content returned
+    401Error:
+      description: Authorisation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    DefaultError:
+      description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
   schemas:
+    ResthookEvent:
+      type: string
+      enum:
+      - resume.parse.succeeded
+      - resume.parse.failed
+      - resume.parse.completed
+      - invoice.parse.succeeded
+      - invoice.parse.failed
+      - invoice.parse.completed
+      - invoice.validate.completed
+      - document.parse.succeeded
+      - document.parse.failed
+      - document.parse.completed
+      - document.validate.completed
+      - document.classify.succeeded
+      - document.classify.failed
+      - document.classify.completed
+      - document.rejected
+      - annotation.validated
+      description: The event name to subscribe to.
+      example: document.parse.succeeded
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
+    ResthookSubscription_properties-id:
+      type: integer
+      description: Resthook subscription's ID.
+    name:
+      type: string
+    Organization:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify an organization.
+          example: mEFayXdO
+        name:
+          type: string
+          example: Grove Street King
+        userRole:
+          type:
+          - string
+          - 'null'
+          allOf:
+          - $ref: '#/components/schemas/OrganizationRole'
+          description: The role of the logged in user within the organization.
+        avatar:
+          type:
+          - string
+          - 'null'
+          description: URL of the organization's avatar.
+          example: https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+        resthookSignatureKey:
+          type:
+          - string
+          - 'null'
+          description: Used to sign webhook payloads so you can verify their integrity.
+          example: 465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad
+        isTrial:
+          type: boolean
+        validationToolConfig:
+          type:
+          - object
+          - 'null'
+          description: Configuration of the embeddable validation tool.
+          properties:
+            theme:
+              $ref: '#/components/schemas/ThemeConfig'
+            hideActions:
+              type: boolean
+              description: Hide the confirm document button and other actions.
+            hideCollection:
+              type: boolean
+              description: Hide the collection selector.
+            hideEditPages:
+              type: boolean
+              description: Hide the edit pages button.
+            hideExport:
+              type: boolean
+              description: Hide the export menu.
+            hideFilename:
+              type: boolean
+              description: Hide the filename input.
+            hideShowRawValues:
+              type: boolean
+              description: Hide the toggle for showing raw annotation values.
+            hideReject:
+              type: boolean
+              description: Hide the reject document button.
+            hideReparse:
+              type: boolean
+              description: Hide the reparse button.
+            hideRunOcr:
+              type: boolean
+              description: Hide the run OCR button.
+            hideTags:
+              type: boolean
+              description: Hide the tags editor.
+            hideWarnings:
+              type: boolean
+              description: Hide the warnings panel.
+            restrictDocumentSplitting:
+              type: boolean
+              description: Disable the page editor after a document has been split once.
+            disableCurrencyFormatting:
+              type: boolean
+              description: Disable currency formatting of decimals values.
+            disableEditDocumentMetadata:
+              type: boolean
+              description: Disable editing document metadata. Makes the collection selector, filename input and tags editor read only.
+            disableManualAnnotationEditing:
+              type: boolean
+              description: Disable manual editing of annotation values via the validation popover.
+            hideDocumentStatus:
+              type: boolean
+              description: Hide the document status indicator in the toolbar.
+        showCustomFieldCreation:
+          type: boolean
+          description: Whether to show the custom field creation in the UI.
+    ResthookSubscriptionCreate:
+      type: object
+      required:
+      - targetUrl
+      - event
+      properties:
+        targetUrl:
+          $ref: '#/components/schemas/targetUrl'
+        event:
+          $ref: '#/components/schemas/ResthookEvent'
+        organization:
+          type: string
+          allOf:
+          - $ref: '#/components/schemas/Organization_properties-identifier'
+          - type: string
+            description: Specify to create an organization scope resthook. Not required if you're a member of only 1 organization.
+        workspace:
+          type: string
+          allOf:
+          - $ref: '#/components/schemas/identifier'
+          - type: string
+            description: Specify to create a workspace scope resthook.
+        version:
+          $ref: '#/components/schemas/version'
+    ResthookSubscriptionWorkspace:
+      type: object
+      required:
+      - identifier
+      - name
+      - organization
+      properties:
+        identifier:
+          $ref: '#/components/schemas/identifier'
+        name:
+          $ref: '#/components/schemas/name'
+        organization:
+          $ref: '#/components/schemas/Organization'
+    PaletteColorOptions:
+      type: object
+      required:
+      - main
+      properties:
+        main:
+          type: string
+        light:
+          type: string
+        dark:
+          type: string
+        contrastText:
+          type: string
+    targetUrl:
+      type: string
+      description: URL of the resthook's receiver.
+      example: https://my-site.com/receive
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
     ResthookSubscription:
       type: object
       required:
@@ -227,10 +468,8 @@ components:
           $ref: '#/components/schemas/ResthookEvent'
         organization:
           $ref: '#/components/schemas/Organization'
-          nullable: true
         workspace:
           $ref: '#/components/schemas/ResthookSubscriptionWorkspace'
-          nullable: true
         targetUrl:
           type: string
           description: URL of the resthook's receiver.
@@ -255,6 +494,21 @@ components:
           - v3
           description: Version of the resthook subscription. Determines the resthook body being fired.
           example: v3
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    ResthookSubscriptionUpdate:
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/ResthookEvent'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        workspace:
+          $ref: '#/components/schemas/identifier'
+        version:
+          $ref: '#/components/schemas/version'
     ThemeConfig:
       type: object
       properties:
@@ -319,68 +573,12 @@ components:
           type: number
         fontUrl:
           type: string
-    RequestError:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - errors
-      properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type: string
-                nullable: true
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    version:
+    OrganizationRole:
       type: string
       enum:
-      - v1
-      - v2
-      - v3
-      description: Version of the resthook subscription. Determines the resthook body being fired.
-      example: v3
-    targetUrl:
-      type: string
-      description: URL of the resthook's receiver.
-      example: https://my-site.com/receive
-    ResthookEvent:
-      type: string
-      enum:
-      - resume.parse.succeeded
-      - resume.parse.failed
-      - resume.parse.completed
-      - invoice.parse.succeeded
-      - invoice.parse.failed
-      - invoice.parse.completed
-      - invoice.validate.completed
-      - document.parse.succeeded
-      - document.parse.failed
-      - document.parse.completed
-      - document.validate.completed
-      - document.classify.succeeded
-      - document.classify.failed
-      - document.classify.completed
-      - document.rejected
-      - annotation.validated
-      description: The event name to subscribe to.
-      example: document.parse.succeeded
+      - admin
+      - member
+      example: admin
     PaginatedResponse:
       type: object
       required:
@@ -392,204 +590,34 @@ components:
           description: Number of items in results.
           minimum: 0
         next:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: URL to request next page of results.
         previous:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: URL to request previous page of results.
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
-    ResthookSubscriptionCreate:
-      type: object
-      required:
-      - targetUrl
-      - event
-      properties:
-        targetUrl:
-          $ref: '#/components/schemas/targetUrl'
-        event:
-          $ref: '#/components/schemas/ResthookEvent'
-        organization:
-          type: string
-          allOf:
-          - $ref: '#/components/schemas/Organization_properties-identifier'
-          - type: string
-            description: Specify to create an organization scope resthook. Not required if you're a member of only 1 organization.
-        workspace:
-          type: string
-          allOf:
-          - $ref: '#/components/schemas/identifier'
-          - type: string
-            description: Specify to create a workspace scope resthook.
-        version:
-          $ref: '#/components/schemas/version'
-    ResthookSubscriptionWorkspace:
-      type: object
-      required:
-      - identifier
-      - name
-      - organization
-      properties:
-        identifier:
-          $ref: '#/components/schemas/identifier'
-        name:
-          $ref: '#/components/schemas/name'
-        organization:
-          $ref: '#/components/schemas/Organization'
-    OrganizationRole:
+    version:
       type: string
       enum:
-      - admin
-      - member
-      example: admin
-    name:
-      type: string
-    ResthookSubscriptionUpdate:
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/ResthookEvent'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        workspace:
-          $ref: '#/components/schemas/identifier'
-        version:
-          $ref: '#/components/schemas/version'
-    ResthookSubscription_properties-id:
-      type: integer
-      description: Resthook subscription's ID.
-    Organization:
-      type: object
-      properties:
-        identifier:
-          type: string
-          description: Uniquely identify an organization.
-          example: mEFayXdO
-        name:
-          type: string
-          example: Grove Street King
-        userRole:
-          type: string
-          allOf:
-          - $ref: '#/components/schemas/OrganizationRole'
-          nullable: true
-          description: The role of the logged in user within the organization.
-        avatar:
-          type: string
-          nullable: true
-          description: URL of the organization's avatar.
-          example: https://affinda-api.s3.amazonaws.com/media/org-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
-        resthookSignatureKey:
-          type: string
-          nullable: true
-          description: Used to sign webhook payloads so you can verify their integrity.
-          example: 465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad
-        isTrial:
-          type: boolean
-        validationToolConfig:
-          type: object
-          nullable: true
-          description: Configuration of the embeddable validation tool.
-          properties:
-            theme:
-              $ref: '#/components/schemas/ThemeConfig'
-            hideActions:
-              type: boolean
-              description: Hide the confirm document button and other actions.
-            hideCollection:
-              type: boolean
-              description: Hide the collection selector.
-            hideEditPages:
-              type: boolean
-              description: Hide the edit pages button.
-            hideExport:
-              type: boolean
-              description: Hide the export menu.
-            hideFilename:
-              type: boolean
-              description: Hide the filename input.
-            hideShowRawValues:
-              type: boolean
-              description: Hide the toggle for showing raw annotation values.
-            hideReject:
-              type: boolean
-              description: Hide the reject document button.
-            hideReparse:
-              type: boolean
-              description: Hide the reparse button.
-            hideRunOcr:
-              type: boolean
-              description: Hide the run OCR button.
-            hideTags:
-              type: boolean
-              description: Hide the tags editor.
-            hideWarnings:
-              type: boolean
-              description: Hide the warnings panel.
-            restrictDocumentSplitting:
-              type: boolean
-              description: Disable the page editor after a document has been split once.
-            disableCurrencyFormatting:
-              type: boolean
-              description: Disable currency formatting of decimals values.
-            disableEditDocumentMetadata:
-              type: boolean
-              description: Disable editing document metadata. Makes the collection selector, filename input and tags editor read only.
-            disableManualAnnotationEditing:
-              type: boolean
-              description: Disable manual editing of annotation values via the validation popover.
-            hideDocumentStatus:
-              type: boolean
-              description: Hide the document status indicator in the toolbar.
-        showCustomFieldCreation:
-          type: boolean
-          description: Whether to show the custom field creation in the UI.
-    PaletteColorOptions:
-      type: object
-      required:
-      - main
-      properties:
-        main:
-          type: string
-        light:
-          type: string
-        dark:
-          type: string
-        contrastText:
-          type: string
-  responses:
-    DefaultError:
-      description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    204NoContent:
-      description: Delete successful, no content returned
-    401Error:
-      description: Authorisation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
+      - v1
+      - v2
+      - v3
+      description: Version of the resthook subscription. Determines the resthook body being fired.
+      example: v3
   parameters:
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
     limitParam:
       in: query
       name: limit
@@ -600,16 +628,6 @@ components:
         maximum: 100
         example: 20
       description: The numbers of results to return.
-      x-ms-parameter-location: method
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
       x-ms-parameter-location: method
   securitySchemes:
     ApiKeyAuth:

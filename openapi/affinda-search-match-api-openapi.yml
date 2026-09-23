@@ -1,8 +1,19 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affinda Annotations Add x-hidden to endpoints Search & Match API
-  version: 3.0.0
-  description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
+  description: '# Introduction
+
+    Affinda uses the latest advancements in AI technology to rapidly process documents with better-than-human accuracy.'
+  version: v3
+  title: Affinda Search & Match API
+  contact:
+    email: contact@affinda.com
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/affinda/affinda-api-spec/master/LICENSE
+  x-logo:
+    url: https://api.affinda.com/static/documentation/affinda_logo.png
+    backgroundColor: '#FFFFFF'
+    altText: Affinda logo
 servers:
 - url: https://{region}.affinda.com
   description: 'Select the correct server for your instance: api (AUS/Global), api.us1 (US), or api.eu1 (EU).'
@@ -19,6 +30,10 @@ security:
 - ApiKeyAuth: []
 tags:
 - name: Search & Match
+  description: 'Operations to search through an index of documents and manage indexes via the Affinda Resume Parser API or a client library.
+
+
+    Resumes and job descriptions must be explicitly added to an index, which then makes them searchable.'
 paths:
   /v3/documents/create_from_data:
     post:
@@ -26,13 +41,13 @@ paths:
       - Search & Match
       summary: Create a document from raw data
       operationId: createDocumentFromData
-      description: '
+      description: 'Creates a document directly from structured resume or job description data for use in Search & Match functionality. This endpoint is specifically designed for programmatic document creation without file uploads.
 
-        Creates a document directly from structured resume or job description data for use in Search & Match functionality. This endpoint is specifically designed for programmatic document creation without file uploads.<br/>
 
-        If you want to upload a document with a file or URL, see the main [POST /v3/documents](#post-/v3/documents) endpoint under the Documents tag.<br/>
+        If you want to upload a document with a file or URL, see the main POST /v3/documents endpoint under the Documents tag.
 
-        When successful, returns an `identifier` in the response for subsequent use with the [/documents/{identifier}](#get-/v3/documents/-identifier-) endpoint to check processing status and retrieve results.<br/>'
+
+        When successful, returns an `identifier` in the response for subsequent use with the /documents/{identifier} endpoint to check processing status and retrieve results.'
       responses:
         '200':
           description: Only returned when wait=True, will return the created document
@@ -136,7 +151,17 @@ paths:
       - Search & Match
       summary: Search through parsed resumes
       operationId: createResumeSearch
-      description: "Searches through parsed resumes. Users have 3 options to create a search:<br /><br /> 1.\tMatch to a job description - a parsed job description is used to find candidates that suit it<br /> 2.\tMatch to a resume - a parsed resume is used to find other candidates that have similar attributes<br /> 3.\tSearch using custom criteria<br /><br /> Users should only populate 1 of jobDescription, resume or the custom criteria."
+      description: 'Searches through parsed resumes. Users have 3 options to create a search:
+
+
+        1. Match to a job description - a parsed job description is used to find candidates that suit it
+
+        2. Match to a resume - a parsed resume is used to find other candidates that have similar attributes
+
+        3. Search using custom criteria
+
+
+        Users should only populate 1 of jobDescription, resume or the custom criteria.'
       parameters:
       - $ref: '#/components/parameters/offsetParam'
       - in: query
@@ -178,7 +203,7 @@ paths:
       operationId: getResumeSearchDetail
       description: 'This contains more detailed information about the matching score of the search criteria, or which search criteria is missing in this resume.
 
-        The `identifier` is the unique ID returned via the [/resume_search](#post-/resume_search) endpoint.'
+        The `identifier` is the unique ID returned via the /resume_search endpoint.'
       parameters:
       - in: path
         required: true
@@ -283,7 +308,9 @@ paths:
       - Search & Match
       summary: Match a single resume and job description
       operationId: getResumeSearchMatch
-      description: Get the matching score between a resume and a job description. The score ranges between 0 and 1, with 0 being not a match at all, and 1 being perfect match.<br/> Note, this score will not directly match the score returned from POST [/resume_search/details/{identifier}](#post-/resume_search/details/-identifier-).
+      description: 'Get the matching score between a resume and a job description. The score ranges between 0 and 1, with 0 being not a match at all, and 1 being perfect match.
+
+        Note, this score will not directly match the score returned from POST /resume_search/details/{identifier}.'
       parameters:
       - in: query
         name: resume
@@ -510,7 +537,7 @@ paths:
       operationId: getJobDescriptionSearchDetail
       description: 'This contains more detailed information about the matching score of the search criteria, or which search criteria is missing in this job description.
 
-        The `identifier` is the unique ID returned via the [/job_description_search](#post-/job_description_search) endpoint.'
+        The `identifier` is the unique ID returned via the /job_description_search endpoint.'
       parameters:
       - in: path
         required: true
@@ -560,7 +587,7 @@ paths:
     patch:
       tags:
       - Search & Match
-      summary: Update the config for the logged in user's embeddable job description search tool
+      summary: Update the config for the logged in user's embeddable job description search…
       operationId: updateJobDescriptionSearchConfig
       description: Update configurations such as which fields can be displayed in the logged in user's embeddable job description search tool, what are their weights, what is the maximum number of results that can be returned, etc.
       requestBody:
@@ -792,12 +819,14 @@ paths:
                     minimum: 1
                     description: Number of indexed documents in result
                   next:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: URL to request next page of results
                   previous:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: URL to request previous page of results
                   results:
                     type: array
@@ -900,9 +929,7 @@ paths:
 
         This is relevant if you updated the document''s data via the /annotations endpoint, and want to refresh
 
-        the document''s data in the search index.
-
-        '
+        the document''s data in the search index.'
       parameters:
       - in: path
         required: true
@@ -929,657 +956,245 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
-    Annotation:
-      type: object
-      additionalProperties: true
-      nullable: true
-      required:
-      - id
-      - rectangle
-      - rectangles
-      - document
-      - pageIndex
-      - raw
-      - confidence
-      - classificationConfidence
-      - textExtractionConfidence
-      - isVerified
-      - isClientVerified
-      - isAutoVerified
-      - contentType
-      properties:
-        id:
-          type: integer
-          description: Annotation's ID
-          example: 1
-          minimum: 1
-        rectangle:
-          $ref: '#/components/schemas/Rectangle'
-          nullable: true
-          description: x/y coordinates for the rectangular bounding box containing the data
-        rectangles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Rectangle'
-          description: x/y coordinates for the rectangles containing the data. An annotation can be contained within multiple rectangles.
-        document:
-          $ref: '#/components/schemas/DocumentMeta_properties-identifier'
-        pageIndex:
-          type: integer
-          nullable: true
-          example: 0
-          minimum: 0
-          description: The page number within the document, starting from 0.
-        raw:
-          type: string
-          nullable: true
-          description: Raw data extracted from the before any post-processing
-        confidence:
-          type: number
-          nullable: true
-          example: 0.86
-          description: The overall confidence that the model's prediction is correct
-        classificationConfidence:
-          type: number
-          nullable: true
-          example: 0.95
-          description: The model's confidence that the text has been classified correctly
-        textExtractionConfidence:
-          type: number
-          nullable: true
-          example: 0.9
-          description: If the document was submitted as an image, this is the confidence that the text in the image has been correctly read by the model
-        isVerified:
-          type: boolean
-          description: Indicates whether the data has been validated, either by a human using our validation tool or through auto-validation rules
-        isClientVerified:
-          type: boolean
-          description: Indicates whether the data has been validated by a human
-        isAutoVerified:
-          type: boolean
-          description: Indicates whether the data has been auto-validated
-        dataPoint:
-          type: string
-          description: Data point's identifier
-        field:
-          type: string
-          description: Field's identifier
-          nullable: true
-        contentType:
-          $ref: '#/components/schemas/AnnotationContentType'
-        parent:
-          type: integer
-          description: The parent annotation's ID
-          nullable: true
-    JobDescriptionSearchParameters:
-      type: object
-      additionalProperties: false
-      nullable: true
-      required:
-      - indices
-      properties:
-        indices:
-          type: array
-          example:
-          - all-job-descriptions
-          items:
-            type: string
-        resume:
-          $ref: '#/components/schemas/Identifier'
-          nullable: true
-        jobTitles:
-          type: array
-          items:
-            type: string
-        jobTitlesRequired:
-          type: boolean
-        jobTitlesWeight:
-          type: number
-          minimum: 0
-          maximum: 1
-        totalYearsExperience:
-          type: number
-          nullable: true
-        yearsExperienceRequired:
-          type: boolean
-        yearsExperienceWeight:
-          type: number
-          minimum: 0
-          maximum: 1
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResumeSearchParametersLocation'
-        locationsWeight:
-          type: number
-          minimum: 0
-          maximum: 1
-        locationsRequired:
-          type: boolean
-        skills:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResumeSearchParametersSkill'
-        skillsWeight:
-          type: number
-          minimum: 0
-          maximum: 1
-        languages:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResumeSearchParametersSkill'
-        languagesWeight:
-          type: number
-          minimum: 0
-          maximum: 1
-        degrees:
-          type: array
-          items:
-            type: string
-        degreesRequired:
-          type: boolean
-        degreeTypes:
-          type: array
-          uniqueItems: true
-          items:
-            $ref: '#/components/schemas/EducationLevel'
-        degreeTypesRequired:
-          type: boolean
-        educationWeight:
-          type: number
-          minimum: 0
-          maximum: 1
-        searchExpression:
-          type: string
-          nullable: true
-        searchExpressionRequired:
-          type: boolean
-        searchExpressionWeight:
-          type: number
-          minimum: 0
-          maximum: 1
-        socCodes:
-          type: array
-          items:
-            type: integer
-            minimum: 1
-            maximum: 9999
-        socCodesWeight:
-          type: number
-          minimum: 0
-          maximum: 1
-        socCodesRequired:
-          type: boolean
-        managementLevel:
-          $ref: '#/components/schemas/ManagementLevel'
-        managementLevelRequired:
-          type: boolean
-        managementLevelWeight:
-          type: number
-          minimum: 0
-          maximum: 1
-        customData:
-          type: array
-          items:
-            $ref: '#/components/schemas/SearchParametersCustomData'
-    ResumeSearchMatch:
-      type: object
-      properties:
-        score:
-          type: number
-          minimum: 0
-          maximum: 1
-          nullable: false
-          description: The matching score between the provided resume and job description.
-          example: 0.75
-        details:
-          type: object
-          properties:
-            jobTitle:
-              $ref: '#/components/schemas/JobTitleSearchScoreComponent'
-            managementLevel:
-              $ref: '#/components/schemas/ManagementLevelSearchScoreComponent'
-            experience:
-              $ref: '#/components/schemas/ExperienceSearchScoreComponent'
-            skills:
-              $ref: '#/components/schemas/SkillsSearchScoreComponent'
-            languages:
-              $ref: '#/components/schemas/LanguagesSearchScoreComponent'
-            location:
-              $ref: '#/components/schemas/LocationSearchScoreComponent'
-            education:
-              $ref: '#/components/schemas/EducationSearchScoreComponent'
-            occupationGroup:
-              $ref: '#/components/schemas/OccupationGroupSearchScoreComponent'
-            searchExpression:
-              $ref: '#/components/schemas/SearchExpressionSearchScoreComponent'
-    ManagementLevel:
-      type: string
-      example: Low
-      nullable: true
-      enum:
-      - None
-      - Low
-      - Mid
-      - Upper
-      x-ms-enum:
-        name: managementLevel
-    Rectangle:
-      type: object
-      additionalProperties: false
-      nullable: false
-      required:
-      - x0
-      - y0
-      - x1
-      - y1
-      properties:
-        pageIndex:
-          type: integer
-          nullable: false
-          example: 1
-          minimum: 0
-        x0:
-          type: number
-          nullable: false
-          example: 2.43
-        y0:
-          type: number
-          nullable: false
-          example: 4.55
-        x1:
-          type: number
-          nullable: false
-          example: 4.56
-        y1:
-          type: number
-          nullable: false
-          example: 6.32
-    IndexUpdate:
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          $ref: '#/components/schemas/Index_properties-name'
-    LocationAnnotation:
-      type: object
-      nullable: true
+    LanguageAnnotation:
+      type:
+      - object
+      - 'null'
       allOf:
       - $ref: '#/components/schemas/Annotation'
       - type: object
         properties:
           parsed:
-            $ref: '#/components/schemas/Location'
-    ResumeSearchParametersCustomData:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/SearchParametersCustomData'
-    Tag:
+            type:
+            - string
+            - 'null'
+            readOnly: true
+            example: Basket weaving
+    DocumentMeta:
       type: object
       required:
-      - id
-      - name
+      - identifier
+      - pages
       - workspace
-      - documentCount
       properties:
-        id:
-          type: integer
-          description: Uniquely identify a tag.
-          example: 1
-          minimum: 1
-        name:
+        identifier:
           type: string
-        workspace:
-          $ref: '#/components/schemas/identifier'
-        documentCount:
-          type: integer
-          minimum: 0
-          description: Number of documents tagged with this.
-    properties-id:
-      type: integer
-      description: Uniquely identify a user.
-      example: 1
-      minimum: 1
-    ResumeSkill:
-      type: object
-      properties:
-        name:
-          type: string
-          nullable: true
-        lastUsed:
-          type: string
-          nullable: true
-          example: '2022-05-16'
-        numberOfMonths:
-          type: integer
-          nullable: true
-          minimum: 0
-        type:
-          type: string
-          nullable: true
-        sources:
+          description: Unique identifier for the document
+        customIdentifier:
+          type:
+          - string
+          - 'null'
+          description: Optional identifier for the document that you can set to track the document in the Affinda system.  Is not required to be unique.
+          example: 46ab8b02-0e5b-420c-877c-8b678d46a834
+        fileName:
+          $ref: '#/components/schemas/FileName'
+        ready:
+          type: boolean
+          example: true
+          description: If true, the document has finished processing. Particularly useful if an endpoint request specified wait=False, when polling use this variable to determine when to stop polling
+        readyDt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          example: '2020-12-10T01:43:32.276724Z'
+          description: The datetime when the document was ready
+        failed:
+          type: boolean
+          example: false
+          description: If true, some exception was raised during processing. Check the 'error' field of the main return object.
+        expiryTime:
+          $ref: '#/components/schemas/ExpiryTime'
+        language:
+          type:
+          - string
+          - 'null'
+          example: en
+          description: The document's language.
+        pdf:
+          type:
+          - string
+          - 'null'
+          example: https://affinda-api.s3.amazonaws.com/media/documents/Document.pdf?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
+          description: The URL to the document's pdf (if the uploaded document is not already pdf, it's converted to pdf as part of the parsing process).
+        parentDocument:
+          type:
+          - object
+          - 'null'
+          description: If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
+          properties:
+            identifier:
+              $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+            customIdentifier:
+              $ref: '#/components/schemas/customIdentifier'
+        childDocuments:
           type: array
+          description: If this document has been splitted into a number of child documents, this attribute points to those child documents.
           items:
             type: object
             properties:
-              section:
-                type: string
-                enum:
-                - Achievements
-                - AdditionalInformation
-                - Education
-                - Extracurriculars
-                - Organisations
-                - Other
-                - PersonalDetails
-                - Projects
-                - Publications
-                - Referees
-                - Skills
-                - Summary
-                - Training
-                - WorkExperience
-                - NotPopulated
-                - Header
-                - Footer
-                - Skills/Interests/Languages
-                - Training/Certifications
-                - Extracurriculars/Leadership
-              position:
-                type: integer
-                nullable: true
-                minimum: 0
-    Identifier:
-      type: string
-      description: A random string that uniquely identify the resource.
-    SkillAnnotationUpdate:
-      type: object
-      nullable: true
-      allOf:
-      - $ref: '#/components/schemas/AnnotationBase'
-      - type: object
-        properties:
-          parsed:
-            type: string
-            readOnly: true
-            nullable: true
-            example: Basket weaving
-    PaginatedResponse:
-      type: object
-      required:
-      - count
-      properties:
-        count:
-          type: integer
-          example: 10
-          description: Number of items in results.
-          minimum: 0
-        next:
+              identifier:
+                $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+              customIdentifier:
+                $ref: '#/components/schemas/customIdentifier'
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/PageMeta'
+          description: The document's pages.
+        isOcrd:
+          type: boolean
+        ocrConfidence:
+          type:
+          - number
+          - 'null'
+        reviewUrl:
+          type:
+          - string
+          - 'null'
+        documentType:
+          type:
+          - string
+          - 'null'
+          description: The document type's identifier.  Provide if you already know the document type.
+        collection:
+          type:
+          - object
+          - 'null'
+          required:
+          - identifier
+          properties:
+            identifier:
+              $ref: '#/components/schemas/properties-identifier'
+            name:
+              $ref: '#/components/schemas/name'
+            extractor:
+              type:
+              - object
+              - 'null'
+              properties:
+                identifier:
+                  $ref: '#/components/schemas/Extractor_properties-identifier'
+                name:
+                  $ref: '#/components/schemas/name'
+                baseExtractor:
+                  type:
+                  - string
+                  - 'null'
+                  description: Base extractor's identifier.
+                validatable:
+                  $ref: '#/components/schemas/validatable'
+            validationRules:
+              type: array
+              items:
+                $ref: '#/components/schemas/ValidationRule'
+            autoRefreshValidationResults:
+              type: boolean
+              description: If True, validation results are refreshed whenever annotations are changed.
+        workspace:
+          type: object
+          required:
+          - identifier
+          properties:
+            identifier:
+              $ref: '#/components/schemas/identifier'
+            name:
+              $ref: '#/components/schemas/name'
+        archivedDt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        isArchived:
+          type: boolean
+        skipParse:
+          type: boolean
+        confirmedDt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        confirmedBy:
+          $ref: '#/components/schemas/UserNullable'
+        isConfirmed:
+          type: boolean
+        rejectedDt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        rejectedBy:
+          $ref: '#/components/schemas/UserNullable'
+        archivedBy:
+          $ref: '#/components/schemas/UserNullable'
+        isRejected:
+          type: boolean
+        createdDt:
           type: string
-          nullable: true
-          description: URL to request next page of results.
-        previous:
-          type: string
-          nullable: true
-          description: URL to request previous page of results.
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
-    OccupationGroupSearchScoreComponent:
-      type: object
-      additionalProperties: false
-      required:
-      - label
-      properties:
-        value:
-          type: string
-          example: Programmers and software development professionals
-        label:
-          type: string
-          example: Occupation group
-        score:
-          type: number
-          nullable: true
-          example: 0.68
-    email:
-      type: string
-      example: carljohnson@grove.street
-    ResumeSearchResult:
-      type: object
-      additionalProperties: false
-      required:
-      - identifier
-      - score
-      - pdf
-      - jobTitle
-      - managementLevel
-      - experience
-      - skills
-      - languages
-      - location
-      - education
-      - occupationGroup
-      - searchExpression
-      - customData
-      properties:
-        identifier:
-          $ref: '#/components/schemas/Identifier'
-        score:
-          type: number
-          example: 0.98
-        pdf:
-          type: string
-          example: https://affinda-api.s3.amazonaws.com/media/documents/Example-Resume
-          nullable: true
-        name:
-          type: string
-          example: Mary Jane
-        jobTitle:
-          $ref: '#/components/schemas/JobTitleSearchScoreComponent'
-        managementLevel:
-          $ref: '#/components/schemas/ManagementLevelSearchScoreComponent'
-        experience:
-          $ref: '#/components/schemas/ExperienceSearchScoreComponent'
-        skills:
-          $ref: '#/components/schemas/SkillsSearchScoreComponent'
-        languages:
-          $ref: '#/components/schemas/LanguagesSearchScoreComponent'
-        location:
-          $ref: '#/components/schemas/LocationSearchScoreComponent'
-        education:
-          $ref: '#/components/schemas/EducationSearchScoreComponent'
-        occupationGroup:
-          $ref: '#/components/schemas/OccupationGroupSearchScoreComponent'
-        searchExpression:
-          $ref: '#/components/schemas/SearchExpressionSearchScoreComponent'
-        customData:
-          $ref: '#/components/schemas/CustomDataSearchScoreComponent'
-    FileName:
-      type: string
-      nullable: true
-      description: Optional filename of the file
-      example: Document.pdf
-    PageMeta:
-      type: object
-      required:
-      - id
-      - pageIndex
-      - image
-      - width
-      - height
-      - rotation
-      properties:
-        id:
-          type: integer
-          minimum: 1
-        pageIndex:
-          type: integer
-          example: 0
-          minimum: 0
-          description: Page number within the document, starts from 0.
-        image:
-          type: string
-          nullable: true
-          example: https://affinda-api.s3.amazonaws.com/media/pages/Page.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
-          description: The URL to the image of the page.
-        imageTranslated:
-          type: string
-          nullable: true
-          example: https://affinda-api.s3.amazonaws.com/media/pages/PageTranslated.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
-          description: The URL to the translated image of the page.
-        height:
-          type: number
-          example: 700
-          description: Height of the page's image in px.
-        width:
-          type: number
-          example: 500
-          description: Width of the page's image in px.
-        rotation:
-          type: integer
-          example: 90
-          minimum: -360
-          maximum: 360
-          description: The degree of rotation applied to the page. Greater than 0 indicates clockwise rotation. Less than 0 indicates counter-clockwise rotation.
-    IndexCreate:
-      type: object
-      title: IndexRequestBody
-      additionalProperties: true
-      required:
-      - name
-      properties:
-        name:
-          $ref: '#/components/schemas/Index_properties-name'
-        docType:
-          $ref: '#/components/schemas/docType'
-    name:
-      type: string
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Uniquely identify a user.
-          example: 1
-          minimum: 1
-        name:
-          type: string
-          example: Carl Johnson
-        username:
-          type: string
-          example: carljohnson
-        email:
-          type: string
-          example: carljohnson@grove.street
-        avatar:
-          type: string
-          nullable: true
-          description: URL of the user's avatar.
-          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
-    LocationAnnotationUpdate:
-      type: object
-      nullable: true
-      allOf:
-      - $ref: '#/components/schemas/AnnotationBase'
-      - type: object
-        properties:
-          parsed:
-            readOnly: true
-            allOf:
-            - $ref: '#/components/schemas/Location'
-    Extractor_properties-identifier:
-      type: string
-      description: Uniquely identify an extractor.
-      example: resume
-    SkillAnnotation:
-      type: object
-      nullable: true
-      allOf:
-      - $ref: '#/components/schemas/Annotation'
-      - type: object
-        properties:
-          parsed:
-            type: string
-            readOnly: true
-            nullable: true
-            example: Mandarin Chinese
-    TextAnnotationUpdate:
-      type: object
-      nullable: true
-      allOf:
-      - $ref: '#/components/schemas/AnnotationBase'
-      - type: object
-        properties:
-          parsed:
-            type: string
-            nullable: true
-            example: John Smith
-    DocumentCreateFromData:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          description: Create resume or job description directly from data.
-          oneOf:
-          - $ref: '#/components/schemas/ResumeData'
-          - $ref: '#/components/schemas/JobDescriptionData'
-    UserNullable:
-      type: object
-      nullable: true
-      properties:
-        id:
-          type: integer
-          description: Uniquely identify a user.
-          example: 1
-          minimum: 1
-        name:
-          type: string
-          example: Carl Johnson
-        username:
-          type: string
-          example: carljohnson
-        email:
-          type: string
-          example: carljohnson@grove.street
-        avatar:
-          type: string
-          nullable: true
-          description: URL of the user's avatar.
-          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
-    DateAnnotation:
-      type: object
-      nullable: true
-      allOf:
-      - $ref: '#/components/schemas/Annotation'
-      - type: object
-        properties:
-          parsed:
-            type: string
-            format: date
-            nullable: true
-            example: '2022-02-09'
+          format: date-time
+        errorCode:
+          $ref: '#/components/schemas/errorCode'
+        errorDetail:
+          $ref: '#/components/schemas/errorDetail'
+        file:
+          type:
+          - string
+          - 'null'
+          description: URL to view the file.
+        html:
+          type:
+          - string
+          - 'null'
+          description: URL to view the file converted to HTML.
+        llmHint:
+          type:
+          - string
+          - 'null'
+          description: Optional hint inserted into the LLM prompt when processing this document.
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        createdBy:
+          $ref: '#/components/schemas/User'
+        sourceEmail:
+          type:
+          - string
+          - 'null'
+          description: If the document is created via email ingestion, this field stores the email file's URL.
+        sourceEmailAddress:
+          type:
+          - string
+          - 'null'
+          description: If the document is created via email ingestion, this field stores the email's From address.
+        regionBias:
+          $ref: '#/components/schemas/RegionBias'
     JobDescriptionData:
-      type: object
+      type:
+      - object
+      - 'null'
       additionalProperties:
         anyOf:
-        - type: string
-          nullable: true
-        - type: integer
-          nullable: true
-        - type: number
-          nullable: true
-        - type: boolean
-          nullable: true
-        - type: array
+        - type:
+          - string
+          - 'null'
+        - type:
+          - integer
+          - 'null'
+        - type:
+          - number
+          - 'null'
+        - type:
+          - boolean
+          - 'null'
+        - type:
+          - array
+          - 'null'
           items: {}
           description: 'For fields with multiple entries, use lists. E.g. ''multipleField'': [''entry1'', ''entry2'']'
-          nullable: true
         description: 'For custom fields. E.g. ''isAvailable'': true'
         not:
           type: object
-      nullable: true
       description: A JSON-encoded string of the `JobDescriptionData` object.
       properties:
         jobTitle:
@@ -1627,28 +1242,588 @@ components:
           example: Human Resources Assistant Switzerland '... <rest of job description text>'
           description: All of the raw text of the parsed job description, example is shortened for readability
       x-csharp-usage: output
-    CustomDataSearchScoreComponent:
+    Education:
       type: object
-      additionalProperties:
-        type: object
-        required:
-        - label
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        organization:
+          type:
+          - string
+          - 'null'
+          example: Virginia Polytechnic Institute and State University (Virginia Tech)
+        accreditation:
+          $ref: '#/components/schemas/Accreditation'
+        grade:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+          properties:
+            raw:
+              type: string
+              example: 'GPA : 3.35'
+            metric:
+              type:
+              - string
+              - 'null'
+              example: GPA
+            value:
+              type: string
+              example: '3.35'
+        location:
+          $ref: '#/components/schemas/Location'
+        dates:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+          properties:
+            completionDate:
+              type: string
+              format: date
+              example: '2021-05-01'
+            isCurrent:
+              type: boolean
+            startDate:
+              type:
+              - string
+              - 'null'
+              format: date
+              example: '2019-05-01'
+            rawText:
+              type: string
+              example: May-Aug '18
+    AnnotationBase:
+      type:
+      - object
+      - 'null'
+      additionalProperties: true
+      properties:
+        id:
+          type: integer
+        rectangle:
+          $ref: '#/components/schemas/Rectangle'
+        rectangles:
+          type:
+          - array
+          - 'null'
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Rectangle'
+        pageIndex:
+          type:
+          - integer
+          - 'null'
+          example: 0
+        raw:
+          type:
+          - string
+          - 'null'
+          example: 2/9/2022
+        confidence:
+          type:
+          - number
+          - 'null'
+          example: 0.86
+          description: The overall confidence that the model's prediction is correct
+        classificationConfidence:
+          type:
+          - number
+          - 'null'
+          example: 0.95
+          description: The model's confidence that the text has been classified correctly
+        textExtractionConfidence:
+          type:
+          - number
+          - 'null'
+          example: 0.9
+          description: If the document was submitted as an image, this is the confidence that the text in the image has been correctly read by the model.
+        isVerified:
+          type: boolean
+        isClientVerified:
+          type: boolean
+        isAutoVerified:
+          type: boolean
+        dataPoint:
+          type: string
+        contentType:
+          type: string
+    ValidationRule:
+      type: object
+      additionalProperties: false
+      description: A validation rule for a collection
+      required:
+      - slug
+      - dataPoints
+      properties:
+        slug:
+          type: string
+          description: The slug of the validation rule, in lowercase snake_case
+          pattern: ^[a-z0-9_]+$
+          example: supplier_name_is_alphanumeric
+        dataPoints:
+          type: array
+          description: The data point identifier that this validation rule applies to, can be an empty list if the rule doens't use any data points as sources
+          items:
+            $ref: '#/components/schemas/Identifier'
+    DateAnnotation:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/Annotation'
+      - type: object
         properties:
-          value:
+          parsed:
+            type:
+            - string
+            - 'null'
+            format: date
+            example: '2022-02-09'
+    ResumeSearchConfig:
+      type: object
+      properties:
+        allowPdfDownload:
+          type: boolean
+        maxResults:
+          type:
+          - integer
+          - 'null'
+          minimum: 1
+          description: Maximum number of results that can be returned. Setting to "null" means no limitation.
+          example: 10
+        displayJobTitle:
+          type: boolean
+        displayLocation:
+          type: boolean
+        displayYearsExperience:
+          type: boolean
+        displayOccupationGroup:
+          type: boolean
+        displayEducation:
+          type: boolean
+        displaySkills:
+          type: boolean
+        displayLanguages:
+          type: boolean
+        displayManagementLevel:
+          type: boolean
+        displayKeywords:
+          type: boolean
+        weightJobTitle:
+          type: number
+        weightLocation:
+          type: number
+        weightYearsExperience:
+          type: number
+        weightOccupationGroup:
+          type: number
+        weightEducation:
+          type: number
+        weightSkills:
+          type: number
+        weightLanguages:
+          type: number
+        weightManagementLevel:
+          type: number
+        weightKeywords:
+          type: number
+        indices:
+          type: array
+          items:
             type: string
-            example: 'True'
-          label:
-            type: string
-            example: Is available
-          score:
-            type: number
-            nullable: true
-            example: 0.68
-    docType:
-      type: string
-      enum:
-      - resumes
-      - job_descriptions
+          description: List of index names.
+          example:
+          - all-resumes
+          - my-index
+        showIndexDropdown:
+          type:
+          - boolean
+          - 'null'
+          description: Controls whether or not the index dropdown is displayed to the user
+        searchToolTheme:
+          type:
+          - object
+          - 'null'
+          allOf:
+          - $ref: '#/components/schemas/ThemeConfig'
+          description: Customize the theme of the embeded search tool.
+        userId:
+          type: integer
+          readOnly: true
+          description: ID of the logged in user.
+          example: 1234
+          minimum: 1
+        username:
+          type: string
+          readOnly: true
+          description: Username of the logged in user.
+          example: big.smoke
+        actions:
+          type:
+          - array
+          - 'null'
+          description: A list of actions to show in the dropdown in the embedded search tool
+          items:
+            $ref: '#/components/schemas/SearchConfigAction'
+        hideToolbar:
+          type: boolean
+          description: Hide the reset/import toolbar.
+        hideSidePanel:
+          type: boolean
+          description: Hide the entire side panel.
+        customFieldsConfig:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldConfig'
+        distanceUnit:
+          type: string
+          description: The unit of distance to use for location based searches
+          example: km
+          enum:
+          - mi
+          - km
+    DateAnnotationUpdate:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/AnnotationBase'
+      - type: object
+        properties:
+          parsed:
+            type:
+            - string
+            - 'null'
+            format: date
+            example: '2022-02-09'
+    PageMeta:
+      type: object
+      required:
+      - id
+      - pageIndex
+      - image
+      - width
+      - height
+      - rotation
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        pageIndex:
+          type: integer
+          example: 0
+          minimum: 0
+          description: Page number within the document, starts from 0.
+        image:
+          type:
+          - string
+          - 'null'
+          example: https://affinda-api.s3.amazonaws.com/media/pages/Page.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
+          description: The URL to the image of the page.
+        imageTranslated:
+          type:
+          - string
+          - 'null'
+          example: https://affinda-api.s3.amazonaws.com/media/pages/PageTranslated.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
+          description: The URL to the translated image of the page.
+        height:
+          type: number
+          example: 700
+          description: Height of the page's image in px.
+        width:
+          type: number
+          example: 500
+          description: Width of the page's image in px.
+        rotation:
+          type: integer
+          example: 90
+          minimum: -360
+          maximum: 360
+          description: The degree of rotation applied to the page. Greater than 0 indicates clockwise rotation. Less than 0 indicates counter-clockwise rotation.
+    SkillAnnotation:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/Annotation'
+      - type: object
+        properties:
+          parsed:
+            type:
+            - string
+            - 'null'
+            readOnly: true
+            example: Mandarin Chinese
+    JobTitleParsed:
+      type: object
+      properties:
+        parsed:
+          type:
+          - object
+          - 'null'
+          description: Matching job title to extracted text
+          readOnly: true
+          properties:
+            name:
+              type:
+              - string
+              - 'null'
+            managementLevel:
+              type:
+              - string
+              - 'null'
+              example: Mid
+            classification:
+              type:
+              - object
+              - 'null'
+              properties:
+                socCode:
+                  type: number
+                  example: 2463
+                title:
+                  type: string
+                  example: Clergy
+                minorGroup:
+                  type: string
+                  example: Welfare Professionals
+                subMajorGroup:
+                  type: string
+                  example: BUSINESS, MEDIA AND PUBLIC SERVICE PROFESSIONALS
+                majorGroup:
+                  type: string
+                  example: PROFESSIONAL OCCUPATIONS
+                minorGroupCode:
+                  type: integer
+                  example: 4122
+                  description: The 4 digit code representing the SOC2020 classification for this job title
+                subMajorGroupCode:
+                  type: integer
+                  example: 4122
+                  description: The 4 digit code representing the SOC2020 classification for this job title
+                majorGroupCode:
+                  type: integer
+                  example: 4122
+                  description: The 4 digit code representing the SOC2020 classification for this job title
+    OccupationGroup:
+      type: object
+      additionalProperties: false
+      required:
+      - code
+      - name
+      - children
+      properties:
+        code:
+          type: integer
+        name:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/OccupationGroup'
+    Annotation:
+      type:
+      - object
+      - 'null'
+      additionalProperties: true
+      required:
+      - id
+      - rectangle
+      - rectangles
+      - document
+      - pageIndex
+      - raw
+      - confidence
+      - classificationConfidence
+      - textExtractionConfidence
+      - isVerified
+      - isClientVerified
+      - isAutoVerified
+      - contentType
+      properties:
+        id:
+          type: integer
+          description: Annotation's ID
+          example: 1
+          minimum: 1
+        rectangle:
+          $ref: '#/components/schemas/Rectangle'
+          description: x/y coordinates for the rectangular bounding box containing the data
+        rectangles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rectangle'
+          description: x/y coordinates for the rectangles containing the data. An annotation can be contained within multiple rectangles.
+        document:
+          $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+        pageIndex:
+          type:
+          - integer
+          - 'null'
+          example: 0
+          minimum: 0
+          description: The page number within the document, starting from 0.
+        raw:
+          type:
+          - string
+          - 'null'
+          description: Raw data extracted from the before any post-processing
+        confidence:
+          type:
+          - number
+          - 'null'
+          example: 0.86
+          description: The overall confidence that the model's prediction is correct
+        classificationConfidence:
+          type:
+          - number
+          - 'null'
+          example: 0.95
+          description: The model's confidence that the text has been classified correctly
+        textExtractionConfidence:
+          type:
+          - number
+          - 'null'
+          example: 0.9
+          description: If the document was submitted as an image, this is the confidence that the text in the image has been correctly read by the model
+        isVerified:
+          type: boolean
+          description: Indicates whether the data has been validated, either by a human using our validation tool or through auto-validation rules
+        isClientVerified:
+          type: boolean
+          description: Indicates whether the data has been validated by a human
+        isAutoVerified:
+          type: boolean
+          description: Indicates whether the data has been auto-validated
+        dataPoint:
+          type: string
+          description: Data point's identifier
+        field:
+          type:
+          - string
+          - 'null'
+          description: Field's identifier
+        contentType:
+          $ref: '#/components/schemas/AnnotationContentType'
+        parent:
+          type:
+          - integer
+          - 'null'
+          description: The parent annotation's ID
+    Tag:
+      type: object
+      required:
+      - id
+      - name
+      - workspace
+      - documentCount
+      properties:
+        id:
+          type: integer
+          description: Uniquely identify a tag.
+          example: 1
+          minimum: 1
+        name:
+          type: string
+        workspace:
+          $ref: '#/components/schemas/identifier'
+        documentCount:
+          type: integer
+          minimum: 0
+          description: Number of documents tagged with this.
+    IndexUser:
+      type: object
+      description: The user who created this index
+      readOnly: true
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - email
+      - avatar
+      properties:
+        id:
+          $ref: '#/components/schemas/properties-id'
+        name:
+          $ref: '#/components/schemas/User_properties-name'
+        email:
+          $ref: '#/components/schemas/email'
+        avatar:
+          $ref: '#/components/schemas/properties-avatar'
+    DocumentWarning:
+      type: object
+      additionalProperties: false
+      properties:
+        warningCode:
+          type:
+          - string
+          - 'null'
+          example: too_many_pages
+        warningDetail:
+          type:
+          - string
+          - 'null'
+          example: File exceeds maximum number of pages allowed, parsing the first 10 pages only.
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Uniquely identify a user.
+          example: 1
+          minimum: 1
+        name:
+          type: string
+          example: Carl Johnson
+        username:
+          type: string
+          example: carljohnson
+        email:
+          type: string
+          example: carljohnson@grove.street
+        avatar:
+          type:
+          - string
+          - 'null'
+          description: URL of the user's avatar.
+          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+    DocumentError:
+      type: object
+      additionalProperties: false
+      properties:
+        errorCode:
+          type:
+          - string
+          - 'null'
+          example: document_conversion_failed
+        errorDetail:
+          type:
+          - string
+          - 'null'
+          example: Unable to convert word document
+    properties-id:
+      type: integer
+      description: Uniquely identify a user.
+      example: 1
+      minimum: 1
+    TextAnnotationUpdate:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/AnnotationBase'
+      - type: object
+        properties:
+          parsed:
+            type:
+            - string
+            - 'null'
+            example: John Smith
     ThemeConfig:
       type: object
       properties:
@@ -1713,162 +1888,6 @@ components:
           type: number
         fontUrl:
           type: string
-    RequestError:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - errors
-      properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type: string
-                nullable: true
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    DocumentMeta_properties-identifier:
-      type: string
-      description: Unique identifier for the document
-    JobDescriptionSearchConfig:
-      type: object
-      properties:
-        allowPdfDownload:
-          type: boolean
-          nullable: false
-        maxResults:
-          type: integer
-          nullable: true
-          description: Maximum number of results that can be returned. Setting to "null" means no limitation.
-          example: 10
-          minimum: 1
-        displayJobTitle:
-          type: boolean
-          nullable: false
-        displayLocation:
-          type: boolean
-          nullable: false
-        displayYearsExperience:
-          type: boolean
-          nullable: false
-        displayOccupationGroup:
-          type: boolean
-          nullable: false
-        displayEducation:
-          type: boolean
-          nullable: false
-        displaySkills:
-          type: boolean
-          nullable: false
-        displayLanguages:
-          type: boolean
-          nullable: false
-        displayManagementLevel:
-          type: boolean
-          nullable: false
-        displayKeywords:
-          type: boolean
-          nullable: false
-        weightJobTitle:
-          type: number
-          nullable: false
-        weightLocation:
-          type: number
-          nullable: false
-        weightYearsExperience:
-          type: number
-          nullable: false
-        weightOccupationGroup:
-          type: number
-          nullable: false
-        weightEducation:
-          type: number
-          nullable: false
-        weightSkills:
-          type: number
-          nullable: false
-        weightLanguages:
-          type: number
-          nullable: false
-        weightManagementLevel:
-          type: number
-          nullable: false
-        weightKeywords:
-          type: number
-          nullable: false
-        indices:
-          type: array
-          items:
-            type: string
-          description: List of index names.
-          example:
-          - all-job-descriptions
-          - my-index
-        showIndexDropdown:
-          type: boolean
-          nullable: true
-          description: Controls whether or not the index dropdown is displayed to the user
-        searchToolTheme:
-          type: object
-          allOf:
-          - $ref: '#/components/schemas/ThemeConfig'
-          nullable: true
-          description: Customize the theme of the embeded search tool.
-        userId:
-          type: integer
-          nullable: false
-          readOnly: true
-          description: ID of the logged in user.
-          example: 1234
-          minimum: 1
-        username:
-          type: string
-          nullable: false
-          readOnly: true
-          description: Username of the logged in user.
-          example: big.smoke
-        actions:
-          type: array
-          nullable: true
-          description: A list of actions to show in the dropdown in the embedded search tool
-          items:
-            $ref: '#/components/schemas/SearchConfigAction'
-        hideToolbar:
-          type: boolean
-          nullable: false
-          description: Hide the reset/import toolbar.
-        hideSidePanel:
-          type: boolean
-          nullable: false
-          description: Hide the entire side panel.
-        customFieldsConfig:
-          type: array
-          nullable: true
-          items:
-            $ref: '#/components/schemas/CustomFieldConfig'
-        distanceUnit:
-          type: string
-          nullable: false
-          description: The unit of distance to use for location based searches
-          example: km
-          enum:
-          - mi
-          - km
     SkillsSearchScoreComponent:
       type: object
       additionalProperties: false
@@ -1882,104 +1901,201 @@ components:
           type: string
           example: Skills
         score:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
           example: 0.68
-    JobTitleAnnotationUpdate:
-      type: object
-      nullable: true
-      allOf:
-      - $ref: '#/components/schemas/AnnotationBase'
-      - $ref: '#/components/schemas/JobTitleParsed'
-    JobTitleParsed:
+    ResumeSearchMatch:
       type: object
       properties:
-        parsed:
-          type: object
-          nullable: true
-          description: Matching job title to extracted text
-          readOnly: true
-          properties:
-            name:
-              type: string
-              nullable: true
-            managementLevel:
-              type: string
-              nullable: true
-              example: Mid
-            classification:
-              type: object
-              nullable: true
-              properties:
-                socCode:
-                  type: number
-                  example: 2463
-                title:
-                  type: string
-                  example: Clergy
-                minorGroup:
-                  type: string
-                  example: Welfare Professionals
-                subMajorGroup:
-                  type: string
-                  example: BUSINESS, MEDIA AND PUBLIC SERVICE PROFESSIONALS
-                majorGroup:
-                  type: string
-                  example: PROFESSIONAL OCCUPATIONS
-                minorGroupCode:
-                  type: integer
-                  example: 4122
-                  description: The 4 digit code representing the SOC2020 classification for this job title
-                subMajorGroupCode:
-                  type: integer
-                  example: 4122
-                  description: The 4 digit code representing the SOC2020 classification for this job title
-                majorGroupCode:
-                  type: integer
-                  example: 4122
-                  description: The 4 digit code representing the SOC2020 classification for this job title
-    ExperienceSearchScoreComponent:
-      type: object
-      additionalProperties: false
-      required:
-      - label
-      properties:
-        value:
-          type: string
-          example: 2.0 - 3.0 years
-        label:
-          type: string
-          example: Experience
         score:
           type: number
-          nullable: true
-          example: 0.68
-    ExpectedRemunerationAnnotation:
+          minimum: 0
+          maximum: 1
+          description: The matching score between the provided resume and job description.
+          example: 0.75
+        details:
+          type: object
+          properties:
+            jobTitle:
+              $ref: '#/components/schemas/JobTitleSearchScoreComponent'
+            managementLevel:
+              $ref: '#/components/schemas/ManagementLevelSearchScoreComponent'
+            experience:
+              $ref: '#/components/schemas/ExperienceSearchScoreComponent'
+            skills:
+              $ref: '#/components/schemas/SkillsSearchScoreComponent'
+            languages:
+              $ref: '#/components/schemas/LanguagesSearchScoreComponent'
+            location:
+              $ref: '#/components/schemas/LocationSearchScoreComponent'
+            education:
+              $ref: '#/components/schemas/EducationSearchScoreComponent'
+            occupationGroup:
+              $ref: '#/components/schemas/OccupationGroupSearchScoreComponent'
+            searchExpression:
+              $ref: '#/components/schemas/SearchExpressionSearchScoreComponent'
+    ResumeSearch:
       type: object
-      nullable: true
+      additionalProperties: false
+      properties:
+        count:
+          type: integer
+          example: 130
+          minimum: 0
+          description: Total number of results
+        next:
+          type:
+          - string
+          - 'null'
+          example: https://api.affinda.com/v3/documents?limit=300&offset=300
+          description: URL to request next page of results
+        previous:
+          type:
+          - string
+          - 'null'
+          example: https://api.affinda.com/v3/documents?limit=300
+          description: URL to request previous page of results
+        parameters:
+          $ref: '#/components/schemas/ResumeSearchParameters'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResumeSearchResult'
+    JobDescriptionSearchParameters:
+      type:
+      - object
+      - 'null'
+      additionalProperties: false
+      required:
+      - indices
+      properties:
+        indices:
+          type: array
+          example:
+          - all-job-descriptions
+          items:
+            type: string
+        resume:
+          $ref: '#/components/schemas/Identifier'
+        jobTitles:
+          type: array
+          items:
+            type: string
+        jobTitlesRequired:
+          type: boolean
+        jobTitlesWeight:
+          type: number
+          minimum: 0
+          maximum: 1
+        totalYearsExperience:
+          type:
+          - number
+          - 'null'
+        yearsExperienceRequired:
+          type: boolean
+        yearsExperienceWeight:
+          type: number
+          minimum: 0
+          maximum: 1
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResumeSearchParametersLocation'
+        locationsWeight:
+          type: number
+          minimum: 0
+          maximum: 1
+        locationsRequired:
+          type: boolean
+        skills:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResumeSearchParametersSkill'
+        skillsWeight:
+          type: number
+          minimum: 0
+          maximum: 1
+        languages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResumeSearchParametersSkill'
+        languagesWeight:
+          type: number
+          minimum: 0
+          maximum: 1
+        degrees:
+          type: array
+          items:
+            type: string
+        degreesRequired:
+          type: boolean
+        degreeTypes:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/EducationLevel'
+        degreeTypesRequired:
+          type: boolean
+        educationWeight:
+          type: number
+          minimum: 0
+          maximum: 1
+        searchExpression:
+          type:
+          - string
+          - 'null'
+        searchExpressionRequired:
+          type: boolean
+        searchExpressionWeight:
+          type: number
+          minimum: 0
+          maximum: 1
+        socCodes:
+          type: array
+          items:
+            type: integer
+            minimum: 1
+            maximum: 9999
+        socCodesWeight:
+          type: number
+          minimum: 0
+          maximum: 1
+        socCodesRequired:
+          type: boolean
+        managementLevel:
+          $ref: '#/components/schemas/ManagementLevel'
+        managementLevelRequired:
+          type: boolean
+        managementLevelWeight:
+          type: number
+          minimum: 0
+          maximum: 1
+        customData:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchParametersCustomData'
+    Extractor_properties-identifier:
+      type: string
+      description: Uniquely identify an extractor.
+      example: resume
+    Identifier:
+      type: string
+      description: A random string that uniquely identify the resource.
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
+    LocationAnnotation:
+      type:
+      - object
+      - 'null'
       allOf:
       - $ref: '#/components/schemas/Annotation'
       - type: object
         properties:
           parsed:
-            type: object
-            properties:
-              minimum:
-                type: number
-                nullable: true
-                example: '3455343.50'
-              maximum:
-                type: number
-                nullable: true
-                example: '55545343.50'
-              currency:
-                type: string
-                nullable: true
-                example: USD
-              unit:
-                type: string
-                nullable: true
-                example: Annually
+            $ref: '#/components/schemas/Location'
     ManagementLevelSearchScoreComponent:
       type: object
       additionalProperties: false
@@ -1993,268 +2109,49 @@ components:
           type: string
           example: Management level
         score:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
           example: 0.68
-    properties-identifier:
-      type: string
-      description: Uniquely identify a collection.
-      example: mEFayXdO
-    Accreditation:
+    EducationLevel:
+      type:
+      - string
+      - 'null'
+      example: bachelors
+      enum:
+      - school
+      - certificate
+      - bachelors
+      - masters
+      - doctoral
+      x-ms-enum:
+        name: educationLevel
+    Document:
       type: object
-      nullable: true
-      additionalProperties: false
-      properties:
-        education:
-          type: string
-          example: Bachelor of Science
-        inputStr:
-          type: string
-          readOnly: true
-          example: Bachelor of Science, Mechanical Engineering, expected
-        matchStr:
-          type: string
-          nullable: true
-          readOnly: true
-          example: Bachelor of Science
-        educationLevel:
-          type: string
-          nullable: true
-          readOnly: true
-          example: bachelors
-    OccupationGroup:
-      type: object
-      additionalProperties: false
       required:
-      - code
-      - name
-      - children
+      - meta
+      - extractor
       properties:
-        code:
-          type: integer
-        name:
+        data:
+          type: object
+        extractor:
           type: string
-        children:
+        meta:
+          $ref: '#/components/schemas/DocumentMeta'
+        error:
+          $ref: '#/components/schemas/DocumentError'
+        warnings:
           type: array
           items:
-            $ref: '#/components/schemas/OccupationGroup'
-    errorCode:
-      type: string
-      nullable: true
-      example: document_conversion_failed
-    DocumentWarning:
-      type: object
-      additionalProperties: false
-      properties:
-        warningCode:
-          type: string
-          nullable: true
-          example: too_many_pages
-        warningDetail:
-          type: string
-          nullable: true
-          example: File exceeds maximum number of pages allowed, parsing the first 10 pages only.
-    SearchParametersCustomData:
-      type: object
-      required:
-      - filterType
-      - query
-      properties:
-        filterType:
-          type: string
-          enum:
-          - equals
-          - range
-          example: equals
-          description: Data points of "text" type support only "equals" filterType, others support both "equals" and "range"
-        dataPoint:
-          type: string
-          nullable: true
-          example: isAvailable
-          description: The data point's slug, used for portal v2 (deprecated)
-          deprecated: true
-        field:
-          type: string
-          nullable: true
-          example: isAvailable
-          description: The field's slug
-        query:
-          type: object
-          example:
-            value: true
-          description: '"equals" searches require the "value" key inside the query, and "range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal)'
-        required:
-          type: boolean
-        weight:
-          type: number
-          minimum: 0
-          maximum: 1
-    ResumeSearchParametersLocation:
-      type: object
-      properties:
-        name:
-          type: string
-          default: ''
-        coordinates:
-          type: object
-          nullable: true
-          properties:
-            latitude:
-              type: number
-              nullable: true
-            longitude:
-              type: number
-              nullable: true
-        distance:
-          type: integer
-          default: 100
-          minimum: 1
-        unit:
-          type: string
-          enum:
-          - km
-          - mi
-          default: km
-          x-ms-enum:
-            name: searchLocationUnit
-    IndexUser:
-      type: object
-      description: The user who created this index
-      readOnly: true
-      additionalProperties: false
-      required:
-      - id
-      - name
-      - email
-      - avatar
-      properties:
-        id:
-          $ref: '#/components/schemas/properties-id'
-        name:
-          $ref: '#/components/schemas/User_properties-name'
-        email:
-          $ref: '#/components/schemas/email'
-        avatar:
-          $ref: '#/components/schemas/properties-avatar'
-    AnnotationBase:
-      type: object
-      additionalProperties: true
-      nullable: true
-      properties:
-        id:
-          type: integer
-        rectangle:
-          $ref: '#/components/schemas/Rectangle'
-          nullable: true
-        rectangles:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Rectangle'
-          nullable: true
-        pageIndex:
-          type: integer
-          nullable: true
-          example: 0
-        raw:
-          type: string
-          nullable: true
-          example: 2/9/2022
-        confidence:
-          type: number
-          nullable: true
-          example: 0.86
-          description: The overall confidence that the model's prediction is correct
-        classificationConfidence:
-          type: number
-          nullable: true
-          example: 0.95
-          description: The model's confidence that the text has been classified correctly
-        textExtractionConfidence:
-          type: number
-          nullable: true
-          example: 0.9
-          description: If the document was submitted as an image, this is the confidence that the text in the image has been correctly read by the model.
-        isVerified:
-          type: boolean
-        isClientVerified:
-          type: boolean
-        isAutoVerified:
-          type: boolean
-        dataPoint:
-          type: string
-        contentType:
-          type: string
-    PaletteColorOptions:
-      type: object
-      required:
-      - main
-      properties:
-        main:
-          type: string
-        light:
-          type: string
-        dark:
-          type: string
-        contrastText:
-          type: string
-    User_properties-name:
-      type: string
-      example: Carl Johnson
-    LocationSearchScoreComponent:
-      type: object
-      additionalProperties: false
-      required:
-      - label
-      properties:
-        value:
-          type: string
-          example: Roxburgh Park, Australia
-        label:
-          type: string
-          example: Location
-        score:
-          type: number
-          nullable: true
-          example: 0.68
-    EducationSearchScoreComponent:
-      type: object
-      additionalProperties: false
-      required:
-      - label
-      properties:
-        value:
-          type: string
-          example: Architecture Interior Design
-        label:
-          type: string
-          example: Education
-        score:
-          type: number
-          nullable: true
-          example: 0.68
-    JobTitleSearchScoreComponent:
-      type: object
-      additionalProperties: false
-      required:
-      - label
-      properties:
-        value:
-          type: string
-          example: Software Developer
-        label:
-          type: string
-          example: Job Title
-        score:
-          type: number
-          nullable: true
-          example: 0.68
+            $ref: '#/components/schemas/DocumentWarning'
+      discriminator:
+        propertyName: extractor
+      x-csharp-usage: input,output
     JobDescriptionSearchDetail:
       type: object
       properties:
         jobTitle:
           type: object
-          nullable: false
           properties:
             missing:
               type: array
@@ -2264,27 +2161,29 @@ components:
               type: object
               properties:
                 name:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   example: Javascript developer
                 companyName:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   example: Affinda
                 match:
                   type: boolean
                   example: true
         location:
           type: object
-          nullable: false
           properties:
             missing:
               type: array
               items:
                 $ref: '#/components/schemas/ResumeSearchParametersLocation'
             value:
-              type: object
-              nullable: true
+              type:
+              - object
+              - 'null'
               allOf:
               - $ref: '#/components/schemas/Location'
               - type: object
@@ -2294,7 +2193,6 @@ components:
                     example: true
         education:
           type: object
-          nullable: false
           properties:
             missing:
               type: object
@@ -2323,7 +2221,6 @@ components:
                   example: true
         skills:
           type: object
-          nullable: false
           properties:
             missing:
               type: array
@@ -2344,32 +2241,33 @@ components:
           type: object
           properties:
             minimumExperience:
-              type: integer
-              nullable: true
+              type:
+              - integer
+              - 'null'
               minimum: 0
             maximumExperience:
-              type: integer
-              nullable: true
+              type:
+              - integer
+              - 'null'
               minimum: 0
             match:
               type: boolean
               example: true
         occupationGroup:
           type: object
-          nullable: false
           properties:
             missing:
               type: array
               items:
                 type: integer
             value:
-              type: object
-              nullable: true
+              type:
+              - object
+              - 'null'
               allOf:
               - $ref: '#/components/schemas/OccupationGroupSearchResult'
         languages:
           type: object
-          nullable: false
           properties:
             missing:
               type: array
@@ -2387,8 +2285,9 @@ components:
                     type: boolean
                     example: true
         managementLevel:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           properties:
             level:
               $ref: '#/components/schemas/ManagementLevel'
@@ -2406,66 +2305,728 @@ components:
               type: array
               items:
                 type: string
-    Document:
+    ExpiryTime:
+      type:
+      - string
+      - 'null'
+      format: date-time
+      description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
+    ExperienceSearchScoreComponent:
       type: object
+      additionalProperties: false
       required:
-      - meta
-      - extractor
+      - label
       properties:
-        data:
-          type: object
-        extractor:
+        value:
           type: string
-        meta:
-          $ref: '#/components/schemas/DocumentMeta'
-        error:
-          $ref: '#/components/schemas/DocumentError'
-        warnings:
-          type: array
+          example: 2.0 - 3.0 years
+        label:
+          type: string
+          example: Experience
+        score:
+          type:
+          - number
+          - 'null'
+          example: 0.68
+    RegionBias:
+      type:
+      - object
+      - 'null'
+      properties:
+        country:
+          type:
+          - string
+          - 'null'
+          description: A single alpha-2 country code (e.g. AU) used by google geocoding service
+        countries:
+          type:
+          - array
+          - 'null'
           items:
-            $ref: '#/components/schemas/DocumentWarning'
-      discriminator:
-        propertyName: extractor
-      x-csharp-usage: input,output
-    DateAnnotationUpdate:
-      type: object
-      nullable: true
+            type: string
+          description: A list of alpha-2 country codes used by Pelias
+        squareCoordinates:
+          type:
+          - array
+          - 'null'
+          items:
+            type: number
+          description: A list of coordinates used by Pelias in the shape of [min_lon, min_lat, max_lon, max_lat]
+        strict:
+          type: boolean
+          description: 'If true, the location must be within the region, as opposed to prefering locations within the region.
+
+            Default to false.
+
+            '
+          example: true
+    properties-avatar:
+      type:
+      - string
+      - 'null'
+      description: URL of the user's avatar.
+      example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+    YearsExperienceAnnotationUpdate:
+      type:
+      - object
+      - 'null'
       allOf:
       - $ref: '#/components/schemas/AnnotationBase'
       - type: object
         properties:
           parsed:
-            type: string
-            format: date
-            nullable: true
-            example: '2022-02-09'
-    ResumeData:
+            type: object
+            description: Years of experience range
+            properties:
+              minimum:
+                type:
+                - number
+                - 'null'
+                description: Minimum years of experience
+                example: 0.5
+              maximum:
+                type:
+                - number
+                - 'null'
+                description: Maximum years of experience
+                example: 5
+    SearchConfigAction:
       type: object
+      required:
+      - label
+      - eventName
+      properties:
+        label:
+          description: Human readable label to display in the UI
+          type: string
+          example: Add to shortlist
+        eventName:
+          description: Name of the event to be triggered
+          type: string
+          example: addToShortlist
+    DocumentCreateFromData:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          description: Create resume or job description directly from data.
+          oneOf:
+          - $ref: '#/components/schemas/ResumeData'
+          - $ref: '#/components/schemas/JobDescriptionData'
+    SearchExpressionSearchScoreComponent:
+      type: object
+      additionalProperties: false
+      required:
+      - label
+      properties:
+        label:
+          type: string
+          example: Search expression
+        value:
+          type: string
+        score:
+          type:
+          - number
+          - 'null'
+          example: 0.68
+    ManagementLevel:
+      type:
+      - string
+      - 'null'
+      example: Low
+      enum:
+      - None
+      - Low
+      - Mid
+      - Upper
+      x-ms-enum:
+        name: managementLevel
+    YearsExperienceAnnotation:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/Annotation'
+      - type: object
+        properties:
+          parsed:
+            type: object
+            description: Years of experience range
+            properties:
+              minimum:
+                type:
+                - number
+                - 'null'
+                description: Minimum years of experience
+                example: 0.5
+              maximum:
+                type:
+                - number
+                - 'null'
+                description: Maximum years of experience
+                example: 5
+    JobDescriptionDataUpdate:
+      type:
+      - object
+      - 'null'
       additionalProperties:
         anyOf:
-        - type: object
-          nullable: true
-        - type: string
-          nullable: true
-        - type: integer
-          nullable: true
-        - type: number
-          nullable: true
-        - type: boolean
-          nullable: true
-        - type: array
+        - type:
+          - string
+          - 'null'
+        - type:
+          - integer
+          - 'null'
+        - type:
+          - number
+          - 'null'
+        - type:
+          - boolean
+          - 'null'
+        - type:
+          - array
+          - 'null'
           items: {}
           description: 'For fields with multiple entries, use lists. E.g. ''multipleField'': [''entry1'', ''entry2'']'
-          nullable: true
         description: 'For custom fields. E.g. ''isAvailable'': true'
         not:
           type: object
-      nullable: true
+      description: A JSON-encoded string of the `JobDescriptionData` object.
+      properties:
+        jobTitle:
+          $ref: '#/components/schemas/JobTitleAnnotationUpdate'
+        contactEmail:
+          $ref: '#/components/schemas/TextAnnotationUpdate'
+        contactName:
+          $ref: '#/components/schemas/TextAnnotationUpdate'
+        contactPhone:
+          $ref: '#/components/schemas/TextAnnotationUpdate'
+        startDate:
+          $ref: '#/components/schemas/DateAnnotationUpdate'
+        endDate:
+          $ref: '#/components/schemas/DateAnnotationUpdate'
+        jobType:
+          $ref: '#/components/schemas/TextAnnotationUpdate'
+        languages:
+          type: array
+          items:
+            $ref: '#/components/schemas/LanguageAnnotationUpdate'
+        skills:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillAnnotationUpdate'
+        organizationName:
+          $ref: '#/components/schemas/TextAnnotationUpdate'
+        organizationWebsite:
+          $ref: '#/components/schemas/TextAnnotationUpdate'
+        educationLevel:
+          $ref: '#/components/schemas/TextAnnotationUpdate'
+        educationAccreditation:
+          $ref: '#/components/schemas/TextAnnotationUpdate'
+        expectedRemuneration:
+          $ref: '#/components/schemas/ExpectedRemunerationAnnotationUpdate'
+        location:
+          $ref: '#/components/schemas/LocationAnnotationUpdate'
+        certifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/TextAnnotationUpdate'
+        yearsExperience:
+          $ref: '#/components/schemas/YearsExperienceAnnotationUpdate'
+      x-csharp-usage: output
+    JobDescriptionSearchConfig:
+      type: object
+      properties:
+        allowPdfDownload:
+          type: boolean
+        maxResults:
+          type:
+          - integer
+          - 'null'
+          description: Maximum number of results that can be returned. Setting to "null" means no limitation.
+          example: 10
+          minimum: 1
+        displayJobTitle:
+          type: boolean
+        displayLocation:
+          type: boolean
+        displayYearsExperience:
+          type: boolean
+        displayOccupationGroup:
+          type: boolean
+        displayEducation:
+          type: boolean
+        displaySkills:
+          type: boolean
+        displayLanguages:
+          type: boolean
+        displayManagementLevel:
+          type: boolean
+        displayKeywords:
+          type: boolean
+        weightJobTitle:
+          type: number
+        weightLocation:
+          type: number
+        weightYearsExperience:
+          type: number
+        weightOccupationGroup:
+          type: number
+        weightEducation:
+          type: number
+        weightSkills:
+          type: number
+        weightLanguages:
+          type: number
+        weightManagementLevel:
+          type: number
+        weightKeywords:
+          type: number
+        indices:
+          type: array
+          items:
+            type: string
+          description: List of index names.
+          example:
+          - all-job-descriptions
+          - my-index
+        showIndexDropdown:
+          type:
+          - boolean
+          - 'null'
+          description: Controls whether or not the index dropdown is displayed to the user
+        searchToolTheme:
+          type:
+          - object
+          - 'null'
+          allOf:
+          - $ref: '#/components/schemas/ThemeConfig'
+          description: Customize the theme of the embeded search tool.
+        userId:
+          type: integer
+          readOnly: true
+          description: ID of the logged in user.
+          example: 1234
+          minimum: 1
+        username:
+          type: string
+          readOnly: true
+          description: Username of the logged in user.
+          example: big.smoke
+        actions:
+          type:
+          - array
+          - 'null'
+          description: A list of actions to show in the dropdown in the embedded search tool
+          items:
+            $ref: '#/components/schemas/SearchConfigAction'
+        hideToolbar:
+          type: boolean
+          description: Hide the reset/import toolbar.
+        hideSidePanel:
+          type: boolean
+          description: Hide the entire side panel.
+        customFieldsConfig:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldConfig'
+        distanceUnit:
+          type: string
+          description: The unit of distance to use for location based searches
+          example: km
+          enum:
+          - mi
+          - km
+    IndexUpdate:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          $ref: '#/components/schemas/Index_properties-name'
+    ExpectedRemunerationAnnotationUpdate:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/AnnotationBase'
+      - type: object
+        properties:
+          parsed:
+            type: object
+            properties:
+              minimum:
+                type:
+                - number
+                - 'null'
+                example: '3455343.50'
+              maximum:
+                type:
+                - number
+                - 'null'
+                example: '55545343.50'
+              currency:
+                type:
+                - string
+                - 'null'
+                example: USD
+              unit:
+                type:
+                - string
+                - 'null'
+                example: Annually
+    LanguagesSearchScoreComponent:
+      type: object
+      additionalProperties: false
+      required:
+      - label
+      properties:
+        value:
+          type: string
+          example: English
+        label:
+          type: string
+          example: Languages
+        score:
+          type:
+          - number
+          - 'null'
+          example: 0.68
+    ResumeSearchParametersCustomData:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/SearchParametersCustomData'
+    CustomFieldConfig:
+      type: object
+      required:
+      - dataPoint
+      - weight
+      properties:
+        dataPoint:
+          type: string
+          description: Data point identifier.
+          example: RdNAniIH
+        weight:
+          type: number
+          minimum: 0
+          maximum: 1
+          example: 0.5
+          default: 0.5
+    Accreditation:
+      type:
+      - object
+      - 'null'
+      additionalProperties: false
+      properties:
+        education:
+          type: string
+          example: Bachelor of Science
+        inputStr:
+          type: string
+          readOnly: true
+          example: Bachelor of Science, Mechanical Engineering, expected
+        matchStr:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: Bachelor of Science
+        educationLevel:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: bachelors
+    EducationSearchScoreComponent:
+      type: object
+      additionalProperties: false
+      required:
+      - label
+      properties:
+        value:
+          type: string
+          example: Architecture Interior Design
+        label:
+          type: string
+          example: Education
+        score:
+          type:
+          - number
+          - 'null'
+          example: 0.68
+    errorDetail:
+      type:
+      - string
+      - 'null'
+      example: Unable to convert word document
+    name:
+      type: string
+    errorCode:
+      type:
+      - string
+      - 'null'
+      example: document_conversion_failed
+    CustomDataSearchScoreComponent:
+      type: object
+      additionalProperties:
+        type: object
+        required:
+        - label
+        properties:
+          value:
+            type: string
+            example: 'True'
+          label:
+            type: string
+            example: Is available
+          score:
+            type:
+            - number
+            - 'null'
+            example: 0.68
+    ResumeSkill:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        lastUsed:
+          type:
+          - string
+          - 'null'
+          example: '2022-05-16'
+        numberOfMonths:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+        type:
+          type:
+          - string
+          - 'null'
+        sources:
+          type: array
+          items:
+            type: object
+            properties:
+              section:
+                type: string
+                enum:
+                - Achievements
+                - AdditionalInformation
+                - Education
+                - Extracurriculars
+                - Organisations
+                - Other
+                - PersonalDetails
+                - Projects
+                - Publications
+                - Referees
+                - Skills
+                - Summary
+                - Training
+                - WorkExperience
+                - NotPopulated
+                - Header
+                - Footer
+                - Skills/Interests/Languages
+                - Training/Certifications
+                - Extracurriculars/Leadership
+              position:
+                type:
+                - integer
+                - 'null'
+                minimum: 0
+    JobDescriptionSearchResult:
+      type: object
+      additionalProperties: false
+      required:
+      - identifier
+      - score
+      - pdf
+      - jobTitle
+      - managementLevel
+      - experience
+      - skills
+      - languages
+      - location
+      - education
+      - searchExpression
+      - organizationName
+      - customData
+      properties:
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+        score:
+          type: number
+          example: 0.98
+        pdf:
+          type:
+          - string
+          - 'null'
+          example: https://affinda-api.s3.amazonaws.com/media/documents/Example-Job-Description
+        jobTitle:
+          $ref: '#/components/schemas/JobTitleSearchScoreComponent'
+        managementLevel:
+          $ref: '#/components/schemas/ManagementLevelSearchScoreComponent'
+        experience:
+          $ref: '#/components/schemas/ExperienceSearchScoreComponent'
+        skills:
+          $ref: '#/components/schemas/SkillsSearchScoreComponent'
+        languages:
+          $ref: '#/components/schemas/LanguagesSearchScoreComponent'
+        location:
+          $ref: '#/components/schemas/LocationSearchScoreComponent'
+        education:
+          $ref: '#/components/schemas/EducationSearchScoreComponent'
+        occupationGroup:
+          $ref: '#/components/schemas/OccupationGroupSearchScoreComponent'
+        searchExpression:
+          $ref: '#/components/schemas/SearchExpressionSearchScoreComponent'
+        organizationName:
+          type:
+          - string
+          - 'null'
+          example: Microsoft
+        customData:
+          $ref: '#/components/schemas/CustomDataSearchScoreComponent'
+    Index:
+      type: object
+      additionalProperties: true
+      required:
+      - name
+      - docType
+      - user
+      properties:
+        name:
+          type: string
+          description: Unique index name
+          example: my-index
+        docType:
+          type: string
+          enum:
+          - resumes
+          - job_descriptions
+        user:
+          $ref: '#/components/schemas/IndexUser'
+    Rectangle:
+      type: object
+      additionalProperties: false
+      required:
+      - x0
+      - y0
+      - x1
+      - y1
+      properties:
+        pageIndex:
+          type: integer
+          example: 1
+          minimum: 0
+        x0:
+          type: number
+          example: 2.43
+        y0:
+          type: number
+          example: 4.55
+        x1:
+          type: number
+          example: 4.56
+        y1:
+          type: number
+          example: 6.32
+    LocationSearchScoreComponent:
+      type: object
+      additionalProperties: false
+      required:
+      - label
+      properties:
+        value:
+          type: string
+          example: Roxburgh Park, Australia
+        label:
+          type: string
+          example: Location
+        score:
+          type:
+          - number
+          - 'null'
+          example: 0.68
+    JobDescriptionSearchEmbed:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The signed URL for the embedable search tool.
+          example: https://app.affinda.com/job-description-search?signature=eyJhbGxvd19wZGZkGZ
+    ResumeSearchParametersLocation:
+      type: object
+      properties:
+        name:
+          type: string
+          default: ''
+        coordinates:
+          type:
+          - object
+          - 'null'
+          properties:
+            latitude:
+              type:
+              - number
+              - 'null'
+            longitude:
+              type:
+              - number
+              - 'null'
+        distance:
+          type: integer
+          default: 100
+          minimum: 1
+        unit:
+          type: string
+          enum:
+          - km
+          - mi
+          default: km
+          x-ms-enum:
+            name: searchLocationUnit
+    ResumeData:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        anyOf:
+        - type:
+          - object
+          - 'null'
+        - type:
+          - string
+          - 'null'
+        - type:
+          - integer
+          - 'null'
+        - type:
+          - number
+          - 'null'
+        - type:
+          - boolean
+          - 'null'
+        - type:
+          - array
+          - 'null'
+          items: {}
+          description: 'For fields with multiple entries, use lists. E.g. ''multipleField'': [''entry1'', ''entry2'']'
+        description: 'For custom fields. E.g. ''isAvailable'': true'
+        not:
+          type: object
       description: A JSON-encoded string of the `ResumeData` object.
       properties:
         name:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           additionalProperties: false
           properties:
             raw:
@@ -2497,24 +3058,27 @@ components:
             properties:
               rawText:
                 type: string
-                nullable: false
                 example: '+61412632636'
               formattedNumber:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 example: +61 412 632 636
               countryCode:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 example: AU
               internationalCountryCode:
-                type: integer
-                nullable: true
+                type:
+                - integer
+                - 'null'
                 example: 61
                 minimum: 1
               nationalNumber:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 example: 0412 632 636
         websites:
           type: array
@@ -2530,15 +3094,17 @@ components:
           example:
           - timsmith@vt.edu
         dateOfBirth:
-          type: string
+          type:
+          - string
+          - 'null'
           example: '1992-01-01'
-          nullable: true
         location:
           $ref: '#/components/schemas/Location'
         objective:
-          type: string
+          type:
+          - string
+          - 'null'
           default: ''
-          nullable: true
         languages:
           type: array
           items:
@@ -2762,18 +3328,21 @@ components:
           - fr
           - ar
         summary:
-          type: string
+          type:
+          - string
+          - 'null'
           default: ''
-          nullable: true
         totalYearsExperience:
-          type: integer
+          type:
+          - integer
+          - 'null'
           example: 13
-          nullable: true
           minimum: 0
         headShot:
-          type: string
+          type:
+          - string
+          - 'null'
           format: byte
-          nullable: true
           readOnly: true
           description: base64 encoded string
         education:
@@ -2781,16 +3350,18 @@ components:
           items:
             $ref: '#/components/schemas/Education'
         profession:
-          type: string
+          type:
+          - string
+          - 'null'
           example: Software Developer
           description: Prediction of the candidate's profession based on recent work experience
-          nullable: true
           readOnly: true
         linkedin:
-          type: string
+          type:
+          - string
+          - 'null'
           example: https://www.linkedin.com/in/user-name
           description: Linkedin account associated with the candidate
-          nullable: true
           readOnly: true
         workExperience:
           type: array
@@ -2800,55 +3371,64 @@ components:
             properties:
               id:
                 type: integer
-                nullable: false
                 minimum: 1
               jobTitle:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 example: Sales and retail assistants
               socCode:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 readOnly: true
                 example: '7111'
               socName:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 readOnly: true
                 example: Sales and retail assistants
               organization:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 example: General Motors
               industry:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 readOnly: true
                 example: Automotive
               location:
                 $ref: '#/components/schemas/Location'
               jobDescription:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 example: Interned with supercar Development from May 2017 to August 2017.
               dates:
-                type: object
+                type:
+                - object
+                - 'null'
                 additionalProperties: false
-                nullable: true
                 properties:
                   startDate:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     format: date
-                    nullable: true
                     example: '2018-05-01'
                   endDate:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     format: date
-                    nullable: true
                     example: '2018-08-01'
                   monthsInPosition:
-                    type: integer
-                    nullable: true
+                    type:
+                    - integer
+                    - 'null'
                     minimum: 0
                   isCurrent:
                     type: boolean
@@ -2858,30 +3438,33 @@ components:
               occupation:
                 type: object
                 additionalProperties: false
-                nullable: false
                 readOnly: true
                 properties:
                   jobTitle:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     example: Sr. Software Developer
                     description: The raw (not normalized) job title pulled from the work experience entry
                   jobTitleNormalized:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     example: Software Developer
-                    nullable: true
                     description: Mapped onto the EMSI job title taxonomy if a sufficiently close match exists.
                   emsiId:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     example: ETE2AD3A1C11B4EC9B
                     description: EMSI id of the normalised job title.
                   managementLevel:
                     $ref: '#/components/schemas/ManagementLevel'
                   classification:
-                    type: object
+                    type:
+                    - object
+                    - 'null'
                     additionalProperties: false
-                    nullable: true
                     properties:
                       title:
                         type: string
@@ -2931,11 +3514,11 @@ components:
             properties:
               id:
                 type: integer
-                nullable: false
                 minimum: 1
               emsiId:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 readOnly: true
                 example: KS1218W78FGVPVP2KXPX
                 description: EMSI id of this skill.
@@ -2943,12 +3526,14 @@ components:
                 type: string
                 example: Applied Mechanics
               lastUsed:
-                nullable: true
-                type: string
+                type:
+                - string
+                - 'null'
                 example: '2012-01-01'
               numberOfMonths:
-                type: integer
-                nullable: true
+                type:
+                - integer
+                - 'null'
                 example: 12
                 minimum: 0
               type:
@@ -2956,14 +3541,16 @@ components:
                 readOnly: true
                 example: hard_skill
               count:
-                type: integer
-                nullable: true
+                type:
+                - integer
+                - 'null'
                 readOnly: true
                 example: 16
                 minimum: 0
               weighting:
-                type: number
-                nullable: true
+                type:
+                - number
+                - 'null'
                 readOnly: true
                 example: 0.057699221573302296
               sources:
@@ -2977,13 +3564,15 @@ components:
                       type: string
                       example: WorkExperience
                     position:
-                      type: integer
-                      nullable: true
+                      type:
+                      - integer
+                      - 'null'
                       example: 0
                       description: If this skill is extracted from a "workExperience" section, the "position" is the index of the work experience where this skill is found, with 0 being the first work experience, 1 being the second work experience, and so on.
                     workExperienceId:
-                      type: integer
-                      nullable: true
+                      type:
+                      - integer
+                      - 'null'
                       example: 1234
                       description: If this skill is extracted from a "workExperience" section, the "workExperienceId" is the id of the work experience where this skill is found.
         certifications:
@@ -3005,24 +3594,28 @@ components:
             additionalProperties: true
             properties:
               name:
-                type: string
+                type:
+                - string
+                - 'null'
                 example: Stephen Smith
-                nullable: true
               text:
                 type: string
                 example: 'Stephen Smith, Team Member/Mentor, Company Power Generation: stephen.smith@company.com'
               email:
-                type: string
+                type:
+                - string
+                - 'null'
                 format: email
                 example: stephen.smith@company.com
-                nullable: true
               number:
-                type: string
+                type:
+                - string
+                - 'null'
                 example: '+61490667215'
-                nullable: true
               position:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 example: Principal
         sections:
           type: array
@@ -3051,9 +3644,10 @@ components:
                 type: string
                 example: <All text from the {sectionType} section>
         isResumeProbability:
-          type: integer
+          type:
+          - integer
+          - 'null'
           readOnly: true
-          nullable: true
           example: 98
           description: Probability that the given document is a resume. Values below 30 suggest that the document is not a resume.
         rawText:
@@ -3064,184 +3658,6 @@ components:
           type: string
           example: '**** Objective: To obtain a job ''... <rest of resume text>'''
           description: Redacted version of the text in the resume, removing PII.
-    AnnotationContentType:
-      type: string
-      description: The different data types of annotations
-      enum:
-      - text
-      - integer
-      - float
-      - decimal
-      - date
-      - datetime
-      - daterange
-      - boolean
-      - enum
-      - location
-      - phonenumber
-      - json
-      - table
-      - expectedremuneration
-      - jobtitle
-      - language
-      - skill
-      - yearsexperience
-      - group
-      - table_deprecated
-      - url
-      - image
-      - docclf
-    LanguagesSearchScoreComponent:
-      type: object
-      additionalProperties: false
-      required:
-      - label
-      properties:
-        value:
-          type: string
-          example: English
-        label:
-          type: string
-          example: Languages
-        score:
-          type: number
-          nullable: true
-          example: 0.68
-    JobDescriptionDataUpdate:
-      type: object
-      additionalProperties:
-        anyOf:
-        - type: string
-          nullable: true
-        - type: integer
-          nullable: true
-        - type: number
-          nullable: true
-        - type: boolean
-          nullable: true
-        - type: array
-          items: {}
-          description: 'For fields with multiple entries, use lists. E.g. ''multipleField'': [''entry1'', ''entry2'']'
-          nullable: true
-        description: 'For custom fields. E.g. ''isAvailable'': true'
-        not:
-          type: object
-      nullable: true
-      description: A JSON-encoded string of the `JobDescriptionData` object.
-      properties:
-        jobTitle:
-          $ref: '#/components/schemas/JobTitleAnnotationUpdate'
-        contactEmail:
-          $ref: '#/components/schemas/TextAnnotationUpdate'
-        contactName:
-          $ref: '#/components/schemas/TextAnnotationUpdate'
-        contactPhone:
-          $ref: '#/components/schemas/TextAnnotationUpdate'
-        startDate:
-          $ref: '#/components/schemas/DateAnnotationUpdate'
-        endDate:
-          $ref: '#/components/schemas/DateAnnotationUpdate'
-        jobType:
-          $ref: '#/components/schemas/TextAnnotationUpdate'
-        languages:
-          type: array
-          items:
-            $ref: '#/components/schemas/LanguageAnnotationUpdate'
-        skills:
-          type: array
-          items:
-            $ref: '#/components/schemas/SkillAnnotationUpdate'
-        organizationName:
-          $ref: '#/components/schemas/TextAnnotationUpdate'
-        organizationWebsite:
-          $ref: '#/components/schemas/TextAnnotationUpdate'
-        educationLevel:
-          $ref: '#/components/schemas/TextAnnotationUpdate'
-        educationAccreditation:
-          $ref: '#/components/schemas/TextAnnotationUpdate'
-        expectedRemuneration:
-          $ref: '#/components/schemas/ExpectedRemunerationAnnotationUpdate'
-        location:
-          $ref: '#/components/schemas/LocationAnnotationUpdate'
-        certifications:
-          type: array
-          items:
-            $ref: '#/components/schemas/TextAnnotationUpdate'
-        yearsExperience:
-          $ref: '#/components/schemas/YearsExperienceAnnotationUpdate'
-      x-csharp-usage: output
-    properties-avatar:
-      type: string
-      nullable: true
-      description: URL of the user's avatar.
-      example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
-    DocumentError:
-      type: object
-      additionalProperties: false
-      properties:
-        errorCode:
-          type: string
-          nullable: true
-          example: document_conversion_failed
-        errorDetail:
-          type: string
-          nullable: true
-          example: Unable to convert word document
-    ValidationRule:
-      type: object
-      additionalProperties: false
-      nullable: false
-      description: A validation rule for a collection
-      required:
-      - slug
-      - dataPoints
-      properties:
-        slug:
-          type: string
-          description: The slug of the validation rule, in lowercase snake_case
-          pattern: ^[a-z0-9_]+$
-          example: supplier_name_is_alphanumeric
-        dataPoints:
-          type: array
-          description: The data point identifier that this validation rule applies to, can be an empty list if the rule doens't use any data points as sources
-          items:
-            $ref: '#/components/schemas/Identifier'
-    Index_properties-name:
-      type: string
-      description: Unique index name
-      example: my-index
-    ResumeSearchParametersSkill:
-      type: object
-      properties:
-        name:
-          type: string
-        required:
-          type: boolean
-    ResumeSearch:
-      type: object
-      additionalProperties: false
-      properties:
-        count:
-          type: integer
-          example: 130
-          minimum: 0
-          description: Total number of results
-        next:
-          type: string
-          nullable: true
-          example: https://api.affinda.com/v3/documents?limit=300&offset=300
-          description: URL to request next page of results
-        previous:
-          type: string
-          nullable: true
-          example: https://api.affinda.com/v3/documents?limit=300
-          description: URL to request previous page of results
-        parameters:
-          $ref: '#/components/schemas/ResumeSearchParameters'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResumeSearchResult'
     JobDescriptionSearch:
       type: object
       additionalProperties: false
@@ -3252,13 +3668,15 @@ components:
           description: Total number of results
           minimum: 0
         next:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           example: https://api.affinda.com/v3/search?limit=20&offset=20
           description: URL to request next page of results
         previous:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           example: https://api.affinda.com/v3/search?limit=20
           description: URL to request previous page of results
         parameters:
@@ -3267,599 +3685,98 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/JobDescriptionSearchResult'
-    ResumeSearchEmbed:
-      type: object
-      properties:
-        url:
-          type: string
-          nullable: false
-          description: The signed URL for the embedable search tool.
-          example: https://app.affinda.com/resume-search?signature=eyJhbGxvd19wZGZfZG
-    Education:
-      type: object
-      properties:
-        id:
-          type: integer
-          nullable: false
-          minimum: 1
-        organization:
-          type: string
-          nullable: true
-          example: Virginia Polytechnic Institute and State University (Virginia Tech)
-        accreditation:
-          $ref: '#/components/schemas/Accreditation'
-        grade:
-          type: object
-          additionalProperties: true
-          nullable: true
-          properties:
-            raw:
-              type: string
-              example: 'GPA : 3.35'
-            metric:
-              type: string
-              example: GPA
-              nullable: true
-            value:
-              type: string
-              example: '3.35'
-        location:
-          $ref: '#/components/schemas/Location'
-        dates:
-          type: object
-          nullable: true
-          additionalProperties: false
-          properties:
-            completionDate:
-              type: string
-              format: date
-              example: '2021-05-01'
-            isCurrent:
-              type: boolean
-            startDate:
-              type: string
-              format: date
-              nullable: true
-              example: '2019-05-01'
-            rawText:
-              type: string
-              example: May-Aug '18
-    validatable:
-      type: boolean
-    SearchConfigAction:
-      type: object
+    Location:
+      type:
+      - object
+      - 'null'
       required:
-      - label
-      - eventName
+      - rawInput
       properties:
-        label:
-          description: Human readable label to display in the UI
-          type: string
-          example: Add to shortlist
-        eventName:
-          description: Name of the event to be triggered
-          type: string
-          example: addToShortlist
-    CustomFieldConfig:
-      type: object
-      required:
-      - dataPoint
-      - weight
-      properties:
-        dataPoint:
-          type: string
-          description: Data point identifier.
-          example: RdNAniIH
-        weight:
-          type: number
-          minimum: 0
-          maximum: 1
-          example: 0.5
-          default: 0.5
-    Index:
-      type: object
-      additionalProperties: true
-      required:
-      - name
-      - docType
-      - user
-      properties:
-        name:
-          type: string
-          description: Unique index name
-          example: my-index
-        docType:
-          type: string
-          enum:
-          - resumes
-          - job_descriptions
-        user:
-          $ref: '#/components/schemas/IndexUser'
-    RegionBias:
-      type: object
-      nullable: true
-      properties:
+        formatted:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: Blacksburg, VA, USA
+        postalCode:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: '3124'
+        state:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: Virginia
+        stateCode:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: TX
         country:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: United States
+        countryCode:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: US
+          description: Two letter country code (ISO 3166-1 alpha-2)
+        rawInput:
           type: string
-          nullable: true
-          description: A single alpha-2 country code (e.g. AU) used by google geocoding service
-        countries:
-          type: array
-          items:
-            type: string
-          nullable: true
-          description: A list of alpha-2 country codes used by Pelias
-        squareCoordinates:
-          type: array
-          items:
-            type: number
-          nullable: true
-          description: A list of coordinates used by Pelias in the shape of [min_lon, min_lat, max_lon, max_lat]
-        strict:
-          type: boolean
-          description: 'If true, the location must be within the region, as opposed to prefering locations within the region.
-
-            Default to false.
-
-            '
-          example: true
-    OccupationGroupSearchResult:
-      type: object
-      additionalProperties: false
-      required:
-      - code
-      - name
-      properties:
-        match:
-          type: boolean
-          example: true
-        code:
-          type: integer
-        name:
-          type: string
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/OccupationGroup'
-        parents:
-          type: array
-          items:
-            $ref: '#/components/schemas/OccupationGroup'
-    TextAnnotation:
-      type: object
-      nullable: true
-      allOf:
-      - $ref: '#/components/schemas/Annotation'
-      - type: object
-        properties:
-          parsed:
-            type: string
-            nullable: true
-    customIdentifier:
-      type: string
-      nullable: true
-      description: Optional identifier for the document that you can set to track the document in the Affinda system.  Is not required to be unique.
-      example: 46ab8b02-0e5b-420c-877c-8b678d46a834
-    DocumentMeta:
-      type: object
-      required:
-      - identifier
-      - pages
-      - workspace
-      properties:
-        identifier:
-          type: string
-          description: Unique identifier for the document
-        customIdentifier:
-          type: string
-          nullable: true
-          description: Optional identifier for the document that you can set to track the document in the Affinda system.  Is not required to be unique.
-          example: 46ab8b02-0e5b-420c-877c-8b678d46a834
-        fileName:
-          $ref: '#/components/schemas/FileName'
-        ready:
-          type: boolean
-          nullable: false
-          example: true
-          description: If true, the document has finished processing. Particularly useful if an endpoint request specified wait=False, when polling use this variable to determine when to stop polling
-        readyDt:
-          type: string
-          format: date-time
-          example: '2020-12-10T01:43:32.276724Z'
-          nullable: true
-          description: The datetime when the document was ready
-        failed:
-          type: boolean
-          nullable: false
-          example: false
-          description: If true, some exception was raised during processing. Check the 'error' field of the main return object.
-        expiryTime:
-          $ref: '#/components/schemas/ExpiryTime'
-        language:
-          type: string
-          nullable: true
-          example: en
-          description: The document's language.
-        pdf:
-          type: string
-          nullable: true
-          example: https://affinda-api.s3.amazonaws.com/media/documents/Document.pdf?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
-          description: The URL to the document's pdf (if the uploaded document is not already pdf, it's converted to pdf as part of the parsing process).
-        parentDocument:
-          type: object
-          nullable: true
-          description: If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
-          properties:
-            identifier:
-              $ref: '#/components/schemas/DocumentMeta_properties-identifier'
-            customIdentifier:
-              $ref: '#/components/schemas/customIdentifier'
-        childDocuments:
-          type: array
-          description: If this document has been splitted into a number of child documents, this attribute points to those child documents.
-          items:
-            type: object
-            properties:
-              identifier:
-                $ref: '#/components/schemas/DocumentMeta_properties-identifier'
-              customIdentifier:
-                $ref: '#/components/schemas/customIdentifier'
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/PageMeta'
-          description: The document's pages.
-        isOcrd:
-          type: boolean
-        ocrConfidence:
-          type: number
-          nullable: true
-        reviewUrl:
-          type: string
-          nullable: true
-        documentType:
-          type: string
-          description: The document type's identifier.  Provide if you already know the document type.
-          nullable: true
-        collection:
-          type: object
-          nullable: true
-          required:
-          - identifier
-          properties:
-            identifier:
-              $ref: '#/components/schemas/properties-identifier'
-            name:
-              $ref: '#/components/schemas/name'
-            extractor:
-              type: object
-              nullable: true
-              properties:
-                identifier:
-                  $ref: '#/components/schemas/Extractor_properties-identifier'
-                name:
-                  $ref: '#/components/schemas/name'
-                baseExtractor:
-                  type: string
-                  description: Base extractor's identifier.
-                  nullable: true
-                validatable:
-                  $ref: '#/components/schemas/validatable'
-            validationRules:
-              type: array
-              items:
-                $ref: '#/components/schemas/ValidationRule'
-            autoRefreshValidationResults:
-              type: boolean
-              description: If True, validation results are refreshed whenever annotations are changed.
-        workspace:
-          type: object
-          required:
-          - identifier
-          properties:
-            identifier:
-              $ref: '#/components/schemas/identifier'
-            name:
-              $ref: '#/components/schemas/name'
-        archivedDt:
-          type: string
-          format: date-time
-          nullable: true
-        isArchived:
-          type: boolean
-        skipParse:
-          type: boolean
-        confirmedDt:
-          type: string
-          format: date-time
-          nullable: true
-        confirmedBy:
-          $ref: '#/components/schemas/UserNullable'
-        isConfirmed:
-          type: boolean
-        rejectedDt:
-          type: string
-          format: date-time
-          nullable: true
-        rejectedBy:
-          $ref: '#/components/schemas/UserNullable'
-        archivedBy:
-          $ref: '#/components/schemas/UserNullable'
-        isRejected:
-          type: boolean
-        createdDt:
-          type: string
-          format: date-time
-        errorCode:
-          $ref: '#/components/schemas/errorCode'
-        errorDetail:
-          $ref: '#/components/schemas/errorDetail'
-        file:
-          type: string
-          nullable: true
-          description: URL to view the file.
-        html:
-          type: string
-          nullable: true
-          description: URL to view the file converted to HTML.
-        llmHint:
-          type: string
-          nullable: true
-          description: Optional hint inserted into the LLM prompt when processing this document.
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
-        createdBy:
-          $ref: '#/components/schemas/User'
-        sourceEmail:
-          type: string
-          nullable: true
-          description: If the document is created via email ingestion, this field stores the email file's URL.
-        sourceEmailAddress:
-          type: string
-          nullable: true
-          description: If the document is created via email ingestion, this field stores the email's From address.
-        regionBias:
-          $ref: '#/components/schemas/RegionBias'
-    errorDetail:
-      type: string
-      nullable: true
-      example: Unable to convert word document
-    LanguageAnnotation:
-      type: object
-      nullable: true
-      allOf:
-      - $ref: '#/components/schemas/Annotation'
-      - type: object
-        properties:
-          parsed:
-            type: string
-            readOnly: true
-            nullable: true
-            example: Basket weaving
-    ResumeSearchDetail:
-      type: object
-      properties:
-        jobTitle:
-          type: object
-          nullable: false
-          properties:
-            missing:
-              type: array
-              items:
-                type: string
-            value:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                    nullable: true
-                    example: Javascript developer
-                  startDate:
-                    type: string
-                    nullable: true
-                    example: '2021-06-16'
-                  endDate:
-                    type: string
-                    nullable: true
-                    example: '2022-05-01'
-                  companyName:
-                    type: string
-                    nullable: true
-                    example: Affinda
-                  match:
-                    type: boolean
-                    example: true
-        location:
-          type: object
-          nullable: false
-          properties:
-            missing:
-              type: array
-              items:
-                $ref: '#/components/schemas/ResumeSearchParametersLocation'
-            value:
-              type: object
-              nullable: true
-              allOf:
-              - $ref: '#/components/schemas/Location'
-              - type: object
-                properties:
-                  match:
-                    type: boolean
-                    example: true
-        education:
-          type: object
-          nullable: false
-          properties:
-            missing:
-              type: object
-              properties:
-                degrees:
-                  type: array
-                  items:
-                    type: string
-                highestDegreeTypes:
-                  type: array
-                  items:
-                    type: string
-                institutions:
-                  type: array
-                  items:
-                    type: string
-                currentStudent:
-                  type: boolean
-                recentGraduate:
-                  type: boolean
-            value:
-              type: array
-              items:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/Education'
-                - type: object
-                  properties:
-                    match:
-                      type: boolean
-                      example: true
-        skills:
-          type: object
-          nullable: false
-          properties:
-            missing:
-              type: array
-              items:
-                $ref: '#/components/schemas/ResumeSearchParametersSkill'
-            value:
-              type: array
-              items:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/ResumeSkill'
-                - type: object
-                  properties:
-                    match:
-                      type: boolean
-                      example: true
-        experience:
-          type: object
-          properties:
-            years:
-              type: integer
-              nullable: true
-              minimum: 0
-            match:
-              type: boolean
-              example: true
-        occupationGroup:
-          type: object
-          nullable: false
-          properties:
-            missing:
-              type: array
-              items:
-                type: integer
-            value:
-              type: array
-              items:
-                $ref: '#/components/schemas/OccupationGroupSearchResult'
-        languages:
-          type: object
-          nullable: false
-          properties:
-            missing:
-              type: array
-              items:
-                $ref: '#/components/schemas/ResumeSearchParametersSkill'
-            value:
-              type: array
-              items:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/ResumeSkill'
-                - type: object
-                  properties:
-                    match:
-                      type: boolean
-                      example: true
-        managementLevel:
-          type: object
-          nullable: true
-          properties:
-            level:
-              $ref: '#/components/schemas/ManagementLevel'
-            match:
-              type: boolean
-              example: true
-        searchExpression:
-          type: object
-          properties:
-            missing:
-              type: array
-              items:
-                type: string
-            value:
-              type: array
-              items:
-                type: string
-    JobDescriptionSearchResult:
-      type: object
-      additionalProperties: false
-      required:
-      - identifier
-      - score
-      - pdf
-      - jobTitle
-      - managementLevel
-      - experience
-      - skills
-      - languages
-      - location
-      - education
-      - searchExpression
-      - organizationName
-      - customData
-      properties:
-        identifier:
-          $ref: '#/components/schemas/Identifier'
-        score:
-          type: number
-          example: 0.98
-        pdf:
-          type: string
-          example: https://affinda-api.s3.amazonaws.com/media/documents/Example-Job-Description
-          nullable: true
-        jobTitle:
-          $ref: '#/components/schemas/JobTitleSearchScoreComponent'
-        managementLevel:
-          $ref: '#/components/schemas/ManagementLevelSearchScoreComponent'
-        experience:
-          $ref: '#/components/schemas/ExperienceSearchScoreComponent'
-        skills:
-          $ref: '#/components/schemas/SkillsSearchScoreComponent'
-        languages:
-          $ref: '#/components/schemas/LanguagesSearchScoreComponent'
-        location:
-          $ref: '#/components/schemas/LocationSearchScoreComponent'
-        education:
-          $ref: '#/components/schemas/EducationSearchScoreComponent'
-        occupationGroup:
-          $ref: '#/components/schemas/OccupationGroupSearchScoreComponent'
-        searchExpression:
-          $ref: '#/components/schemas/SearchExpressionSearchScoreComponent'
-        organizationName:
-          type: string
-          nullable: true
-          example: Microsoft
-        customData:
-          $ref: '#/components/schemas/CustomDataSearchScoreComponent'
+          example: Blacksburg, VA
+        streetNumber:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: '1'
+        street:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: Smith St
+        apartmentNumber:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: '12'
+        city:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: Blacksburg
+        latitude:
+          type:
+          - number
+          - 'null'
+          readOnly: true
+          example: '67.0124'
+        longitude:
+          type:
+          - number
+          - 'null'
+          readOnly: true
+          example: '67.0124'
+        poBox:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          example: P.O. Box 123
     ResumeSearchParameters:
       type: object
       additionalProperties: false
-      nullable: false
       required:
       - indices
       properties:
@@ -3871,10 +3788,8 @@ components:
             type: string
         jobDescription:
           $ref: '#/components/schemas/Identifier'
-          nullable: true
         resume:
           $ref: '#/components/schemas/Identifier'
-          nullable: true
         jobTitles:
           type: array
           items:
@@ -3889,13 +3804,15 @@ components:
           minimum: 0
           maximum: 1
         yearsExperienceMin:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
           minimum: 0
           description: Minimum years of total work experience
         yearsExperienceMax:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
           minimum: 0
           description: Maximum years of total work experience
         yearsExperienceRequired:
@@ -3965,8 +3882,9 @@ components:
           minimum: 0
           maximum: 1
         searchExpression:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Search through resumes' raw text
         searchExpressionRequired:
           type: boolean
@@ -3999,135 +3917,115 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ResumeSearchParametersCustomData'
-    Location:
+    PaginatedResponse:
       type: object
-      nullable: true
       required:
-      - rawInput
+      - count
       properties:
-        formatted:
-          type: string
-          nullable: true
-          readOnly: true
-          example: Blacksburg, VA, USA
-        postalCode:
-          type: string
-          readOnly: true
-          example: '3124'
-          nullable: true
-        state:
-          type: string
-          readOnly: true
-          nullable: true
-          example: Virginia
-        stateCode:
-          type: string
-          nullable: true
-          readOnly: true
-          example: TX
-        country:
-          type: string
-          readOnly: true
-          nullable: true
-          example: United States
-        countryCode:
-          type: string
-          nullable: true
-          readOnly: true
-          example: US
-          description: Two letter country code (ISO 3166-1 alpha-2)
-        rawInput:
-          type: string
-          example: Blacksburg, VA
-        streetNumber:
-          type: string
-          nullable: true
-          readOnly: true
-          example: '1'
-        street:
-          type: string
-          nullable: true
-          readOnly: true
-          example: Smith St
-        apartmentNumber:
-          type: string
-          nullable: true
-          readOnly: true
-          example: '12'
-        city:
-          type: string
-          nullable: true
-          readOnly: true
-          example: Blacksburg
-        latitude:
-          type: number
-          nullable: true
-          readOnly: true
-          example: '67.0124'
-        longitude:
-          type: number
-          nullable: true
-          readOnly: true
-          example: '67.0124'
-        poBox:
-          type: string
-          nullable: true
-          readOnly: true
-          example: P.O. Box 123
-    YearsExperienceAnnotation:
+        count:
+          type: integer
+          example: 10
+          description: Number of items in results.
+          minimum: 0
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL to request next page of results.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL to request previous page of results.
+    SearchParametersCustomData:
       type: object
-      nullable: true
+      required:
+      - filterType
+      - query
+      properties:
+        filterType:
+          type: string
+          enum:
+          - equals
+          - range
+          example: equals
+          description: Data points of "text" type support only "equals" filterType, others support both "equals" and "range"
+        dataPoint:
+          type:
+          - string
+          - 'null'
+          example: isAvailable
+          description: The data point's slug, used for portal v2 (deprecated)
+          deprecated: true
+        field:
+          type:
+          - string
+          - 'null'
+          example: isAvailable
+          description: The field's slug
+        query:
+          type: object
+          example:
+            value: true
+          description: '"equals" searches require the "value" key inside the query, and "range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal)'
+        required:
+          type: boolean
+        weight:
+          type: number
+          minimum: 0
+          maximum: 1
+    SkillAnnotationUpdate:
+      type:
+      - object
+      - 'null'
       allOf:
-      - $ref: '#/components/schemas/Annotation'
+      - $ref: '#/components/schemas/AnnotationBase'
       - type: object
         properties:
           parsed:
-            type: object
-            description: Years of experience range
-            properties:
-              minimum:
-                type: number
-                nullable: true
-                description: Minimum years of experience
-                example: 0.5
-              maximum:
-                type: number
-                nullable: true
-                description: Maximum years of experience
-                example: 5
-    EducationLevel:
-      type: string
-      example: bachelors
-      nullable: true
-      enum:
-      - school
-      - certificate
-      - bachelors
-      - masters
-      - doctoral
-      x-ms-enum:
-        name: educationLevel
+            type:
+            - string
+            - 'null'
+            readOnly: true
+            example: Basket weaving
+    LocationAnnotationUpdate:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/AnnotationBase'
+      - type: object
+        properties:
+          parsed:
+            readOnly: true
+            allOf:
+            - $ref: '#/components/schemas/Location'
     JobTitleAnnotation:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       allOf:
       - $ref: '#/components/schemas/Annotation'
       - properties:
           parsed:
-            type: object
-            nullable: true
+            type:
+            - object
+            - 'null'
             description: Years of experience range
             properties:
               name:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
               managementLevel:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
                 example: Mid
               classification:
-                type: object
-                nullable: true
+                type:
+                - object
+                - 'null'
                 properties:
                   socCode:
                     type: number
@@ -4162,220 +4060,518 @@ components:
                     minimum: 1
                     maximum: 9999
                     description: The 4 digit code representing the SOC2020 classification for this job title
-    ExpiryTime:
+    FileName:
+      type:
+      - string
+      - 'null'
+      description: Optional filename of the file
+      example: Document.pdf
+    properties-identifier:
       type: string
-      nullable: true
-      format: date-time
-      description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
-    ExpectedRemunerationAnnotationUpdate:
-      type: object
-      nullable: true
-      allOf:
-      - $ref: '#/components/schemas/AnnotationBase'
-      - type: object
-        properties:
-          parsed:
-            type: object
-            properties:
-              minimum:
-                type: number
-                nullable: true
-                example: '3455343.50'
-              maximum:
-                type: number
-                nullable: true
-                example: '55545343.50'
-              currency:
-                type: string
-                nullable: true
-                example: USD
-              unit:
-                type: string
-                nullable: true
-                example: Annually
-    JobDescriptionSearchEmbed:
+      description: Uniquely identify a collection.
+      example: mEFayXdO
+    ResumeSearchParametersSkill:
       type: object
       properties:
-        url:
+        name:
           type: string
-          nullable: false
-          description: The signed URL for the embedable search tool.
-          example: https://app.affinda.com/job-description-search?signature=eyJhbGxvd19wZGZkGZ
-    LanguageAnnotationUpdate:
+        required:
+          type: boolean
+    UserNullable:
+      type:
+      - object
+      - 'null'
+      properties:
+        id:
+          type: integer
+          description: Uniquely identify a user.
+          example: 1
+          minimum: 1
+        name:
+          type: string
+          example: Carl Johnson
+        username:
+          type: string
+          example: carljohnson
+        email:
+          type: string
+          example: carljohnson@grove.street
+        avatar:
+          type:
+          - string
+          - 'null'
+          description: URL of the user's avatar.
+          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+    OccupationGroupSearchResult:
       type: object
-      nullable: true
-      allOf:
-      - $ref: '#/components/schemas/AnnotationBase'
-      - type: object
-        properties:
-          parsed:
-            type: string
-            readOnly: true
-            nullable: true
-            example: Mandarin Chinese
-    YearsExperienceAnnotationUpdate:
+      additionalProperties: false
+      required:
+      - code
+      - name
+      properties:
+        match:
+          type: boolean
+          example: true
+        code:
+          type: integer
+        name:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/OccupationGroup'
+        parents:
+          type: array
+          items:
+            $ref: '#/components/schemas/OccupationGroup'
+    email:
+      type: string
+      example: carljohnson@grove.street
+    DocumentMeta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
+    PaletteColorOptions:
       type: object
-      nullable: true
-      allOf:
-      - $ref: '#/components/schemas/AnnotationBase'
-      - type: object
-        properties:
-          parsed:
-            type: object
-            description: Years of experience range
-            properties:
-              minimum:
-                type: number
-                nullable: true
-                description: Minimum years of experience
-                example: 0.5
-              maximum:
-                type: number
-                nullable: true
-                description: Maximum years of experience
-                example: 5
-    SearchExpressionSearchScoreComponent:
+      required:
+      - main
+      properties:
+        main:
+          type: string
+        light:
+          type: string
+        dark:
+          type: string
+        contrastText:
+          type: string
+    OccupationGroupSearchScoreComponent:
       type: object
       additionalProperties: false
       required:
       - label
       properties:
-        label:
-          type: string
-          example: Search expression
         value:
           type: string
+          example: Programmers and software development professionals
+        label:
+          type: string
+          example: Occupation group
         score:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
           example: 0.68
-    ResumeSearchConfig:
+    User_properties-name:
+      type: string
+      example: Carl Johnson
+    AnnotationContentType:
+      type: string
+      description: The different data types of annotations
+      enum:
+      - text
+      - integer
+      - float
+      - decimal
+      - date
+      - datetime
+      - daterange
+      - boolean
+      - enum
+      - location
+      - phonenumber
+      - json
+      - table
+      - expectedremuneration
+      - jobtitle
+      - language
+      - skill
+      - yearsexperience
+      - group
+      - table_deprecated
+      - url
+      - image
+      - docclf
+    TextAnnotation:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/Annotation'
+      - type: object
+        properties:
+          parsed:
+            type:
+            - string
+            - 'null'
+    validatable:
+      type: boolean
+    ExpectedRemunerationAnnotation:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/Annotation'
+      - type: object
+        properties:
+          parsed:
+            type: object
+            properties:
+              minimum:
+                type:
+                - number
+                - 'null'
+                example: '3455343.50'
+              maximum:
+                type:
+                - number
+                - 'null'
+                example: '55545343.50'
+              currency:
+                type:
+                - string
+                - 'null'
+                example: USD
+              unit:
+                type:
+                - string
+                - 'null'
+                example: Annually
+    Index_properties-name:
+      type: string
+      description: Unique index name
+      example: my-index
+    ResumeSearchDetail:
       type: object
       properties:
-        allowPdfDownload:
-          type: boolean
-          nullable: false
-        maxResults:
-          type: integer
-          minimum: 1
-          nullable: true
-          description: Maximum number of results that can be returned. Setting to "null" means no limitation.
-          example: 10
-        displayJobTitle:
-          type: boolean
-          nullable: false
-        displayLocation:
-          type: boolean
-          nullable: false
-        displayYearsExperience:
-          type: boolean
-          nullable: false
-        displayOccupationGroup:
-          type: boolean
-          nullable: false
-        displayEducation:
-          type: boolean
-          nullable: false
-        displaySkills:
-          type: boolean
-          nullable: false
-        displayLanguages:
-          type: boolean
-          nullable: false
-        displayManagementLevel:
-          type: boolean
-          nullable: false
-        displayKeywords:
-          type: boolean
-          nullable: false
-        weightJobTitle:
-          type: number
-          nullable: false
-        weightLocation:
-          type: number
-          nullable: false
-        weightYearsExperience:
-          type: number
-          nullable: false
-        weightOccupationGroup:
-          type: number
-          nullable: false
-        weightEducation:
-          type: number
-          nullable: false
-        weightSkills:
-          type: number
-          nullable: false
-        weightLanguages:
-          type: number
-          nullable: false
-        weightManagementLevel:
-          type: number
-          nullable: false
-        weightKeywords:
-          type: number
-          nullable: false
-        indices:
-          type: array
-          items:
-            type: string
-          description: List of index names.
-          example:
-          - all-resumes
-          - my-index
-        showIndexDropdown:
-          type: boolean
-          nullable: true
-          description: Controls whether or not the index dropdown is displayed to the user
-        searchToolTheme:
+        jobTitle:
           type: object
-          allOf:
-          - $ref: '#/components/schemas/ThemeConfig'
-          nullable: true
-          description: Customize the theme of the embeded search tool.
-        userId:
-          type: integer
-          nullable: false
-          readOnly: true
-          description: ID of the logged in user.
-          example: 1234
-          minimum: 1
-        username:
+          properties:
+            missing:
+              type: array
+              items:
+                type: string
+            value:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type:
+                    - string
+                    - 'null'
+                    example: Javascript developer
+                  startDate:
+                    type:
+                    - string
+                    - 'null'
+                    example: '2021-06-16'
+                  endDate:
+                    type:
+                    - string
+                    - 'null'
+                    example: '2022-05-01'
+                  companyName:
+                    type:
+                    - string
+                    - 'null'
+                    example: Affinda
+                  match:
+                    type: boolean
+                    example: true
+        location:
+          type: object
+          properties:
+            missing:
+              type: array
+              items:
+                $ref: '#/components/schemas/ResumeSearchParametersLocation'
+            value:
+              type:
+              - object
+              - 'null'
+              allOf:
+              - $ref: '#/components/schemas/Location'
+              - type: object
+                properties:
+                  match:
+                    type: boolean
+                    example: true
+        education:
+          type: object
+          properties:
+            missing:
+              type: object
+              properties:
+                degrees:
+                  type: array
+                  items:
+                    type: string
+                highestDegreeTypes:
+                  type: array
+                  items:
+                    type: string
+                institutions:
+                  type: array
+                  items:
+                    type: string
+                currentStudent:
+                  type: boolean
+                recentGraduate:
+                  type: boolean
+            value:
+              type: array
+              items:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/Education'
+                - type: object
+                  properties:
+                    match:
+                      type: boolean
+                      example: true
+        skills:
+          type: object
+          properties:
+            missing:
+              type: array
+              items:
+                $ref: '#/components/schemas/ResumeSearchParametersSkill'
+            value:
+              type: array
+              items:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/ResumeSkill'
+                - type: object
+                  properties:
+                    match:
+                      type: boolean
+                      example: true
+        experience:
+          type: object
+          properties:
+            years:
+              type:
+              - integer
+              - 'null'
+              minimum: 0
+            match:
+              type: boolean
+              example: true
+        occupationGroup:
+          type: object
+          properties:
+            missing:
+              type: array
+              items:
+                type: integer
+            value:
+              type: array
+              items:
+                $ref: '#/components/schemas/OccupationGroupSearchResult'
+        languages:
+          type: object
+          properties:
+            missing:
+              type: array
+              items:
+                $ref: '#/components/schemas/ResumeSearchParametersSkill'
+            value:
+              type: array
+              items:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/ResumeSkill'
+                - type: object
+                  properties:
+                    match:
+                      type: boolean
+                      example: true
+        managementLevel:
+          type:
+          - object
+          - 'null'
+          properties:
+            level:
+              $ref: '#/components/schemas/ManagementLevel'
+            match:
+              type: boolean
+              example: true
+        searchExpression:
+          type: object
+          properties:
+            missing:
+              type: array
+              items:
+                type: string
+            value:
+              type: array
+              items:
+                type: string
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
           type: string
-          nullable: false
-          readOnly: true
-          description: Username of the logged in user.
-          example: big.smoke
-        actions:
+          example: validation_error
+        errors:
           type: array
-          nullable: true
-          description: A list of actions to show in the dropdown in the embedded search tool
           items:
-            $ref: '#/components/schemas/SearchConfigAction'
-        hideToolbar:
-          type: boolean
-          nullable: false
-          description: Hide the reset/import toolbar.
-        hideSidePanel:
-          type: boolean
-          nullable: false
-          description: Hide the entire side panel.
-        customFieldsConfig:
-          type: array
-          nullable: true
-          items:
-            $ref: '#/components/schemas/CustomFieldConfig'
-        distanceUnit:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
+    LanguageAnnotationUpdate:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/AnnotationBase'
+      - type: object
+        properties:
+          parsed:
+            type:
+            - string
+            - 'null'
+            readOnly: true
+            example: Mandarin Chinese
+    JobTitleAnnotationUpdate:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/AnnotationBase'
+      - $ref: '#/components/schemas/JobTitleParsed'
+    JobTitleSearchScoreComponent:
+      type: object
+      additionalProperties: false
+      required:
+      - label
+      properties:
+        value:
           type: string
-          nullable: false
-          description: The unit of distance to use for location based searches
-          example: km
-          enum:
-          - mi
-          - km
+          example: Software Developer
+        label:
+          type: string
+          example: Job Title
+        score:
+          type:
+          - number
+          - 'null'
+          example: 0.68
+    ResumeSearchResult:
+      type: object
+      additionalProperties: false
+      required:
+      - identifier
+      - score
+      - pdf
+      - jobTitle
+      - managementLevel
+      - experience
+      - skills
+      - languages
+      - location
+      - education
+      - occupationGroup
+      - searchExpression
+      - customData
+      properties:
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+        score:
+          type: number
+          example: 0.98
+        pdf:
+          type:
+          - string
+          - 'null'
+          example: https://affinda-api.s3.amazonaws.com/media/documents/Example-Resume
+        name:
+          type: string
+          example: Mary Jane
+        jobTitle:
+          $ref: '#/components/schemas/JobTitleSearchScoreComponent'
+        managementLevel:
+          $ref: '#/components/schemas/ManagementLevelSearchScoreComponent'
+        experience:
+          $ref: '#/components/schemas/ExperienceSearchScoreComponent'
+        skills:
+          $ref: '#/components/schemas/SkillsSearchScoreComponent'
+        languages:
+          $ref: '#/components/schemas/LanguagesSearchScoreComponent'
+        location:
+          $ref: '#/components/schemas/LocationSearchScoreComponent'
+        education:
+          $ref: '#/components/schemas/EducationSearchScoreComponent'
+        occupationGroup:
+          $ref: '#/components/schemas/OccupationGroupSearchScoreComponent'
+        searchExpression:
+          $ref: '#/components/schemas/SearchExpressionSearchScoreComponent'
+        customData:
+          $ref: '#/components/schemas/CustomDataSearchScoreComponent'
+    ResumeSearchEmbed:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The signed URL for the embedable search tool.
+          example: https://app.affinda.com/resume-search?signature=eyJhbGxvd19wZGZfZG
+    docType:
+      type: string
+      enum:
+      - resumes
+      - job_descriptions
+    customIdentifier:
+      type:
+      - string
+      - 'null'
+      description: Optional identifier for the document that you can set to track the document in the Affinda system.  Is not required to be unique.
+      example: 46ab8b02-0e5b-420c-877c-8b678d46a834
+    IndexCreate:
+      type: object
+      title: IndexRequestBody
+      additionalProperties: true
+      required:
+      - name
+      properties:
+        name:
+          $ref: '#/components/schemas/Index_properties-name'
+        docType:
+          $ref: '#/components/schemas/docType'
   responses:
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
     403Error:
       description: Forbidden error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    401Error:
+      description: Authorisation error
       content:
         application/json:
           schema:
@@ -4388,23 +4584,19 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
     204NoContent:
       description: Delete successful, no content returned
-    401Error:
-      description: Authorisation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
   parameters:
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
     limitParam:
       in: query
       name: limit
@@ -4415,16 +4607,6 @@ components:
         maximum: 100
         example: 20
       description: The numbers of results to return.
-      x-ms-parameter-location: method
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
       x-ms-parameter-location: method
   securitySchemes:
     ApiKeyAuth:

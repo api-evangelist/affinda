@@ -1,8 +1,19 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affinda Annotations Add x-hidden to endpoints Data Sources API
-  version: 3.0.0
-  description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
+  description: '# Introduction
+
+    Affinda uses the latest advancements in AI technology to rapidly process documents with better-than-human accuracy.'
+  version: v3
+  title: Affinda Data Sources API
+  contact:
+    email: contact@affinda.com
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/affinda/affinda-api-spec/master/LICENSE
+  x-logo:
+    url: https://api.affinda.com/static/documentation/affinda_logo.png
+    backgroundColor: '#FFFFFF'
+    altText: Affinda logo
 servers:
 - url: https://{region}.affinda.com
   description: 'Select the correct server for your instance: api (AUS/Global), api.us1 (US), or api.eu1 (EU).'
@@ -19,6 +30,9 @@ security:
 - ApiKeyAuth: []
 tags:
 - name: Data Sources
+  description: 'Operations to manage custom mapping data sources. These are used to map from raw data extracted by
+
+    Affinda AI models onto your own data model.'
 paths:
   /v3/mapping_data_sources:
     post:
@@ -385,29 +399,128 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
 components:
-  parameters:
-    limitParam:
-      in: query
-      name: limit
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        example: 20
-      description: The numbers of results to return.
-      x-ms-parameter-location: method
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
-      x-ms-parameter-location: method
   schemas:
+    MappingDataSource:
+      type: object
+      description: A mapping data source is used to map from raw data found by our AI models to records in your database.
+      required:
+      - identifier
+      - organization
+      - workspace
+      - keyProperty
+      - displayProperty
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify a mapping data source.
+          example: mEFayXdO
+          readOnly: true
+        name:
+          type:
+          - string
+          - 'null'
+          example: My supplier list
+        keyProperty:
+          type: string
+          example: value
+          description: Attribute in the schema which uniquely identifiers the value
+        displayProperty:
+          type: string
+          example: value
+          description: Attribute in the schema which is used to display the value
+        organization:
+          type:
+          - string
+          - 'null'
+          example: mewlkWEKL
+          description: The organization that this mapping data source belongs to.
+        workspace:
+          type:
+          - string
+          - 'null'
+          example: mewlkWEKL
+          description: The workspace that this mapping data source belongs to.
+        schema:
+          type: object
+          description: The schema of the mapping data source.
+          example:
+            type: object
+            $schema: http://json-schema.org/draft-07/schema#
+            required:
+            - label
+            properties:
+              label:
+                type: string
+              description:
+                type: string
+    MappingDataSource_properties-identifier:
+      type: string
+      description: Uniquely identify a mapping data source.
+      example: mEFayXdO
+      readOnly: true
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
+    properties-name:
+      type:
+      - string
+      - 'null'
+      example: My supplier list
+    PaginatedResponse:
+      type: object
+      required:
+      - count
+      properties:
+        count:
+          type: integer
+          example: 10
+          description: Number of items in results.
+          minimum: 0
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL to request next page of results.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL to request previous page of results.
     MappingDataSourceCreate:
       type: object
       description: A mapping data source is used to map from raw data found by our AI models to records in your database.
@@ -415,19 +528,22 @@ components:
       - identifier
       properties:
         name:
-          type: string
+          type:
+          - string
+          - 'null'
           example: My supplier list
-          nullable: true
         organization:
-          type: string
+          type:
+          - string
+          - 'null'
           example: mewlkWEKL
           description: The organization that this mapping data source belongs to.
-          nullable: true
         workspace:
-          type: string
+          type:
+          - string
+          - 'null'
           example: mewlkWEKL
           description: The workspace that this mapping data source belongs to.
-          nullable: true
         keyProperty:
           type: string
           example: value
@@ -454,121 +570,14 @@ components:
                 type: string
               description:
                 type: string
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
-    MappingDataSource_properties-identifier:
-      type: string
-      description: Uniquely identify a mapping data source.
-      example: mEFayXdO
-      readOnly: true
-    RequestError:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - errors
-      properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type: string
-                nullable: true
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    PaginatedResponse:
-      type: object
-      required:
-      - count
-      properties:
-        count:
-          type: integer
-          example: 10
-          description: Number of items in results.
-          minimum: 0
-        next:
-          type: string
-          nullable: true
-          description: URL to request next page of results.
-        previous:
-          type: string
-          nullable: true
-          description: URL to request previous page of results.
-    MappingDataSource:
-      type: object
-      description: A mapping data source is used to map from raw data found by our AI models to records in your database.
-      required:
-      - identifier
-      - organization
-      - workspace
-      - keyProperty
-      - displayProperty
-      properties:
-        identifier:
-          type: string
-          description: Uniquely identify a mapping data source.
-          example: mEFayXdO
-          readOnly: true
-        name:
-          type: string
-          example: My supplier list
-          nullable: true
-        keyProperty:
-          type: string
-          example: value
-          description: Attribute in the schema which uniquely identifiers the value
-        displayProperty:
-          type: string
-          example: value
-          description: Attribute in the schema which is used to display the value
-        organization:
-          type: string
-          example: mewlkWEKL
-          description: The organization that this mapping data source belongs to.
-          nullable: true
-        workspace:
-          type: string
-          example: mewlkWEKL
-          description: The workspace that this mapping data source belongs to.
-          nullable: true
-        schema:
-          type: object
-          description: The schema of the mapping data source.
-          example:
-            type: object
-            $schema: http://json-schema.org/draft-07/schema#
-            required:
-            - label
-            properties:
-              label:
-                type: string
-              description:
-                type: string
-    properties-name:
-      type: string
-      example: My supplier list
-      nullable: true
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
   responses:
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
     401Error:
       description: Authorisation error
       content:
@@ -583,15 +592,30 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
     204NoContent:
       description: Delete successful, no content returned
+  parameters:
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
+    limitParam:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        example: 20
+      description: The numbers of results to return.
+      x-ms-parameter-location: method
   securitySchemes:
     ApiKeyAuth:
       type: http

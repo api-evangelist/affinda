@@ -1,8 +1,19 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affinda Annotations Add x-hidden to endpoints Tags API
-  version: 3.0.0
-  description: Affinda Annotations API — subset of the Affinda v3 Document Processing API.
+  description: '# Introduction
+
+    Affinda uses the latest advancements in AI technology to rapidly process documents with better-than-human accuracy.'
+  version: v3
+  title: Affinda Tags API
+  contact:
+    email: contact@affinda.com
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/affinda/affinda-api-spec/master/LICENSE
+  x-logo:
+    url: https://api.affinda.com/static/documentation/affinda_logo.png
+    backgroundColor: '#FFFFFF'
+    altText: Affinda logo
 servers:
 - url: https://{region}.affinda.com
   description: 'Select the correct server for your instance: api (AUS/Global), api.us1 (US), or api.eu1 (EU).'
@@ -19,6 +30,10 @@ security:
 - ApiKeyAuth: []
 tags:
 - name: Tags
+  description: 'Operations to manage tags.
+
+
+    Tags can be arbitrarily attached to documents to help organize and manage them.'
 paths:
   /v3/tags:
     get:
@@ -60,7 +75,6 @@ paths:
       - Tags
       summary: Create a tag
       operationId: createTag
-      description: Create a tag
       responses:
         '201':
           description: Successfully created a tag.
@@ -172,9 +186,7 @@ paths:
 
         Tags are used to group documents together.
 
-        Tags can be used to filter documents.
-
-        '
+        Tags can be used to filter documents.'
       requestBody:
         description: Specify the tag and the documents to tag
         required: true
@@ -216,23 +228,64 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
-    id:
-      type: integer
-      description: Uniquely identify a tag.
-      example: 1
-      minimum: 1
-    TagUpdate:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/name'
-        workspace:
-          $ref: '#/components/schemas/identifier'
+    name:
+      type: string
+    DocumentMeta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
     TagCreate:
       type: object
       required:
       - name
       - workspace
+      properties:
+        name:
+          $ref: '#/components/schemas/name'
+        workspace:
+          $ref: '#/components/schemas/identifier'
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
+    BatchRemoveTagRequest:
+      type: object
+      properties:
+        identifiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+          description: List of documents to remove tag from
+        tag:
+          type: integer
+          description: The tag's ID
+    TagUpdate:
+      type: object
       properties:
         name:
           $ref: '#/components/schemas/name'
@@ -259,6 +312,10 @@ components:
           type: integer
           minimum: 0
           description: Number of documents tagged with this.
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
     BatchAddTagRequest:
       type: object
       properties:
@@ -271,78 +328,19 @@ components:
           type: integer
           example: 1
           description: The tag's ID
-    RequestError:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - errors
-      properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type: string
-                nullable: true
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    DocumentMeta_properties-identifier:
-      type: string
-      description: Unique identifier for the document
-    BatchRemoveTagRequest:
-      type: object
-      properties:
-        identifiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentMeta_properties-identifier'
-          description: List of documents to remove tag from
-        tag:
-          type: integer
-          description: The tag's ID
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
-    name:
-      type: string
-  parameters:
-    limitParam:
-      in: query
-      name: limit
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        example: 20
-      description: The numbers of results to return.
-      x-ms-parameter-location: method
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
-      x-ms-parameter-location: method
+    id:
+      type: integer
+      description: Uniquely identify a tag.
+      example: 1
+      minimum: 1
   responses:
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
     401Error:
       description: Authorisation error
       content:
@@ -357,15 +355,30 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
     204NoContent:
       description: Delete successful, no content returned
+  parameters:
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
+    limitParam:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        example: 20
+      description: The numbers of results to return.
+      x-ms-parameter-location: method
   securitySchemes:
     ApiKeyAuth:
       type: http
