@@ -262,104 +262,79 @@ paths:
               $ref: '#/components/schemas/BatchDeleteAnnotationsRequest'
 components:
   schemas:
-    BatchDeleteAnnotationsRequest:
+    AnnotationWithValidationResults:
+      type:
+      - object
+      - 'null'
+      allOf:
+      - $ref: '#/components/schemas/Annotation'
+      - type: object
+        properties:
+          validationResults:
+            type: array
+            description: List of validation results for this annotation.
+            items:
+              $ref: '#/components/schemas/ValidationResult'
+    Rectangle:
+      type: object
+      additionalProperties: false
+      required:
+      - x0
+      - y0
+      - x1
+      - y1
+      properties:
+        pageIndex:
+          type: integer
+          example: 1
+          minimum: 0
+        x0:
+          type: number
+          example: 2.43
+        y0:
+          type: number
+          example: 4.55
+        x1:
+          type: number
+          example: 4.56
+        y1:
+          type: number
+          example: 6.32
+    BatchUpdateAnnotationsResponse:
       type: array
-      description: Array of annotation IDs to be deleted
       items:
-        $ref: '#/components/schemas/Annotation_properties-id'
+        $ref: '#/components/schemas/Annotation'
+    DocumentMeta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
     rectangles:
       type: array
       items:
         $ref: '#/components/schemas/Rectangle'
       description: x/y coordinates for the rectangles containing the data. An annotation can be contained within multiple rectangles.
-    parent:
-      type:
-      - integer
-      - 'null'
-      description: The parent annotation's ID
-    BatchUpdateAnnotationsRequest:
-      type: array
-      items:
-        $ref: '#/components/schemas/AnnotationBatchUpdate'
-    pageIndex:
-      type:
-      - integer
-      - 'null'
-      example: 0
-      minimum: 0
-      description: The page number within the document, starting from 0.
-    field:
-      type:
-      - string
-      - 'null'
-      description: Field's identifier
-    Annotation_properties-id:
-      type: integer
-      description: Annotation's ID
-      example: 1
-      minimum: 1
-    isClientVerified:
-      type: boolean
-      description: Indicates whether the data has been validated by a human
-    dataPoint:
-      type: string
-      description: Data point's identifier
-    DocumentMeta_properties-identifier:
-      type: string
-      description: Unique identifier for the document
-    AnnotationCreate:
-      type: object
-      required:
-      - document
-      - pageIndex
-      properties:
-        rectangles:
-          $ref: '#/components/schemas/rectangles'
-        document:
-          $ref: '#/components/schemas/DocumentMeta_properties-identifier'
-        pageIndex:
-          $ref: '#/components/schemas/pageIndex'
-        dataPoint:
-          $ref: '#/components/schemas/dataPoint'
-        field:
-          $ref: '#/components/schemas/field'
-        raw:
-          $ref: '#/components/schemas/raw'
-        parsed:
-          oneOf:
-          - type:
-            - string
-            - 'null'
-          - type:
-            - integer
-            - 'null'
-          - type:
-            - number
-            - 'null'
-          - type:
-            - boolean
-            - 'null'
-          - type:
-            - object
-            - 'null'
-            additionalProperties: true
-          - type:
-            - array
-            - 'null'
-            items:
-              $ref: '#/components/schemas/AnnotationCreate'
-        isClientVerified:
-          $ref: '#/components/schemas/isClientVerified'
-        parent:
-          type:
-          - integer
-          - 'null'
-          description: The parent annotation's ID
-        validationResults:
-          type: array
-          description: The validation results created, changed or deleted as a result of creating the annotation.
-          items:
-            $ref: '#/components/schemas/ChangedValidationResults'
+    parsed:
+      oneOf:
+      - type:
+        - string
+        - 'null'
+      - type:
+        - integer
+        - 'null'
+      - type:
+        - number
+        - 'null'
+      - type:
+        - boolean
+        - 'null'
+      - type:
+        - object
+        - 'null'
+        additionalProperties: true
+      - type:
+        - array
+        - 'null'
+        items:
+          $ref: '#/components/schemas/AnnotationCreate'
     ValidationResult:
       type: object
       additionalProperties: false
@@ -403,11 +378,6 @@ components:
           example: Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*
         document:
           $ref: '#/components/schemas/DocumentMeta_properties-identifier'
-    validationResults:
-      type: array
-      description: The validation results created, changed or deleted as a result of updating the annotation.
-      items:
-        $ref: '#/components/schemas/ChangedValidationResults'
     ChangedValidationResults:
       type:
       - object
@@ -429,6 +399,64 @@ components:
           description: List of validation results deleted during this operation.
           items:
             $ref: '#/components/schemas/ValidationResult'
+    AnnotationUpdate:
+      type: object
+      properties:
+        rectangles:
+          $ref: '#/components/schemas/rectangles'
+        document:
+          $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+        pageIndex:
+          $ref: '#/components/schemas/pageIndex'
+        raw:
+          $ref: '#/components/schemas/raw'
+        parsed:
+          oneOf:
+          - type:
+            - string
+            - 'null'
+          - type:
+            - integer
+            - 'null'
+          - type:
+            - number
+            - 'null'
+          - type:
+            - boolean
+            - 'null'
+          - type:
+            - object
+            - 'null'
+            additionalProperties: true
+          - type:
+            - array
+            - 'null'
+            items:
+              $ref: '#/components/schemas/AnnotationCreate'
+        isClientVerified:
+          $ref: '#/components/schemas/isClientVerified'
+        dataPoint:
+          $ref: '#/components/schemas/dataPoint'
+        field:
+          $ref: '#/components/schemas/field'
+        parent:
+          $ref: '#/components/schemas/parent'
+        validationResults:
+          type: array
+          description: The validation results created, changed or deleted as a result of updating the annotation.
+          items:
+            $ref: '#/components/schemas/ChangedValidationResults'
+    isClientVerified:
+      type: boolean
+      description: Indicates whether the data has been validated by a human
+    BatchDeleteAnnotationsResponse:
+      type: object
+      properties:
+        validationResults:
+          type: object
+          description: The validation results created, changed or deleted as a result of deleting the annotations.
+          items:
+            $ref: '#/components/schemas/ChangedValidationResults'
     AnnotationContentType:
       type: string
       description: The different data types of annotations
@@ -456,6 +484,23 @@ components:
       - url
       - image
       - docclf
+    BatchCreateAnnotationsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Annotation'
+    BatchCreateAnnotationsRequest:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnnotationCreate'
+    field:
+      type:
+      - string
+      - 'null'
+      description: Field's identifier
+    BatchUpdateAnnotationsRequest:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnnotationBatchUpdate'
     AnnotationBatchUpdate:
       type: object
       required:
@@ -481,75 +526,6 @@ components:
           $ref: '#/components/schemas/parent'
         validationResults:
           $ref: '#/components/schemas/validationResults'
-    BatchUpdateAnnotationsResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Annotation'
-    parsed:
-      oneOf:
-      - type:
-        - string
-        - 'null'
-      - type:
-        - integer
-        - 'null'
-      - type:
-        - number
-        - 'null'
-      - type:
-        - boolean
-        - 'null'
-      - type:
-        - object
-        - 'null'
-        additionalProperties: true
-      - type:
-        - array
-        - 'null'
-        items:
-          $ref: '#/components/schemas/AnnotationCreate'
-    Rectangle:
-      type: object
-      additionalProperties: false
-      required:
-      - x0
-      - y0
-      - x1
-      - y1
-      properties:
-        pageIndex:
-          type: integer
-          example: 1
-          minimum: 0
-        x0:
-          type: number
-          example: 2.43
-        y0:
-          type: number
-          example: 4.55
-        x1:
-          type: number
-          example: 4.56
-        y1:
-          type: number
-          example: 6.32
-    BatchCreateAnnotationsResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Annotation'
-    AnnotationWithValidationResults:
-      type:
-      - object
-      - 'null'
-      allOf:
-      - $ref: '#/components/schemas/Annotation'
-      - type: object
-        properties:
-          validationResults:
-            type: array
-            description: List of validation results for this annotation.
-            items:
-              $ref: '#/components/schemas/ValidationResult'
     RequestError:
       type: object
       additionalProperties: false
@@ -580,6 +556,36 @@ components:
               detail:
                 type: string
                 example: This index name has already been used
+    AnotationDelete:
+      type: object
+      properties:
+        validationResults:
+          type: object
+          description: The validation results created, changed or deleted as a result of deleting the annotation.
+          items:
+            $ref: '#/components/schemas/ChangedValidationResults'
+    parent:
+      type:
+      - integer
+      - 'null'
+      description: The parent annotation's ID
+    pageIndex:
+      type:
+      - integer
+      - 'null'
+      example: 0
+      minimum: 0
+      description: The page number within the document, starting from 0.
+    Annotation_properties-id:
+      type: integer
+      description: Annotation's ID
+      example: 1
+      minimum: 1
+    validationResults:
+      type: array
+      description: The validation results created, changed or deleted as a result of updating the annotation.
+      items:
+        $ref: '#/components/schemas/ChangedValidationResults'
     Annotation:
       type:
       - object
@@ -669,8 +675,21 @@ components:
           - integer
           - 'null'
           description: The parent annotation's ID
-    AnnotationUpdate:
+    raw:
+      type:
+      - string
+      - 'null'
+      description: Raw data extracted from the before any post-processing
+    BatchDeleteAnnotationsRequest:
+      type: array
+      description: Array of annotation IDs to be deleted
+      items:
+        $ref: '#/components/schemas/Annotation_properties-id'
+    AnnotationCreate:
       type: object
+      required:
+      - document
+      - pageIndex
       properties:
         rectangles:
           $ref: '#/components/schemas/rectangles'
@@ -678,6 +697,10 @@ components:
           $ref: '#/components/schemas/DocumentMeta_properties-identifier'
         pageIndex:
           $ref: '#/components/schemas/pageIndex'
+        dataPoint:
+          $ref: '#/components/schemas/dataPoint'
+        field:
+          $ref: '#/components/schemas/field'
         raw:
           $ref: '#/components/schemas/raw'
         parsed:
@@ -705,40 +728,14 @@ components:
               $ref: '#/components/schemas/AnnotationCreate'
         isClientVerified:
           $ref: '#/components/schemas/isClientVerified'
-        dataPoint:
-          $ref: '#/components/schemas/dataPoint'
-        field:
-          $ref: '#/components/schemas/field'
         parent:
-          $ref: '#/components/schemas/parent'
+          type:
+          - integer
+          - 'null'
+          description: The parent annotation's ID
         validationResults:
           type: array
-          description: The validation results created, changed or deleted as a result of updating the annotation.
-          items:
-            $ref: '#/components/schemas/ChangedValidationResults'
-    raw:
-      type:
-      - string
-      - 'null'
-      description: Raw data extracted from the before any post-processing
-    AnotationDelete:
-      type: object
-      properties:
-        validationResults:
-          type: object
-          description: The validation results created, changed or deleted as a result of deleting the annotation.
-          items:
-            $ref: '#/components/schemas/ChangedValidationResults'
-    BatchCreateAnnotationsRequest:
-      type: array
-      items:
-        $ref: '#/components/schemas/AnnotationCreate'
-    BatchDeleteAnnotationsResponse:
-      type: object
-      properties:
-        validationResults:
-          type: object
-          description: The validation results created, changed or deleted as a result of deleting the annotations.
+          description: The validation results created, changed or deleted as a result of creating the annotation.
           items:
             $ref: '#/components/schemas/ChangedValidationResults'
     PaginatedResponse:
@@ -761,14 +758,10 @@ components:
           - string
           - 'null'
           description: URL to request previous page of results.
+    dataPoint:
+      type: string
+      description: Data point's identifier
   responses:
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
     401Error:
       description: Authorisation error
       content:
@@ -778,6 +771,13 @@ components:
       x-ms-error-response: true
     DefaultError:
       description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
       content:
         application/json:
           schema:

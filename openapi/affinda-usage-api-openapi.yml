@@ -90,6 +90,10 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
     UsageResponse:
       type: object
       description: Daily credits consumption for an organization over a date range, optionally scoped to a single workspace or document type.
@@ -131,10 +135,23 @@ components:
           items:
             $ref: '#/components/schemas/UsageItem'
       additionalProperties: false
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
+    UsageItem:
+      type: object
+      description: Daily credits consumption for a single date in the requested period.
+      required:
+      - date
+      - count
+      properties:
+        date:
+          type: string
+          format: date
+          description: The day this usage was recorded against, in YYYY-MM-DD.
+          example: '2025-04-15'
+        count:
+          type: integer
+          description: Credits consumed on this day.
+          example: 123
+      additionalProperties: false
     RequestError:
       type: object
       additionalProperties: false
@@ -165,41 +182,24 @@ components:
               detail:
                 type: string
                 example: This index name has already been used
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
     properties-identifier:
       type: string
       description: Uniquely identify a collection.
       example: mEFayXdO
-    UsageItem:
-      type: object
-      description: Daily credits consumption for a single date in the requested period.
-      required:
-      - date
-      - count
-      properties:
-        date:
-          type: string
-          format: date
-          description: The day this usage was recorded against, in YYYY-MM-DD.
-          example: '2025-04-15'
-        count:
-          type: integer
-          description: Credits consumed on this day.
-          example: 123
-      additionalProperties: false
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
   responses:
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
+    401Error:
+      description: Authorisation error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
-    401Error:
-      description: Authorisation error
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
       content:
         application/json:
           schema:

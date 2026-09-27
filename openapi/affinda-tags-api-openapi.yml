@@ -228,21 +228,20 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
+    id:
+      type: integer
+      description: Uniquely identify a tag.
+      example: 1
+      minimum: 1
     name:
       type: string
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
     DocumentMeta_properties-identifier:
       type: string
       description: Unique identifier for the document
-    TagCreate:
-      type: object
-      required:
-      - name
-      - workspace
-      properties:
-        name:
-          $ref: '#/components/schemas/name'
-        workspace:
-          $ref: '#/components/schemas/identifier'
     RequestError:
       type: object
       additionalProperties: false
@@ -284,13 +283,6 @@ components:
         tag:
           type: integer
           description: The tag's ID
-    TagUpdate:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/name'
-        workspace:
-          $ref: '#/components/schemas/identifier'
     Tag:
       type: object
       required:
@@ -312,10 +304,6 @@ components:
           type: integer
           minimum: 0
           description: Number of documents tagged with this.
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
     BatchAddTagRequest:
       type: object
       properties:
@@ -328,21 +316,55 @@ components:
           type: integer
           example: 1
           description: The tag's ID
-    id:
-      type: integer
-      description: Uniquely identify a tag.
-      example: 1
-      minimum: 1
+    TagUpdate:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/name'
+        workspace:
+          $ref: '#/components/schemas/identifier'
+    TagCreate:
+      type: object
+      required:
+      - name
+      - workspace
+      properties:
+        name:
+          $ref: '#/components/schemas/name'
+        workspace:
+          $ref: '#/components/schemas/identifier'
+  parameters:
+    limitParam:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        example: 20
+      description: The numbers of results to return.
+      x-ms-parameter-location: method
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
   responses:
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
+    401Error:
+      description: Authorisation error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
-    401Error:
-      description: Authorisation error
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
       content:
         application/json:
           schema:
@@ -357,28 +379,6 @@ components:
       x-ms-error-response: true
     204NoContent:
       description: Delete successful, no content returned
-  parameters:
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
-      x-ms-parameter-location: method
-    limitParam:
-      in: query
-      name: limit
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        example: 20
-      description: The numbers of results to return.
-      x-ms-parameter-location: method
   securitySchemes:
     ApiKeyAuth:
       type: http

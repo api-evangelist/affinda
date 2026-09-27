@@ -204,6 +204,12 @@ apis:
   - Matching
   - Resume Search
   - Job Description Search
+  - Recruiting
+  tags_raw:
+  - Search
+  - Matching
+  - Resume Search
+  - Job Description Search
   - Recruitment
   humanURL: https://docs.affinda.com/reference
   properties:
@@ -296,7 +302,7 @@ tags:
   - Document Extraction
   - Document Classification
   - Document Splitting
-  - Recruitment
+  - Recruiting
   - Banking
   - Insurance
   - Logistics

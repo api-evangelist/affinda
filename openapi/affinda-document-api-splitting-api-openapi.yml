@@ -138,153 +138,13 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
 components:
-  responses:
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    401Error:
-      description: Authorisation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    DefaultError:
-      description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
   schemas:
-    Extractor_properties-identifier:
-      type: string
-      description: Uniquely identify an extractor.
-      example: resume
-    DocumentSplit:
-      type: object
-      required:
-      - pages
-      description: Describe a split of a document.
-      properties:
-        identifier:
-          allOf:
-          - $ref: '#/components/schemas/DocumentMeta_properties-identifier'
-          - description: Specify document identifier in the first split to signal that this is the root document where other splits are splitted from. Don't specify document identifier in subsequent splits.
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentSplitPage'
     FileName:
       type:
       - string
       - 'null'
       description: Optional filename of the file
       example: Document.pdf
-    DocumentSplitPage:
-      type: object
-      required:
-      - id
-      description: List the pages within this split. Not including a page here will signal that the page should be deleted.
-      properties:
-        id:
-          type: integer
-          description: Page's ID
-          minimum: 1
-        rotation:
-          type: integer
-          minimum: -360
-          maximum: 360
-          description: Specify a degree of rotation if you want to rotate a page. Possitive number for clockwise rotation, and negative number for counter-clockwise rotation.
-          example: 90
-    DocumentSplitter_properties-identifier:
-      type: string
-      description: Uniquely identify a document splitter.
-      example: NqIvMvZl
-    DocumentMeta_properties-identifier:
-      type: string
-      description: Unique identifier for the document
-    DocumentSplitter:
-      type: object
-      required:
-      - identifier
-      - name
-      - type
-      - organization
-      - extractor
-      - llmHint
-      properties:
-        identifier:
-          type: string
-          description: Uniquely identify a document splitter.
-          example: NqIvMvZl
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/DocumentSplitterType'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        extractor:
-          $ref: '#/components/schemas/Extractor_properties-identifier'
-        llmHint:
-          type:
-          - string
-          - 'null'
-          description: The hint about when to split which is passed into the LLM prompt.
-    PageMeta:
-      type: object
-      required:
-      - id
-      - pageIndex
-      - image
-      - width
-      - height
-      - rotation
-      properties:
-        id:
-          type: integer
-          minimum: 1
-        pageIndex:
-          type: integer
-          example: 0
-          minimum: 0
-          description: Page number within the document, starts from 0.
-        image:
-          type:
-          - string
-          - 'null'
-          example: https://affinda-api.s3.amazonaws.com/media/pages/Page.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
-          description: The URL to the image of the page.
-        imageTranslated:
-          type:
-          - string
-          - 'null'
-          example: https://affinda-api.s3.amazonaws.com/media/pages/PageTranslated.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
-          description: The URL to the translated image of the page.
-        height:
-          type: number
-          example: 700
-          description: Height of the page's image in px.
-        width:
-          type: number
-          example: 500
-          description: Width of the page's image in px.
-        rotation:
-          type: integer
-          example: 90
-          minimum: -360
-          maximum: 360
-          description: The degree of rotation applied to the page. Greater than 0 indicates clockwise rotation. Less than 0 indicates counter-clockwise rotation.
-    ExpiryTime:
-      type:
-      - string
-      - 'null'
-      format: date-time
-      description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
     Meta:
       type: object
       properties:
@@ -375,6 +235,9 @@ components:
           $ref: '#/components/schemas/RegionBias'
         isOcrd:
           type: boolean
+    DocumentMeta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
     DocumentEditRequest:
       type: object
       required:
@@ -384,14 +247,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DocumentSplit'
-    DocumentSplitterType:
+    Meta_properties-identifier:
       type: string
-      description: The different types of document splitters
-      enum:
-      - llm
-      - llm_v2
-      - extractor
-      - keyword
+      description: Unique identifier for the document
+    DocumentSplitPage:
+      type: object
+      required:
+      - id
+      description: List the pages within this split. Not including a page here will signal that the page should be deleted.
+      properties:
+        id:
+          type: integer
+          description: Page's ID
+          minimum: 1
+        rotation:
+          type: integer
+          minimum: -360
+          maximum: 360
+          description: Specify a degree of rotation if you want to rotate a page. Possitive number for clockwise rotation, and negative number for counter-clockwise rotation.
+          example: 90
     RegionBias:
       type:
       - object
@@ -424,6 +298,62 @@ components:
 
             '
           example: true
+    Extractor_properties-identifier:
+      type: string
+      description: Uniquely identify an extractor.
+      example: resume
+    DocumentSplitterType:
+      type: string
+      description: The different types of document splitters
+      enum:
+      - llm
+      - llm_v2
+      - extractor
+      - keyword
+    PageMeta:
+      type: object
+      required:
+      - id
+      - pageIndex
+      - image
+      - width
+      - height
+      - rotation
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        pageIndex:
+          type: integer
+          example: 0
+          minimum: 0
+          description: Page number within the document, starts from 0.
+        image:
+          type:
+          - string
+          - 'null'
+          example: https://affinda-api.s3.amazonaws.com/media/pages/Page.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
+          description: The URL to the image of the page.
+        imageTranslated:
+          type:
+          - string
+          - 'null'
+          example: https://affinda-api.s3.amazonaws.com/media/pages/PageTranslated.png?AWSAccessKeyId=KEY&Signature=SIG&Expires=1663302062
+          description: The URL to the translated image of the page.
+        height:
+          type: number
+          example: 700
+          description: Height of the page's image in px.
+        width:
+          type: number
+          example: 500
+          description: Width of the page's image in px.
+        rotation:
+          type: integer
+          example: 90
+          minimum: -360
+          maximum: 360
+          description: The degree of rotation applied to the page. Greater than 0 indicates clockwise rotation. Less than 0 indicates counter-clockwise rotation.
     RequestError:
       type: object
       additionalProperties: false
@@ -454,13 +384,61 @@ components:
               detail:
                 type: string
                 example: This index name has already been used
-    Meta_properties-identifier:
-      type: string
-      description: Unique identifier for the document
     Organization_properties-identifier:
       type: string
       description: Uniquely identify an organization.
       example: mEFayXdO
+    DocumentSplit:
+      type: object
+      required:
+      - pages
+      description: Describe a split of a document.
+      properties:
+        identifier:
+          allOf:
+          - $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+          - description: Specify document identifier in the first split to signal that this is the root document where other splits are splitted from. Don't specify document identifier in subsequent splits.
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentSplitPage'
+    DocumentSplitter_properties-identifier:
+      type: string
+      description: Uniquely identify a document splitter.
+      example: NqIvMvZl
+    DocumentSplitter:
+      type: object
+      required:
+      - identifier
+      - name
+      - type
+      - organization
+      - extractor
+      - llmHint
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify a document splitter.
+          example: NqIvMvZl
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/DocumentSplitterType'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        extractor:
+          $ref: '#/components/schemas/Extractor_properties-identifier'
+        llmHint:
+          type:
+          - string
+          - 'null'
+          description: The hint about when to split which is passed into the LLM prompt.
+    ExpiryTime:
+      type:
+      - string
+      - 'null'
+      format: date-time
+      description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
     DocumentEditResponse:
       type: array
       items:
@@ -487,6 +465,28 @@ components:
         example: 20
       description: The numbers of results to return.
       x-ms-parameter-location: method
+  responses:
+    401Error:
+      description: Authorisation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    DefaultError:
+      description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
   securitySchemes:
     ApiKeyAuth:
       type: http

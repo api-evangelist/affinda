@@ -250,95 +250,7 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
 components:
-  responses:
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    204NoContent:
-      description: Delete successful, no content returned
-    401Error:
-      description: Authorisation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    DefaultError:
-      description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
   schemas:
-    validationToolConfig:
-      type:
-      - object
-      - 'null'
-      description: Configuration of the embeddable validation tool.
-      properties:
-        theme:
-          $ref: '#/components/schemas/ThemeConfig'
-        hideActions:
-          type: boolean
-          description: Hide the confirm document button and other actions.
-        hideCollection:
-          type: boolean
-          description: Hide the collection selector.
-        hideEditPages:
-          type: boolean
-          description: Hide the edit pages button.
-        hideExport:
-          type: boolean
-          description: Hide the export menu.
-        hideFilename:
-          type: boolean
-          description: Hide the filename input.
-        hideShowRawValues:
-          type: boolean
-          description: Hide the toggle for showing raw annotation values.
-        hideReject:
-          type: boolean
-          description: Hide the reject document button.
-        hideReparse:
-          type: boolean
-          description: Hide the reparse button.
-        hideRunOcr:
-          type: boolean
-          description: Hide the run OCR button.
-        hideTags:
-          type: boolean
-          description: Hide the tags editor.
-        hideWarnings:
-          type: boolean
-          description: Hide the warnings panel.
-        restrictDocumentSplitting:
-          type: boolean
-          description: Disable the page editor after a document has been split once.
-        disableCurrencyFormatting:
-          type: boolean
-          description: Disable currency formatting of decimals values.
-        disableEditDocumentMetadata:
-          type: boolean
-          description: Disable editing document metadata. Makes the collection selector, filename input and tags editor read only.
-        disableManualAnnotationEditing:
-          type: boolean
-          description: Disable manual editing of annotation values via the validation popover.
-        hideDocumentStatus:
-          type: boolean
-          description: Hide the document status indicator in the toolbar.
-    OrganizationMembershipUpdate:
-      type: object
-      properties:
-        role:
-          $ref: '#/components/schemas/OrganizationRole'
-    Identifier:
-      type: string
-      description: A random string that uniquely identify the resource.
     Organization:
       type: object
       properties:
@@ -429,35 +341,50 @@ components:
         showCustomFieldCreation:
           type: boolean
           description: Whether to show the custom field creation in the UI.
-    PaletteColorOptions:
+    resthookSignatureKey:
+      type:
+      - string
+      - 'null'
+      description: Used to sign webhook payloads so you can verify their integrity.
+      example: 465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad
+    OrganizationRole:
+      type: string
+      enum:
+      - admin
+      - member
+      example: admin
+    OrganizationCreate:
       type: object
       required:
-      - main
+      - name
       properties:
-        main:
+        name:
+          $ref: '#/components/schemas/Organization_properties-name'
+        avatar:
           type: string
-        light:
-          type: string
-        dark:
-          type: string
-        contrastText:
-          type: string
-    OrganizationMembership:
+          format: binary
+          description: Upload avatar for the organization.
+        resthookSignatureKey:
+          $ref: '#/components/schemas/resthookSignatureKey'
+    Organization_properties-name:
+      type: string
+      example: Grove Street King
+    OrganizationMembershipUpdate:
       type: object
-      required:
-      - identifier
-      - organization
-      - user
-      - role
       properties:
-        identifier:
-          $ref: '#/components/schemas/Identifier'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        user:
-          $ref: '#/components/schemas/User'
         role:
           $ref: '#/components/schemas/OrganizationRole'
+    OrganizationUpdate:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/Organization_properties-name'
+        avatar:
+          $ref: '#/components/schemas/avatar'
+        resthookSignatureKey:
+          $ref: '#/components/schemas/resthookSignatureKey'
+        validationToolConfig:
+          $ref: '#/components/schemas/validationToolConfig'
     RequestError:
       type: object
       additionalProperties: false
@@ -488,25 +415,6 @@ components:
               detail:
                 type: string
                 example: This index name has already been used
-    OrganizationCreate:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          $ref: '#/components/schemas/Organization_properties-name'
-        avatar:
-          type: string
-          format: binary
-          description: Upload avatar for the organization.
-        resthookSignatureKey:
-          $ref: '#/components/schemas/resthookSignatureKey'
-    resthookSignatureKey:
-      type:
-      - string
-      - 'null'
-      description: Used to sign webhook payloads so you can verify their integrity.
-      example: 465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad
     User:
       type: object
       properties:
@@ -530,13 +438,6 @@ components:
           - 'null'
           description: URL of the user's avatar.
           example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
-    Organization_properties-name:
-      type: string
-      example: Grove Street King
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
     ThemeConfig:
       type: object
       properties:
@@ -601,27 +502,42 @@ components:
           type: number
         fontUrl:
           type: string
-    OrganizationUpdate:
+    Identifier:
+      type: string
+      description: A random string that uniquely identify the resource.
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    PaletteColorOptions:
       type: object
+      required:
+      - main
       properties:
-        name:
-          $ref: '#/components/schemas/Organization_properties-name'
-        avatar:
-          $ref: '#/components/schemas/avatar'
-        resthookSignatureKey:
-          $ref: '#/components/schemas/resthookSignatureKey'
-        validationToolConfig:
-          $ref: '#/components/schemas/validationToolConfig'
-    OrganizationRole:
-      type: string
-      enum:
-      - admin
-      - member
-      example: admin
-    avatar:
-      type: string
-      format: binary
-      description: Upload avatar for the organization.
+        main:
+          type: string
+        light:
+          type: string
+        dark:
+          type: string
+        contrastText:
+          type: string
+    OrganizationMembership:
+      type: object
+      required:
+      - identifier
+      - organization
+      - user
+      - role
+      properties:
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        user:
+          $ref: '#/components/schemas/User'
+        role:
+          $ref: '#/components/schemas/OrganizationRole'
     PaginatedResponse:
       type: object
       required:
@@ -642,6 +558,66 @@ components:
           - string
           - 'null'
           description: URL to request previous page of results.
+    avatar:
+      type: string
+      format: binary
+      description: Upload avatar for the organization.
+    validationToolConfig:
+      type:
+      - object
+      - 'null'
+      description: Configuration of the embeddable validation tool.
+      properties:
+        theme:
+          $ref: '#/components/schemas/ThemeConfig'
+        hideActions:
+          type: boolean
+          description: Hide the confirm document button and other actions.
+        hideCollection:
+          type: boolean
+          description: Hide the collection selector.
+        hideEditPages:
+          type: boolean
+          description: Hide the edit pages button.
+        hideExport:
+          type: boolean
+          description: Hide the export menu.
+        hideFilename:
+          type: boolean
+          description: Hide the filename input.
+        hideShowRawValues:
+          type: boolean
+          description: Hide the toggle for showing raw annotation values.
+        hideReject:
+          type: boolean
+          description: Hide the reject document button.
+        hideReparse:
+          type: boolean
+          description: Hide the reparse button.
+        hideRunOcr:
+          type: boolean
+          description: Hide the run OCR button.
+        hideTags:
+          type: boolean
+          description: Hide the tags editor.
+        hideWarnings:
+          type: boolean
+          description: Hide the warnings panel.
+        restrictDocumentSplitting:
+          type: boolean
+          description: Disable the page editor after a document has been split once.
+        disableCurrencyFormatting:
+          type: boolean
+          description: Disable currency formatting of decimals values.
+        disableEditDocumentMetadata:
+          type: boolean
+          description: Disable editing document metadata. Makes the collection selector, filename input and tags editor read only.
+        disableManualAnnotationEditing:
+          type: boolean
+          description: Disable manual editing of annotation values via the validation popover.
+        hideDocumentStatus:
+          type: boolean
+          description: Hide the document status indicator in the toolbar.
   parameters:
     offsetParam:
       in: query
@@ -664,6 +640,30 @@ components:
         example: 20
       description: The numbers of results to return.
       x-ms-parameter-location: method
+  responses:
+    204NoContent:
+      description: Delete successful, no content returned
+    401Error:
+      description: Authorisation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    DefaultError:
+      description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
   securitySchemes:
     ApiKeyAuth:
       type: http

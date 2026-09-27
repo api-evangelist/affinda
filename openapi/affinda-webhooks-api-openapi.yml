@@ -219,61 +219,7 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
 components:
-  responses:
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    204NoContent:
-      description: Delete successful, no content returned
-    401Error:
-      description: Authorisation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    DefaultError:
-      description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
   schemas:
-    ResthookEvent:
-      type: string
-      enum:
-      - resume.parse.succeeded
-      - resume.parse.failed
-      - resume.parse.completed
-      - invoice.parse.succeeded
-      - invoice.parse.failed
-      - invoice.parse.completed
-      - invoice.validate.completed
-      - document.parse.succeeded
-      - document.parse.failed
-      - document.parse.completed
-      - document.validate.completed
-      - document.classify.succeeded
-      - document.classify.failed
-      - document.classify.completed
-      - document.rejected
-      - annotation.validated
-      description: The event name to subscribe to.
-      example: document.parse.succeeded
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
-    ResthookSubscription_properties-id:
-      type: integer
-      description: Resthook subscription's ID.
-    name:
-      type: string
     Organization:
       type: object
       properties:
@@ -388,6 +334,48 @@ components:
             description: Specify to create a workspace scope resthook.
         version:
           $ref: '#/components/schemas/version'
+    ResthookEvent:
+      type: string
+      enum:
+      - resume.parse.succeeded
+      - resume.parse.failed
+      - resume.parse.completed
+      - invoice.parse.succeeded
+      - invoice.parse.failed
+      - invoice.parse.completed
+      - invoice.validate.completed
+      - document.parse.succeeded
+      - document.parse.failed
+      - document.parse.completed
+      - document.validate.completed
+      - document.classify.succeeded
+      - document.classify.failed
+      - document.classify.completed
+      - document.rejected
+      - annotation.validated
+      description: The event name to subscribe to.
+      example: document.parse.succeeded
+    OrganizationRole:
+      type: string
+      enum:
+      - admin
+      - member
+      example: admin
+    ResthookSubscription_properties-id:
+      type: integer
+      description: Resthook subscription's ID.
+    version:
+      type: string
+      enum:
+      - v1
+      - v2
+      - v3
+      description: Version of the resthook subscription. Determines the resthook body being fired.
+      example: v3
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
     ResthookSubscriptionWorkspace:
       type: object
       required:
@@ -401,23 +389,6 @@ components:
           $ref: '#/components/schemas/name'
         organization:
           $ref: '#/components/schemas/Organization'
-    PaletteColorOptions:
-      type: object
-      required:
-      - main
-      properties:
-        main:
-          type: string
-        light:
-          type: string
-        dark:
-          type: string
-        contrastText:
-          type: string
-    targetUrl:
-      type: string
-      description: URL of the resthook's receiver.
-      example: https://my-site.com/receive
     RequestError:
       type: object
       additionalProperties: false
@@ -448,67 +419,6 @@ components:
               detail:
                 type: string
                 example: This index name has already been used
-    ResthookSubscription:
-      type: object
-      required:
-      - id
-      - event
-      - organization
-      - workspace
-      - targetUrl
-      - active
-      - autoDeactivated
-      - autoDeactivateReason
-      - version
-      properties:
-        id:
-          type: integer
-          description: Resthook subscription's ID.
-        event:
-          $ref: '#/components/schemas/ResthookEvent'
-        organization:
-          $ref: '#/components/schemas/Organization'
-        workspace:
-          $ref: '#/components/schemas/ResthookSubscriptionWorkspace'
-        targetUrl:
-          type: string
-          description: URL of the resthook's receiver.
-          example: https://my-site.com/receive
-        active:
-          type: boolean
-          description: Resthooks only fire for active subscriptions.
-          example: true
-        autoDeactivated:
-          type: boolean
-          description: Resthook subscriptions can be auto deactivated if the receiver continuously returns error status code over a period of time.
-          example: true
-        autoDeactivateReason:
-          type: string
-          description: The reason for the subscription being auto deactivated. May contains the error response that the receiver returned.
-          example: 'Resthook fails after 10 retries. The last error received was: 500 - Internal server error.'
-        version:
-          type: string
-          enum:
-          - v1
-          - v2
-          - v3
-          description: Version of the resthook subscription. Determines the resthook body being fired.
-          example: v3
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
-    ResthookSubscriptionUpdate:
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/ResthookEvent'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        workspace:
-          $ref: '#/components/schemas/identifier'
-        version:
-          $ref: '#/components/schemas/version'
     ThemeConfig:
       type: object
       properties:
@@ -573,12 +483,40 @@ components:
           type: number
         fontUrl:
           type: string
-    OrganizationRole:
+    PaletteColorOptions:
+      type: object
+      required:
+      - main
+      properties:
+        main:
+          type: string
+        light:
+          type: string
+        dark:
+          type: string
+        contrastText:
+          type: string
+    Organization_properties-identifier:
       type: string
-      enum:
-      - admin
-      - member
-      example: admin
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    targetUrl:
+      type: string
+      description: URL of the resthook's receiver.
+      example: https://my-site.com/receive
+    name:
+      type: string
+    ResthookSubscriptionUpdate:
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/ResthookEvent'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        workspace:
+          $ref: '#/components/schemas/identifier'
+        version:
+          $ref: '#/components/schemas/version'
     PaginatedResponse:
       type: object
       required:
@@ -599,14 +537,52 @@ components:
           - string
           - 'null'
           description: URL to request previous page of results.
-    version:
-      type: string
-      enum:
-      - v1
-      - v2
-      - v3
-      description: Version of the resthook subscription. Determines the resthook body being fired.
-      example: v3
+    ResthookSubscription:
+      type: object
+      required:
+      - id
+      - event
+      - organization
+      - workspace
+      - targetUrl
+      - active
+      - autoDeactivated
+      - autoDeactivateReason
+      - version
+      properties:
+        id:
+          type: integer
+          description: Resthook subscription's ID.
+        event:
+          $ref: '#/components/schemas/ResthookEvent'
+        organization:
+          $ref: '#/components/schemas/Organization'
+        workspace:
+          $ref: '#/components/schemas/ResthookSubscriptionWorkspace'
+        targetUrl:
+          type: string
+          description: URL of the resthook's receiver.
+          example: https://my-site.com/receive
+        active:
+          type: boolean
+          description: Resthooks only fire for active subscriptions.
+          example: true
+        autoDeactivated:
+          type: boolean
+          description: Resthook subscriptions can be auto deactivated if the receiver continuously returns error status code over a period of time.
+          example: true
+        autoDeactivateReason:
+          type: string
+          description: The reason for the subscription being auto deactivated. May contains the error response that the receiver returned.
+          example: 'Resthook fails after 10 retries. The last error received was: 500 - Internal server error.'
+        version:
+          type: string
+          enum:
+          - v1
+          - v2
+          - v3
+          description: Version of the resthook subscription. Determines the resthook body being fired.
+          example: v3
   parameters:
     offsetParam:
       in: query
@@ -629,6 +605,30 @@ components:
         example: 20
       description: The numbers of results to return.
       x-ms-parameter-location: method
+  responses:
+    204NoContent:
+      description: Delete successful, no content returned
+    401Error:
+      description: Authorisation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    DefaultError:
+      description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
   securitySchemes:
     ApiKeyAuth:
       type: http
