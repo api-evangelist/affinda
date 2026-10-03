@@ -220,6 +220,124 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
+    name:
+      type: string
+    PaletteColorOptions:
+      type: object
+      required:
+      - main
+      properties:
+        main:
+          type: string
+        light:
+          type: string
+        dark:
+          type: string
+        contrastText:
+          type: string
+    ThemeConfig:
+      type: object
+      properties:
+        palette:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+              - light
+              - dark
+            background:
+              oneOf:
+              - type: string
+              - type: object
+                properties:
+                  default:
+                    type: string
+                  paper:
+                    type: string
+            text:
+              type: object
+              properties:
+                primary:
+                  type: string
+                secondary:
+                  type: string
+                disabled:
+                  type: string
+            divider:
+              type: string
+            primary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            secondary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            success:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            annotation:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            error:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            info:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            warning:
+              $ref: '#/components/schemas/PaletteColorOptions'
+        typography:
+          type: object
+          properties:
+            fontFamily:
+              type: string
+            fontSize:
+              oneOf:
+              - type: string
+              - type: number
+            fontWeightRegular:
+              type: string
+            fontWeightMedium:
+              type: string
+            fontWeightBold:
+              type: string
+        borderRadius:
+          type: number
+        fontUrl:
+          type: string
+    ResthookSubscriptionUpdate:
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/ResthookEvent'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        workspace:
+          $ref: '#/components/schemas/identifier'
+        version:
+          $ref: '#/components/schemas/version'
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    ResthookSubscriptionCreate:
+      type: object
+      required:
+      - targetUrl
+      - event
+      properties:
+        targetUrl:
+          $ref: '#/components/schemas/targetUrl'
+        event:
+          $ref: '#/components/schemas/ResthookEvent'
+        organization:
+          type: string
+          allOf:
+          - $ref: '#/components/schemas/Organization_properties-identifier'
+          - type: string
+            description: Specify to create an organization scope resthook. Not required if you're a member of only 1 organization.
+        workspace:
+          type: string
+          allOf:
+          - $ref: '#/components/schemas/identifier'
+          - type: string
+            description: Specify to create a workspace scope resthook.
+        version:
+          $ref: '#/components/schemas/version'
     Organization:
       type: object
       properties:
@@ -310,30 +428,13 @@ components:
         showCustomFieldCreation:
           type: boolean
           description: Whether to show the custom field creation in the UI.
-    ResthookSubscriptionCreate:
-      type: object
-      required:
-      - targetUrl
-      - event
-      properties:
-        targetUrl:
-          $ref: '#/components/schemas/targetUrl'
-        event:
-          $ref: '#/components/schemas/ResthookEvent'
-        organization:
-          type: string
-          allOf:
-          - $ref: '#/components/schemas/Organization_properties-identifier'
-          - type: string
-            description: Specify to create an organization scope resthook. Not required if you're a member of only 1 organization.
-        workspace:
-          type: string
-          allOf:
-          - $ref: '#/components/schemas/identifier'
-          - type: string
-            description: Specify to create a workspace scope resthook.
-        version:
-          $ref: '#/components/schemas/version'
+    ResthookSubscription_properties-id:
+      type: integer
+      description: Resthook subscription's ID.
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
     ResthookEvent:
       type: string
       enum:
@@ -355,188 +456,6 @@ components:
       - annotation.validated
       description: The event name to subscribe to.
       example: document.parse.succeeded
-    OrganizationRole:
-      type: string
-      enum:
-      - admin
-      - member
-      example: admin
-    ResthookSubscription_properties-id:
-      type: integer
-      description: Resthook subscription's ID.
-    version:
-      type: string
-      enum:
-      - v1
-      - v2
-      - v3
-      description: Version of the resthook subscription. Determines the resthook body being fired.
-      example: v3
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
-    ResthookSubscriptionWorkspace:
-      type: object
-      required:
-      - identifier
-      - name
-      - organization
-      properties:
-        identifier:
-          $ref: '#/components/schemas/identifier'
-        name:
-          $ref: '#/components/schemas/name'
-        organization:
-          $ref: '#/components/schemas/Organization'
-    RequestError:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - errors
-      properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type:
-                - string
-                - 'null'
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    ThemeConfig:
-      type: object
-      properties:
-        palette:
-          type: object
-          properties:
-            mode:
-              type: string
-              enum:
-              - light
-              - dark
-            background:
-              oneOf:
-              - type: string
-              - type: object
-                properties:
-                  default:
-                    type: string
-                  paper:
-                    type: string
-            text:
-              type: object
-              properties:
-                primary:
-                  type: string
-                secondary:
-                  type: string
-                disabled:
-                  type: string
-            divider:
-              type: string
-            primary:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            secondary:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            success:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            annotation:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            error:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            info:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            warning:
-              $ref: '#/components/schemas/PaletteColorOptions'
-        typography:
-          type: object
-          properties:
-            fontFamily:
-              type: string
-            fontSize:
-              oneOf:
-              - type: string
-              - type: number
-            fontWeightRegular:
-              type: string
-            fontWeightMedium:
-              type: string
-            fontWeightBold:
-              type: string
-        borderRadius:
-          type: number
-        fontUrl:
-          type: string
-    PaletteColorOptions:
-      type: object
-      required:
-      - main
-      properties:
-        main:
-          type: string
-        light:
-          type: string
-        dark:
-          type: string
-        contrastText:
-          type: string
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
-    targetUrl:
-      type: string
-      description: URL of the resthook's receiver.
-      example: https://my-site.com/receive
-    name:
-      type: string
-    ResthookSubscriptionUpdate:
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/ResthookEvent'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        workspace:
-          $ref: '#/components/schemas/identifier'
-        version:
-          $ref: '#/components/schemas/version'
-    PaginatedResponse:
-      type: object
-      required:
-      - count
-      properties:
-        count:
-          type: integer
-          example: 10
-          description: Number of items in results.
-          minimum: 0
-        next:
-          type:
-          - string
-          - 'null'
-          description: URL to request next page of results.
-        previous:
-          type:
-          - string
-          - 'null'
-          description: URL to request previous page of results.
     ResthookSubscription:
       type: object
       required:
@@ -583,17 +502,88 @@ components:
           - v3
           description: Version of the resthook subscription. Determines the resthook body being fired.
           example: v3
+    version:
+      type: string
+      enum:
+      - v1
+      - v2
+      - v3
+      description: Version of the resthook subscription. Determines the resthook body being fired.
+      example: v3
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
+    targetUrl:
+      type: string
+      description: URL of the resthook's receiver.
+      example: https://my-site.com/receive
+    ResthookSubscriptionWorkspace:
+      type: object
+      required:
+      - identifier
+      - name
+      - organization
+      properties:
+        identifier:
+          $ref: '#/components/schemas/identifier'
+        name:
+          $ref: '#/components/schemas/name'
+        organization:
+          $ref: '#/components/schemas/Organization'
+    PaginatedResponse:
+      type: object
+      required:
+      - count
+      properties:
+        count:
+          type: integer
+          example: 10
+          description: Number of items in results.
+          minimum: 0
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL to request next page of results.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL to request previous page of results.
+    OrganizationRole:
+      type: string
+      enum:
+      - admin
+      - member
+      example: admin
   parameters:
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
-      x-ms-parameter-location: method
     limitParam:
       in: query
       name: limit
@@ -605,16 +595,17 @@ components:
         example: 20
       description: The numbers of results to return.
       x-ms-parameter-location: method
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
   responses:
-    204NoContent:
-      description: Delete successful, no content returned
-    401Error:
-      description: Authorisation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
     DefaultError:
       description: UnexpectedError
       content:
@@ -622,8 +613,17 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
+    204NoContent:
+      description: Delete successful, no content returned
     400Error:
       description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    401Error:
+      description: Authorisation error
       content:
         application/json:
           schema:
