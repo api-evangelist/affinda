@@ -193,6 +193,101 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
+    fieldGroups:
+      type:
+      - array
+      - 'null'
+      items:
+        $ref: '#/components/schemas/FieldGroup'
+    FieldGroup:
+      type: object
+      properties:
+        label:
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldDeprecated'
+      required:
+      - label
+      - fields
+      additionalProperties: false
+    namePlural:
+      type: string
+    FieldDeprecated:
+      type: object
+      properties:
+        label:
+          type: string
+        slug:
+          type:
+          - string
+          - 'null'
+          deprecated: true
+        fieldType:
+          $ref: '#/components/schemas/AnnotationContentType'
+        dataSource:
+          type:
+          - string
+          - 'null'
+          description: Data source mapping identifier
+        mapping:
+          type:
+          - string
+          - 'null'
+          description: Defines how the data point is mapped to the data source
+        dataPoint:
+          type: string
+        mandatory:
+          type: boolean
+        disabled:
+          type: boolean
+        autoValidationThreshold:
+          type:
+          - number
+          - 'null'
+        showDropdown:
+          type: boolean
+        displayRawText:
+          type: boolean
+        dropNull:
+          type: boolean
+          description: If True, any dropdown annotations that fail to parse to a value will be discarded
+        displayEnumValue:
+          type: boolean
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldDeprecated'
+      required:
+      - label
+      - dataPoint
+      - fieldType
+      additionalProperties: true
+    isCustom:
+      type: boolean
+    name:
+      type: string
+    createdDt:
+      type: string
+      format: date-time
+    OrganizationRole:
+      type: string
+      enum:
+      - admin
+      - member
+      example: admin
+    category:
+      type:
+      - string
+      - 'null'
+      example: Recruitment
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    validatable:
+      type: boolean
     AnnotationContentType:
       type: string
       description: The different data types of annotations
@@ -220,10 +315,10 @@ components:
       - url
       - image
       - docclf
-    name:
+    Extractor_properties-identifier:
       type: string
-    isCustom:
-      type: boolean
+      description: Uniquely identify an extractor.
+      example: resume
     PaletteColorOptions:
       type: object
       required:
@@ -237,133 +332,36 @@ components:
           type: string
         contrastText:
           type: string
-    ThemeConfig:
+    RequestError:
       type: object
-      properties:
-        palette:
-          type: object
-          properties:
-            mode:
-              type: string
-              enum:
-              - light
-              - dark
-            background:
-              oneOf:
-              - type: string
-              - type: object
-                properties:
-                  default:
-                    type: string
-                  paper:
-                    type: string
-            text:
-              type: object
-              properties:
-                primary:
-                  type: string
-                secondary:
-                  type: string
-                disabled:
-                  type: string
-            divider:
-              type: string
-            primary:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            secondary:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            success:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            annotation:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            error:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            info:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            warning:
-              $ref: '#/components/schemas/PaletteColorOptions'
-        typography:
-          type: object
-          properties:
-            fontFamily:
-              type: string
-            fontSize:
-              oneOf:
-              - type: string
-              - type: number
-            fontWeightRegular:
-              type: string
-            fontWeightMedium:
-              type: string
-            fontWeightBold:
-              type: string
-        borderRadius:
-          type: number
-        fontUrl:
-          type: string
-    Extractor:
-      type: object
+      additionalProperties: false
       required:
-      - identifier
-      - name
-      - namePlural
-      - validatable
+      - type
+      - errors
       properties:
-        identifier:
+        type:
           type: string
-          description: Uniquely identify an extractor.
-          example: resume
-        name:
-          type: string
-        namePlural:
-          type: string
-        baseExtractor:
-          type:
-          - object
-          - 'null'
-          required:
-          - identifier
-          - name
-          - namePlural
-          - validatable
-          properties:
-            identifier:
-              $ref: '#/components/schemas/Extractor_properties-identifier'
-            name:
-              $ref: '#/components/schemas/name'
-            namePlural:
-              $ref: '#/components/schemas/namePlural'
-            validatable:
-              $ref: '#/components/schemas/validatable'
-            isCustom:
-              $ref: '#/components/schemas/isCustom'
-            createdDt:
-              $ref: '#/components/schemas/createdDt'
-        organization:
-          $ref: '#/components/schemas/Organization'
-        category:
-          type:
-          - string
-          - 'null'
-          example: Recruitment
-        validatable:
-          type: boolean
-        isCustom:
-          type: boolean
-        fieldGroups:
-          type:
-          - array
-          - 'null'
+          example: validation_error
+        errors:
+          type: array
           items:
-            $ref: '#/components/schemas/FieldGroup'
-        createdDt:
-          type: string
-          format: date-time
-        lastTrainedDt:
-          type:
-          - string
-          - 'null'
-          format: date-time
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
     ExtractorUpdate:
       type: object
       properties:
@@ -379,48 +377,6 @@ components:
           $ref: '#/components/schemas/validatable'
         fieldGroups:
           $ref: '#/components/schemas/fieldGroups'
-    FieldGroup:
-      type: object
-      properties:
-        label:
-          type: string
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldDeprecated'
-      required:
-      - label
-      - fields
-      additionalProperties: false
-    category:
-      type:
-      - string
-      - 'null'
-      example: Recruitment
-    ExtractorCreate:
-      type: object
-      required:
-      - name
-      - organization
-      properties:
-        name:
-          $ref: '#/components/schemas/name'
-        namePlural:
-          $ref: '#/components/schemas/namePlural'
-        baseExtractor:
-          $ref: '#/components/schemas/Extractor_properties-identifier'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        category:
-          $ref: '#/components/schemas/category'
-        validatable:
-          $ref: '#/components/schemas/validatable'
-        fieldGroups:
-          $ref: '#/components/schemas/fieldGroups'
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
     Organization:
       type: object
       properties:
@@ -511,121 +467,156 @@ components:
         showCustomFieldCreation:
           type: boolean
           description: Whether to show the custom field creation in the UI.
-    createdDt:
-      type: string
-      format: date-time
-    FieldDeprecated:
+    Extractor:
+      type: object
+      required:
+      - identifier
+      - name
+      - namePlural
+      - validatable
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify an extractor.
+          example: resume
+        name:
+          type: string
+        namePlural:
+          type: string
+        baseExtractor:
+          type:
+          - object
+          - 'null'
+          required:
+          - identifier
+          - name
+          - namePlural
+          - validatable
+          properties:
+            identifier:
+              $ref: '#/components/schemas/Extractor_properties-identifier'
+            name:
+              $ref: '#/components/schemas/name'
+            namePlural:
+              $ref: '#/components/schemas/namePlural'
+            validatable:
+              $ref: '#/components/schemas/validatable'
+            isCustom:
+              $ref: '#/components/schemas/isCustom'
+            createdDt:
+              $ref: '#/components/schemas/createdDt'
+        organization:
+          $ref: '#/components/schemas/Organization'
+        category:
+          type:
+          - string
+          - 'null'
+          example: Recruitment
+        validatable:
+          type: boolean
+        isCustom:
+          type: boolean
+        fieldGroups:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FieldGroup'
+        createdDt:
+          type: string
+          format: date-time
+        lastTrainedDt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+    ThemeConfig:
       type: object
       properties:
-        label:
+        palette:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+              - light
+              - dark
+            background:
+              oneOf:
+              - type: string
+              - type: object
+                properties:
+                  default:
+                    type: string
+                  paper:
+                    type: string
+            text:
+              type: object
+              properties:
+                primary:
+                  type: string
+                secondary:
+                  type: string
+                disabled:
+                  type: string
+            divider:
+              type: string
+            primary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            secondary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            success:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            annotation:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            error:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            info:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            warning:
+              $ref: '#/components/schemas/PaletteColorOptions'
+        typography:
+          type: object
+          properties:
+            fontFamily:
+              type: string
+            fontSize:
+              oneOf:
+              - type: string
+              - type: number
+            fontWeightRegular:
+              type: string
+            fontWeightMedium:
+              type: string
+            fontWeightBold:
+              type: string
+        borderRadius:
+          type: number
+        fontUrl:
           type: string
-        slug:
-          type:
-          - string
-          - 'null'
-          deprecated: true
-        fieldType:
-          $ref: '#/components/schemas/AnnotationContentType'
-        dataSource:
-          type:
-          - string
-          - 'null'
-          description: Data source mapping identifier
-        mapping:
-          type:
-          - string
-          - 'null'
-          description: Defines how the data point is mapped to the data source
-        dataPoint:
-          type: string
-        mandatory:
-          type: boolean
-        disabled:
-          type: boolean
-        autoValidationThreshold:
-          type:
-          - number
-          - 'null'
-        showDropdown:
-          type: boolean
-        displayRawText:
-          type: boolean
-        dropNull:
-          type: boolean
-          description: If True, any dropdown annotations that fail to parse to a value will be discarded
-        displayEnumValue:
-          type: boolean
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldDeprecated'
-      required:
-      - label
-      - dataPoint
-      - fieldType
-      additionalProperties: true
-    namePlural:
-      type: string
-    Extractor_properties-identifier:
-      type: string
-      description: Uniquely identify an extractor.
-      example: resume
-    RequestError:
+    ExtractorCreate:
       type: object
-      additionalProperties: false
       required:
-      - type
-      - errors
+      - name
+      - organization
       properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type:
-                - string
-                - 'null'
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    fieldGroups:
-      type:
-      - array
-      - 'null'
-      items:
-        $ref: '#/components/schemas/FieldGroup'
-    validatable:
-      type: boolean
-    OrganizationRole:
-      type: string
-      enum:
-      - admin
-      - member
-      example: admin
+        name:
+          $ref: '#/components/schemas/name'
+        namePlural:
+          $ref: '#/components/schemas/namePlural'
+        baseExtractor:
+          $ref: '#/components/schemas/Extractor_properties-identifier'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        category:
+          $ref: '#/components/schemas/category'
+        validatable:
+          $ref: '#/components/schemas/validatable'
+        fieldGroups:
+          $ref: '#/components/schemas/fieldGroups'
   responses:
     DefaultError:
       description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    204NoContent:
-      description: Delete successful, no content returned
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
       content:
         application/json:
           schema:
@@ -638,6 +629,15 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    204NoContent:
+      description: Delete successful, no content returned
   securitySchemes:
     ApiKeyAuth:
       type: http

@@ -368,6 +368,48 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
+    DocumentUpdate:
+      type: object
+      properties:
+        collection:
+          $ref: '#/components/schemas/properties-identifier'
+        workspace:
+          $ref: '#/components/schemas/identifier'
+        documentType:
+          type:
+          - string
+          - 'null'
+          description: The document type's identifier.  Provide if you already know the document type.
+        fileName:
+          $ref: '#/components/schemas/FileName'
+        expiryTime:
+          $ref: '#/components/schemas/ExpiryTime'
+        isConfirmed:
+          $ref: '#/components/schemas/isConfirmed'
+        isRejected:
+          $ref: '#/components/schemas/isRejected'
+        isArchived:
+          $ref: '#/components/schemas/isArchived'
+        skipParse:
+          $ref: '#/components/schemas/skipParse'
+        language:
+          $ref: '#/components/schemas/Language'
+        identifier:
+          type: string
+          description: Deprecated in favor of `customIdentifier`.
+          deprecated: true
+        customIdentifier:
+          type: string
+          description: Specify a custom identifier for the document if you need one, not required to be unique.
+        llmHint:
+          type:
+          - string
+          - 'null'
+          description: Optional hint inserted into the LLM prompt when processing this document.
+        warningMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentWarning'
     RegionBias:
       type:
       - object
@@ -400,59 +442,48 @@ components:
 
             '
           example: true
-    skipParse:
-      type: boolean
-    Wait:
-      type: boolean
-      description: If "true" (default), will return a response only after processing has completed. If "false", will return an empty data object which can be polled at the GET endpoint until processing is complete.
+    properties-identifier:
+      type: string
+      description: Uniquely identify a collection.
+      example: mEFayXdO
+    Identifier:
+      type: string
+      description: A random string that uniquely identify the resource.
+    RejectDuplicatesMaybeString:
+      type:
+      - boolean
+      - 'null'
+      description: If "true", parsing will fail when the uploaded document is duplicate of an existing document, no credits will be consumed. If "false", will parse the document normally whether its a duplicate or not. If not provided, will fallback to the workspace settings.
       example: true
-      default: true
-    Document:
-      type: object
-      required:
-      - meta
-      - extractor
-      properties:
-        data:
-          type: object
-        extractor:
-          type: string
-        meta:
-          $ref: '#/components/schemas/DocumentMeta'
-        error:
-          $ref: '#/components/schemas/DocumentError'
-        warnings:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentWarning'
-      discriminator:
-        propertyName: extractor
-      x-csharp-usage: input,output
-    isRejected:
-      type: boolean
-    errorCode:
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
+    ExpiryTime:
       type:
       - string
       - 'null'
-      example: document_conversion_failed
-    name:
+      format: date-time
+      description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
+    DocumentMeta_properties-identifier:
       type: string
-    DocumentFormat:
+      description: Unique identifier for the document
+    DocumentState:
       type: string
       enum:
-      - json
-      - xml
-      - hr-xml
-    Language:
-      type:
-      - string
-      - 'null'
-      description: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-      example: en
+      - uploaded
+      - review
+      - validated
+      - archived
+      - rejected
     File:
       type: string
       format: binary
       description: 'File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG, JPG, TIFF, ODT, XLS, XLSX'
+    skipParse:
+      type: boolean
+    isRejected:
+      type: boolean
     DocumentWarning:
       type: object
       additionalProperties: false
@@ -467,128 +498,6 @@ components:
           - string
           - 'null'
           example: File exceeds maximum number of pages allowed, parsing the first 10 pages only.
-    properties-identifier:
-      type: string
-      description: Uniquely identify a collection.
-      example: mEFayXdO
-    DateRange:
-      type: string
-      enum:
-      - today
-      - yesterday
-      - week
-      - month
-      - year
-    isArchived:
-      type: boolean
-    Tag:
-      type: object
-      required:
-      - id
-      - name
-      - workspace
-      - documentCount
-      properties:
-        id:
-          type: integer
-          description: Uniquely identify a tag.
-          example: 1
-          minimum: 1
-        name:
-          type: string
-        workspace:
-          $ref: '#/components/schemas/identifier'
-        documentCount:
-          type: integer
-          minimum: 0
-          description: Number of documents tagged with this.
-    errorDetail:
-      type:
-      - string
-      - 'null'
-      example: Unable to convert word document
-    isConfirmed:
-      type: boolean
-    FileName:
-      type:
-      - string
-      - 'null'
-      description: Optional filename of the file
-      example: Document.pdf
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
-    ExpiryTime:
-      type:
-      - string
-      - 'null'
-      format: date-time
-      description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
-    id:
-      type: integer
-      description: Uniquely identify a tag.
-      example: 1
-      minimum: 1
-    Extractor_properties-identifier:
-      type: string
-      description: Uniquely identify an extractor.
-      example: resume
-    ValidationRule:
-      type: object
-      additionalProperties: false
-      description: A validation rule for a collection
-      required:
-      - slug
-      - dataPoints
-      properties:
-        slug:
-          type: string
-          description: The slug of the validation rule, in lowercase snake_case
-          pattern: ^[a-z0-9_]+$
-          example: supplier_name_is_alphanumeric
-        dataPoints:
-          type: array
-          description: The data point identifier that this validation rule applies to, can be an empty list if the rule doens't use any data points as sources
-          items:
-            $ref: '#/components/schemas/Identifier'
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Uniquely identify a user.
-          example: 1
-          minimum: 1
-        name:
-          type: string
-          example: Carl Johnson
-        username:
-          type: string
-          example: carljohnson
-        email:
-          type: string
-          example: carljohnson@grove.street
-        avatar:
-          type:
-          - string
-          - 'null'
-          description: URL of the user's avatar.
-          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
-    RejectDuplicatesMaybeString:
-      type:
-      - boolean
-      - 'null'
-      description: If "true", parsing will fail when the uploaded document is duplicate of an existing document, no credits will be consumed. If "false", will parse the document normally whether its a duplicate or not. If not provided, will fallback to the workspace settings.
-      example: true
-    DocumentState:
-      type: string
-      enum:
-      - uploaded
-      - review
-      - validated
-      - archived
-      - rejected
     PageMeta:
       type: object
       required:
@@ -633,86 +542,34 @@ components:
           minimum: -360
           maximum: 360
           description: The degree of rotation applied to the page. Greater than 0 indicates clockwise rotation. Less than 0 indicates counter-clockwise rotation.
-    RequestError:
+    FileName:
+      type:
+      - string
+      - 'null'
+      description: Optional filename of the file
+      example: Document.pdf
+    name:
+      type: string
+    Language:
+      type:
+      - string
+      - 'null'
+      description: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+      example: en
+    DocumentError:
       type: object
       additionalProperties: false
-      required:
-      - type
-      - errors
       properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type:
-                - string
-                - 'null'
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    DocumentMeta_properties-identifier:
-      type: string
-      description: Unique identifier for the document
-    PaginatedResponse:
-      type: object
-      required:
-      - count
-      properties:
-        count:
-          type: integer
-          example: 10
-          description: Number of items in results.
-          minimum: 0
-        next:
+        errorCode:
           type:
           - string
           - 'null'
-          description: URL to request next page of results.
-        previous:
+          example: document_conversion_failed
+        errorDetail:
           type:
           - string
           - 'null'
-          description: URL to request previous page of results.
-    UserNullable:
-      type:
-      - object
-      - 'null'
-      properties:
-        id:
-          type: integer
-          description: Uniquely identify a user.
-          example: 1
-          minimum: 1
-        name:
-          type: string
-          example: Carl Johnson
-        username:
-          type: string
-          example: carljohnson
-        email:
-          type: string
-          example: carljohnson@grove.street
-        avatar:
-          type:
-          - string
-          - 'null'
-          description: URL of the user's avatar.
-          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
-    validatable:
-      type: boolean
+          example: Unable to convert word document
     DocumentCreate:
       type: object
       properties:
@@ -791,71 +648,85 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DocumentWarning'
-    customIdentifier:
+    errorCode:
       type:
       - string
       - 'null'
-      description: Optional identifier for the document that you can set to track the document in the Affinda system.  Is not required to be unique.
-      example: 46ab8b02-0e5b-420c-877c-8b678d46a834
-    DocumentUpdate:
+      example: document_conversion_failed
+    PaginatedResponse:
       type: object
+      required:
+      - count
       properties:
-        collection:
-          $ref: '#/components/schemas/properties-identifier'
+        count:
+          type: integer
+          example: 10
+          description: Number of items in results.
+          minimum: 0
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL to request next page of results.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL to request previous page of results.
+    Tag:
+      type: object
+      required:
+      - id
+      - name
+      - workspace
+      - documentCount
+      properties:
+        id:
+          type: integer
+          description: Uniquely identify a tag.
+          example: 1
+          minimum: 1
+        name:
+          type: string
         workspace:
           $ref: '#/components/schemas/identifier'
-        documentType:
-          type:
-          - string
-          - 'null'
-          description: The document type's identifier.  Provide if you already know the document type.
-        fileName:
-          $ref: '#/components/schemas/FileName'
-        expiryTime:
-          $ref: '#/components/schemas/ExpiryTime'
-        isConfirmed:
-          $ref: '#/components/schemas/isConfirmed'
-        isRejected:
-          $ref: '#/components/schemas/isRejected'
-        isArchived:
-          $ref: '#/components/schemas/isArchived'
-        skipParse:
-          $ref: '#/components/schemas/skipParse'
-        language:
-          $ref: '#/components/schemas/Language'
-        identifier:
-          type: string
-          description: Deprecated in favor of `customIdentifier`.
-          deprecated: true
-        customIdentifier:
-          type: string
-          description: Specify a custom identifier for the document if you need one, not required to be unique.
-        llmHint:
-          type:
-          - string
-          - 'null'
-          description: Optional hint inserted into the LLM prompt when processing this document.
-        warningMessages:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentWarning'
-    DocumentError:
+        documentCount:
+          type: integer
+          minimum: 0
+          description: Number of documents tagged with this.
+    validatable:
+      type: boolean
+    User:
       type: object
-      additionalProperties: false
       properties:
-        errorCode:
+        id:
+          type: integer
+          description: Uniquely identify a user.
+          example: 1
+          minimum: 1
+        name:
+          type: string
+          example: Carl Johnson
+        username:
+          type: string
+          example: carljohnson
+        email:
+          type: string
+          example: carljohnson@grove.street
+        avatar:
           type:
           - string
           - 'null'
-          example: document_conversion_failed
-        errorDetail:
-          type:
-          - string
-          - 'null'
-          example: Unable to convert word document
-    Identifier:
+          description: URL of the user's avatar.
+          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+    isArchived:
+      type: boolean
+    isConfirmed:
+      type: boolean
+    Extractor_properties-identifier:
       type: string
-      description: A random string that uniquely identify the resource.
+      description: Uniquely identify an extractor.
+      example: resume
     DocumentMeta:
       type: object
       required:
@@ -1055,7 +926,146 @@ components:
           description: If the document is created via email ingestion, this field stores the email's From address.
         regionBias:
           $ref: '#/components/schemas/RegionBias'
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
+    customIdentifier:
+      type:
+      - string
+      - 'null'
+      description: Optional identifier for the document that you can set to track the document in the Affinda system.  Is not required to be unique.
+      example: 46ab8b02-0e5b-420c-877c-8b678d46a834
+    DateRange:
+      type: string
+      enum:
+      - today
+      - yesterday
+      - week
+      - month
+      - year
+    ValidationRule:
+      type: object
+      additionalProperties: false
+      description: A validation rule for a collection
+      required:
+      - slug
+      - dataPoints
+      properties:
+        slug:
+          type: string
+          description: The slug of the validation rule, in lowercase snake_case
+          pattern: ^[a-z0-9_]+$
+          example: supplier_name_is_alphanumeric
+        dataPoints:
+          type: array
+          description: The data point identifier that this validation rule applies to, can be an empty list if the rule doens't use any data points as sources
+          items:
+            $ref: '#/components/schemas/Identifier'
+    UserNullable:
+      type:
+      - object
+      - 'null'
+      properties:
+        id:
+          type: integer
+          description: Uniquely identify a user.
+          example: 1
+          minimum: 1
+        name:
+          type: string
+          example: Carl Johnson
+        username:
+          type: string
+          example: carljohnson
+        email:
+          type: string
+          example: carljohnson@grove.street
+        avatar:
+          type:
+          - string
+          - 'null'
+          description: URL of the user's avatar.
+          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+    DocumentFormat:
+      type: string
+      enum:
+      - json
+      - xml
+      - hr-xml
+    Wait:
+      type: boolean
+      description: If "true" (default), will return a response only after processing has completed. If "false", will return an empty data object which can be polled at the GET endpoint until processing is complete.
+      example: true
+      default: true
+    errorDetail:
+      type:
+      - string
+      - 'null'
+      example: Unable to convert word document
+    Document:
+      type: object
+      required:
+      - meta
+      - extractor
+      properties:
+        data:
+          type: object
+        extractor:
+          type: string
+        meta:
+          $ref: '#/components/schemas/DocumentMeta'
+        error:
+          $ref: '#/components/schemas/DocumentError'
+        warnings:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentWarning'
+      discriminator:
+        propertyName: extractor
+      x-csharp-usage: input,output
+    id:
+      type: integer
+      description: Uniquely identify a tag.
+      example: 1
+      minimum: 1
   parameters:
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
     limitParam:
       in: query
       name: limit
@@ -1067,24 +1077,7 @@ components:
         example: 20
       description: The numbers of results to return.
       x-ms-parameter-location: method
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
-      x-ms-parameter-location: method
   responses:
-    403Error:
-      description: Forbidden error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
     DefaultError:
       description: UnexpectedError
       content:
@@ -1109,8 +1102,13 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
-    204NoContent:
-      description: Delete successful, no content returned
+    403Error:
+      description: Forbidden error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
     400Error:
       description: Bad request. If it is a validation error will contain a list of each invalid field
       content:
@@ -1128,6 +1126,8 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
+    204NoContent:
+      description: Delete successful, no content returned
   securitySchemes:
     ApiKeyAuth:
       type: http

@@ -347,121 +347,6 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
-    UsageByWorkspace:
-      type: object
-      description: Monthly credits consumption
-      required:
-      - month
-      - count
-      properties:
-        month:
-          type: string
-          description: Month of the usage
-          example: 2023-07
-        count:
-          type: integer
-          description: Usage count
-          example: 100
-      additionalProperties: false
-    WorkspaceVisibility:
-      type: string
-      enum:
-      - organization
-      - private
-      description: Visibility "organization" means everyone in the organization can access the workspace. Visibility "private" means only people explicitly added can access the workspace.
-      example: organization
-    UsageByWorkspaceResponse:
-      type: array
-      description: Monthly credits consumption
-      items:
-        $ref: '#/components/schemas/UsageByWorkspace'
-    name:
-      type: string
-    RejectDuplicates:
-      type:
-      - boolean
-      - 'null'
-      description: If "true", parsing will fail when the uploaded document is duplicate of an existing document, no credits will be consumed. If "false", will parse the document normally whether its a duplicate or not. If not provided, will fallback to the workspace settings.
-      example: true
-    isCustom:
-      type: boolean
-    PaletteColorOptions:
-      type: object
-      required:
-      - main
-      properties:
-        main:
-          type: string
-        light:
-          type: string
-        dark:
-          type: string
-        contrastText:
-          type: string
-    ThemeConfig:
-      type: object
-      properties:
-        palette:
-          type: object
-          properties:
-            mode:
-              type: string
-              enum:
-              - light
-              - dark
-            background:
-              oneOf:
-              - type: string
-              - type: object
-                properties:
-                  default:
-                    type: string
-                  paper:
-                    type: string
-            text:
-              type: object
-              properties:
-                primary:
-                  type: string
-                secondary:
-                  type: string
-                disabled:
-                  type: string
-            divider:
-              type: string
-            primary:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            secondary:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            success:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            annotation:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            error:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            info:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            warning:
-              $ref: '#/components/schemas/PaletteColorOptions'
-        typography:
-          type: object
-          properties:
-            fontFamily:
-              type: string
-            fontSize:
-              oneOf:
-              - type: string
-              - type: number
-            fontWeightRegular:
-              type: string
-            fontWeightMedium:
-              type: string
-            fontWeightBold:
-              type: string
-        borderRadius:
-          type: number
-        fontUrl:
-          type: string
     WorkspaceCreate:
       type: object
       required:
@@ -487,17 +372,159 @@ components:
           $ref: '#/components/schemas/whitelistIngestAddresses'
         documentSplitter:
           $ref: '#/components/schemas/DocumentSplitter_properties-identifier'
+    whitelistIngestAddresses:
+      type:
+      - array
+      - 'null'
+      description: If specified, only emails from these addresses will be ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+      items:
+        type: string
+        example: '*@eyefind.info'
+    WorkspaceVisibility:
+      type: string
+      enum:
+      - organization
+      - private
+      description: Visibility "organization" means everyone in the organization can access the workspace. Visibility "private" means only people explicitly added can access the workspace.
+      example: organization
+    properties-identifier:
+      type: string
+      description: Uniquely identify a collection.
+      example: mEFayXdO
     confirmedDocsCount:
       type:
       - integer
       - 'null'
       minimum: 0
       description: Number of validated documents in the collection.
-    category:
+    UsageByWorkspaceResponse:
+      type: array
+      description: Monthly credits consumption
+      items:
+        $ref: '#/components/schemas/UsageByWorkspace'
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
+    properties-id:
+      type: integer
+      description: Uniquely identify a user.
+      example: 1
+      minimum: 1
+    RejectDuplicates:
       type:
-      - string
+      - boolean
       - 'null'
-      example: Recruitment
+      description: If "true", parsing will fail when the uploaded document is duplicate of an existing document, no credits will be consumed. If "false", will parse the document normally whether its a duplicate or not. If not provided, will fallback to the workspace settings.
+      example: true
+    namePlural:
+      type: string
+    WorkspaceMembershipCreate:
+      type: object
+      properties:
+        workspace:
+          $ref: '#/components/schemas/identifier'
+        user:
+          $ref: '#/components/schemas/properties-id'
+    Workspace:
+      type: object
+      required:
+      - identifier
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify a workspace.
+          example: mEFayXdO
+        organization:
+          $ref: '#/components/schemas/Organization'
+        name:
+          type: string
+        visibility:
+          $ref: '#/components/schemas/WorkspaceVisibility'
+        collections:
+          type: array
+          items:
+            type: object
+            required:
+            - identifier
+            - name
+            - extractor
+            properties:
+              identifier:
+                $ref: '#/components/schemas/properties-identifier'
+              name:
+                $ref: '#/components/schemas/name'
+              extractor:
+                type: object
+                required:
+                - identifier
+                - name
+                - namePlural
+                - validatable
+                properties:
+                  identifier:
+                    $ref: '#/components/schemas/Extractor_properties-identifier'
+                  name:
+                    $ref: '#/components/schemas/name'
+                  namePlural:
+                    $ref: '#/components/schemas/namePlural'
+                  baseExtractor:
+                    $ref: '#/components/schemas/baseExtractor'
+                  category:
+                    $ref: '#/components/schemas/category'
+                  validatable:
+                    $ref: '#/components/schemas/validatable'
+                  createdDt:
+                    $ref: '#/components/schemas/createdDt'
+              unvalidatedDocsCount:
+                $ref: '#/components/schemas/unvalidatedDocsCount'
+              confirmedDocsCount:
+                $ref: '#/components/schemas/confirmedDocsCount'
+        documentTypes:
+          type: array
+          description: Document types associated with this workspace
+          items:
+            $ref: '#/components/schemas/properties-identifier'
+        rejectInvalidDocuments:
+          type: boolean
+          description: If true, the uploaded document will be rejected if it's of the wrong document type, or if its document type cannot be determined. No credits will be consumed.
+        rejectDuplicates:
+          $ref: '#/components/schemas/RejectDuplicates'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        unvalidatedDocsCount:
+          type: integer
+          minimum: 0
+          description: Number of unvalidated documents in the workspace.
+        confirmedDocsCount:
+          type: integer
+          minimum: 0
+          description: Number of validated documents in the workspace.
+        ingestEmail:
+          type: string
+          description: When you send email to this address, any document attached in the body will be uploaded to this workspace.
+        whitelistIngestAddresses:
+          type:
+          - array
+          - 'null'
+          description: If specified, only emails from these addresses will be ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+          items:
+            type: string
+            example: '*@eyefind.info'
+        documentSplitter:
+          $ref: '#/components/schemas/WorkspaceDocumentSplitter'
+    isCustom:
+      type: boolean
+    unvalidatedDocsCount:
+      type:
+      - integer
+      - 'null'
+      minimum: 0
+      description: Number of unvalidated documents in the collection.
+    name:
+      type: string
     WorkspaceDocumentSplitter:
       type: object
       required:
@@ -508,32 +535,143 @@ components:
           $ref: '#/components/schemas/DocumentSplitter_properties-identifier'
         name:
           $ref: '#/components/schemas/name'
-    WorkspaceMembership_properties-identifier:
+    WorkspaceMembership:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify a membership.
+          example: mEFayXdO
+        workspace:
+          $ref: '#/components/schemas/identifier'
+        user:
+          $ref: '#/components/schemas/User'
+    createdDt:
       type: string
-      description: Uniquely identify a membership.
-      example: mEFayXdO
-    properties-identifier:
+      format: date-time
+    OrganizationRole:
       type: string
-      description: Uniquely identify a collection.
-      example: mEFayXdO
+      enum:
+      - admin
+      - member
+      example: admin
+    category:
+      type:
+      - string
+      - 'null'
+      example: Recruitment
+    PaginatedResponse:
+      type: object
+      required:
+      - count
+      properties:
+        count:
+          type: integer
+          example: 10
+          description: Number of items in results.
+          minimum: 0
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL to request next page of results.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL to request previous page of results.
     Organization_properties-identifier:
       type: string
       description: Uniquely identify an organization.
       example: mEFayXdO
-    unvalidatedDocsCount:
-      type:
-      - integer
-      - 'null'
-      minimum: 0
-      description: Number of unvalidated documents in the collection.
-    whitelistIngestAddresses:
-      type:
-      - array
-      - 'null'
-      description: If specified, only emails from these addresses will be ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
-      items:
-        type: string
-        example: '*@eyefind.info'
+    UsageByWorkspace:
+      type: object
+      description: Monthly credits consumption
+      required:
+      - month
+      - count
+      properties:
+        month:
+          type: string
+          description: Month of the usage
+          example: 2023-07
+        count:
+          type: integer
+          description: Usage count
+          example: 100
+      additionalProperties: false
+    validatable:
+      type: boolean
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Uniquely identify a user.
+          example: 1
+          minimum: 1
+        name:
+          type: string
+          example: Carl Johnson
+        username:
+          type: string
+          example: carljohnson
+        email:
+          type: string
+          example: carljohnson@grove.street
+        avatar:
+          type:
+          - string
+          - 'null'
+          description: URL of the user's avatar.
+          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+    Extractor_properties-identifier:
+      type: string
+      description: Uniquely identify an extractor.
+      example: resume
+    PaletteColorOptions:
+      type: object
+      required:
+      - main
+      properties:
+        main:
+          type: string
+        light:
+          type: string
+        dark:
+          type: string
+        contrastText:
+          type: string
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
     Organization:
       type: object
       properties:
@@ -624,16 +762,10 @@ components:
         showCustomFieldCreation:
           type: boolean
           description: Whether to show the custom field creation in the UI.
-    WorkspaceMembershipCreate:
-      type: object
-      properties:
-        workspace:
-          $ref: '#/components/schemas/identifier'
-        user:
-          $ref: '#/components/schemas/properties-id'
-    createdDt:
+    WorkspaceMembership_properties-identifier:
       type: string
-      format: date-time
+      description: Uniquely identify a membership.
+      example: mEFayXdO
     WorkspaceUpdate:
       type: object
       properties:
@@ -654,187 +786,77 @@ components:
           $ref: '#/components/schemas/whitelistIngestAddresses'
         documentSplitter:
           $ref: '#/components/schemas/DocumentSplitter_properties-identifier'
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
-    properties-id:
-      type: integer
-      description: Uniquely identify a user.
-      example: 1
-      minimum: 1
-    Extractor_properties-identifier:
-      type: string
-      description: Uniquely identify an extractor.
-      example: resume
-    Workspace:
+    ThemeConfig:
       type: object
-      required:
-      - identifier
       properties:
-        identifier:
-          type: string
-          description: Uniquely identify a workspace.
-          example: mEFayXdO
-        organization:
-          $ref: '#/components/schemas/Organization'
-        name:
-          type: string
-        visibility:
-          $ref: '#/components/schemas/WorkspaceVisibility'
-        collections:
-          type: array
-          items:
-            type: object
-            required:
-            - identifier
-            - name
-            - extractor
-            properties:
-              identifier:
-                $ref: '#/components/schemas/properties-identifier'
-              name:
-                $ref: '#/components/schemas/name'
-              extractor:
-                type: object
-                required:
-                - identifier
-                - name
-                - namePlural
-                - validatable
+        palette:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+              - light
+              - dark
+            background:
+              oneOf:
+              - type: string
+              - type: object
                 properties:
-                  identifier:
-                    $ref: '#/components/schemas/Extractor_properties-identifier'
-                  name:
-                    $ref: '#/components/schemas/name'
-                  namePlural:
-                    $ref: '#/components/schemas/namePlural'
-                  baseExtractor:
-                    $ref: '#/components/schemas/baseExtractor'
-                  category:
-                    $ref: '#/components/schemas/category'
-                  validatable:
-                    $ref: '#/components/schemas/validatable'
-                  createdDt:
-                    $ref: '#/components/schemas/createdDt'
-              unvalidatedDocsCount:
-                $ref: '#/components/schemas/unvalidatedDocsCount'
-              confirmedDocsCount:
-                $ref: '#/components/schemas/confirmedDocsCount'
-        documentTypes:
-          type: array
-          description: Document types associated with this workspace
-          items:
-            $ref: '#/components/schemas/properties-identifier'
-        rejectInvalidDocuments:
-          type: boolean
-          description: If true, the uploaded document will be rejected if it's of the wrong document type, or if its document type cannot be determined. No credits will be consumed.
-        rejectDuplicates:
-          $ref: '#/components/schemas/RejectDuplicates'
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        unvalidatedDocsCount:
-          type: integer
-          minimum: 0
-          description: Number of unvalidated documents in the workspace.
-        confirmedDocsCount:
-          type: integer
-          minimum: 0
-          description: Number of validated documents in the workspace.
-        ingestEmail:
+                  default:
+                    type: string
+                  paper:
+                    type: string
+            text:
+              type: object
+              properties:
+                primary:
+                  type: string
+                secondary:
+                  type: string
+                disabled:
+                  type: string
+            divider:
+              type: string
+            primary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            secondary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            success:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            annotation:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            error:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            info:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            warning:
+              $ref: '#/components/schemas/PaletteColorOptions'
+        typography:
+          type: object
+          properties:
+            fontFamily:
+              type: string
+            fontSize:
+              oneOf:
+              - type: string
+              - type: number
+            fontWeightRegular:
+              type: string
+            fontWeightMedium:
+              type: string
+            fontWeightBold:
+              type: string
+        borderRadius:
+          type: number
+        fontUrl:
           type: string
-          description: When you send email to this address, any document attached in the body will be uploaded to this workspace.
-        whitelistIngestAddresses:
-          type:
-          - array
-          - 'null'
-          description: If specified, only emails from these addresses will be ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
-          items:
-            type: string
-            example: '*@eyefind.info'
-        documentSplitter:
-          $ref: '#/components/schemas/WorkspaceDocumentSplitter'
+    rejectInvalidDocuments:
+      type: boolean
+      description: If true, the uploaded document will be rejected if it's of the wrong document type, or if its document type cannot be determined. No credits will be consumed.
     DocumentSplitter_properties-identifier:
       type: string
       description: Uniquely identify a document splitter.
       example: NqIvMvZl
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Uniquely identify a user.
-          example: 1
-          minimum: 1
-        name:
-          type: string
-          example: Carl Johnson
-        username:
-          type: string
-          example: carljohnson
-        email:
-          type: string
-          example: carljohnson@grove.street
-        avatar:
-          type:
-          - string
-          - 'null'
-          description: URL of the user's avatar.
-          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
-    RequestError:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - errors
-      properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type:
-                - string
-                - 'null'
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    PaginatedResponse:
-      type: object
-      required:
-      - count
-      properties:
-        count:
-          type: integer
-          example: 10
-          description: Number of items in results.
-          minimum: 0
-        next:
-          type:
-          - string
-          - 'null'
-          description: URL to request next page of results.
-        previous:
-          type:
-          - string
-          - 'null'
-          description: URL to request previous page of results.
-    validatable:
-      type: boolean
     baseExtractor:
       type:
       - object
@@ -857,28 +879,6 @@ components:
           $ref: '#/components/schemas/isCustom'
         createdDt:
           $ref: '#/components/schemas/createdDt'
-    rejectInvalidDocuments:
-      type: boolean
-      description: If true, the uploaded document will be rejected if it's of the wrong document type, or if its document type cannot be determined. No credits will be consumed.
-    namePlural:
-      type: string
-    WorkspaceMembership:
-      type: object
-      properties:
-        identifier:
-          type: string
-          description: Uniquely identify a membership.
-          example: mEFayXdO
-        workspace:
-          $ref: '#/components/schemas/identifier'
-        user:
-          $ref: '#/components/schemas/User'
-    OrganizationRole:
-      type: string
-      enum:
-      - admin
-      - member
-      example: admin
   parameters:
     offsetParam:
       in: query
@@ -916,8 +916,6 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
-    204NoContent:
-      description: Delete successful, no content returned
     400Error:
       description: Bad request. If it is a validation error will contain a list of each invalid field
       content:
@@ -925,6 +923,8 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
+    204NoContent:
+      description: Delete successful, no content returned
   securitySchemes:
     ApiKeyAuth:
       type: http

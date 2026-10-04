@@ -253,95 +253,6 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
-    properties-email:
-      type: string
-      example: carljohnson@grove.street
-      description: The email which the invitation is sent to.
-    InvitationResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - accepted
-          - declined
-    PaletteColorOptions:
-      type: object
-      required:
-      - main
-      properties:
-        main:
-          type: string
-        light:
-          type: string
-        dark:
-          type: string
-        contrastText:
-          type: string
-    ThemeConfig:
-      type: object
-      properties:
-        palette:
-          type: object
-          properties:
-            mode:
-              type: string
-              enum:
-              - light
-              - dark
-            background:
-              oneOf:
-              - type: string
-              - type: object
-                properties:
-                  default:
-                    type: string
-                  paper:
-                    type: string
-            text:
-              type: object
-              properties:
-                primary:
-                  type: string
-                secondary:
-                  type: string
-                disabled:
-                  type: string
-            divider:
-              type: string
-            primary:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            secondary:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            success:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            annotation:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            error:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            info:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            warning:
-              $ref: '#/components/schemas/PaletteColorOptions'
-        typography:
-          type: object
-          properties:
-            fontFamily:
-              type: string
-            fontSize:
-              oneOf:
-              - type: string
-              - type: number
-            fontWeightRegular:
-              type: string
-            fontWeightMedium:
-              type: string
-            fontWeightBold:
-              type: string
-        borderRadius:
-          type: number
-        fontUrl:
-          type: string
     InvitationCreate:
       type: object
       required:
@@ -355,9 +266,149 @@ components:
           $ref: '#/components/schemas/properties-email'
         role:
           $ref: '#/components/schemas/OrganizationRole'
+    InvitationStatus:
+      type: string
+      enum:
+      - pending
+      - accepted
+      - declined
+    Invitation:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Uniquely identify an invitation.
+          example: mEFayXdO
+        organization:
+          $ref: '#/components/schemas/Organization'
+        email:
+          type: string
+          example: carljohnson@grove.street
+          description: The email which the invitation is sent to.
+        role:
+          $ref: '#/components/schemas/OrganizationRole'
+        status:
+          $ref: '#/components/schemas/InvitationStatus'
+        expiryDate:
+          type: string
+          format: date
+          description: The date after which the invitation expires. Default is 10 days from now.
+        invitedBy:
+          $ref: '#/components/schemas/User'
+        respondedBy:
+          type:
+          - object
+          - 'null'
+          allOf:
+          - $ref: '#/components/schemas/User'
+          - type: object
+            description: The person who receives this invitation can register/signin with any account and respond to it. This field stores which account has responded to the invitation.
+        createdDt:
+          type: string
+          format: date-time
+    OrganizationRole:
+      type: string
+      enum:
+      - admin
+      - member
+      example: admin
+    properties-email:
+      type: string
+      example: carljohnson@grove.street
+      description: The email which the invitation is sent to.
+    PaginatedResponse:
+      type: object
+      required:
+      - count
+      properties:
+        count:
+          type: integer
+          example: 10
+          description: Number of items in results.
+          minimum: 0
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL to request next page of results.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL to request previous page of results.
     Organization_properties-identifier:
       type: string
       description: Uniquely identify an organization.
+      example: mEFayXdO
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Uniquely identify a user.
+          example: 1
+          minimum: 1
+        name:
+          type: string
+          example: Carl Johnson
+        username:
+          type: string
+          example: carljohnson
+        email:
+          type: string
+          example: carljohnson@grove.street
+        avatar:
+          type:
+          - string
+          - 'null'
+          description: URL of the user's avatar.
+          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+    PaletteColorOptions:
+      type: object
+      required:
+      - main
+      properties:
+        main:
+          type: string
+        light:
+          type: string
+        dark:
+          type: string
+        contrastText:
+          type: string
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
+    Invitation_properties-identifier:
+      type: string
+      description: Uniquely identify an invitation.
       example: mEFayXdO
     Organization:
       type: object
@@ -449,135 +500,94 @@ components:
         showCustomFieldCreation:
           type: boolean
           description: Whether to show the custom field creation in the UI.
-    Invitation_properties-identifier:
-      type: string
-      description: Uniquely identify an invitation.
-      example: mEFayXdO
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Uniquely identify a user.
-          example: 1
-          minimum: 1
-        name:
-          type: string
-          example: Carl Johnson
-        username:
-          type: string
-          example: carljohnson
-        email:
-          type: string
-          example: carljohnson@grove.street
-        avatar:
-          type:
-          - string
-          - 'null'
-          description: URL of the user's avatar.
-          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
     InvitationUpdate:
       type: object
       properties:
         role:
           $ref: '#/components/schemas/OrganizationRole'
-    RequestError:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - errors
-      properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type:
-                - string
-                - 'null'
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    Invitation:
+    ThemeConfig:
       type: object
       properties:
-        identifier:
+        palette:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+              - light
+              - dark
+            background:
+              oneOf:
+              - type: string
+              - type: object
+                properties:
+                  default:
+                    type: string
+                  paper:
+                    type: string
+            text:
+              type: object
+              properties:
+                primary:
+                  type: string
+                secondary:
+                  type: string
+                disabled:
+                  type: string
+            divider:
+              type: string
+            primary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            secondary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            success:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            annotation:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            error:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            info:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            warning:
+              $ref: '#/components/schemas/PaletteColorOptions'
+        typography:
+          type: object
+          properties:
+            fontFamily:
+              type: string
+            fontSize:
+              oneOf:
+              - type: string
+              - type: number
+            fontWeightRegular:
+              type: string
+            fontWeightMedium:
+              type: string
+            fontWeightBold:
+              type: string
+        borderRadius:
+          type: number
+        fontUrl:
           type: string
-          description: Uniquely identify an invitation.
-          example: mEFayXdO
-        organization:
-          $ref: '#/components/schemas/Organization'
-        email:
-          type: string
-          example: carljohnson@grove.street
-          description: The email which the invitation is sent to.
-        role:
-          $ref: '#/components/schemas/OrganizationRole'
+    InvitationResponse:
+      type: object
+      properties:
         status:
-          $ref: '#/components/schemas/InvitationStatus'
-        expiryDate:
           type: string
-          format: date
-          description: The date after which the invitation expires. Default is 10 days from now.
-        invitedBy:
-          $ref: '#/components/schemas/User'
-        respondedBy:
-          type:
-          - object
-          - 'null'
-          allOf:
-          - $ref: '#/components/schemas/User'
-          - type: object
-            description: The person who receives this invitation can register/signin with any account and respond to it. This field stores which account has responded to the invitation.
-        createdDt:
-          type: string
-          format: date-time
-    PaginatedResponse:
-      type: object
-      required:
-      - count
-      properties:
-        count:
-          type: integer
-          example: 10
-          description: Number of items in results.
-          minimum: 0
-        next:
-          type:
-          - string
-          - 'null'
-          description: URL to request next page of results.
-        previous:
-          type:
-          - string
-          - 'null'
-          description: URL to request previous page of results.
-    InvitationStatus:
-      type: string
-      enum:
-      - pending
-      - accepted
-      - declined
-    OrganizationRole:
-      type: string
-      enum:
-      - admin
-      - member
-      example: admin
+          enum:
+          - accepted
+          - declined
   parameters:
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
     limitParam:
       in: query
       name: limit
@@ -589,28 +599,9 @@ components:
         example: 20
       description: The numbers of results to return.
       x-ms-parameter-location: method
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
-      x-ms-parameter-location: method
   responses:
     DefaultError:
       description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    204NoContent:
-      description: Delete successful, no content returned
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
       content:
         application/json:
           schema:
@@ -623,6 +614,15 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    204NoContent:
+      description: Delete successful, no content returned
   securitySchemes:
     ApiKeyAuth:
       type: http

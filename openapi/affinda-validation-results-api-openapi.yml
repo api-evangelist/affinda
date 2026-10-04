@@ -226,41 +226,36 @@ paths:
               $ref: '#/components/schemas/BatchDeleteValidationResultsRequest'
 components:
   schemas:
-    RequestError:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - errors
-      properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type:
-                - string
-                - 'null'
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    DocumentMeta_properties-identifier:
-      type: string
-      description: Unique identifier for the document
     ValidationResultUpdate:
       type: object
+      properties:
+        annotations:
+          $ref: '#/components/schemas/annotations'
+        passed:
+          $ref: '#/components/schemas/passed'
+        ruleSlug:
+          $ref: '#/components/schemas/ruleSlug'
+        message:
+          $ref: '#/components/schemas/message'
+        document:
+          $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+    ruleSlug:
+      type: string
+      description: The kebab-case slug of the validation rule that was applied
+      example: supplier-name-is-alphanumeric
+      pattern: ^[a-z0-9][a-z0-9-]*[a-z0-9]$
+    ValidationResult_properties-id:
+      type: integer
+      description: Validation Result's ID
+      example: 1
+      minimum: 1
+    ValidationResultCreate:
+      type: object
+      required:
+      - annotations
+      - ruleSlug
+      - message
+      - document
       properties:
         annotations:
           $ref: '#/components/schemas/annotations'
@@ -281,15 +276,6 @@ components:
       - 1
       - 2
       - 3
-    message:
-      type: string
-      description: Message explaining why the validation failed
-      example: Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*
-    ValidationResult_properties-id:
-      type: integer
-      description: Validation Result's ID
-      example: 1
-      minimum: 1
     ValidationResult:
       type: object
       additionalProperties: false
@@ -333,6 +319,36 @@ components:
           example: Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*
         document:
           $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
     BatchDeleteValidationResultsRequest:
       type: object
       additionalProperties: false
@@ -348,45 +364,29 @@ components:
           - 123
           - 124
           - 125
-    ValidationResultCreate:
-      type: object
-      required:
-      - annotations
-      - ruleSlug
-      - message
-      - document
-      properties:
-        annotations:
-          $ref: '#/components/schemas/annotations'
-        passed:
-          $ref: '#/components/schemas/passed'
-        ruleSlug:
-          $ref: '#/components/schemas/ruleSlug'
-        message:
-          $ref: '#/components/schemas/message'
-        document:
-          $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+    DocumentMeta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
+    message:
+      type: string
+      description: Message explaining why the validation failed
+      example: Expected 'ThisInputShouldMatch' to match regex pattern '[0-9]*
     passed:
       type:
       - boolean
       - 'null'
       description: Whether the validation passed or not, null if the validation was not applicable
       example: true
-    ruleSlug:
-      type: string
-      description: The kebab-case slug of the validation rule that was applied
-      example: supplier-name-is-alphanumeric
-      pattern: ^[a-z0-9][a-z0-9-]*[a-z0-9]$
   responses:
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
+    DefaultError:
+      description: UnexpectedError
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
-    DefaultError:
-      description: UnexpectedError
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
       content:
         application/json:
           schema:

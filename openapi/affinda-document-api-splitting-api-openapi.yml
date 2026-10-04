@@ -139,13 +139,6 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
-    Meta_properties-identifier:
-      type: string
-      description: Unique identifier for the document
-    DocumentEditResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Meta'
     RegionBias:
       type:
       - object
@@ -178,14 +171,10 @@ components:
 
             '
           example: true
-    DocumentSplitterType:
-      type: string
-      description: The different types of document splitters
-      enum:
-      - llm
-      - llm_v2
-      - extractor
-      - keyword
+    DocumentEditResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Meta'
     DocumentSplit:
       type: object
       required:
@@ -200,6 +189,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DocumentSplitPage'
+    ExpiryTime:
+      type:
+      - string
+      - 'null'
+      format: date-time
+      description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
+    DocumentMeta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
     Meta:
       type: object
       properties:
@@ -290,55 +288,33 @@ components:
           $ref: '#/components/schemas/RegionBias'
         isOcrd:
           type: boolean
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
-    FileName:
-      type:
-      - string
-      - 'null'
-      description: Optional filename of the file
-      example: Document.pdf
-    ExpiryTime:
-      type:
-      - string
-      - 'null'
-      format: date-time
-      description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
-    Extractor_properties-identifier:
-      type: string
-      description: Uniquely identify an extractor.
-      example: resume
-    DocumentSplitter_properties-identifier:
-      type: string
-      description: Uniquely identify a document splitter.
-      example: NqIvMvZl
-    DocumentEditRequest:
+    DocumentSplitter:
       type: object
       required:
-      - splits
+      - identifier
+      - name
+      - type
+      - organization
+      - extractor
+      - llmHint
       properties:
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentSplit'
-    DocumentSplitPage:
-      type: object
-      required:
-      - id
-      description: List the pages within this split. Not including a page here will signal that the page should be deleted.
-      properties:
-        id:
-          type: integer
-          description: Page's ID
-          minimum: 1
-        rotation:
-          type: integer
-          minimum: -360
-          maximum: 360
-          description: Specify a degree of rotation if you want to rotate a page. Possitive number for clockwise rotation, and negative number for counter-clockwise rotation.
-          example: 90
+        identifier:
+          type: string
+          description: Uniquely identify a document splitter.
+          example: NqIvMvZl
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/DocumentSplitterType'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        extractor:
+          $ref: '#/components/schemas/Extractor_properties-identifier'
+        llmHint:
+          type:
+          - string
+          - 'null'
+          description: The hint about when to split which is passed into the LLM prompt.
     PageMeta:
       type: object
       required:
@@ -383,6 +359,31 @@ components:
           minimum: -360
           maximum: 360
           description: The degree of rotation applied to the page. Greater than 0 indicates clockwise rotation. Less than 0 indicates counter-clockwise rotation.
+    Meta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
+    FileName:
+      type:
+      - string
+      - 'null'
+      description: Optional filename of the file
+      example: Document.pdf
+    DocumentSplitterType:
+      type: string
+      description: The different types of document splitters
+      enum:
+      - llm
+      - llm_v2
+      - extractor
+      - keyword
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    Extractor_properties-identifier:
+      type: string
+      description: Uniquely identify an extractor.
+      example: resume
     RequestError:
       type: object
       additionalProperties: false
@@ -413,37 +414,46 @@ components:
               detail:
                 type: string
                 example: This index name has already been used
-    DocumentMeta_properties-identifier:
+    DocumentSplitter_properties-identifier:
       type: string
-      description: Unique identifier for the document
-    DocumentSplitter:
+      description: Uniquely identify a document splitter.
+      example: NqIvMvZl
+    DocumentEditRequest:
       type: object
       required:
-      - identifier
-      - name
-      - type
-      - organization
-      - extractor
-      - llmHint
+      - splits
       properties:
-        identifier:
-          type: string
-          description: Uniquely identify a document splitter.
-          example: NqIvMvZl
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/DocumentSplitterType'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        extractor:
-          $ref: '#/components/schemas/Extractor_properties-identifier'
-        llmHint:
-          type:
-          - string
-          - 'null'
-          description: The hint about when to split which is passed into the LLM prompt.
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentSplit'
+    DocumentSplitPage:
+      type: object
+      required:
+      - id
+      description: List the pages within this split. Not including a page here will signal that the page should be deleted.
+      properties:
+        id:
+          type: integer
+          description: Page's ID
+          minimum: 1
+        rotation:
+          type: integer
+          minimum: -360
+          maximum: 360
+          description: Specify a degree of rotation if you want to rotate a page. Possitive number for clockwise rotation, and negative number for counter-clockwise rotation.
+          example: 90
   parameters:
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
     limitParam:
       in: query
       name: limit
@@ -455,16 +465,6 @@ components:
         example: 20
       description: The numbers of results to return.
       x-ms-parameter-location: method
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
-      x-ms-parameter-location: method
   responses:
     DefaultError:
       description: UnexpectedError
@@ -473,15 +473,15 @@ components:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
+    401Error:
+      description: Authorisation error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RequestError'
       x-ms-error-response: true
-    401Error:
-      description: Authorisation error
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
       content:
         application/json:
           schema:
