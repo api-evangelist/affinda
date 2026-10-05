@@ -1,0 +1,12 @@
+{
+ "url": "https://api.affinda.com/static/v3/api_spec.yaml",
+ "requested_url": "https://api.affinda.com/static/v3/api_spec.yaml",
+ "status": 200,
+ "content_type": "application/octet-stream",
+ "bytes": 373507,
+ "sha256": "6772e50cb58ee5c77037de921810174ee7e3df07cea08d3eb1bdeba29881b313",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.986), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
