@@ -1,52 +1,52 @@
-# Kin Score artifact — affinda — 2026-09-06T224210
+# Kin Score artifact — affinda — 2026-10-11T110117
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: affinda
-  schema_version: 0.19.0
-  scored_at: '2026-09-06'
-  run_ts: 2026-09-06T224210
-  composite: 63.8
+  schema_version: 0.23.0
+  scored_at: '2026-10-11'
+  run_ts: 2026-10-11T110117
+  composite: 60.4
   band: strong
   facets:
-    discoverability: 64.8
-    contract_quality: 67.1
-    governance: 13.6
-    operational_transparency: 57.9
-    developer_ergonomics: 79.8
-    commercial_clarity: 72.4
+    discoverability: 65.0
+    contract_quality: 63.5
     contract_governance: 13.6
-    access_clarity: 72.4
+    operational_transparency: 55.8
+    developer_ergonomics: 79.0
+    access_clarity: 69.2
   agent_readiness:
-    score: 30.2
+    score: 52.4
     band: agent-ready
+    band_gated_from: agent-native
     dimensions:
       spec_presence: true
       agentic_access: derived
       reversibility_documented: false
-      mcp_server: false
-      auth_clarity: bearer
+      mcp_server: verified
+      auth_clarity: served
       idempotency: false
       error_semantics: false
       openapi_examples: partial
-      rate_limit_signal: documented
-      event_surface_described: true
-      agent_skills: true
+      rate_limit_signal: derived
+      event_surface_described: unknown
+      agent_skills: unknown
       well_known_catalog: false
       consent_identity: false
       agent_card: false
       dry_run_mode: false
-      delegated_identity: false
-      protected_resource_metadata: false
-      dynamic_client_registration: false
+      delegated_identity: served
+      protected_resource_metadata: verified
+      dynamic_client_registration: true
       agentic_commerce: false
   regulatory:
     applies: true
     regime: Insurance
     regime_id: insurance
-    score: 33.3
+    score: 18.0
     matched_via: tags
   provenance:
+    mcp: first-party
     agentic_access: derived
     contracts:
       total: 16
