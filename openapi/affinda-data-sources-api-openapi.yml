@@ -399,31 +399,96 @@ paths:
         default:
           $ref: '#/components/responses/DefaultError'
 components:
+  parameters:
+    limitParam:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        example: 20
+      description: The numbers of results to return.
+      x-ms-parameter-location: method
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
+  responses:
+    204NoContent:
+      description: Delete successful, no content returned
+    400Error:
+      description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    401Error:
+      description: Authorisation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    DefaultError:
+      description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
   schemas:
-    PaginatedResponse:
-      type: object
-      required:
-      - count
-      properties:
-        count:
-          type: integer
-          example: 10
-          description: Number of items in results.
-          minimum: 0
-        next:
-          type:
-          - string
-          - 'null'
-          description: URL to request next page of results.
-        previous:
-          type:
-          - string
-          - 'null'
-          description: URL to request previous page of results.
+    MappingDataSource_properties-identifier:
+      type: string
+      description: Uniquely identify a mapping data source.
+      example: mEFayXdO
+      readOnly: true
+    identifier:
+      type: string
+      description: Uniquely identify a workspace.
+      example: mEFayXdO
     Organization_properties-identifier:
       type: string
       description: Uniquely identify an organization.
       example: mEFayXdO
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
     MappingDataSource:
       type: object
       description: A mapping data source is used to map from raw data found by our AI models to records in your database.
@@ -477,6 +542,31 @@ components:
                 type: string
               description:
                 type: string
+    PaginatedResponse:
+      type: object
+      required:
+      - count
+      properties:
+        count:
+          type: integer
+          example: 10
+          description: Number of items in results.
+          minimum: 0
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL to request next page of results.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL to request previous page of results.
+    properties-name:
+      type:
+      - string
+      - 'null'
+      example: My supplier list
     MappingDataSourceCreate:
       type: object
       description: A mapping data source is used to map from raw data found by our AI models to records in your database.
@@ -526,96 +616,6 @@ components:
                 type: string
               description:
                 type: string
-    identifier:
-      type: string
-      description: Uniquely identify a workspace.
-      example: mEFayXdO
-    properties-name:
-      type:
-      - string
-      - 'null'
-      example: My supplier list
-    RequestError:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - errors
-      properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type:
-                - string
-                - 'null'
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    MappingDataSource_properties-identifier:
-      type: string
-      description: Uniquely identify a mapping data source.
-      example: mEFayXdO
-      readOnly: true
-  responses:
-    DefaultError:
-      description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    400Error:
-      description: Bad request. If it is a validation error will contain a list of each invalid field
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    401Error:
-      description: Authorisation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
-    204NoContent:
-      description: Delete successful, no content returned
-  parameters:
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
-      x-ms-parameter-location: method
-    limitParam:
-      in: query
-      name: limit
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        example: 20
-      description: The numbers of results to return.
-      x-ms-parameter-location: method
   securitySchemes:
     ApiKeyAuth:
       type: http

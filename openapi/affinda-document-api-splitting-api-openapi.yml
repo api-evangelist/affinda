@@ -139,65 +139,100 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
-    RegionBias:
-      type:
-      - object
-      - 'null'
-      properties:
-        country:
-          type:
-          - string
-          - 'null'
-          description: A single alpha-2 country code (e.g. AU) used by google geocoding service
-        countries:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: A list of alpha-2 country codes used by Pelias
-        squareCoordinates:
-          type:
-          - array
-          - 'null'
-          items:
-            type: number
-          description: A list of coordinates used by Pelias in the shape of [min_lon, min_lat, max_lon, max_lat]
-        strict:
-          type: boolean
-          description: 'If true, the location must be within the region, as opposed to prefering locations within the region.
-
-            Default to false.
-
-            '
-          example: true
-    DocumentEditResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Meta'
-    DocumentSplit:
-      type: object
-      required:
-      - pages
-      description: Describe a split of a document.
-      properties:
-        identifier:
-          allOf:
-          - $ref: '#/components/schemas/DocumentMeta_properties-identifier'
-          - description: Specify document identifier in the first split to signal that this is the root document where other splits are splitted from. Don't specify document identifier in subsequent splits.
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentSplitPage'
     ExpiryTime:
       type:
       - string
       - 'null'
       format: date-time
       description: The date/time in ISO-8601 format when the document will be automatically deleted.  Defaults to no expiry.
-    DocumentMeta_properties-identifier:
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
+    FileName:
+      type:
+      - string
+      - 'null'
+      description: Optional filename of the file
+      example: Document.pdf
+    RequestError:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - errors
+      properties:
+        type:
+          type: string
+          example: validation_error
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+            - attr
+            - code
+            - detail
+            properties:
+              attr:
+                type:
+                - string
+                - 'null'
+                example: non_field_errors
+              code:
+                type: string
+                example: unique
+              detail:
+                type: string
+                example: This index name has already been used
+    DocumentSplitter_properties-identifier:
+      type: string
+      description: Uniquely identify a document splitter.
+      example: NqIvMvZl
+    Extractor_properties-identifier:
+      type: string
+      description: Uniquely identify an extractor.
+      example: resume
+    DocumentSplitterType:
+      type: string
+      description: The different types of document splitters
+      enum:
+      - llm
+      - llm_v2
+      - extractor
+      - keyword
+    Meta_properties-identifier:
       type: string
       description: Unique identifier for the document
+    DocumentSplitPage:
+      type: object
+      required:
+      - id
+      description: List the pages within this split. Not including a page here will signal that the page should be deleted.
+      properties:
+        id:
+          type: integer
+          description: Page's ID
+          minimum: 1
+        rotation:
+          type: integer
+          minimum: -360
+          maximum: 360
+          description: Specify a degree of rotation if you want to rotate a page. Possitive number for clockwise rotation, and negative number for counter-clockwise rotation.
+          example: 90
+    DocumentEditRequest:
+      type: object
+      required:
+      - splits
+      properties:
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentSplit'
+    DocumentEditResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Meta'
     Meta:
       type: object
       properties:
@@ -288,6 +323,38 @@ components:
           $ref: '#/components/schemas/RegionBias'
         isOcrd:
           type: boolean
+    RegionBias:
+      type:
+      - object
+      - 'null'
+      properties:
+        country:
+          type:
+          - string
+          - 'null'
+          description: A single alpha-2 country code (e.g. AU) used by google geocoding service
+        countries:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: A list of alpha-2 country codes used by Pelias
+        squareCoordinates:
+          type:
+          - array
+          - 'null'
+          items:
+            type: number
+          description: A list of coordinates used by Pelias in the shape of [min_lon, min_lat, max_lon, max_lat]
+        strict:
+          type: boolean
+          description: 'If true, the location must be within the region, as opposed to prefering locations within the region.
+
+            Default to false.
+
+            '
+          example: true
     DocumentSplitter:
       type: object
       required:
@@ -315,6 +382,9 @@ components:
           - string
           - 'null'
           description: The hint about when to split which is passed into the LLM prompt.
+    DocumentMeta_properties-identifier:
+      type: string
+      description: Unique identifier for the document
     PageMeta:
       type: object
       required:
@@ -359,101 +429,21 @@ components:
           minimum: -360
           maximum: 360
           description: The degree of rotation applied to the page. Greater than 0 indicates clockwise rotation. Less than 0 indicates counter-clockwise rotation.
-    Meta_properties-identifier:
-      type: string
-      description: Unique identifier for the document
-    FileName:
-      type:
-      - string
-      - 'null'
-      description: Optional filename of the file
-      example: Document.pdf
-    DocumentSplitterType:
-      type: string
-      description: The different types of document splitters
-      enum:
-      - llm
-      - llm_v2
-      - extractor
-      - keyword
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
-    Extractor_properties-identifier:
-      type: string
-      description: Uniquely identify an extractor.
-      example: resume
-    RequestError:
+    DocumentSplit:
       type: object
-      additionalProperties: false
       required:
-      - type
-      - errors
+      - pages
+      description: Describe a split of a document.
       properties:
-        type:
-          type: string
-          example: validation_error
-        errors:
+        identifier:
+          allOf:
+          - $ref: '#/components/schemas/DocumentMeta_properties-identifier'
+          - description: Specify document identifier in the first split to signal that this is the root document where other splits are splitted from. Don't specify document identifier in subsequent splits.
+        pages:
           type: array
           items:
-            type: object
-            required:
-            - attr
-            - code
-            - detail
-            properties:
-              attr:
-                type:
-                - string
-                - 'null'
-                example: non_field_errors
-              code:
-                type: string
-                example: unique
-              detail:
-                type: string
-                example: This index name has already been used
-    DocumentSplitter_properties-identifier:
-      type: string
-      description: Uniquely identify a document splitter.
-      example: NqIvMvZl
-    DocumentEditRequest:
-      type: object
-      required:
-      - splits
-      properties:
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentSplit'
-    DocumentSplitPage:
-      type: object
-      required:
-      - id
-      description: List the pages within this split. Not including a page here will signal that the page should be deleted.
-      properties:
-        id:
-          type: integer
-          description: Page's ID
-          minimum: 1
-        rotation:
-          type: integer
-          minimum: -360
-          maximum: 360
-          description: Specify a degree of rotation if you want to rotate a page. Possitive number for clockwise rotation, and negative number for counter-clockwise rotation.
-          example: 90
+            $ref: '#/components/schemas/DocumentSplitPage'
   parameters:
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
-      x-ms-parameter-location: method
     limitParam:
       in: query
       name: limit
@@ -465,14 +455,17 @@ components:
         example: 20
       description: The numbers of results to return.
       x-ms-parameter-location: method
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
   responses:
-    DefaultError:
-      description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
     401Error:
       description: Authorisation error
       content:
@@ -482,6 +475,13 @@ components:
       x-ms-error-response: true
     400Error:
       description: Bad request. If it is a validation error will contain a list of each invalid field
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
+    DefaultError:
+      description: UnexpectedError
       content:
         application/json:
           schema:

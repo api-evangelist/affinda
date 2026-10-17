@@ -251,29 +251,6 @@ paths:
           $ref: '#/components/responses/DefaultError'
 components:
   schemas:
-    Identifier:
-      type: string
-      description: A random string that uniquely identify the resource.
-    OrganizationCreate:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          $ref: '#/components/schemas/Organization_properties-name'
-        avatar:
-          type: string
-          format: binary
-          description: Upload avatar for the organization.
-        resthookSignatureKey:
-          $ref: '#/components/schemas/resthookSignatureKey'
-    Organization_properties-name:
-      type: string
-      example: Grove Street King
-    avatar:
-      type: string
-      format: binary
-      description: Upload avatar for the organization.
     OrganizationRole:
       type: string
       enum:
@@ -286,80 +263,6 @@ components:
       - 'null'
       description: Used to sign webhook payloads so you can verify their integrity.
       example: 465c6598bd34c0558f0ce256c43209d49fa85b0ff3e4c18b24e408b7563143ad
-    PaginatedResponse:
-      type: object
-      required:
-      - count
-      properties:
-        count:
-          type: integer
-          example: 10
-          description: Number of items in results.
-          minimum: 0
-        next:
-          type:
-          - string
-          - 'null'
-          description: URL to request next page of results.
-        previous:
-          type:
-          - string
-          - 'null'
-          description: URL to request previous page of results.
-    OrganizationMembership:
-      type: object
-      required:
-      - identifier
-      - organization
-      - user
-      - role
-      properties:
-        identifier:
-          $ref: '#/components/schemas/Identifier'
-        organization:
-          $ref: '#/components/schemas/Organization_properties-identifier'
-        user:
-          $ref: '#/components/schemas/User'
-        role:
-          $ref: '#/components/schemas/OrganizationRole'
-    Organization_properties-identifier:
-      type: string
-      description: Uniquely identify an organization.
-      example: mEFayXdO
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Uniquely identify a user.
-          example: 1
-          minimum: 1
-        name:
-          type: string
-          example: Carl Johnson
-        username:
-          type: string
-          example: carljohnson
-        email:
-          type: string
-          example: carljohnson@grove.street
-        avatar:
-          type:
-          - string
-          - 'null'
-          description: URL of the user's avatar.
-          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
-    OrganizationUpdate:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/Organization_properties-name'
-        avatar:
-          $ref: '#/components/schemas/avatar'
-        resthookSignatureKey:
-          $ref: '#/components/schemas/resthookSignatureKey'
-        validationToolConfig:
-          $ref: '#/components/schemas/validationToolConfig'
     PaletteColorOptions:
       type: object
       required:
@@ -373,11 +276,10 @@ components:
           type: string
         contrastText:
           type: string
-    OrganizationMembershipUpdate:
-      type: object
-      properties:
-        role:
-          $ref: '#/components/schemas/OrganizationRole'
+    Organization_properties-identifier:
+      type: string
+      description: Uniquely identify an organization.
+      example: mEFayXdO
     RequestError:
       type: object
       additionalProperties: false
@@ -408,6 +310,208 @@ components:
               detail:
                 type: string
                 example: This index name has already been used
+    Organization_properties-name:
+      type: string
+      example: Grove Street King
+    OrganizationUpdate:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/Organization_properties-name'
+        avatar:
+          $ref: '#/components/schemas/avatar'
+        resthookSignatureKey:
+          $ref: '#/components/schemas/resthookSignatureKey'
+        validationToolConfig:
+          $ref: '#/components/schemas/validationToolConfig'
+    OrganizationMembershipUpdate:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/OrganizationRole'
+    PaginatedResponse:
+      type: object
+      required:
+      - count
+      properties:
+        count:
+          type: integer
+          example: 10
+          description: Number of items in results.
+          minimum: 0
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL to request next page of results.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL to request previous page of results.
+    avatar:
+      type: string
+      format: binary
+      description: Upload avatar for the organization.
+    OrganizationCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          $ref: '#/components/schemas/Organization_properties-name'
+        avatar:
+          type: string
+          format: binary
+          description: Upload avatar for the organization.
+        resthookSignatureKey:
+          $ref: '#/components/schemas/resthookSignatureKey'
+    ThemeConfig:
+      type: object
+      properties:
+        palette:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+              - light
+              - dark
+            background:
+              oneOf:
+              - type: string
+              - type: object
+                properties:
+                  default:
+                    type: string
+                  paper:
+                    type: string
+            text:
+              type: object
+              properties:
+                primary:
+                  type: string
+                secondary:
+                  type: string
+                disabled:
+                  type: string
+            divider:
+              type: string
+            primary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            secondary:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            success:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            annotation:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            error:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            info:
+              $ref: '#/components/schemas/PaletteColorOptions'
+            warning:
+              $ref: '#/components/schemas/PaletteColorOptions'
+        typography:
+          type: object
+          properties:
+            fontFamily:
+              type: string
+            fontSize:
+              oneOf:
+              - type: string
+              - type: number
+            fontWeightRegular:
+              type: string
+            fontWeightMedium:
+              type: string
+            fontWeightBold:
+              type: string
+        borderRadius:
+          type: number
+        fontUrl:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Uniquely identify a user.
+          example: 1
+          minimum: 1
+        name:
+          type: string
+          example: Carl Johnson
+        username:
+          type: string
+          example: carljohnson
+        email:
+          type: string
+          example: carljohnson@grove.street
+        avatar:
+          type:
+          - string
+          - 'null'
+          description: URL of the user's avatar.
+          example: https://affinda-api.s3.amazonaws.com/media/user-avatar.png?AWSAccessKeyId=KEY&Signature=SIG
+    validationToolConfig:
+      type:
+      - object
+      - 'null'
+      description: Configuration of the embeddable validation tool.
+      properties:
+        theme:
+          $ref: '#/components/schemas/ThemeConfig'
+        hideActions:
+          type: boolean
+          description: Hide the confirm document button and other actions.
+        hideCollection:
+          type: boolean
+          description: Hide the collection selector.
+        hideEditPages:
+          type: boolean
+          description: Hide the edit pages button.
+        hideExport:
+          type: boolean
+          description: Hide the export menu.
+        hideFilename:
+          type: boolean
+          description: Hide the filename input.
+        hideShowRawValues:
+          type: boolean
+          description: Hide the toggle for showing raw annotation values.
+        hideReject:
+          type: boolean
+          description: Hide the reject document button.
+        hideReparse:
+          type: boolean
+          description: Hide the reparse button.
+        hideRunOcr:
+          type: boolean
+          description: Hide the run OCR button.
+        hideTags:
+          type: boolean
+          description: Hide the tags editor.
+        hideWarnings:
+          type: boolean
+          description: Hide the warnings panel.
+        restrictDocumentSplitting:
+          type: boolean
+          description: Disable the page editor after a document has been split once.
+        disableCurrencyFormatting:
+          type: boolean
+          description: Disable currency formatting of decimals values.
+        disableEditDocumentMetadata:
+          type: boolean
+          description: Disable editing document metadata. Makes the collection selector, filename input and tags editor read only.
+        disableManualAnnotationEditing:
+          type: boolean
+          description: Disable manual editing of annotation values via the validation popover.
+        hideDocumentStatus:
+          type: boolean
+          description: Hide the document status indicator in the toolbar.
+    Identifier:
+      type: string
+      description: A random string that uniquely identify the resource.
     Organization:
       type: object
       properties:
@@ -498,137 +602,23 @@ components:
         showCustomFieldCreation:
           type: boolean
           description: Whether to show the custom field creation in the UI.
-    ThemeConfig:
+    OrganizationMembership:
       type: object
+      required:
+      - identifier
+      - organization
+      - user
+      - role
       properties:
-        palette:
-          type: object
-          properties:
-            mode:
-              type: string
-              enum:
-              - light
-              - dark
-            background:
-              oneOf:
-              - type: string
-              - type: object
-                properties:
-                  default:
-                    type: string
-                  paper:
-                    type: string
-            text:
-              type: object
-              properties:
-                primary:
-                  type: string
-                secondary:
-                  type: string
-                disabled:
-                  type: string
-            divider:
-              type: string
-            primary:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            secondary:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            success:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            annotation:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            error:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            info:
-              $ref: '#/components/schemas/PaletteColorOptions'
-            warning:
-              $ref: '#/components/schemas/PaletteColorOptions'
-        typography:
-          type: object
-          properties:
-            fontFamily:
-              type: string
-            fontSize:
-              oneOf:
-              - type: string
-              - type: number
-            fontWeightRegular:
-              type: string
-            fontWeightMedium:
-              type: string
-            fontWeightBold:
-              type: string
-        borderRadius:
-          type: number
-        fontUrl:
-          type: string
-    validationToolConfig:
-      type:
-      - object
-      - 'null'
-      description: Configuration of the embeddable validation tool.
-      properties:
-        theme:
-          $ref: '#/components/schemas/ThemeConfig'
-        hideActions:
-          type: boolean
-          description: Hide the confirm document button and other actions.
-        hideCollection:
-          type: boolean
-          description: Hide the collection selector.
-        hideEditPages:
-          type: boolean
-          description: Hide the edit pages button.
-        hideExport:
-          type: boolean
-          description: Hide the export menu.
-        hideFilename:
-          type: boolean
-          description: Hide the filename input.
-        hideShowRawValues:
-          type: boolean
-          description: Hide the toggle for showing raw annotation values.
-        hideReject:
-          type: boolean
-          description: Hide the reject document button.
-        hideReparse:
-          type: boolean
-          description: Hide the reparse button.
-        hideRunOcr:
-          type: boolean
-          description: Hide the run OCR button.
-        hideTags:
-          type: boolean
-          description: Hide the tags editor.
-        hideWarnings:
-          type: boolean
-          description: Hide the warnings panel.
-        restrictDocumentSplitting:
-          type: boolean
-          description: Disable the page editor after a document has been split once.
-        disableCurrencyFormatting:
-          type: boolean
-          description: Disable currency formatting of decimals values.
-        disableEditDocumentMetadata:
-          type: boolean
-          description: Disable editing document metadata. Makes the collection selector, filename input and tags editor read only.
-        disableManualAnnotationEditing:
-          type: boolean
-          description: Disable manual editing of annotation values via the validation popover.
-        hideDocumentStatus:
-          type: boolean
-          description: Hide the document status indicator in the toolbar.
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+        organization:
+          $ref: '#/components/schemas/Organization_properties-identifier'
+        user:
+          $ref: '#/components/schemas/User'
+        role:
+          $ref: '#/components/schemas/OrganizationRole'
   parameters:
-    offsetParam:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        example: 0
-      description: The number of documents to skip before starting to collect the result set.
-      x-ms-parameter-location: method
     limitParam:
       in: query
       name: limit
@@ -640,14 +630,17 @@ components:
         example: 20
       description: The numbers of results to return.
       x-ms-parameter-location: method
+    offsetParam:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+      description: The number of documents to skip before starting to collect the result set.
+      x-ms-parameter-location: method
   responses:
-    DefaultError:
-      description: UnexpectedError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestError'
-      x-ms-error-response: true
     401Error:
       description: Authorisation error
       content:
@@ -664,6 +657,13 @@ components:
       x-ms-error-response: true
     204NoContent:
       description: Delete successful, no content returned
+    DefaultError:
+      description: UnexpectedError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestError'
+      x-ms-error-response: true
   securitySchemes:
     ApiKeyAuth:
       type: http
