@@ -1135,3 +1135,9 @@ components:
       description: 'Basic authentication using an API key, e.g. `{Authorization: Bearer aff_0bb4fbdf97b7e4111ff6c0015471094155f91}`.
 
         You can find your API key within the Settings page of the [Affinda web app](https://app.affinda.com/). You can obtain an API key by [signing up for a free trial](https://app.affinda.com/auth/register).'
+x-provenance:
+  method: harvested
+  publisher: Affinda
+  source: https://api.affinda.com/static/v3/api_spec.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
