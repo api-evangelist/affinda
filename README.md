@@ -199,6 +199,12 @@ Postman and Open Collection request collections.
 - [Affinda Documents API](https://apis.io/collections/affinda/postman-affinda-documents-api/)
 - …and 9 more published on APIs.io
 
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Affinda Data Sources Api Certification Overlay](https://apis.io/overlays/affinda/affinda-data-sources-api-certification-overlay/)
+
 #### Governance rules (2)
 
 Spectral rulesets for the provider's contracts.
@@ -251,18 +257,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 54.5** — strong · rubric 0.25.0 · scored 2026-10-23
+**Kin Score 58.2** — strong · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
-| Discoverability | 65.0 |
-| Contract quality | 63.5 |
+| Discoverability | 71.7 |
+| Contract quality | 69.2 |
 | Contract governance | 13.6 |
-| Operational transparency | 42.1 |
+| Operational transparency | 40.5 |
 | Developer ergonomics | 79.0 |
-| Access clarity | 48.7 |
+| Access clarity | 57.4 |
 
-**Agent readiness 51.5** — agent-ready (gated down from agent-native)
+**Agent readiness 56.1** — agent-ready (gated down from agent-native)
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -272,7 +278,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | MCP Server | verified |
 | Auth Clarity | served (partial credit) |
 | Idempotency | — |
-| Error Semantics | — |
+| Error Semantics | verified |
 | OpenAPI Examples | partial |
 | Rate Limit Signal | derived (partial credit) |
 | Event Surface Described | unknown |
@@ -287,6 +293,10 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Agentic Commerce | — |
 | Pagination Ratio | — |
 | Operation Distinctiveness | distinct |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | yes |
 
 **Regulatory alignment 18.0** — Insurance
 
